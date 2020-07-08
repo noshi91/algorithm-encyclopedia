@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+{% if page.algorithm %}
+<div class="algorithm-data">
+<dl>
+    <dt>name</dt><dd>{{ page.title }}</dd>
+    <dt>short description</dt><dd>{{ page.description }}</dd>
+    {% if page.algorithm.input %}<dt>input</dt><dd>{{ page.algorithm.input }}</dd>{% endif %}
+    {% if page.algorithm.output %}<dt>output</dt><dd>{{ page.algorithm.output }}</dd>{% endif %}
+    {% if page.algorithm.time_complexity %}<dt>time complexity</dt><dd>{{ page.algorithm.time_complexity }}</dd>{% endif %}
+    {% if page.algorithm.space_complexity %}<dt>space complexity</dt><dd>{{ page.algorithm.space_complexity }}</dd>{% endif %}
+    {% if page.algorithm.aliases %}<dt>aliases</dt>{% for alias in page.algorithm.aliases %}<dd>{{ alias }}</dd>{% endfor %}{% endif %}
+</dl>
+</div>
+<hr>
+{% endif %}
+
+{{ content }}
+
+<hr>
+<div class="entry-metadata">
+<dl>
+    <dt>author</dt><dd><a href="https://atcoder.jp/users/{{ page.author }}" class="rating-color-{{ page.author }}">{{ page.author }}</a></dd>
+    <dt>reviewers</dt>{% if page.reviewers %}{% for reviewer in page.reviewers %}<dd><a href="https://atcoder.jp/users/{{ reviewer }}" class="user-{{ reviewer }}">{{ reviewer }}</a></dd>{% endfor %}{% else %}<dd><span class="no-reviewer">none</span></dt>{% endif %}
+    <dt>tags</dt>{% for tag in page.tags %}<dd>{{ tag }}</dd>{% endfor %}
+    <dt>created at</dt><dd>{{ page.date | date_to_string }}</dd>
+    {% if page.updated_at %}<dt>updated at</dt><dd>{{ page.updated_at | date_to_string }}</dd>{% endif %}
+</dl>
+</div>

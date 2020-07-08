@@ -1,0 +1,36 @@
+---
+---
+
+@import "jekyll-theme-primer";
+
+
+// rating colors
+.rating-color-kimiyuki {
+    color: orange;
+}
+
+// algorithm data
+.algorithm-data {
+    color: grey;
+    font-size: small;
+}
+
+// entry metadata
+.entry-metadata {
+    color: grey;
+    font-size: small;
+}
+.entry-metadata .no-reviewer {
+    border-bottom: solid 2px red;
+}
+.entry-metadata dt {
+    clear: left;
+}
+.entry-metadata dd {
+    float: left;
+}
+.entry-metadata dl::after {
+    content: "";
+    display: block;
+    clear: both;
+}
