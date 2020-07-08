@@ -6,13 +6,16 @@ date: 2020-07-09T00:00:00+09:00
 updated_at:
 tags: algorithm fast-zeta-transform
 algorithm:
-  input:
-  output:
-  time_complexity:
+  input: >
+    $n$ 要素の集合 $X$ の部分集合から可換 monoid $M$ への関数 $f : \mathcal{P}(X) \to M$ のグラフ
+  output: >
+    関数 $g(s) = \sum _ {s \subseteq T} f(T)$ のグラフ
+  time_complexity: $O(n 2^n)$
   space_complexity:
   aliases: "高速Mobius変換"
-description: 高速Zeta変換とは、
+description: >
+  高速 zeta 変換とは、$n$ 要素の集合 $X$ の部分集合から可換 monoid $M$ への関数 $f : \mathcal{P}(X) \to M$ が与えられたとき、関数 $g(s) = \sum _ {s \subseteq T} f(T)$ の全体を $O(n 2^n)$ で求めるアルゴリズムである。累積和の $n$ 次元への一般化と理解できる。
 draft: true
 ---
 
-# 高速Zeta変換
+# 高速 zeta 変換
