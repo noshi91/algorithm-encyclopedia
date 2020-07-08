@@ -11,7 +11,7 @@ algorithm:
   time_complexity: 設定に依存する
   space_complexity:
   aliases:
-description: Montgomery 乗算は、剰余環 $\mathbb{Z}/N\mathbb{Z}$ での乗算を高速に行うためのテクニックである。
+description: Montgomery 乗算とは、剰余環 $\mathbb{Z}/N\mathbb{Z}$ での乗算を高速に行うアルゴリズムである。
 ---
 
 # Montgomery乗算
