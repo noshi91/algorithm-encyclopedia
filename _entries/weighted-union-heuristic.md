@@ -11,8 +11,8 @@ algorithm:
   time_complexity:
   space_complexity:
   aliases: マージテク デマテク "weighted-union heuristic"
-description: データ構造をマージする一般的なテクとは、
+description: weighted-union heuristic とは、……。データ構造をマージする一般的なテクとも呼ばれる。
 draft: true
 ---
 
-# データ構造をマージする一般的なテク
+# weighted-union heuristic 
