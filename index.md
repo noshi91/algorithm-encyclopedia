@@ -11,3 +11,7 @@
     {% endif %}
 {% endfor %}
 </dl>
+
+<div class="github-links">
+    <a href="{{ site.github.repository_url }}">GitHub repository</a>
+</div>
