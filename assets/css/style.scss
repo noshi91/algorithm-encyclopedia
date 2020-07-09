@@ -41,3 +41,8 @@
     display: block;
     clear: both;
 }
+
+// external links in index.md
+.link-external svg.octicon {
+    fill: currentColor;
+}

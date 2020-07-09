@@ -45,6 +45,7 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-relative-links
   # additional plugins
+  - jekyll-octicons
   - jekyll-redirect-from
   - jekyll-sitemap
 
