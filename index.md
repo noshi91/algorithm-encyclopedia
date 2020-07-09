@@ -1,4 +1,4 @@
-# Kyopro Encyclopedia of Algorithms and Data Structures (closed β版)
+# Kyopro Encyclopedia of Algorithms (β版)
 
 <dl>
 {% for entry in site.entries %}
