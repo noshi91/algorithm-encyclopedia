@@ -2,7 +2,7 @@
 
 ## これなに
 
-競プロ用のアルゴリズムの解説を集めた百科辞典を目指しているサイトです。
+競プロ用のアルゴリズムの解説を集めた百科辞典を目指しているサイトです。(試験運用中)
 
 ### 内容の方針
 
@@ -19,24 +19,23 @@
 -   また、修正やレビューの過程がコミットログやレビューコメントなどの形で残る。
 
 などのメリットがあります。
-デメリットとしては、GitHub の制約により、レビュー時の数式の表示がしんどいことが挙げられます。
+デメリットとしては、git や GitHub の操作ができる人しか編集に参加できないこと、GitHub の制約によりレビュー時の数式の表示がしんどいことが挙げられます。
 
 他の形式の場合、ブログのような個人的なメディアで記事を書くと古い記事が時代遅れになったまま残りがちであり、編集がまったく自由な共有 wiki で管理すると著者や内容の質が曖昧になりがちです。これらの間を選ぶことでそれぞれの持つ問題を解決することを目標としています。
 
 ## Contribution
 
-### 手元でのテスト
+### 記事を修正する
 
-``` console
-$ sudo apt install ruby-all-dev ruby-bundler
-$ bundle install --path .vendor/bundle
-$ bundle exec jekyll serve --incremental
-# open http://127.0.0.1:4000
-```
+軽微なものならプルリクエストを送ってください。
+簡単には修正できないものなら issue を立ててください。
+それぞれページの右下の「Edit this page」「Report issues」というリンクを使うと便利です。
 
-### 記事の追加
+### 記事を追加する
 
-他の記事を見ながら適当にしてください。
+[_entries/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_entries) ディレクトリに Markdown ファイルを追加するプルリクエストを送ってください。
+数式には TeX 記法 (KaTeX) が使えます。
+詳細は他の記事を見ながら適当にしてください。
 
 [front matter](http://jekyllrb-ja.github.io/docs/front-matter/) に書くべき情報は以下の通りです。
 
@@ -55,3 +54,12 @@ $ bundle exec jekyll serve --incremental
 -   `description`: アルゴリズムの概要。「（ここにアルゴリズムの名前が入る）とは、（ここにアルゴリズムの概要が入る）というアルゴリズムである。」という形の文から初めて数文ぐらいで書く感じで。KaTeX は使用可。HTML も使用可だがあまり推奨されない
 -   `draft` (省略可): これが存在するとトップページからのリンクが貼られません。
 -   `draft_urls` (省略可): 記事の本文の代わりになるリンク
+
+### 手元でのテストについて
+
+``` console
+$ sudo apt install ruby-all-dev ruby-bundler
+$ bundle install --path .vendor/bundle
+$ bundle exec jekyll serve --incremental
+# open http://127.0.0.1:4000
+```
