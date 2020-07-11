@@ -31,11 +31,24 @@
 簡単には修正できないものなら issue を立ててください。
 それぞれページの右下の「Edit this page」「Report issues」というリンクを使うと便利です。
 
-### 記事を追加する
+### 記事を追加する (概要のみ)
 
-[_entries/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_entries) ディレクトリに Markdown ファイルを追加するプルリクエストを送ってください。
-数式には TeX 記法 (KaTeX) が使えます。
-詳細は他の記事を見ながら適当にしてください。
+[トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
+
+1.  [_entries/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_entries) ディレクトリの中に Markdown ファイルを追加する
+    -   他の概要のみのページのためのファイルをコピペしてくればよい
+1.  追加した Markdown ファイルを編集する。
+1.  プルリクエストを送る。
+
+### 記事を追加する (本文含む)
+
+個別の記事ページ ([例](https://kmyk.github.io/algorithm-encyclopedia/monotone-minima)) を追加する場合は以下のようにします。
+
+1.  上記の「記事を追加する (概要のみ)」と同様にして、トップページの目次に項目を追加する。
+1.  対応する項目の Markdown ファイルに本文を追加する。
+1.  プルリクエストを送る。
+
+### メタデータの仕様
 
 [front matter](http://jekyllrb-ja.github.io/docs/front-matter/) に書くべき情報は以下の通りです。
 
