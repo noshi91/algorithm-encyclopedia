@@ -6,7 +6,8 @@ date: 2020-07-09T00:00:00+09:00
 updated_at:
 tags: algorithm chu-liu-edmonds
 algorithm:
-  input: 辺重み $c : V \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $r \in V$
+  input: >
+    辺重み $c : V \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $r \in V$
   output: $r$ を根とする最小全域有向木 $T$
   time_complexity: $O(V E)$
   space_complexity:
