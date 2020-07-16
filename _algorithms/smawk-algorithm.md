@@ -1,7 +1,7 @@
 ---
 layout: entry
 author: kimiyuki
-reviewers:
+reviewers: noshi91
 date: 2020-07-11T00:00:00+09:00
 updated_at:
 tags: algorithm smawk-algorithm monotone-minima
