@@ -2,6 +2,8 @@
 
 このページでは、通常は「アルゴリズム」とは呼ばれないようなものたちを紹介する。通常のアルゴリズムたちについては [Kyopro Encyclopedia of Algorithms](../) を参照のこと。
 
+<hr>
+
 <dl>
 {% for entry in site.tenkeis %}
    {% if entry.draft %}
