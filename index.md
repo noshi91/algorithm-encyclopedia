@@ -1,5 +1,14 @@
 # Kyopro Encyclopedia of Algorithms (β版)
 
+これは競プロの知見を収集するための査読付きの半共有 wiki である。
+アルゴリズムについての説明が中心となっている。なお、データ構造については [scrapbox.io/data-structures](https://scrapbox.io/data-structures/) (通称: デ wiki) を利用するのがよいだろう。
+
+個人ブログの記事として情報を書くと属人性が高すぎ、古い記事のメンテのコストが高く、記事が不正確なまま残りやすいという問題があった。一方で誰でも自由に編集できる共有 wiki であると属人性が低すぎ、誰が書いたのかが分かりにくいため適切なクレジットが行なわれず、また記事の正確性も担保されないという問題があった。
+そこでこの半共有 wiki は、GitHub 上のプルリクエストとレビュープロセスという管理形態を用いて、これらの問題の解決を目指している。
+もし興味があれば [kmyk/algorithm-encyclopedia](https://github.com/kmyk/algorithm-encyclopedia) から編集に参加してほしい。
+
+<hr>
+
 <dl>
 {% for entry in site.entries %}
     {% if entry.draft %}
