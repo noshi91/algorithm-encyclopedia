@@ -11,7 +11,7 @@ email: kimiyuki95@gmail.com
 author: "Kimiyuki Onaka"
 description:
 baseurl: "/"  # the subpath of your site, e.g. /blog
-url: "https://kmyk.github.io"  # the base hostname & protocol for your site
+url: "https://dic.kimiyuki.net"  # the base hostname & protocol for your site
 exclude:
   - "/.bundle"
   - "/.git"
