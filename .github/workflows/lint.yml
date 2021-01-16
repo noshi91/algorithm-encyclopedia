@@ -1,0 +1,26 @@
+name: lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use "a _ {i + 1}" instead of "a_{i + 1}"
+        run: |
+          [ -z "$(find -name \*.md -exec grep --with-filename '_{' {} \; | tee /dev/stderr)" ]
+
+      - name: Use "\lbrace", "\rbrace" instead of "\{", "\}"
+        run: |
+          [ -z "$(find -name \*.md -exec grep --with-filename '\\[}{]' {} \; | tee /dev/stderr)" ]
+
+      - name: Use "\lbrack", "\rbrack" instead of "\[", "\]"
+        run: |
+          [ -z "$(find -name \*.md -exec grep --with-filename '\\[][]' {} \; | tee /dev/stderr)" ]
+
+      - name: Use "\cr" instead of "\\"
+        run: |
+          [ -z "$(find -name \*.md -exec grep --with-filename '\\\\' {} \; | tee /dev/stderr)" ]
