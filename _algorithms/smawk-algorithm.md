@@ -26,7 +26,7 @@ SMAWK algorithm とは、totally monotone な $H \times W$ 行列 $f$ に対し�
 
 ### 準備
 
-totally monotone の定義について。$H, W$ は自然数とし $A$ は全順序集合とする。$H \times W$ の行列 $f : H \times W \to A$ が totally monotone であるとは、$f$ の任意の $2 \times 2$ 部分行列 $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ が $c \lt d$ ならば $a \lt b$ を満たしかつ $c = d$ ならば $a \le b$ を満たすこと。
+totally monotone の定義について。$H, W$ は自然数とし $A$ は全順序集合とする。$H \times W$ の行列 $f : H \times W \to A$ が totally monotone であるとは、$f$ の任意の $2 \times 2$ 部分行列 $\begin{pmatrix} a & b \cr c & d \end{pmatrix}$ が $c \lt d$ ならば $a \lt b$ を満たしかつ $c = d$ ならば $a \le b$ を満たすこと。
 この定義は次と等しい: $f$ の任意の部分行列が monotone であること。
 また、monotone の定義については [[/monotone minima]] を参照してほしい。
 
