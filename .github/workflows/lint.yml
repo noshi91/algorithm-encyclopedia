@@ -28,3 +28,7 @@ jobs:
       - name: Use 常体 instead of 敬体
         run: |
           [ -z "$(find -name \*.md -exec grep --with-filename 'です。\|ます。' {} \; | grep -v README.md: | tee /dev/stderr)" ]
+
+      - name: Use '、', '。' instead of '，', '．'
+        run: |
+          [ -z "$(find -name \*.md -exec grep --with-filename '，\|．' {} \; | grep -v README.md: | tee /dev/stderr)" ]
