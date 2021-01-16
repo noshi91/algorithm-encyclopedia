@@ -8,7 +8,10 @@ layout: default
     <dt>name</dt><dd>{{ page.title }}</dd>
     <dt>short description</dt><dd>{{ page.description }}</dd>
     {% if page.algorithm.input %}<dt>input</dt><dd>{{ page.algorithm.input }}</dd>{% endif %}
+    {% if page.algorithm.pre_condition %}<dt>pre-condition</dt><dd>{{ page.algorithm.pre_condition }}</dd>{% endif %}
     {% if page.algorithm.output %}<dt>output</dt><dd>{{ page.algorithm.output }}</dd>{% endif %}
+    {% if page.algorithm.post_condition %}<dt>post-condition</dt><dd>{{ page.algorithm.post_condition }}</dd>{% endif %}
+    {% if page.algorithm.condition %}<dt>condition</dt><dd>{{ page.algorithm.condition }}</dd>{% endif %}
     {% if page.algorithm.time_complexity %}<dt>time complexity</dt><dd>{{ page.algorithm.time_complexity }}</dd>{% endif %}
     {% if page.algorithm.space_complexity %}<dt>space complexity</dt><dd>{{ page.algorithm.space_complexity }}</dd>{% endif %}
     {% if page.algorithm.aliases %}<dt>aliases</dt>{% for alias in page.algorithm.aliases %}<dd>{{ alias }}</dd>{% endfor %}{% endif %}

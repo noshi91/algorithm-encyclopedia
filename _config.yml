@@ -26,8 +26,12 @@ timezone: Asia/Tokyo
 
 # Collections settings
 collections:
-  entries:
+  algorithms:
     permalink: /:title
+    sort_by: title
+    output: true
+  tenkeis:
+    permalink: /tenkei/:title
     sort_by: title
     output: true
 
