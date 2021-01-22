@@ -33,23 +33,23 @@ description: 高速 Kitamasa 法とは、$k + 1$ 項間の線型漸化式で定�
 漸化式を行列で書くと次のようになる。これを行列累乗すればよい。
 
 $$ \begin{pmatrix}
-    a _ {n + k} \\
-    a _ {n + k - 1} \\
-    \vdots \\
-    a _ {n + 2} \\
-    a _ {n + 1} \\
+    a _ {n + k} \cr
+    a _ {n + k - 1} \cr
+    \vdots \cr
+    a _ {n + 2} \cr
+    a _ {n + 1}
 \end{pmatrix} = \begin{pmatrix}
-    c _ {k-1} & c _ {k-2} & \dots & c _ 1 & c _ 0 \\
-    1 & 0 & \dots & 0 & 0 \\
-    0 & 1 & \dots & 0 & 0 \\
-    \vdots & \vdots & \ddots & \vdots & \vdots \\
-    0 & 0 & \dots & 1 & 0 \\
+    c _ {k-1} & c _ {k-2} & \dots & c _ 1 & c _ 0 \cr
+    1 & 0 & \dots & 0 & 0 \cr
+    0 & 1 & \dots & 0 & 0 \cr
+    \vdots & \vdots & \ddots & \vdots & \vdots \cr
+    0 & 0 & \dots & 1 & 0
 \end{pmatrix} \begin{pmatrix}
-    a _ {n + k - 1} \\
-    a _ {n + k - 2} \\
-    \vdots \\
-    a _ {n + 1} \\
-    a _ {n} \\
+    a _ {n + k - 1} \cr
+    a _ {n + k - 2} \cr
+    \vdots \cr
+    a _ {n + 1} \cr
+    a _ {n}
 \end{pmatrix} $$
 
 ## Kitamasa 法: $O(k^2 \log N)$
@@ -73,9 +73,9 @@ Kitamasa 法とは、$k$ 階の線型漸化式で定まる数列の $N$ 項目�
 簡単のため $n = 0$ のように書く。
 漸化式を
 $$ \begin{array}{rcl}
-    a _ {2m} & = & \sum _ {i \lt k} b _ {2m,i} a _ i \\
-             & = & \sum _ {i \lt k} b _ {m,i} a _ {m+i} \\
-             & = & \sum _ {i \lt k} b _ {m,i} \sum _ {j \lt k} b _ {m+i,j} a _ j \\
+    a _ {2m} & = & \sum _ {i \lt k} b _ {2m,i} a _ i \cr
+             & = & \sum _ {i \lt k} b _ {m,i} a _ {m+i} \cr
+             & = & \sum _ {i \lt k} b _ {m,i} \sum _ {j \lt k} b _ {m+i,j} a _ j
 \end{array} $$
 と変形すると、$k$ 個の数列 $b _ {m,\ast}, b _ {m+1,\ast}, \dots, b _ {m+k-1, \ast}$ をすでに考えた方法でそれぞれ $O(k)$ かけて求めれば、そらを使って数列 $b _ {2m,\ast}$ をさらに $O(k^2)$ 使って求めることで、全体で $O(k^2)$ で求められることが分かる。
 
@@ -91,10 +91,10 @@ Kiatamasa 法では、漸化式 $a _ {2m} = \sum _ {i \lt k} b _ {2m,i} a_i$ を
 
 まず $a _ {2m} = \sum _ {i \lt k} b _ {2m,i} a_i$ の漸化式をさらに変形し、多項式の乗算を利用する。
 $$ \begin{array}{rcl}
-    a _ {2m} & = & \sum _ {i \lt k} b _ {2m,i} a _ i \\
-             & = & \vdots \\
-             & = & \sum _ {i \lt k} b _ {m,i} \sum _ {j \lt k} b _ {m,j} a _ {i+j} \\
-             & = & \sum _ {s \lt 2k-1} a_s \sum _ {i + j = s} b _ {m,i} b _ {m,j} \\
+    a _ {2m} & = & \sum _ {i \lt k} b _ {2m,i} a _ i \cr
+             & = & \vdots \cr
+             & = & \sum _ {i \lt k} b _ {m,i} \sum _ {j \lt k} b _ {m,j} a _ {i+j} \cr
+             & = & \sum _ {s \lt 2k-1} a_s \sum _ {i + j = s} b _ {m,i} b _ {m,j}
 \end{array} $$ と変形する。
 ここで多項式 $g_m = \sum _ {i \lt k} b _ {m,i} x^i$ を考える。
 $g_m^2 = \sum _ {s \lt 2k-1} \left( \sum _ {i + j = s} b _ {m,i} b _ {m,j} \right) x^s$ であり、多項式の乗算は高速 Fourier 変換や数論変換によって $O(k \log k)$ で得られるので、この結果を利用することで長さ $2k-1$ の漸化式
