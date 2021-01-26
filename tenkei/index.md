@@ -5,7 +5,8 @@
 <hr>
 
 <dl>
-{% for entry in site.tenkeis %}
+{% assign sorted_tenkeis = site.tenkeis | sort: "title" %}
+{% for entry in sorted_tenkeis %}
    {% if entry.draft %}
        <dt>{{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}</dt>
        <dd>{{ entry.description }}</dd>

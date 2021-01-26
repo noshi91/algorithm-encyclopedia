@@ -10,7 +10,8 @@
 <hr>
 
 <dl>
-{% for entry in site.algorithms %}
+{% assign sorted_algorithms = site.algorithms | sort: "title" %}
+{% for entry in sorted_algorithms %}
     {% unless entry.tenkei %}
         <dt>
             {% if entry.algorithm.level %}
