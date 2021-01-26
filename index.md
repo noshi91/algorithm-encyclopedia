@@ -12,13 +12,17 @@
 <dl>
 {% for entry in site.algorithms %}
     {% unless entry.tenkei %}
-        {% if entry.draft %}
-            <dt>{{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}</dt>
-            <dd>{{ entry.description }}</dd>
-        {% else %}
-            <dt><a href="{{ entry.url | absolute_url }}">{{ entry.title }}</a></dt>
-            <dd>{{ entry.description }}</dd>
-        {% endif %}
+        <dt>
+            {% if entry.algorithm.level %}
+                <span class="rating-color-{{ entry.algorithm.level }}">&#x25C9;</span>
+            {% endif %}
+            {% if entry.draft %}
+                {{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
+            {% else %}
+                <a href="{{ entry.url | absolute_url }}">{{ entry.title }}</a>
+            {% endif %}
+        </dt>
+        <dd>{{ entry.description }}</dd>
     {% endunless %}
 {% endfor %}
 </dl>

@@ -11,6 +11,7 @@ algorithm:
   time_complexity: $O(H + W \log H)$
   space_complexity:
   aliases:
+  level: orange
 description: monotone minima とは、monotone な $H \times W$ 行列に対しその各行の最小値を $O(H + W \log H)$ で求めるアルゴリズムである。
 ---
 

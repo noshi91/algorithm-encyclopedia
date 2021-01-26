@@ -33,8 +33,7 @@
 
 ### 記事を追加する (概要のみ)
 
-[トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
-
+[トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。 
 1.  [_entries/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_entries) ディレクトリの中に Markdown ファイルを追加する
     -   他の概要のみのページのためのファイルをコピペしてくればよい
 1.  追加した Markdown ファイルを編集する。
@@ -64,6 +63,7 @@
     -   `time_complexity` (空欄可): アルゴリズムの時間計算量
     -   `space_complexity` (空欄可): アルゴリズムの空間計算量
     -   `aliases` (空欄可): アルゴリズムの別名の列
+    -   `level` (空欄可): アルゴリズムの知名度。難しさは判定しにくいので有名さを使う。「この色の人ならみんな知っていそうだな (主観)」という色を書く。赤でも知らなさそうなものは黒 (`black`) とする。
 -   `description`: アルゴリズムの概要。「（ここにアルゴリズムの名前が入る）とは、（ここにアルゴリズムの概要が入る）というアルゴリズムである。」という形の文から初めて数文ぐらいで書く感じで。KaTeX は使用可。HTML も使用可だがあまり推奨されない
 -   `draft` (省略可): これが存在するとトップページからのリンクが貼られません。
 -   `draft_urls` (省略可): 記事の本文の代わりになるリンク

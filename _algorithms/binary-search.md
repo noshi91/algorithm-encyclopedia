@@ -11,6 +11,7 @@ algorithm:
   time_complexity: $O(\log N)$ など
   space_complexity:
   aliases: bisection
+  level: green
 description: 二分探索とは、ソート済みの列に対する探索アルゴリズムのひとつ。探索すべき区間の中央の要素を調べることで探索すべき区間の長さを半々にし、区間の長さ $N$ に対し $O(\log N)$ で位置を特定する。
 draft: true
 draft_urls: ["https://twitter.com/meguru_comp/status/697008509376835584"]
