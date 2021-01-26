@@ -11,6 +11,7 @@ algorithm:
   time_complexity: $O(K V (E + V) \log V)$
   space_complexity:
   aliases:
+  level: black
 description: Yen's algorithm とは、与えられたグラフ $G$ の $s-t$ 単純路であって $K$ 番目に短いものを $O(K V (E + V) \log V)$ で求めるアルゴリズムである。
 draft: true
 draft_urls: "https://qiita.com/nariaki3551/items/821dc6ffdc552d3d5f22"

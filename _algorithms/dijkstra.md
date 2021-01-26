@@ -13,6 +13,7 @@ algorithm:
   time_complexity: $O(E \log V)$ など
   space_complexity:
   aliases:
+  level: green
 description: >
   Dijkstra's algorithm とは、単一始点最短経路問題を解くアルゴリズムのひとつ。辺に非負の重みが付いた有向グラフ $G$ と頂点 $s$ が与えられたとき、$s$ を始点とする $s \to t$ 最短経路をすべての頂点 $t$ に対して $O(E \log V)$ などで求める。コストが非負という仮定をもとに動的計画法を利用する。
 draft: true

@@ -11,6 +11,7 @@ algorithm:
   time_complexity: $O(H + W)$
   space_complexity:
   aliases: ["TM minima", "totally monotone minima"]
+  level: orange
 description: SMAWK algorithm とは、totally monotone な $H \times W$ 行列に対しその各行の最小値を $O(H + W)$ で求めるアルゴリズムである。
 draft: true
 draft_urls: "https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html"

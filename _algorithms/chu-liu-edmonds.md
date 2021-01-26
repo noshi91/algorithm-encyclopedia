@@ -12,6 +12,7 @@ algorithm:
   time_complexity: $O(V E)$
   space_complexity:
   aliases:
+  level: black
 description: Chu-Liu/Edmonds' algorithm とは、与えられた辺重み付き有向グラフ $G$ と頂点 $r$ に対し、$r$ を根とする最小全域有向木を $O(V E)$ で求めるアルゴリズムである。
 draft: true
 draft_urls: "https://ark4rk.hatenablog.com/entry/2017/09/15/011937"
