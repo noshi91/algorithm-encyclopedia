@@ -10,7 +10,8 @@
 <hr>
 
 <dl>
-{% for entry in site.algorithms %}
+{% assign sorted_algorithms = site.algorithms | sort: "title" %}
+{% for entry in sorted_algorithms %}
     {% unless entry.tenkei %}
         {% if entry.draft %}
             <dt>{{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}</dt>
