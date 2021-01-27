@@ -17,7 +17,7 @@ draft: true
 draft_urls: ["https://imoz.jp/algorithms/imos_method.html"]
 ---
 
-# 累積和
+# imos 法
 
 ## 話題
 
