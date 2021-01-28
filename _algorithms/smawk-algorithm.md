@@ -2,7 +2,7 @@
 layout: entry
 author: kimiyuki
 reviewers: noshi91
-date: 2020-07-11T00:00:00+09:00
+date: 2021-01-20T00:00:00+09:00
 updated_at:
 tags: algorithm smawk-algorithm monotone-minima
 algorithm:
@@ -92,9 +92,21 @@ $(H + 2W) + (H/2 + 2H) + (H/4 + H) + (H/8 + H/2) + \dots = 2W + (H + H/2 + H/4 +
 
 ## 参考文献
 
--   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
-    -   信頼できる解説記事 (日本語)
--   <http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf>
-    -   具体例を通して説明されており分かりやすい
 -   A. Aggarwal, M. M. Klawe, S. Moran, P. W. Shor, and R. E. Wilber, “Geometric Applications of a Matrix-Searching Algorithm,” Algorithmica, vol. 2, pp. 195–208, Jan. 1987, doi: 10.1007/BF01840359.
     -   SMAWK algorithm が提案された論文
+
+## 関連項目
+
+-   [Monotone minima](/monotone-minima)
+    -   monotone minima は SMAWK algorithm の動作に必要な仮定を弱めたものになっている。totally monotone ではなく monotone のみを仮定して、各行の最小値の位置を $O(H + W \log H)$ で求める。
+
+## 外部リンク
+
+-   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
+    -   tmaehara による解説記事
+-   <https://noshi91.github.io/Library/algorithm/smawk.cpp><sup>[archive.org](https://web.archive.org/web/20210128162854/https://noshi91.github.io/Library/algorithm/smawk.cpp)</sup>
+    -   noshi91 による実装例
+-   <http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf>
+    -   [Lawrence L. Larmore](https://en.wikipedia.org/wiki/Lawrence_L._Larmore) による解説 (英語)。具体例を通して説明されている。
+-   <https://kmyk.github.io/monotone-matrix-visualizer/>
+    -   totally monotone な行列などを図示してくれるページ
