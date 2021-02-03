@@ -2,12 +2,12 @@
 layout: entry
 author: kimiyuki
 reviewers: noshi91
-date: 2021-01-20T00:00:00+09:00
+date: 2021-02-04T00:00:00+09:00
 updated_at:
 tags: algorithm smawk-algorithm monotone-minima
 algorithm:
   input: totally monotone な $H \times W$ 行列 $f$
-  output: 各行 $y$ に対し最小値の位置 $x \in \mathrm{argmin} _ x f(y, x)$
+  output: それぞれの行 $y$ に対し最小値の位置 $x \in \mathrm{argmin} _ x f(y, x)$
   time_complexity: $O(H + W)$
   space_complexity:
   aliases: ["TM minima", "totally monotone minima"]
@@ -21,7 +21,10 @@ description: SMAWK algorithm とは、totally monotone な $H \times W$ 行列�
 
 ### 概要
 
-SMAWK algorithm とは、totally monotone な $H \times W$ 行列 $f$ に対し、それぞれの行 $y$ の最小値の位置 (のひとつ) $x \in \mathrm{argmin} _ x f(y, x)$ をまとめて効率よく求めるテクである。愚直には行列全体をなめて $O(HW)$ であるが、これを $O(H + W)$ で行う。 仮定を強めることで monotone minima をより高速にしたようなアルゴリズムである。
+SMAWK algorithm とは、totally monotone な $H \times W$ 行列 $f$ に対し、それぞれの行 $y$ の最小値の位置 (のひとつ) $x \in \mathrm{argmin} _ x f(y, x)$ をまとめて効率よく求めるアルゴリズムである。愚直には行列全体をなめて $O(HW)$ であるが、これを $O(H + W)$ で行う。仮定を強めることで monotone minima をより高速にしたようなアルゴリズムである。
+
+入力となる行列のそれぞれの行は distinct (重複を持たない) だと仮定されることがあるが、この制約は取り除ける。ただし、ひとつの行に最小値が複数回出現する場合への注意が必要となる。
+SMAWK algorithm はそれぞれの行 $y$ について最小値の位置 $x_y$ を出力するが、これを $(x_0, x_1, \dots, x _ {H-1})$ とならべた列は必ず広義単調増加となる。この性質はアルゴリズム自体の内部でも用いられる。
 
 ### totally monotone について
 
@@ -37,6 +40,7 @@ totally monotone であることは $f$ の任意の部分行列が monotone で
 -   行列 $f$ が陰に保持されるべきことに注意したい。もし陽に保持すると、それだけで空間計算量 $O(HW)$ かかり、自動的に時間計算量も $O(HW)$ になってしまうためである。
 -   Monge ならば totally monotone である。
 -   totally monotone ならば monotone である。多少は遅くなるが monotone minima で SMAWK algorithm を代用できる。
+-   行列の各行の要素が distinct だと仮定すれば細かい定義の問題を気にしなくてすむ。SMAWK が提案された論文でも簡単のためとして distinct を仮定した形の説明がなされている。
 
 ## 参考文献
 
