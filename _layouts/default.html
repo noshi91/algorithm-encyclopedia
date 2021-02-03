@@ -37,6 +37,21 @@
           {% endif %}
       </h1>
 
+      <div id="staging-environment-warning" class="production-environment">
+        これはステージング環境です。5 秒後に自動的に本番環境 (<a href="{{ site.url }}">{{ site.url }}</a>) にリダイレクトされます。リダイレクトを抑止したい場合は <code>#noredirect</code> を付けた URL <a href="#noredirect">{{ page.url | relative_url }}#noredirect</a> を利用してください。
+      </div>
+      <script>
+        if (!location.href.match("{{ site.url }}")) {
+          const div = document.getElementById("staging-environment-warning");
+          div.classList.remove("production-environment");
+          setTimeout(function () {
+            if (!location.href.match("noredirect")) {
+              location.href = "{{ site.url }}";
+            }
+          }, 5000);
+        }
+      </script>
+
       {{ content }}
 
       {% if site.github.private != true and site.github.license %}

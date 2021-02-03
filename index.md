@@ -20,7 +20,7 @@
             {% if entry.draft %}
                 {{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
             {% else %}
-                <a href="{{ entry.url | absolute_url }}">{{ entry.title }}</a>
+                <a href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
             {% endif %}
         </dt>
         <dd>{{ entry.description }}</dd>
@@ -29,6 +29,6 @@
 </dl>
 
 <div class="footer-links">
-    <a href="{{ "/tenkei" | absolute_url }}">典型テク版</a> /
+    <a href="{{ "/tenkei" | relative_url }}">典型テク版</a> /
     <a href="{{ site.github.repository_url }}">GitHub repository</a>
 </div>

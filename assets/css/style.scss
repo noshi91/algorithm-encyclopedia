@@ -84,3 +84,12 @@ $user-black: #000000;
 .link-external svg.octicon {
     fill: currentColor;
 }
+
+// footer links
+#staging-environment-warning {
+    color: red;
+    font-size: large;
+}
+#staging-environment-warning.production-environment {
+    display: none;
+}
