@@ -68,6 +68,18 @@ GitHub Actions を利用して、典型的なミスが機械的に検出され�
 このテストをローカルで実行するには、[nektos/act](https://github.com/nektos/act) をインストールして `$ act` と実行してください。
 
 
+### 複製の公開
+
+このリポジトリの fork を作ったあと、そのリポジトリで GitHub Pages を有効にしてください ([GitHub Pages サイトの公開元を設定する - GitHub Docs](https://docs.github.com/ja/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site))。fork では自動的には GitHub Pages が有効にならないことに注意してください。
+実際に公開した例は <https://kmyk.github.io/algorithm-encyclopedia-staging/> にあります。
+
+通常の GitHub 上では Markdown ファイル中の数式をプレビューできないという問題があるため、プルリクエストを出す際にはこのような複製を準備して完全な形のものを閲覧できるようにしておくとスムーズでしょう。
+
+なお、GitHub Pages に公開された複製からは自動で <https://dic.kimiyuki.net/> へのリダイレクトが発生するようになっています。
+これは、本体のリポジトリの GitHub Pages とテスト用の複製の GitHub Pages との間での、どれが本体なのか分からないという混乱の発生を防ぐための措置です。
+本体のリポジトリへリダイレクトされない完全な fork を作りたいときは、`_config.yml` や `CNAME` を編集することでこの挙動を修正できます。
+
+
 ## 記事の内容について
 
 ### 何について語っているかを明確にする
