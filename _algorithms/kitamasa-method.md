@@ -1,6 +1,6 @@
 ---
 layout: entry
-author: kimiyuki
+author:
 reviewers:
 date: 2020-07-09T00:00:00+09:00
 tags: algorithm kitamasa-method
