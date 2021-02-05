@@ -7,17 +7,19 @@ changelog:
     reviewers:
 algorithm:
   input: パターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ とテキスト文字列 $T$
-  output: パターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ のどれがテキスト文字列 $T$ に含まれるか。含まれるならその位置も
+  output: パターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ のどれがテキスト文字列 $T$ に含まれるか。含まれるならその位置も求める。
   time_complexity: 前処理には $O(\sum \vert P_i \vert)$ で検索には $O(\vert T \vert)$
   space_complexity:
   aliases: []
   level: orange
 description: Aho-Corasick法とは、複数のパターン文字列をまとめて扱える文字列検索アルゴリズムのひとつ。まず前処理として、固定された $k$ 個のパターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ たちから Trie 木を作り、その上に適切に辺を張って $O(\sum \vert P_i \vert)$ でオートマトンを作る。その後与えられたテキスト文字列 $T$ に対して $O(\vert T \vert)$ で検索を行う。
-draft: true
-draft_urls: ["http://algoogle.hadrori.jp/algorithm/aho-corasick.html"]
 ---
 
 # Aho-Corasick法
+
+## 概要
+
+Aho-Corasick法とは、複数のパターン文字列をまとめて扱える文字列検索アルゴリズムのひとつ。まず前処理として、固定された $k$ 個のパターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ たちから Trie 木を作り、その上に適切に辺を張って $O(\sum \vert P_i \vert)$ でオートマトンを作る。その後与えられたテキスト文字列 $T$ に対して $O(\vert T \vert)$ で検索を行う。
 
 ## 参考文献
 
