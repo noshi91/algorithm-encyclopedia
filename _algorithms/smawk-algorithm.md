@@ -40,12 +40,16 @@ totally monotone であることは $f$ の任意の部分行列が monotone で
 -   行列 $f$ が陰に保持されるべきことに注意したい。もし陽に保持すると、それだけで空間計算量 $\Theta(HW)$ かかり、自動的に時間計算量も $\Omega(HW)$ になってしまうためである。
 -   Monge ならば totally monotone である。
 -   totally monotone ならば monotone である。多少は遅くなるが monotone minima で SMAWK algorithm を代用できる。
--   行列の各行の要素が distinct だと仮定すれば細かい定義の問題を気にしなくてすむ。SMAWK が提案された論文でも簡単のためとして distinct を仮定した形の説明がなされている。
+-   行列の各行の要素が distinct だと仮定すれば細かい定義の問題を気にしなくてすむ。たとえば SMAWK が提案された 1986 年のプロシーディングでも簡単のためとして distinct を仮定した形の説明がなされている。
+-   行列の各行の要素が distinct とは限らない場合の議論は面倒であり、totally monotone や monotone の定義にも揺れがでてくる。SMAWK が提案された 1987 年の論文では distinct を仮定しない形で説明がなされている。
 
 ## 参考文献
 
--   A. Aggarwal, M. M. Klawe, S. Moran, P. W. Shor, and R. E. Wilber, “Geometric Applications of a Matrix-Searching Algorithm,” Algorithmica, vol. 2, pp. 195–208, Jan. 1987, doi: 10.1007/BF01840359.
+-   A Aggarwal, M Klawe, S Moran, P Shor, and R Wilber. 1986. Geometric applications of a matrix searching algorithm. In Proceedings of the second annual symposium on Computational geometry (SCG '86). Association for Computing Machinery, New York, NY, USA, 285–292. DOI:<https://doi.org/10.1145/10515.10546>
+    -   1987 年の論文が発表される前にあった会議のプロシーディング
+-   Aggarwal, A., Klawe, M.M., Moran, S. et al. Geometric applications of a matrix-searching algorithm. Algorithmica 2, 195–208 (1987). <https://doi.org/10.1007/BF01840359>
     -   SMAWK algorithm が提案された論文
+
 
 ## 関連項目
 
