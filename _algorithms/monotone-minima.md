@@ -3,7 +3,7 @@ layout: entry
 author: kimiyuki
 reviewers:
 date: 2020-07-09T00:00:00+09:00
-updated_at:
+updated_at: 2021-01-29T00:00:00+09:00
 tags: algorithm monotone-minima
 algorithm:
   input: monotone な $H \times W$ 行列 $f$
@@ -50,3 +50,17 @@ $\mathrm{argmin} _ x \dots$ が集合であることに注意したい。
 
 計算量について。$O(W)$ かけてある行の最小値の列を求め、$H' \times W'$ と $H'' \times W''$ であって $H' \approx H'' \approx H/2$ かつ $W' + W'' = W - 1$ なふたつの行列に対し再帰している。
 これを $H/2 \times W$ なひとつの行列への再帰だと思えば $O(H + W \log H)$ であることが分かる。
+
+## 関連項目
+
+-   [SMAWK algorithm](/smawk-algorithm)
+    -   SMAWK algorithm は monotone minima の動作に必要な仮定を強めたものになっている。monotone ではなく totally monotone までを仮定して、各行の最小値の位置を $O(H + W)$ で求める。
+
+## 外部リンク
+
+-   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
+    -   tmaehara による解説記事
+-   <https://ei1333.github.io/library/dp/monotone-minima.cpp><sup>[archive.org](https://web.archive.org/web/20210128162922/https://ei1333.github.io/library/dp/monotone-minima.cpp)</sup>
+    -   ei1333 による実装例
+-   <https://kmyk.github.io/monotone-matrix-visualizer/>
+    -   monotone な行列などを図示してくれるページ
