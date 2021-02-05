@@ -12,6 +12,7 @@ algorithm:
   aliases:
   level: red
 description: 高速 Kitamasa 法とは、$k + 1$ 項間の線型漸化式で定まる数列の第 $N$ 項を $O(k \log k \log N)$ で求めるアルゴリズムである。Kitamasa 法とは異なる。
+draft: true
 ---
 
 # 高速Kitamasa法
