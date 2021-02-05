@@ -1,0 +1,50 @@
+@import "jekyll-theme-primer";
+
+@import "rating-colors";
+
+// algorithm data
+.algorithm-data {
+    color: grey;
+    font-size: small;
+}
+
+// footer links
+.footer-links {
+    float: right;
+    color: grey;
+    font-size: small;
+}
+
+// entry metadata
+.entry-metadata {
+    color: grey;
+    font-size: small;
+}
+.entry-metadata .no-reviewer {
+    border-bottom: solid 2px red;
+}
+.entry-metadata dt {
+    clear: left;
+}
+.entry-metadata dd {
+    float: left;
+}
+.entry-metadata dl::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+// external links in index.md
+.link-external svg.octicon {
+    fill: currentColor;
+}
+
+// footer links
+#staging-environment-warning {
+    color: red;
+    font-size: large;
+}
+#staging-environment-warning.production-environment {
+    display: none;
+}
