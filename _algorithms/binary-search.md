@@ -1,6 +1,6 @@
 ---
 layout: entry
-author: kimiyuki
+author:
 reviewers:
 date: 2021-01-23T00:00:00+09:00
 updated_at:
