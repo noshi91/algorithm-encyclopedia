@@ -1,46 +1,38 @@
 // colors used in AtCoder
-$user-grey: #808080;
-$user-brown: #804000;
-$user-green: #008000;
-$user-cyan: #00c0c0;
-$user-blue: #0000ff;
-$user-yellow: #c0c000;
-$user-orange: #ff8000;
-$user-red: #ff0000;
-$user-black: #000000;
+$rating-color-grey: #808080;
+$rating-color-brown: #804000;
+$rating-color-green: #008000;
+$rating-color-cyan: #00c0c0;
+$rating-color-blue: #0000ff;
+$rating-color-yellow: #c0c000;
+$rating-color-orange: #ff8000;
+$rating-color-red: #ff0000;
+$rating-color-black: #000000;
 
 .rating-color-grey {
-    color: $user-grey;
+    color: $rating-color-grey;
 }
 .rating-color-brown {
-    color: $user-brown;
+    color: $rating-color-brown;
 }
 .rating-color-green {
-    color: $user-green;
+    color: $rating-color-green;
 }
 .rating-color-cyan {
-    color: $user-cyan;
+    color: $rating-color-cyan;
 }
 .rating-color-blue {
-    color: $user-blue;
+    color: $rating-color-blue;
 }
 .rating-color-yellow {
-    color: $user-yellow;
+    color: $rating-color-yellow;
 }
 .rating-color-orange {
-    color: $user-orange;
+    color: $rating-color-orange;
 }
 .rating-color-red {
-    color: $user-red;
+    color: $rating-color-red;
 }
 .rating-color-black {
-    color: $user-black;
-}
-
-// personal ratings
-.rating-color-noshi91 {
-    color: $user-red;
-}
-.rating-color-kimiyuki {
-    color: $user-orange;
+    color: $rating-color-black;
 }
