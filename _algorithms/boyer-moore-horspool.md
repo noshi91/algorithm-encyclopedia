@@ -21,6 +21,11 @@ description: Boyer-Moore-Horspool 法は、文字列検索アルゴリズムの�
 
 Boyer-Moore-Horspool 法は、文字列検索アルゴリズムのひとつ。Boyer-Moore 法を簡略化したものである。
 
+## 詳細
+
+(省略)
+
+
 ## 関連項目
 
 -   [Boyer-Moore法](/boyer-moore)

@@ -21,6 +21,10 @@ description: Aho-Corasick法とは、複数のパターン文字列をまとめ�
 
 Aho-Corasick法とは、複数のパターン文字列をまとめて扱える文字列検索アルゴリズムのひとつ。まず前処理として、固定された $k$ 個のパターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ たちから Trie 木を作り、その上に適切に辺を張って $O(\sum \vert P_i \vert)$ でオートマトンを作る。その後与えられたテキスト文字列 $T$ に対して $O(\vert T \vert)$ で検索を行う。
 
+## 詳細
+
+(省略)
+
 ## 参考文献
 
 -   Alfred V. Aho and Margaret J. Corasick. 1975. Efficient string matching: an aid to bibliographic search. Commun. ACM 18, 6 (June 1975), 333–340. DOI:<https://doi.org/10.1145/360825.360855>

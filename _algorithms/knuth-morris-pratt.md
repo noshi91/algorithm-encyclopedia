@@ -21,6 +21,10 @@ description: Knuth-Morris-Pratt法とは文字列検索アルゴリズムのひ�
 
 Knuth-Morris-Pratt法とは文字列検索アルゴリズムのひとつ。パターン文字列 $P$ の各 prefix について最長の border (prefix かつ suffix であるような文字列) を $O(\vert P \vert)$ で求めておくことで、与えられたテキスト文字列 $T$ に対する検索を $O(\vert T \vert)$ で行う。
 
+## 詳細
+
+(省略)
+
 ## 関連項目
 
 -   [Boyer-Moore法](/boyer-moore)

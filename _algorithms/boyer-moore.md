@@ -21,6 +21,10 @@ description: Boyer-Moore 法とは、文字列検索アルゴリズムのひと�
 
 Boyer-Moore 法とは、文字列検索アルゴリズムのひとつ。どこで不一致が起きたらパターン文字列をいくつずらせばよいかの情報を $O(\vert P \vert)$ かけて構築しておき、パターン文字列をその末尾から順にテキスト文字列と照合していく。ランダムな文字列に対しては $O(\vert T \vert / \vert P \vert)$ だが、最悪ケースでは $O(\vert P \vert \cdot \vert T \vert)$ かかる。
 
+## 詳細
+
+(省略)
+
 ## 参考文献
 
 -   Robert S. Boyer and J. Strother Moore. 1977. A fast string searching algorithm. Commun. ACM 20, 10 (Oct. 1977), 762–772. DOI:<https://doi.org/10.1145/359842.359859>
