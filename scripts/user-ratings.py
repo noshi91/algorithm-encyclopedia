@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# FORMAT:
+#     $ isort scripts/user-ratings.py
+#     $ yapf --style='{ COLUMN_LIMIT: 9999 }' --in-place scripts/user-ratings.py
+#     $ mypy scripts/user-ratings.py
 import argparse
 import json
 import pathlib
