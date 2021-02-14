@@ -1,6 +1,6 @@
 ---
 layout: entry
-author: kimiyuki
+authors: kimiyuki
 reviewers: kuretchi
 date: 2021-02-12T00:00:00+09:00
 updated_at:
@@ -42,7 +42,7 @@ Shortest Path Faster Algorithm (SPFA) とは、単一始点最短経路問題を
 ## 外部リンク
 
 -   [SPFAの紹介 - hogloidのブログ](https://hogloid.hatenablog.com/entry/20120409/1333973448)<sup>[archive.org](https://web.archive.org/web/20130519162505/http://hogloid.hatenablog.com/entry/20120409/1333973448)</sup>
-    -   hogloid によるブログ記事。簡単な解説と実装例がある。
+    -   <a class="handle">hogloid</a> によるブログ記事。簡単な解説と実装例がある。
 
 ## 注釈
 

@@ -47,8 +47,8 @@ layout: default
 
 <div class="entry-metadata">
 <dl>
-    <dt>author</dt><dd><a href="https://atcoder.jp/users/{{ page.author }}" class="rating-color-{{ page.author }}">{{ page.author }}</a></dd>
-    <dt>reviewers</dt>{% if page.reviewers %}{% for reviewer in page.reviewers %}<dd><a href="https://atcoder.jp/users/{{ reviewer }}" class="rating-color-{{ reviewer }}">{{ reviewer }}</a></dd>{% endfor %}{% else %}<dd><span class="no-reviewer">none</span></dt>{% endif %}
+    <dt>authors</dt>{% if page.authors %}{% for author in page.authors %}<dd><a class="handle">{{ author }}</a></dd>{% endfor %}{% else %}<dd><span class="no-authors">none</span></dd>{% endif %}
+    <dt>reviewers</dt>{% if page.reviewers %}{% for reviewer in page.reviewers %}<dd><a class="handle">{{ reviewer }}</a></dd>{% endfor %}{% else %}<dd><span class="no-reviewers">none</span></dd>{% endif %}
     <dt>tags</dt>{% for tag in page.tags %}<dd>{{ tag }}</dd>{% endfor %}
     <dt>created at</dt><dd>{{ page.date | date_to_string }}</dd>
     {% if page.updated_at %}<dt>updated at</dt><dd>{{ page.updated_at | date_to_string }}</dd>{% endif %}

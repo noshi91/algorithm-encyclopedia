@@ -1,6 +1,6 @@
 ---
 layout: entry
-author:
+authors:
 reviewers:
 date: 2021-02-05T00:00:00+09:00
 updated_at:
@@ -32,6 +32,6 @@ draft_urls: ["http://algoogle.hadrori.jp/algorithm/aho-corasick.html"]
 ## 外部リンク
 
 -   [Aho-Corasick法 - Algoogle](http://algoogle.hadrori.jp/algorithm/aho-corasick.html)
-    -   hadrori による実装例。図付きでの解説もある。
+    -   <a class="handle">hadrori</a> による実装例。図付きでの解説もある。
 -   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://www.hamayanhamayan.com/entry/2017/03/25/005452)
-    -   hamayanhamayan によるブログ記事。例題が列挙されている。
+    -   <a class="handle">hamayanhamayan</a> によるブログ記事。例題が列挙されている。

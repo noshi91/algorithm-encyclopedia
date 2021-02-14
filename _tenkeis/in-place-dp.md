@@ -1,6 +1,6 @@
 ---
 layout: entry
-author: kimiyuki
+authors: kimiyuki
 reviewers:
 date: 2020-01-16T00:00:00+09:00
 algorithm:

@@ -1,6 +1,6 @@
 ---
 layout: entry
-author: kimiyuki
+authors: kimiyuki
 reviewers: noshi91
 date: 2021-02-04T00:00:00+09:00
 updated_at:
@@ -59,9 +59,9 @@ totally monotone であることは $f$ の任意の部分行列が monotone で
 ## 外部リンク
 
 -   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
-    -   tmaehara による解説記事
+    -   <a class="handle">tmaehara</a> による解説記事
 -   <https://noshi91.github.io/Library/algorithm/smawk.cpp><sup>[archive.org](https://web.archive.org/web/20210128162854/https://noshi91.github.io/Library/algorithm/smawk.cpp)</sup>
-    -   noshi91 による実装例
+    -   <a class="handle">noshi91</a> による実装例
 -   <http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf>
     -   [Lawrence L. Larmore](https://en.wikipedia.org/wiki/Lawrence_L._Larmore) による解説 (英語)。具体例を通して説明されている。
 -   <https://kmyk.github.io/monotone-matrix-visualizer/>
