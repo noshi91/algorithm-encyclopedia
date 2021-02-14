@@ -21,7 +21,10 @@
     color: grey;
     font-size: small;
 }
-.entry-metadata .no-reviewer {
+.entry-metadata .no-authors {
+    border-bottom: solid 2px red;
+}
+.entry-metadata .no-reviewers {
     border-bottom: solid 2px red;
 }
 .entry-metadata dt {
