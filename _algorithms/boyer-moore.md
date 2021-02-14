@@ -15,7 +15,7 @@ algorithm:
 description: Boyer-Moore 法とは、文字列検索アルゴリズムのひとつ。どこで不一致が起きたらパターン文字列をいくつずらせばよいかの情報を $O(\vert P \vert)$ かけて構築しておき、パターン文字列をその末尾から順にテキスト文字列と照合していく。ランダムな文字列に対しては $O(\vert T \vert / \vert P \vert)$ だが、最悪ケースでは $O(\vert P \vert \cdot \vert T \vert)$ かかる。
 ---
 
-# Boyer-Moore法
+# Boyer-Moore 法
 
 ## 概要
 
@@ -32,9 +32,9 @@ Boyer-Moore 法とは、文字列検索アルゴリズムのひとつ。どこ�
 
 ## 関連項目
 
--   [Boyer-Moore-Horspool法](/boyer-moore-horspool)
+-   [Boyer-Moore-Horspool 法](/boyer-moore-horspool)
     -   Boyer-Moore-Horspool 法は Boyer-Moore 法を簡略化したアルゴリズムである。
--   [Knuth-Morris-Pratt法](/knuth-morris-pratt)
+-   [Knuth-Morris-Pratt 法](/knuth-morris-pratt)
     -   Knuth-Morris-Pratt 法は Boyer-Moore 法と並んで競技プログラミングでよく用いられる単一パターン文字列検索アルゴリズムである。
 
 ## 外部リンク

@@ -15,7 +15,7 @@ algorithm:
 description: Rabin-Karp 法とは、複数のパターン文字列をまとめて扱える文字列検索アルゴリズムのひとつ。固定された $k$ 個のパターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ のそれぞれについて $O(\sum \vert P_i \vert)$ などをかけてハッシュ値を求めておくことで、与えられたテキスト文字列 $T$ に対し平均 $O(\vert T \vert)$ などでこれらの検索ができる。ハッシュ関数は自由だが、ローリングハッシュが使われることが多い。
 ---
 
-# Rabin-Karp法
+# Rabin-Karp 法
 
 ## 概要
 
@@ -32,7 +32,7 @@ Rabin-Karp 法とは、複数のパターン文字列をまとめて扱える文
 
 ## 関連項目
 
--   [Aho-Corasick法](/aho-corasick)
+-   [Aho-Corasick 法](/aho-corasick)
     -   Aho-Corasick 法は Rabin-Karp 法と並んで競技プログラミングでよく利用される複数パターン文字列検索アルゴリズムである。
 
 ## 外部リンク
