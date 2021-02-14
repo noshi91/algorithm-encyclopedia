@@ -7,7 +7,7 @@ updated_at:
 tags: algorithm
 algorithm:
   input: >
-    非負かつ $k$ 以下で整数値の辺重み $c : V \to \lbrace x \in \mathbb{Z} \mid 0 \le x \lt k \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
+    非負かつ $k$ 以下で整数値の辺重み $c : V \to \lbrace x \in \mathbb{Z} \mid 0 \le x \le k \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
   output: >
     各頂点 $t \in V$ に対し $s \to t$ 最短路長
   time_complexity: $O(k \vert V \vert + \vert E \vert)$
