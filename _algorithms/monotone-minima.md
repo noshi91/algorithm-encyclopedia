@@ -59,8 +59,8 @@ $\mathrm{argmin} _ x \dots$ が集合であることに注意したい。
 ## 外部リンク
 
 -   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
-    -   tmaehara による解説記事
+    -   <a class="handle">tmaehara</a> による解説記事
 -   <https://ei1333.github.io/library/dp/monotone-minima.cpp><sup>[archive.org](https://web.archive.org/web/20210128162922/https://ei1333.github.io/library/dp/monotone-minima.cpp)</sup>
-    -   ei1333 による実装例
+    -   <a class="handle">ei13333</a> による実装例
 -   <https://kmyk.github.io/monotone-matrix-visualizer/>
     -   monotone な行列などを図示してくれるページ
