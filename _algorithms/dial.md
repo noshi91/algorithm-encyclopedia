@@ -39,4 +39,4 @@ Dial's algorithm は、キューの持ち方を工夫して Dijkstra 法を高�
 ## 関連項目
 
 -   [Dijkstra 法](/dijkstra)
-    -   Dial のアルゴリズムは Dijkstra 法を修正して高速化したものである。
+    -   Dial's algorithm は Dijkstra 法を修正して高速化したものである。
