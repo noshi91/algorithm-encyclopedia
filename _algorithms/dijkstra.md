@@ -37,7 +37,7 @@ Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズム�
 -   Dijkstra 法は辺の重みが整数でかつ最大値が小さいときは優先度付きキューの持ち方を工夫することで計算量を落とせる。この手法は Dial's algorithm と呼ばれる。また特に、辺の重みが $0$ か $1$ のみである場合は 0-1 BFS と呼ばれる[^yosupo-speedup]。
 -   辺を逆向きにして終点から Dijkstra 法をするとうまくいくことがある。また、始点と終点の両側からの Dijkstra 法がうまくいくこともある。
 -   入力されたグラフを拡張して作った別のグラフ上で Dijkstra 法をするとうまくいくことがよくある。これは「拡張グラフでのダイクストラ法」などと呼ばれる。省略して「拡張ダイクストラ」と呼ばれることもあるが、これは不適切な呼び方であると批判されることが多い[^evima-extended-graph]。
--   Fibonacci heap を用いて適切に実装すると計算量が $O(\vert E \vert + \vert V \vert \log \vert V \vert)$ に落ちる。これは競技プログラミングの範囲内でも実際に多少速い[^rsk0315-fibonacci]。
+-   Fibonacci heap を用いて適切に実装すると計算量が $O(\vert E \vert + \vert V \vert \log \vert V \vert)$ に落ちる。これは競技プログラミングの範囲内でもグラフによっては速いことがある[^rsk0315-fibonacci][^noshi91-fibonacci]。
 
 ## 参考文献
 
@@ -68,4 +68,5 @@ Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズム�
 
 [^yosupo-speedup]: [色々なダイクストラ高速化 - SlideShare](https://www.slideshare.net/yosupo/ss-46612984)<sup>[archive.org](https://web.archive.org/web/20210212144246/https://www.slideshare.net/yosupo/ss-46612984)</sup>
 [^evima-extended-graph]: <https://twitter.com/evima0/status/334678901521530880><sup>[archive.org](https://web.archive.org/web/20210212131916/https://twitter.com/evima0/status/334678901521530880)</sup>
-[^rsk0315-fibonacci]: <https://twitter.com/rsk0315_h4x/status/1188898280459005954><sup>[archive.org](https://web.archive.org/web/20210212142947/https://twitter.com/rsk0315_h4x/status/1188898280459005954)</sup>
+[^rsk0315-fibonacci]: rsk0315 の計測によると [AtCoder Regular Contest 064: E - Cosmic Rays](https://atcoder.jp/contests/arc064/tasks/arc064_c) (完全グラフ) では binary heap より Fibonacci heap の方が速い。(<https://twitter.com/rsk0315_h4x/status/1188898280459005954><sup>[archive.org](https://web.archive.org/web/20210212142947/https://twitter.com/rsk0315_h4x/status/1188898280459005954)</sup>)
+[^noshi91-fibonacci]: noshi91 の計測によると [AOJ GRL_1_A: Single Source Shortest Path](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A) (疎グラフ) では Fibonacci heap より binary heap の方が速い。(binary heap: <http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028837><sup>[archive.org](https://web.archive.org/web/20210214114500/http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028837)</sup>, Fibonacci heap: <http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028808><sup>[archive.org](https://web.archive.org/web/20201202115901/http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028808)</sup>)
