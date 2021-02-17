@@ -74,7 +74,7 @@ description: 動的計画法とは、アルゴリズムの分類のひとつ。�
 
 ## 関数の再帰的定義による理解
 
-再帰的に定義された関数 $f : X \to Y$ をその定義に従って計算するとき、それぞれの $x \in X$ について $y = f(x)$ を記憶しておきちょうど一度のみ計算するようにすれば指数的な爆発を防げ、$O(\vert X \vert)$ 回の漸化式の計算で値が求まる。動的計画法とは、このような事実を利用したアルゴリズムのことであるという見方ができる[^kimiyuki-dp-recursion]。
+再帰的に定義された関数 $f : X \to Y$ をその定義に従って計算するとき、それぞれの $x \in X$ について $y = f(x)$ を記憶しておきちょうど一度のみ計算するようにすれば指数的な爆発を防げ、$O(\vert X \vert)$ 回の漸化式の計算で値が求まる。動的計画法とはこのような事実を利用したアルゴリズムのことである、という見方ができる[^kimiyuki-dp-recursion]。
 このとき $X$ は状態の集合であり $Y$ は値の集合である。
 
 
@@ -86,7 +86,7 @@ description: 動的計画法とは、アルゴリズムの分類のひとつ。�
 
 ## 配る DP と貰う DP
 
-たいていの場合、DP はその漸化式をどのように実装するかによって、貰う DP か配る DP のどちらかに分類できる。
+ほとんどの場合、DP はその漸化式をどのように実装するかによって、貰う DP か配る DP のどちらかに分類できる。
 
 $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた漸化式をそのまま用いるのが貰う DP である。
 貰う DP の特徴としては、in-place DP などでの高速化がしやすいことが挙げられる。
@@ -109,7 +109,7 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
 
 -   動的計画法は関数の再帰的定義と関係があり、再帰は帰納法と関係がある。帰納法においてはその仮定を強めることでむしろ証明がうまくいくことがあるが、動的計画法においても持つ状態や計算する範囲を増やすことで計算がうまくいくことがある。
 -   戻す DP の亜種として、関係する要素の影響量や寄与度を計算して修正をする DP がある。
--   有限種類の (計算対象の) 状態を (DP の) 状態とする DP のことが「耳 DP」と呼ばれることがある[^tempura-ears]。内容が自明なわりに伝わりにくい名前であるので評判が悪い[^md19970824-ears]。この名前の使用は避けるべきだろう。[D - Ears](https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d) という問題に由来する。
+-   有限種類の (計算対象の) 状態を (DP の) 状態とする DP のことが「耳 DP」と呼ばれることがある[^tempura-ears]。内容が自明なわりに伝わりにくい名前であるので評判が悪い[^md19970824-ears]。この名前の使用は避けるべきだろう。[Ears](https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d) という問題に由来する。
 -   漸化式が規則的かつ線形になっている DP では、漸化式を行列と見て行列累乗で計算することができる。
 -   すでに使った区間の集合を管理するような DP では、使った区間同士の間隔をできる限り未決定のままにしておくこと[^example-dwacon6th_prelims_e]や、区間の長さを降順で使うこと[^example-dwacon6th_prelims_e]などがよくある。
 
@@ -130,17 +130,15 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
     -   <a class="handle">hamayanhamayan</a> による DP の問題集
 -   [「インラインDP」というテクニックに関して - skyaozoraの日記 - TopCoder部](http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)
 <sup>[archive.org](https://web.archive.org/web/20200113085207/http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)</sup>
-    -   <a class="handle">sky58</a> による in-place DP の解説記事。この記事が書かれる前は「実家 DP」と呼ばれていたが、この記事によって「インライン DP」で置き換えられたという経緯がある。なお、今ではこの呼び名も不適切だという指摘があり、主に「in-place DP」が用いられている[^sky58-inplace]。
+    -   <a class="handle">sky58</a> による in-place DP の解説記事。この記事が書かれる前は「実家 DP」と呼ばれていたが、この記事によって「インライン DP」で置き換えられたという経緯がある。なお、今ではこの呼び名も不適切だという指摘があり、主に「in-place DP」が代替として用いられている[^sky58-inplace]。
 -   [戻すDP - sigma425のブログ](http://sigma425.hatenablog.com/entry/2015/07/31/121439)<sup>[archive.org](https://web.archive.org/web/20210209142104/http://sigma425.hatenablog.com/entry/2015/07/31/121439)</sup>
-    -   <a class="handle">sigma425</a> による戻す DP の解説記事。
+    -   <a class="handle">sigma425</a> による戻す DP の解説記事
 -   [競技プログラミングにおける戻すDP問題 - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/19/154334)<sup>[archive.org](https://web.archive.org/web/20210217130302/https://blog.hamayanhamayan.com/entry/2017/03/19/154334)</sup>
     -   <a class="handle">hamayanhamayan</a> による戻す DP の問題集
 -   [International Olympiad in Informatics 2016: day2_3. Aliens](https://ioinformatics.org/files/ioi2016problem6.pdf)<sup>[archive.org](https://web.archive.org/web/20191021104945/https://ioinformatics.org/files/ioi2016problem6.pdf)</sup>
     -   Alien DP の語源となった IOI の問題
 -   [AOJ 2439. 箱根駅伝](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2439)
     -   箱根駅伝 DP の語源となった AOJ の問題
--   [AlienDP (PenalizeSpeedup) &#124; るまライブラリ](https://lumakernel.github.io/ecasdqina/dynamic-programming/speedup/AlienDP) (リンク切れ)
-    -   <a class="handle">luma</a> による Alian DP の解説と実装例
 -   [二乗の木 DP - (iwi) ｛ 反省します - TopCoder部](https://topcoder.g.hatena.ne.jp/iwiwi/20120428/1335635594)<sup>[archive.org](https://web.archive.org/web/20150920041654/https://topcoder.g.hatena.ne.jp/iwiwi/20120428/1335635594)</sup>
     -   <a class="handle">iwiwi</a> による二乗の木 DP の解説
 -   [木と計算量 前編 〜O(N^2)とO(NK)の木DP〜 - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2019/01/15/211812)
