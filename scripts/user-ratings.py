@@ -59,7 +59,7 @@ def collect_users(*, basedir: pathlib.Path) -> List[str]:
     for path in basedir.glob('**/*.md'):
         with open(path) as fh:
             for line in fh.readlines():
-                if line.startswith('author:'):
+                if line.startswith('authors:'):
                     users.extend(re.findall(r'\w+', line)[1:])
                 if line.startswith('reviewers:'):
                     users.extend(re.findall(r'\w+', line)[1:])
