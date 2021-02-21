@@ -51,23 +51,23 @@ description: 動的計画法とは、アルゴリズムの分類のひとつ。�
 ### 漸化式や実装方法にもとづく分類
 
 -   配る DP
-    -   更新される側に注目して書いた漸化式にもとづいて実装される DP のこと。
--   貰う DP
     -   更新する側に注目して書いた漸化式にもとづいて実装される DP のこと。
+-   貰う DP
+    -   更新される側に注目して書いた漸化式にもとづいて実装される DP のこと。
 -   in-place DP
-    -   DP テーブルをセグメント木や convex hull trick を使って管理するような DP のこと。DP の高速化手法のひとつ。実家 DP やインライン DP とも呼ばれる。
+    -   DP テーブルを in-place に更新していく DP のこと。セグメント木や convex hull trick を使って高速化できることがある。そこで使われる DP の高速化手法のみを指して in-place DP と呼ばれることもあり、その場合は実家 DP やインライン DP とも呼ばれる。
 -   戻す DP
     -   漸化式を逆向きに使って更新し、なにかを使わなかった場合の値を求めるような DP のこと。DP の高速化手法のひとつ。
 -   挿入 DP
     -   列を状態とし、その列に要素を挿入することを遷移とするような DP のこと。逆に抜いていく場合もある。
 -   二乗の木 DP
-    -   木 DP であって、計算量が一見 $O(N^3)$ に見えるが実は $O(N^2)$ であるもののこと。
+    -   ある種の木 DP を指す。時間計算量が一見 $O(N^3)$ に見えるが実は $O(N^2)$ になっていることから名前が付いた。
 -   rerooting
     -   木 DP をした結果をもとに、すべての頂点についてその頂点を根だとした場合の値を求める DP のこと。全方位木 DP とも呼ばれる。
 -   Monge DP
     -   Monge 性を利用する DP の高速化手法のひとつ。あるいはそれを利用した結果のこと。Knuth optimization とか Knuth-Yao speedup とも呼ばれる。
 -   Alien DP
-    -   DAG 上の $2$ 点対間 $k$ 辺最短経路問題のアルゴリズムのこと。またはこれに帰着して解ける DP のこと。中国では WQS Binary Search と呼ばれているとのことである。
+    -   辺の重みが特定の条件[^snuke-alien]を満たす DAG 上の $2$ 点対間 $k$ 辺最短経路問題のアルゴリズムのこと。二分探索を利用する[^yosupo-alien]。またはこれに帰着して解ける DP のこと。中国では WQS Binary Search と呼ばれているとのことである。
 -   箱根駅伝 DP
     -   区間の集合を構成するような DP であって「左端は決まったが右端はまだ決まってない区間の数」「右端は決まったが左端はまだ決まってない区間の数」を状態とする DP のこと。箱根 DP とも呼ばれる。
 
@@ -89,27 +89,18 @@ description: 動的計画法とは、アルゴリズムの分類のひとつ。�
 ほとんどの場合、DP はその漸化式をどのように実装するかによって、貰う DP か配る DP のどちらかに分類できる。
 
 $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた漸化式をそのまま用いるのが貰う DP である。
-貰う DP の特徴としては、in-place DP などでの高速化がしやすいことが挙げられる。
+貰う DP の特徴としては、in-place DP などの形の高速化がしやすいことが挙げられる。
 
 $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を逆転させて、$x_0, x_1, x_2, \dots$ のそれぞれを主体として $y \gets g(y, x_0); y \gets g(y, x_1); y \gets g(y, x_2); \dots$ のような更新を行うことで $y$ を計算するのが配る DP である。
 配る DP の特徴としては、遷移関係と処理の向きが一致しており考えやすいことや、添字に負数がでてきにくく実装しやすいことが挙げられる。
 
 
-## 確率 DP と期待値 DP
-
-値が確率であるような DP のことを確率 DP と呼び、値が期待値であるような DP のことを期待値 DP と呼ぶ。
-確率は期待値の特殊な場合と見ることができるため、確率 DP も期待値 DP の特殊な場合だと考えることができる。これらは基本的に同じものだと思ってよい。
-確率 DP や期待値 DP に特有の技法として、「自己ループを確率分布の期待値で潰す[^furuya1223-loop]」や「十分小さい確率の遷移を無視する[^kuuso1-converge]」などがある。
-
-ただ単に値が確率や期待値であるというだけでは、他の DP (つまり「整数値 DP」や「$\bmod 1000000007$ DP」など) との間に大きな違いはないことに注意したい。
-なにかの確率や期待値を求める問題を動的計画法で解くときに用いる動的計画法の値が確率や期待値であるのは自然なことであり、確率 DP や期待値 DP に特有のなにかを利用していない限りは、それをことさらに「確率 DP である」「期待値 DP である」などと説明する必要性は薄いだろう。
-
-
 ## その他
 
 -   動的計画法は関数の再帰的定義と関係があり、再帰は帰納法と関係がある。帰納法においてはその仮定を強めることでむしろ証明がうまくいくことがあるが、動的計画法においても持つ状態や計算する範囲を増やすことで計算がうまくいくことがある。
+-   確率は期待値の特殊な場合と見ることができるため、確率 DP も期待値 DP の特殊な場合だと考えることができる。確率 DP や期待値 DP に特有の技法として、「自己ループを確率分布の期待値で潰す[^furuya1223-loop]」や「十分小さい確率の遷移を無視する[^kuuso1-converge]」などがある。
 -   戻す DP の亜種として、関係する要素の影響量や寄与度を計算して修正をする DP がある。
--   有限種類の (計算対象の) 状態を (DP の) 状態とする DP のことが「耳 DP」と呼ばれることがある[^tempura-ears]。内容が自明なわりに伝わりにくい名前であるので評判が悪い[^md19970824-ears]。この名前の使用は避けるべきだろう。[Ears](https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d) という問題に由来する。
+-   有限種類の (計算対象の) 状態を (DP の) 状態とする DP は [Ears](https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d) という問題に由来して「耳 DP」と呼ばれることがある[^tempura-ears][^md19970824-ears]。
 -   漸化式が規則的かつ線形になっている DP では、漸化式を行列と見て行列累乗で計算することができる。
 -   すでに使った区間の集合を管理するような DP では、使った区間同士の間隔をできる限り未決定のままにしておくこと[^example-dwacon6th_prelims_e]や、区間の長さを降順で使うこと[^example-dwacon6th_prelims_e]などがよくある。
 
@@ -130,7 +121,7 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
     -   <a class="handle">hamayanhamayan</a> による DP の問題集
 -   [「インラインDP」というテクニックに関して - skyaozoraの日記 - TopCoder部](http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)
 <sup>[archive.org](https://web.archive.org/web/20200113085207/http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)</sup>
-    -   <a class="handle">sky58</a> による in-place DP の解説記事。この記事が書かれる前は「実家 DP」と呼ばれていたが、この記事によって「インライン DP」で置き換えられたという経緯がある。なお、今ではこの呼び名も不適切だという指摘があり、主に「in-place DP」が代替として用いられている[^sky58-inplace]。
+    -   <a class="handle">sky58</a> による in-place DP の高速化の解説記事。この記事が書かれる前は「実家 DP」と呼ばれていたが、この記事によって「インライン DP」で置き換えられたという経緯がある。なお、今ではこの呼び名も不適切だという指摘があり、主に「in-place DP」が代替として用いられている[^sky58-inplace]。
 -   [戻すDP - sigma425のブログ](http://sigma425.hatenablog.com/entry/2015/07/31/121439)<sup>[archive.org](https://web.archive.org/web/20210209142104/http://sigma425.hatenablog.com/entry/2015/07/31/121439)</sup>
     -   <a class="handle">sigma425</a> による戻す DP の解説記事
 -   [競技プログラミングにおける戻すDP問題 - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/19/154334)<sup>[archive.org](https://web.archive.org/web/20210217130302/https://blog.hamayanhamayan.com/entry/2017/03/19/154334)</sup>
@@ -141,7 +132,7 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
     -   箱根駅伝 DP の語源となった AOJ の問題
 -   [二乗の木 DP - (iwi) ｛ 反省します - TopCoder部](https://topcoder.g.hatena.ne.jp/iwiwi/20120428/1335635594)<sup>[archive.org](https://web.archive.org/web/20150920041654/https://topcoder.g.hatena.ne.jp/iwiwi/20120428/1335635594)</sup>
     -   <a class="handle">iwiwi</a> による二乗の木 DP の解説
--   [木と計算量 前編 〜O(N^2)とO(NK)の木DP〜 - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2019/01/15/211812)
+-   [木と計算量 前編 〜O(N^2)とO(NK)の木DP〜 - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2019/01/15/211812)<sup>[archive.org](https://web.archive.org/web/20201211213146/https://snuke.hatenablog.com/entry/2019/01/15/211812)</sup>
     -   <a class="handle">snuke</a> による二乗の木 DP の解説
 
 
@@ -158,3 +149,5 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
 [^md19970824-ears]: <a class="handle">kanra824</a> によるツイート <https://twitter.com/Md19970824/status/1254015456362459137><sup>[archive.org](https://web.archive.org/web/20200504062557/https://twitter.com/Md19970824/status/1254015456362459137)</sup>
 [^example-dwacon6th_prelims_e]: 例題: <https://atcoder.jp/contests/dwacon6th-prelims/tasks/dwacon6th_prelims_e>
 [^chokudai-memoization]: <a class="handle">chokudai</a> によるツイート <https://twitter.com/chokudai/status/1010049288460570624><sup>[archive.org](https://web.archive.org/web/20210217134038/https://twitter.com/chokudai/status/1010049288460570624)</sup>
+[^snuke-alien]: <a class="handle">snuke</a> によるツイート <https://twitter.com/snuke_/status/928314561890959360><sup>[archive.org](https://web.archive.org/web/20210221081356/https://twitter.com/snuke_/status/928314561890959360)</sup>
+[^yosupo-alien]: <a class="handle">yosupo</a> によるツイート <https://twitter.com/yosupot/status/928313911891214336><sup>[archive.org](https://web.archive.org/web/20210221064608/https://twitter.com/yosupot/status/928313911891214336)</sup>
