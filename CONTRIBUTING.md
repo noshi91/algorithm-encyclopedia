@@ -49,6 +49,14 @@
 -   `draft_urls` (省略可): 記事の本文の代わりになるリンク (複数可)
 
 
+### AtCoder ID
+
+Markdown 中に `<a class="handle">chokudai</a>` のように AtCoder ID を書くと、その AtCoder ID は highest の色で表示されます。
+競技プログラマの名前を記述するときはこれを利用してください。
+
+色の情報は [_sass/user-colors.scss](https://github.com/kmyk/algorithm-encyclopedia/blob/gh-pages/_sass/user-colors.scss) ファイルに CSS として保存されています。このファイルは [scripts/user-ratings.py](https://github.com/kmyk/algorithm-encyclopedia/blob/gh-pages/scripts/user-ratings.py) によって生成されます。定期的に `$ python3 scripts/user-ratings.py` を実行して色の情報のファイルを更新してください。
+
+
 ### ローカルでの記事の閲覧
 
 ローカルで記事を閲覧するには、以下のコマンドを順に実行してください。HTTP サーバが建ち <http://127.0.0.1:4000/> から閲覧できます。
