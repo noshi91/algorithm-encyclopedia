@@ -7,9 +7,9 @@ updated_at:
 tags: algorithm
 algorithm:
   input: >
-    辺重み $c : V \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
+    辺重み $c : E \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
   output: >
-    各頂点 $t \in V$ に対し $s \to t$ 最短路長
+    各頂点 $t \in V$ に対し $s$-$t$ 最短路長
   time_complexity: $O(\vert V \vert \cdot \vert E \vert)$
   space_complexity:
   aliases: ["SPFA"]
