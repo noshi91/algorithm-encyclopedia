@@ -6,6 +6,7 @@
 #     $ yapf --style='{ COLUMN_LIMIT: 9999 }' --in-place scripts/lint.py
 #     $ mypy scripts/lint.py
 import argparse
+import functools
 import pathlib
 import re
 import sys
@@ -40,42 +41,108 @@ def error(message: str, *, file: pathlib.Path, line: int, col: int) -> Message:
     return Message(type='error', file=file, line=line, col=col, message=message)
 
 
-def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Iterator[Message]:
-    m = re.search(r'です。|ます。', msg)
-    if m:
-        yield error('日本語: 敬体ではなく常体を使ってください。', file=path, line=line, col=m.start() + 1)
+@functools.lru_cache(maxsize=None)
+def list_defined_users() -> FrozenSet[str]:
+    path = pathlib.Path('_sass', 'user-colors.scss')
+    with open(path) as fh:
+        lines = fh.readlines()
 
-    m = re.search(r'，|．', msg)
-    if m:
-        yield error("日本語: `，` と `．` ではなく `、` と `。` を使ってください。", file=path, line=line, col=m.start() + 1)
+    users: List[str] = []
+    for line in lines:
+        for user in re.findall(r'.user-(\w+)', line):
+            users.append(user)
+    return frozenset(users)
 
-    m = re.search(r'\\\\', msg)
-    if m:
-        yield error(r"KaTeX: `\\` ではなく `\cr` を使ってください。`\\` が Markdown でのエスケープと解釈されて壊れることがあります。", file=path, line=line, col=m.start() + 1)
 
-    m = re.search(r'\\{|\\}', msg)
-    if m:
-        yield error(r"KaTeX: `\{` と `\}` ではなく `\lbrace` と `\rbrace` を使ってください。`\{` や `\}` が Markdown でのエスケープと解釈されて壊れることがあります。", file=path, line=line, col=m.start() + 1)
+def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
+    result: List[Message] = []
 
-    m = re.search(r'_{', msg)
-    if m:
-        yield error(r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れえることがあります。", file=path, line=line, col=m.start() + 1)
+    def warning_by_regex(pattern: str, text: str) -> None:
+        nonlocal result
+        m = re.search(pattern, msg)
+        if m:
+            result.append(warning(text, file=path, line=line, col=m.start() + 1))
 
-    m = re.search(r'捜査', msg)
-    if m:
-        yield warning(r"typo: `捜査` ではなく `走査` の可能性があります。", file=path, line=line, col=m.start() + 1)
+    def error_by_regex(pattern: str, text: str) -> None:
+        nonlocal result
+        m = re.search(pattern, msg)
+        if m:
+            result.append(error(text, file=path, line=line, col=m.start() + 1))
 
-    m = re.search(r'\$\w *\\to *\w\$ *最短経路', msg)
-    if m:
-        yield error(r"typo: `$s \to t$ 最短経路` ではなく `$s$-$t$ 最短経路` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/43)", file=path, line=line, col=m.start() + 1)
+    error_by_regex(
+        pattern=r'です。|ます。',
+        text='日本語: 敬体ではなく常体を使ってください。',
+    )
+    error_by_regex(
+        pattern=r'，|．',
+        text="日本語: `，` と `．` ではなく `、` と `。` を使ってください。",
+    )
 
-    m = re.search(r'辺 *\$\w *\\to *\w\$', msg)
-    if m:
-        yield error(r"typo: `有向辺 $x \to y$` ではなく `有向辺 $(x, y)$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)", file=path, line=line, col=m.start() + 1)
+    error_by_regex(
+        pattern=r'\\\\',
+        text=r"KaTeX: `\\` ではなく `\cr` を使ってください。`\\` が Markdown でのエスケープと解釈されて壊れることがあります。",
+    )
+    error_by_regex(
+        pattern=r'\\{|\\}',
+        text=r"KaTeX: `\{` と `\}` ではなく `\lbrace` と `\rbrace` を使ってください。`\{` や `\}` が Markdown でのエスケープと解釈されて壊れることがあります。",
+    )
+    error_by_regex(
+        pattern=r'_{',
+        text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れえることがあります。",
+    )
 
-    m = re.search(r'辺 *\$\w *\$? *- *\$? *\w\$', msg)
-    if m:
-        yield error(r"typo: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)", file=path, line=line, col=m.start() + 1)
+    users = list_defined_users()
+    for m in re.finditer(r'<a +class="handle">(\w+)</a>', msg):
+        user = m.group(1)
+        if user not in users:
+            text = r'AtCoder ID: AtCoder ユーザー "{}" の色の情報がありません。`$ python3 scripts/user-ratings.py` を実行して色の情報のファイルを更新してください。'.format(user)
+            result.append(error(text, file=path, line=line, col=m.start() + 1))
+
+    warning_by_regex(
+        pattern=r'捜査',
+        text=r"typo: `捜査` ではなく `走査` の可能性があります。",
+    )
+
+    error_by_regex(
+        pattern=r'多項式補完',
+        text=r"typo: `多項式補完` ではなく `多項式補間` です。",
+    )
+    error_by_regex(
+        pattern=r'補完多項式',
+        text=r"typo: `補完多項式` ではなく `補間多項式` です。",
+    )
+    error_by_regex(
+        pattern=r'[Ll]grange *補完',
+        text=r"typo: `Lagrange 補完` ではなく `Lagrange 補間` です。",
+    )
+    warning_by_regex(
+        pattern=r'補完',
+        text=r"typo: `補完` ではなく `補間` の可能性があります。",
+    )
+
+    warning_by_regex(
+        pattern=r'組み合わせ(に|を|は|が|い|の|と|で)',
+        text=r"typo: `組み合わせ` ではなく `組合せ` の可能性があります。",
+    )
+    warning_by_regex(
+        pattern=r'組合せ(た|て|る|ない|ず|よう)',
+        text=r"typo: `組合せ` ではなく `組み合わせ` の可能性があります。",
+    )
+
+    error_by_regex(
+        pattern=r'\$\w *\\to *\w\$ *最短経路',
+        text=r"style: `$s \to t$ 最短経路` ではなく `$s$-$t$ 最短経路` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/43)",
+    )
+    error_by_regex(
+        pattern=r'辺 *\$\w *\\to *\w\$',
+        text=r"style: `有向辺 $x \to y$` ではなく `有向辺 $(x, y)$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
+    )
+    error_by_regex(
+        pattern=r'辺 *\$\w *\$? *- *\$? *\w\$',
+        text=r"style: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
+    )
+
+    return result
 
 
 def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path: pathlib.Path) -> Iterator[Message]:
