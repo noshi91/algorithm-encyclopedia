@@ -6,6 +6,7 @@
 #     $ yapf --style='{ COLUMN_LIMIT: 9999 }' --in-place scripts/lint.py
 #     $ mypy scripts/lint.py
 import argparse
+import functools
 import pathlib
 import re
 import sys
@@ -38,6 +39,19 @@ def error(message: str, *, file: pathlib.Path, line: int, col: int) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
     return Message(type='error', file=file, line=line, col=col, message=message)
+
+
+@functools.lru_cache(maxsize=None)
+def list_defined_users() -> FrozenSet[str]:
+    path = pathlib.Path('_sass', 'user-colors.scss')
+    with open(path) as fh:
+        lines = fh.readlines()
+
+    users: List[str] = []
+    for line in lines:
+        for user in re.findall(r'.user-(\w+)', line):
+            users.append(user)
+    return frozenset(users)
 
 
 def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
@@ -76,6 +90,13 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         pattern=r'_{',
         text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れえることがあります。",
     )
+
+    users = list_defined_users()
+    for m in re.finditer(r'<a +class="handle">(\w+)</a>', msg):
+        user = m.group(1)
+        if user not in users:
+            text = r'AtCoder ID: AtCoder ユーザー "{}" の色の情報がありません。`$ python3 scripts/user-ratings.py` を実行して色の情報のファイルを更新してください。'.format(user)
+            result.append(error(text, file=path, line=line, col=m.start() + 1))
 
     warning_by_regex(
         pattern=r'捜査',
