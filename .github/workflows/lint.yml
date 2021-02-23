@@ -9,26 +9,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Use "a _ {i + 1}" instead of "a_{i + 1}"
-        run: |
-          [ -z "$(find -name \*.md -exec grep --with-filename '_{' {} \; | tee /dev/stderr)" ]
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
 
-      - name: Use "\lbrace", "\rbrace" instead of "\{", "\}"
+      - name: Install dependencies
         run: |
-          [ -z "$(find -name \*.md -exec grep --with-filename '\\[}{]' {} \; | tee /dev/stderr)" ]
+          pip3 install 'PyYAML>=5,<6'
 
-      - name: Use "\lbrack", "\rbrack" instead of "\[", "\]"
+      - name: Run scripts/lint.py
         run: |
-          [ -z "$(find -name \*.md -exec grep --with-filename '\\[][]' {} \; | tee /dev/stderr)" ]
-
-      - name: Use "\cr" instead of "\\"
-        run: |
-          [ -z "$(find -name \*.md -exec grep --with-filename '\\\\' {} \; | tee /dev/stderr)" ]
-
-      - name: Use 常体 instead of 敬体
-        run: |
-          [ -z "$(find -name \*.md -exec grep --with-filename 'です。\|ます。' {} \; | grep -v 'README.md:\|CONTRIBUTING.md:\|DESIGN.md:' | tee /dev/stderr)" ]
-
-      - name: Use '、', '。' instead of '，', '．'
-        run: |
-          [ -z "$(find -name \*.md -exec grep --with-filename '，\|．' {} \; | grep -v README.md: | tee /dev/stderr)" ]
+          python3 scripts/lint.py

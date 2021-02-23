@@ -77,7 +77,12 @@ $ bundle exec jekyll serve --incremental
 ### ローカルでのテストの実行
 
 GitHub Actions を利用して、典型的なミスが機械的に検出されるよう設定されています。
-このテストをローカルで実行するには、[nektos/act](https://github.com/nektos/act) をインストールして `$ act` と実行してください。
+このテストをローカルで実行するには、以下のコマンドを順に実行してください。
+
+``` console
+$ pip3 install 'PyYAML>=5,<6'
+$ python3 scripts/lint.py
+```
 
 
 ### 複製の公開
