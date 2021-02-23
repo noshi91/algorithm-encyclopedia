@@ -40,6 +40,8 @@ description: 動的計画法とは、アルゴリズムの分類のひとつ。�
     -   なにかオートマトンを考え、状態としてそのオートマトンの状態を用いる DP のことをオートマトン DP と呼ぶ。
 -   連結性 DP
     -   グラフの接続関係を状態とする DP のこと。 連結 DP や frontier DP や frontier 法風 DP などとも呼ばれる。
+-   箱根駅伝 DP
+    -   マッチング (あるいは順列) の個数を数える DP であって「ペアにするのを保留にしている要素の数」を状態の一部に用いる DP のこと。箱根 DP とも呼ばれる。
 
 ### 値にもとづく分類
 
@@ -68,8 +70,6 @@ description: 動的計画法とは、アルゴリズムの分類のひとつ。�
     -   Monge 性を利用する DP の高速化手法のひとつ。あるいはそれを利用した結果のこと。Knuth optimization とか Knuth-Yao speedup とも呼ばれる。
 -   Alien DP
     -   辺の重みが特定の条件[^snuke-alien]を満たす DAG 上の $2$ 点対間 $k$ 辺最短経路問題のアルゴリズムのこと。二分探索を利用する[^yosupo-alien]。またはこれに帰着して解ける DP のこと。中国では WQS Binary Search と呼ばれているとのことである。
--   箱根駅伝 DP
-    -   区間の集合を構成するような DP であって「左端は決まったが右端はまだ決まってない区間の数」「右端は決まったが左端はまだ決まってない区間の数」を状態とする DP のこと。箱根 DP とも呼ばれる。
 
 
 ## 関数の再帰的定義による理解
@@ -134,6 +134,8 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
     -   <a class="handle">iwiwi</a> による二乗の木 DP の解説
 -   [木と計算量 前編 〜O(N^2)とO(NK)の木DP〜 - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2019/01/15/211812)<sup>[archive.org](https://web.archive.org/web/20201211213146/https://snuke.hatenablog.com/entry/2019/01/15/211812)</sup>
     -   <a class="handle">snuke</a> による二乗の木 DP の解説
+-   [AOJ 2439  箱根駅伝 (JAG 夏合宿 2012 day3a-F) (600 点) - けんちょんの競プロ精進記録](https://drken1215.hatenablog.com/entry/2019/10/05/173700)<sup>[archive.org](https://web.archive.org/web/20210102014812/https://drken1215.hatenablog.com/entry/2019/10/05/173700)</sup>
+    -   <a class="handle">drken</a> による箱根駅伝 DP の解説
 
 
 ## 注釈
