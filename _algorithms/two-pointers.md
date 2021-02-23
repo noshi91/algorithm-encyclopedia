@@ -12,7 +12,7 @@ algorithm:
   space_complexity:
   aliases: []
   level: cyan
-description: しゃくとり法とは、ふたつの添字などを交互に動かして列を捜査する手法のこと。
+description: しゃくとり法とは、ふたつの添字などを交互に動かして列を走査する手法のこと。
 draft: true
 draft_urls: []
 ---
