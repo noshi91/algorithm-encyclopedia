@@ -7,9 +7,9 @@ updated_at:
 tags: algorithm
 algorithm:
   input: >
-    辺重み $c : V \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
+    辺重み $c : E \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
   output: >
-    各頂点 $t \in V$ に対し $s \to t$ 最短路長
+    各頂点 $t \in V$ に対し $s$-$t$ 最短路長
   time_complexity: $O(\vert V \vert \cdot \vert E \vert)$
   space_complexity:
   aliases: []
@@ -23,7 +23,7 @@ description: >
 ## 概要
 
 Bellman-Ford 法とは、単一始点最短経路問題を解くアルゴリズムのひとつ。負辺があっても動作する。
-ある辺 $x \to y$ を使うことで頂点 $y$ への最短経路長が改善するか試し、改善するなら置き換えるという処理 (これを「緩和する」などと言う) を考える。これをすべての辺に対して行うのを 1 セットとし、これを $\vert V \vert - 1$ 回行うのが Bellman-Ford 法である。その後、負閉路が存在していなかったことの確認も行う。
+ある有向辺 $(x, y)$ を使うことで頂点 $y$ への最短経路長が改善するか試し、改善するなら置き換えるという処理 (これを「緩和する」などと言う) を考える。これをすべての辺に対して行うのを 1 セットとし、これを $\vert V \vert - 1$ 回行うのが Bellman-Ford 法である。その後、負閉路が存在していなかったことの確認も行う。
 計算量は $O(\vert V \vert \cdot \vert E \vert)$ である。
 
 ## 詳細
