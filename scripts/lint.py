@@ -83,16 +83,42 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     )
 
     error_by_regex(
+        pattern=r'多項式補完',
+        text=r"typo: `多項式補完` ではなく `多項式補間` です。",
+    )
+    error_by_regex(
+        pattern=r'補完多項式',
+        text=r"typo: `補完多項式` ではなく `補間多項式` です。",
+    )
+    error_by_regex(
+        pattern=r'[Ll]grange *補完',
+        text=r"typo: `Lagrange 補完` ではなく `Lagrange 補間` です。",
+    )
+    warning_by_regex(
+        pattern=r'補完',
+        text=r"typo: `補完` ではなく `補間` の可能性があります。",
+    )
+
+    warning_by_regex(
+        pattern=r'組み合わせ(に|を|は|が|い|の|と|で)',
+        text=r"typo: `組み合わせ` ではなく `組合せ` の可能性があります。",
+    )
+    warning_by_regex(
+        pattern=r'組合せ(た|て|る|ない|ず|よう)',
+        text=r"typo: `組合せ` ではなく `組み合わせ` の可能性があります。",
+    )
+
+    error_by_regex(
         pattern=r'\$\w *\\to *\w\$ *最短経路',
-        text=r"typo: `$s \to t$ 最短経路` ではなく `$s$-$t$ 最短経路` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/43)",
+        text=r"style: `$s \to t$ 最短経路` ではなく `$s$-$t$ 最短経路` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/43)",
     )
     error_by_regex(
         pattern=r'辺 *\$\w *\\to *\w\$',
-        text=r"typo: `有向辺 $x \to y$` ではなく `有向辺 $(x, y)$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
+        text=r"style: `有向辺 $x \to y$` ではなく `有向辺 $(x, y)$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
     )
     error_by_regex(
         pattern=r'辺 *\$\w *\$? *- *\$? *\w\$',
-        text=r"typo: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
+        text=r"style: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
     )
 
     return result
