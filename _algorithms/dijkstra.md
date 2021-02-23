@@ -7,7 +7,7 @@ updated_at:
 tags: algorithm dijkstra
 algorithm:
   input: >
-    非負の辺重み $c : V \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
+    非負の辺重み $c : E \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
   output: >
     各頂点 $t \in V$ に対し $s \to t$ 最短路長
   time_complexity: $O(\vert E \vert \log \vert V \vert)$ など
@@ -25,7 +25,7 @@ description: >
 Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズムのひとつである。グラフに負の辺があると動作しない。辺が非負という仮定をもとに動的計画法を利用する。
 優先度付きキューに何を使うかなどにも依存するが、たいていは $O(\vert E \vert \log \vert V \vert)$ で動作する。
 
-単一始点最短経路問題を解くとは、辺に重みが付いた有向グラフ $G$ と頂点 $s$ が与えられたとき、$s$ を始点とする $s \to t$ 最短経路をすべての頂点 $t$ に対して求めるということである。
+単一始点最短経路問題を解くとは、辺に重みが付いた有向グラフ $G$ と頂点 $s$ が与えられたとき、$s$ を始点とする $s$-$t$ 最短経路をすべての頂点 $t$ に対して求めるということである。
 
 ## 詳細
 
