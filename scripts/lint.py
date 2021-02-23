@@ -40,42 +40,62 @@ def error(message: str, *, file: pathlib.Path, line: int, col: int) -> Message:
     return Message(type='error', file=file, line=line, col=col, message=message)
 
 
-def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Iterator[Message]:
-    m = re.search(r'です。|ます。', msg)
-    if m:
-        yield error('日本語: 敬体ではなく常体を使ってください。', file=path, line=line, col=m.start() + 1)
+def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
+    result: List[Message] = []
 
-    m = re.search(r'，|．', msg)
-    if m:
-        yield error("日本語: `，` と `．` ではなく `、` と `。` を使ってください。", file=path, line=line, col=m.start() + 1)
+    def warning_by_regex(pattern: str, text: str) -> None:
+        nonlocal result
+        m = re.search(pattern, msg)
+        if m:
+            result.append(warning(text, file=path, line=line, col=m.start() + 1))
 
-    m = re.search(r'\\\\', msg)
-    if m:
-        yield error(r"KaTeX: `\\` ではなく `\cr` を使ってください。`\\` が Markdown でのエスケープと解釈されて壊れることがあります。", file=path, line=line, col=m.start() + 1)
+    def error_by_regex(pattern: str, text: str) -> None:
+        nonlocal result
+        m = re.search(pattern, msg)
+        if m:
+            result.append(error(text, file=path, line=line, col=m.start() + 1))
 
-    m = re.search(r'\\{|\\}', msg)
-    if m:
-        yield error(r"KaTeX: `\{` と `\}` ではなく `\lbrace` と `\rbrace` を使ってください。`\{` や `\}` が Markdown でのエスケープと解釈されて壊れることがあります。", file=path, line=line, col=m.start() + 1)
+    error_by_regex(
+        pattern=r'です。|ます。',
+        text='日本語: 敬体ではなく常体を使ってください。',
+    )
+    error_by_regex(
+        pattern=r'，|．',
+        text="日本語: `，` と `．` ではなく `、` と `。` を使ってください。",
+    )
 
-    m = re.search(r'_{', msg)
-    if m:
-        yield error(r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れえることがあります。", file=path, line=line, col=m.start() + 1)
+    error_by_regex(
+        pattern=r'\\\\',
+        text=r"KaTeX: `\\` ではなく `\cr` を使ってください。`\\` が Markdown でのエスケープと解釈されて壊れることがあります。",
+    )
+    error_by_regex(
+        pattern=r'\\{|\\}',
+        text=r"KaTeX: `\{` と `\}` ではなく `\lbrace` と `\rbrace` を使ってください。`\{` や `\}` が Markdown でのエスケープと解釈されて壊れることがあります。",
+    )
+    error_by_regex(
+        pattern=r'_{',
+        text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れえることがあります。",
+    )
 
-    m = re.search(r'捜査', msg)
-    if m:
-        yield warning(r"typo: `捜査` ではなく `走査` の可能性があります。", file=path, line=line, col=m.start() + 1)
+    warning_by_regex(
+        pattern=r'捜査',
+        text=r"typo: `捜査` ではなく `走査` の可能性があります。",
+    )
 
-    m = re.search(r'\$\w *\\to *\w\$ *最短経路', msg)
-    if m:
-        yield error(r"typo: `$s \to t$ 最短経路` ではなく `$s$-$t$ 最短経路` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/43)", file=path, line=line, col=m.start() + 1)
+    error_by_regex(
+        pattern=r'\$\w *\\to *\w\$ *最短経路',
+        text=r"typo: `$s \to t$ 最短経路` ではなく `$s$-$t$ 最短経路` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/43)",
+    )
+    error_by_regex(
+        pattern=r'辺 *\$\w *\\to *\w\$',
+        text=r"typo: `有向辺 $x \to y$` ではなく `有向辺 $(x, y)$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
+    )
+    error_by_regex(
+        pattern=r'辺 *\$\w *\$? *- *\$? *\w\$',
+        text=r"typo: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
+    )
 
-    m = re.search(r'辺 *\$\w *\\to *\w\$', msg)
-    if m:
-        yield error(r"typo: `有向辺 $x \to y$` ではなく `有向辺 $(x, y)$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)", file=path, line=line, col=m.start() + 1)
-
-    m = re.search(r'辺 *\$\w *\$? *- *\$? *\w\$', msg)
-    if m:
-        yield error(r"typo: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)", file=path, line=line, col=m.start() + 1)
+    return result
 
 
 def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path: pathlib.Path) -> Iterator[Message]:
