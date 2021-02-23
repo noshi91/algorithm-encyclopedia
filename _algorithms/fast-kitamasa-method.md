@@ -3,6 +3,7 @@ layout: entry
 authors: kimiyuki
 reviewers:
 date: 2020-07-09T00:00:00+09:00
+updated_at:
 tags: algorithm fast-kitamasa-method kitamasa-method
 algorithm:
   input: $k + 1$ 項間の線型漸化式で定まる数列 $a$ の漸化式および初めの $k$ 項 $(a_0, a_1, \dots, a _ {k-1})$ および自然数 $N$
