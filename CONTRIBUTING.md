@@ -2,33 +2,50 @@
 
 ## 編集方法について
 
-### 記事を修正する
+### 記事を修正するには
 
-軽微なものならプルリクエストを送ってください。
+修正方法が明らかなものならプルリクエストを送ってください。
 簡単には修正できないものなら issue を立ててください。
 それぞれページの右下の「Edit this page」「Report issues」というリンクを使うと便利です。
 
 
-### 記事を追加する (概要のみ)
+### 記事に加筆するには
+
+プルリクエストを送ってください。
+そうすることで記事がより良くなるのであれば、記事の元々の文章を削除したり構成を変更したりしても構いません。
+
+
+### 記事を追加するには (概要のみ)
 
 [トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
 
-1.  対応する issue を作る。
-    -   「[ページを追加する](https://github.com/online-judge-tools/verification-helper/issues/new?template=algorithm.md)」のテンプレートを使う。中身は空でよい
-    -   作業の衝突を防ぐ目的と、コメント欄を作る目的とがある
 1.  [_algorithms/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_algorithms) ディレクトリの中に Markdown ファイルを追加する。
     -   他の概要のみのページのためのファイルをコピペしてくればよい
 1.  追加した Markdown ファイルを編集する。
 1.  プルリクエストを送る。
 
 
-### 記事を追加する (本文含む)
+### 記事を追加するには (本文含む)
 
 個別の記事ページ ([例](https://kmyk.github.io/algorithm-encyclopedia/monotone-minima)) を追加する場合は以下のようにします。
 
+1.  対応する issue を作る。
+    -   「[ページを追加する](https://github.com/online-judge-tools/verification-helper/issues/new?template=algorithm.md)」のテンプレートを使う。中身は空でよい
+    -    衝突を防ぐため、ページ作成の作業をすることを宣言するのがよい
 1.  上記の「記事を追加する (概要のみ)」と同様にして、トップページの目次に項目を追加する。
 1.  対応する項目の Markdown ファイルに本文を追加する。
 1.  プルリクエストを送る。
+
+
+### authors と reviewers
+
+author とはその記事を書いた人のことであり、reviewer とはその記事をレビューした人のことです。
+
+ある人が author であるとは、その人がその記事の著作権を保持している主な人間であるということです。ただし、CC BY 4.0 の下で他者への利用を許諾するものとします。
+その記事を書くことに大きく貢献した人間のひとりであることを意味しますが、その記事がまったくすべてその人のみによって書かれたということまでは意味しません。
+
+ある人が reviewer であるとは、その人がその記事の内容の正しさを保証するということです。
+その人がレビューをして記事の質の向上に貢献したことを示す意味合いがあります。
 
 
 ### メタデータの仕様
@@ -203,4 +220,4 @@ $ python3 scripts/lint.py
 
 ## ライセンスについて
 
-書かれたページは Creative Commons Attribution 4.0 International License で公開されます。
+書かれたページは [Creative Commons Attribution 4.0 International License (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/) で公開されます。
