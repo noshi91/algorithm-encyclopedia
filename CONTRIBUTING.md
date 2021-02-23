@@ -11,8 +11,12 @@
 
 ### 記事を追加する (概要のみ)
 
-[トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。 
-1.  [_algorithms/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_algorithms) ディレクトリの中に Markdown ファイルを追加する
+[トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
+
+1.  対応する issue を作る。
+    -   「[ページを追加する](https://github.com/online-judge-tools/verification-helper/issues/new?template=algorithm.md)」のテンプレートを使う。中身は空でよい
+    -   作業の衝突を防ぐ目的と、コメント欄を作る目的とがある
+1.  [_algorithms/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_algorithms) ディレクトリの中に Markdown ファイルを追加する。
     -   他の概要のみのページのためのファイルをコピペしてくればよい
 1.  追加した Markdown ファイルを編集する。
 1.  プルリクエストを送る。
