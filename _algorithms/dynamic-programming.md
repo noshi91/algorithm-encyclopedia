@@ -1,8 +1,8 @@
 ---
 layout: entry
-authors:
-reviewers:
-date: 2021-02-17T00:00:00+09:00
+authors: kimiyuki
+reviewers: noshi91
+date: 2021-02-23T00:00:00+09:00
 updated_at:
 tags: algorithm dp
 algorithm:
