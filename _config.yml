@@ -20,6 +20,8 @@ exclude:
 
 # Build settings
 markdown: kramdown
+kramdown:
+  smart_quotes: ["apos", "apos", "quot", "quot"]
 permalink: /:categories/:year/:month/:day/:title
 future: true
 timezone: Asia/Tokyo
