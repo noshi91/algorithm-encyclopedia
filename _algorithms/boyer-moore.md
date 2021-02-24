@@ -28,7 +28,7 @@ Boyer-Moore 法とは、文字列検索アルゴリズムのひとつ。どこ�
 ## 参考文献
 
 -   Robert S. Boyer and J. Strother Moore. 1977. A fast string searching algorithm. Commun. ACM 20, 10 (Oct. 1977), 762–772. DOI:<https://doi.org/10.1145/359842.359859>
-    -   このアルゴリズムが提案された論文
+    -   Boyer-Moore 法が提案された論文
 
 ## 関連項目
 
