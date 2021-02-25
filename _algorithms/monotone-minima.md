@@ -33,9 +33,9 @@ monotone minima とは、monotone な $H \times W$ の行列 $f$ に対し、そ
 これを行列に一般化して、次のような定義になる: $H \times W$ の行列 $f : H \times W \to A$ が (weakly) monotone であるとは、$y \lt y'$ ならば $\forall x \in \mathrm{argmin} _ x f(y, x).~ \exists x' \in \mathrm{argmin} _ {x'} f(y', x').~ x \le x'$ かつ $\forall x' \in \mathrm{argmin} _ {x'} f(y', x').~ \exists x \in \mathrm{argmin} _ x f(y, x').~ x \le x'$ であることを言う。
 $\mathrm{argmin} _ x \dots$ が集合であることに注意したい。
 
-以下では簡単のため、各行 $y$ ごとに要素 $x_0 \in \mathrm{argmin} _ x f(y, x)$ をそれぞれひとつ固定し、この $x_0$ と $\mathrm{argmin} _ x f(y, x)$ を同一視して考える。
+以下では簡単のため、各行 $y$ ごとに列 $x_0 \in \mathrm{argmin} _ x f(y, x)$ をそれぞれひとつ固定し、この $x_0$ と $\mathrm{argmin} _ x f(y, x)$ を同一視して考える。
 この仮定のもとでは monotone の定義は次のように簡単になる: $H \times W$ の行列 $f : H \times W \to A$ が (weakly) monotone であるとは、$y \lt y'$ ならば $\mathrm{argmin} _ x f(y, x) \le \mathrm{argmin} _ {x'} f(y', x')$ であることを言う。
-さらに、行列 $f$ が monotone であることは、$g(y) = \mathrm{argmin} _ x f(y, x) \in A$ で定まる数列 $g$ が列として monotone であることと等しい。
+さらに、行列 $f$ が monotone であることは、$g(y) = \mathrm{argmin} _ x f(y, x) \in W$ で定まる数列 $g$ が列として monotone であることと等しい。
 
 具体的なアルゴリズムは次のようなものである。
 
