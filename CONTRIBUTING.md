@@ -97,7 +97,7 @@ GitHub Actions を利用して、典型的なミスが機械的に検出され�
 このテストをローカルで実行するには、以下のコマンドを順に実行してください。
 
 ``` console
-$ pip3 install 'PyYAML>=5,<6'
+$ pip3 install -r scripts/requirements.txt
 $ python3 scripts/lint.py
 ```
 

@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-# DEPENDENCIES:
-#     $ pip3 install 'PyYAML>=5,<6'
-# FORMAT:
-#     $ isort scripts/lint.py
-#     $ yapf --style='{ COLUMN_LIMIT: 9999 }' --in-place scripts/lint.py
-#     $ mypy scripts/lint.py
 import argparse
 import functools
 import pathlib
