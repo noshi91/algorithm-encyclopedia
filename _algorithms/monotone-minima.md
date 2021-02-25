@@ -21,8 +21,8 @@ description: monotone minima とは、monotone な $H \times W$ 行列に対し�
 
 ### 概要
 
-monotone minima とは、monotone な $H \times W$ の行列 $f$ に対し、それぞれの行 $y$ の最小値の位置 (のうちのひとつ) $x \in \mathrm{argmin} _ x f(y, x)$ をまとめて効率よく求めるテクである。
-愚直には行列全体をなめて $O(H W)$ であるが、これを $O(H + W \log H)$ で行う。
+monotone minima とは、monotone な $H \times W$ の行列 $f$ に対し、それぞれの行 $y$ の最小値の位置 (のうちのひとつ) $x \in \mathrm{argmin} _ x f(y, x)$ をまとめて効率よく求めるアルゴリズムである。
+愚直には行列全体を走査して $O(H W)$ であるが、これを $O(H + W \log H)$ で行う。
 動作原理は、行列として monotone であるとはそれぞれの列の最小値の位置が左上から右下へと並ぶことであるので、中央付近の行についてその最小値の位置を求めればその右上と左下の区画の探索を省略できるというものである。
 
 ### 詳細
