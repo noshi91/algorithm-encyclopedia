@@ -55,6 +55,10 @@ def list_defined_users() -> FrozenSet[str]:
 
 
 def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
+    # Ignore errors and warnings in quoted texts
+    if msg.lstrip().startswith('>') or 'blockquote' in msg:
+        return []
+
     result: List[Message] = []
 
     def warning_by_regex(pattern: str, text: str) -> None:
@@ -102,6 +106,16 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         pattern=r'捜査',
         text=r"typo: `捜査` ではなく `走査` の可能性があります。",
     )
+    error_by_regex(
+        pattern=r'[舐な]め[てる]',
+        text=r"日本語: `舐める` ではなく `走査する` を使ってください。`舐める` はすこし informal であり、また `走査する` で置き換えても不都合はないはずです。",
+    )
+
+    if 'データ構造をマージする一般的なテク' not in msg:
+        warning_by_regex(
+            pattern=r'[^ァ-ヺ]テク[^ニ]',
+            text=r"日本語: `データ構造をマージする一般的なテク` のような固有名詞の一部でない場合は、`テク` ではなく `テクニック` や `アルゴリズム` を使ってください。`テク` は informal すぎます。",
+        )
 
     error_by_regex(
         pattern=r'多項式補完',

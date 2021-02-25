@@ -62,7 +62,7 @@ Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズム�
 ## 外部リンク
 
 -   [色々なダイクストラ高速化 - SlideShare](https://www.slideshare.net/yosupo/ss-46612984)<sup>[archive.org](https://web.archive.org/web/20210212144246/https://www.slideshare.net/yosupo/ss-46612984)</sup>
-    -   <a class="handle">yosupo</a> によるスライド。必須の高速化テク (単純な枝刈り) や、辺の重みの整数性を利用した高速化テク (Dial's algorithm) などが紹介されている。
+    -   <a class="handle">yosupo</a> によるスライド。必須の高速化テクニック (単純な枝刈り) や、辺の重みの整数性を利用した高速化テクニック (Dial's algorithm) などが紹介されている。
 -   [ダイクストラ法のよくあるミスと落し方 - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2021/02/22/102734)<sup>[archive.org](https://web.archive.org/web/20210222035858/https://snuke.hatenablog.com/entry/2021/02/22/102734)</sup>
     -   <a class="handle">snuke</a> によるブログ記事。実装ミスをしている Dijkstra 法を撃墜するケースがまとめられている。
 
