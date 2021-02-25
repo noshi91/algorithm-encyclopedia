@@ -46,10 +46,10 @@ monotone minima の具体的なアルゴリズムは次のようなものであ�
 1.  行列 $f$ の右下 $H'' \times W'' = \lbrace \bar{y} + 1, \bar{y} + 2, \dots, H - 1 \rbrace \times \lbrace \bar{x}, \bar{x} + 1, \dots, W - 1 \rbrace$ について再帰する。
 1.  ステップ (3.) と (2.) と (4.) の結果をまとめ、$H$ 個の行それぞれの最小値の位置を出力として返す。
 
-左上への再帰 (ステップ (3.)) において、列を $\lbrace 0, 1, \dots, W - 1 \rbrace$ という全体から $\lbrace 0, 1, \dots, \bar{x} - 1 \rbrace$ という $\bar{x} + 1$ 本のみに制限していることは、(weakly) monotone の定義により $y \lt \bar{y}$ ならば $\exists x \in \mathrm{argmin} _ x f(y, x).~ x \le \bar{x}$ であるために正当である。
+左上への再帰 (ステップ (3.)) において、列を $\lbrace 0, 1, \dots, W - 1 \rbrace$ という全体から $\lbrace 0, 1, \dots, \bar{x} \rbrace$ という $\bar{x} + 1$ 本のみに制限していることは、(weakly) monotone の定義により $y \lt \bar{y}$ ならば $\exists x \in \mathrm{argmin} _ x f(y, x).~ x \le \bar{x}$ であるために正当である。
 右下への再帰についても同様である。
 
-計算量について。$O(W)$ かけてある行の最小値の列を求め、$H' \times W'$ と $H'' \times W''$ であって $H' \approx H'' \approx H/2$ かつ $W' + W'' = W - 1$ なふたつの行列に対し再帰している。
+計算量について。$O(W)$ かけてある行の最小値の列を求め、$H' \times W'$ と $H'' \times W''$ であって $H' \approx H'' \approx H/2$ かつ $W' + W'' = W + 1$ なふたつの行列に対し再帰している。
 これを $H/2 \times W$ なひとつの行列への再帰だと思えば $O(H + W \log H)$ であることが分かる。
 
 ## 関連項目
