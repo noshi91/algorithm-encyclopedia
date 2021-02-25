@@ -59,7 +59,24 @@
         })();
       </script>
 
+      <main id="page-content" class="container-fluid">
       {{ content }}
+      </main>
+
+      <script>
+        // Fix the internal links when it is a staging environment.
+        (function () {
+          if (!location.href.match("{{ site.url }}")) {
+            const main = document.getElementById("page-content");
+            const baseurl = location.origin + "{{ "/" | relative_url }}";
+            for (const a of main.getElementsByTagName("a")) {
+              if (new URL(baseurl).host == a.host && !a.href.startsWith(baseurl)) {
+                  a.href = baseurl.replace(/\/$/, "") + a.pathname;
+              }
+            }
+          }
+        })();
+      </script>
 
       <script>
         // Update links about AtCoder IDs.
