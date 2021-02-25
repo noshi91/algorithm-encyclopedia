@@ -1,9 +1,9 @@
 ---
 layout: entry
 authors: kimiyuki
-reviewers:
+reviewers: noshi91
 date: 2020-07-09T00:00:00+09:00
-updated_at: 2021-01-29T00:00:00+09:00
+updated_at: 2021-02-26T00:00:00+09:00
 tags: algorithm monotone-minima
 algorithm:
   input: monotone な $H \times W$ 行列 $f$
