@@ -33,20 +33,21 @@ monotone minima とは、monotone な $H \times W$ の行列 $f$ に対し、そ
 これを行列に一般化して、次のような定義になる: $H \times W$ の行列 $f : H \times W \to A$ が (weakly) monotone であるとは、$y \lt y'$ ならば $\forall x \in \mathrm{argmin} _ x f(y, x).~ \exists x' \in \mathrm{argmin} _ {x'} f(y', x').~ x \le x'$ かつ $\forall x' \in \mathrm{argmin} _ {x'} f(y', x').~ \exists x \in \mathrm{argmin} _ x f(y, x').~ x \le x'$ であることを言う。
 $\mathrm{argmin} _ x \dots$ が集合であることに注意したい。
 
-以下では簡単のため、各行 $y$ ごとに列 $x_0 \in \mathrm{argmin} _ x f(y, x)$ をそれぞれひとつ固定し、この $x_0$ と $\mathrm{argmin} _ x f(y, x)$ を同一視して考える。
-この仮定のもとでは monotone の定義は次のように簡単になる: $H \times W$ の行列 $f : H \times W \to A$ が (weakly) monotone であるとは、$y \lt y'$ ならば $\mathrm{argmin} _ x f(y, x) \le \mathrm{argmin} _ {x'} f(y', x')$ であることを言う。
-さらに、行列 $f$ が monotone であることは、$g(y) = \mathrm{argmin} _ x f(y, x) \in W$ で定まる数列 $g$ が列として monotone であることと等しい。
+なお、行列の各行が distinct であれば monotone の定義はより単純になる。
+各行が distinct という仮定のもとでは、各行 $y$ ごとにその最小値を含む列が一意に定まるので、これを $x_y$ (ただし $x_y \in \mathrm{argmin} _ x f(y, x)$) とおく。
+このとき monotone の定義は次と等しくなる: 各行が distinct な $H \times W$ の行列 $f : H \times W \to A$ が (weakly) monotone であるとは、$y \lt y'$ ならば $x_y \le x _ {y'}$ であることを言う。
+つまり、各行が distinct な行列 $f$ が monotone であることは $(x_0, x_1, \dots, x _ {H-1})$ という数列が列として monotone であることと等しい。
 
-具体的なアルゴリズムは次のようなものである。
+monotone minima の具体的なアルゴリズムは次のようなものである。
 
 1.  monotone な $f : H \times W \to A$ を (暗な形で) 入力として受け取る。
-1.  中央付近の行 $y_0 = \lfloor H / 2 \rfloor$ に対してその行の最小値を達成する列 $x_0 = \mathrm{argmin} _ x f(y_0, x)$ を求める。
-1.  行列 $f$ の左上 $H' \times W' = \lbrace 0, 1, \dots, y_0 - 1 \rbrace \times \lbrace 0, 1, \dots, x_0 - 1 \rbrace$ について再帰する。
-1.  行列 $f$ の右下 $H'' \times W'' = \lbrace y_0 + 1, y_0 + 2, \dots, H - 1 \rbrace \times \lbrace x_0 + 1, x_0 + 2, \dots, W - 1 \rbrace$ について再帰する。
+1.  中央付近の行 $\bar{y} = \lfloor H / 2 \rfloor$ をとる。これに対して、その行 $\bar{y}$ の最小値を達成する列 $\bar{x} \in \mathrm{argmin} _ x f(\bar{y}, x)$ をなにかひとつ求める。
+1.  行列 $f$ の左上 $H' \times W' = \lbrace 0, 1, \dots, \bar{y} - 1 \rbrace \times \lbrace 0, 1, \dots, \bar{x} - 1 \rbrace$ について再帰する。
+1.  行列 $f$ の右下 $H'' \times W'' = \lbrace \bar{y} + 1, \bar{y} + 2, \dots, H - 1 \rbrace \times \lbrace \bar{x} + 1, \bar{x} + 2, \dots, W - 1 \rbrace$ について再帰する。
 1.  ステップ (3.) と (2.) と (4.) の結果をまとめ、$H$ 個の行それぞれの最小値の位置を出力として返す。
 
-左上への再帰 (ステップ (3.)) において、行の長さを $W$ から $x_0$ に制限していることは、$y \lt y_0$ ならば $\mathrm{argmin} _ x f(y, x) \lt x_0$ であるために正当である。
-右下への再帰についても同様。
+左上への再帰 (ステップ (3.)) において、行を $\lbrace 0, 1, \dots, W - 1 \rbrace$ という全体から $\lbrace 0, 1, \dots, \bar{x} - 1 \rbrace$ という $\bar{x}$ 個のみに制限していることは、(weakly) monotone の定義により $y \lt \bar{y}$ ならば $\exists x \in \mathrm{argmin} _ x f(y, x).~ x \le \bar{x}$ であるために正当である。
+右下への再帰についても同様である。
 
 計算量について。$O(W)$ かけてある行の最小値の列を求め、$H' \times W'$ と $H'' \times W''$ であって $H' \approx H'' \approx H/2$ かつ $W' + W'' = W - 1$ なふたつの行列に対し再帰している。
 これを $H/2 \times W$ なひとつの行列への再帰だと思えば $O(H + W \log H)$ であることが分かる。
