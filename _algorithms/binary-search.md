@@ -4,7 +4,6 @@ authors:
 reviewers:
 date: 2021-01-23T00:00:00+09:00
 updated_at:
-tags: algorithm binary-search
 algorithm:
   input: 長さ $N$ のソート済みの列 $a$ と検索対象の要素 $b$
   output: $b$ が含まれる位置 $i$。あるいは、$b$ を挿入してもソート済みのまま保たれるような区間 $\lbrack l, r)$

@@ -4,7 +4,6 @@ authors: kimiyuki
 reviewers: kuretchi
 date: 2021-02-12T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: >
     非負かつ $k$ 以下で整数値の辺重み $c : V \to \lbrace x \in \mathbb{Z} \mid 0 \le x \le k \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$

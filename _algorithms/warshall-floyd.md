@@ -4,7 +4,6 @@ authors: kimiyuki
 reviewers: kuretchi
 date: 2021-02-12T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: >
     辺重み $c : E \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$

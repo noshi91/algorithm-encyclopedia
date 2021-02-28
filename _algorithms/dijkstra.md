@@ -4,7 +4,6 @@ authors: kimiyuki
 reviewers: kuretchi
 date: 2021-02-12T00:00:00+09:00
 updated_at:
-tags: algorithm dijkstra
 algorithm:
   input: >
     非負の辺重み $c : E \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$

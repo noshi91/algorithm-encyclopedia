@@ -57,7 +57,6 @@ author とはその記事を書いた人のことであり、reviewer とはそ�
 -   `reviewers` (空欄可): その記事をレビューした人たちの名前 (AtCoder ID)
 -   `date`: その記事を初めて書いた日時 ([ISO 8691](https://ja.wikipedia.org/wiki/ISO_8601) で秒まで) (例: `2020-07-09T00:00:00+09:00`)。`$ date --iso-8601=seconds` を実行するとよい。時間や分や秒は適当でも (たとえばすべて 0 でも) 構わない。
 -   `updated_at` (空欄可): その記事を最後に修正した日時 ([ISO 8691](https://ja.wikipedia.org/wiki/ISO_8601) で秒まで)
--   `tags` (空欄可): タグの列
 -   `algorithm` (空欄可): アルゴリズムについての概要
     -   `input` (空欄可): アルゴリズムへの入力
     -   `output` (空欄可): アルゴリズムからの出力

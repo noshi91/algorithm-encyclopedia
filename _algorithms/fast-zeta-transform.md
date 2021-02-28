@@ -4,7 +4,6 @@ authors:
 reviewers:
 date: 2020-07-09T00:00:00+09:00
 updated_at:
-tags: algorithm fast-zeta-transform
 algorithm:
   input: >
     $n$ 要素の集合 $X$ の部分集合から可換 monoid $M$ への関数 $f : \mathcal{P}(X) \to M$ のグラフ

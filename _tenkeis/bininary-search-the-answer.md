@@ -4,7 +4,6 @@ authors: kimiyuki
 reviewers:
 date: 2020-01-16T00:00:00+09:00
 updated_at:
-tags: tenkei binary-search
 description: 二分探索を用いると「得られる点数の最大値を求める」という最大化問題を「ある点数を得ることは可能か求める」という判定問題に帰着させられる。
 draft: true
 draft_urls: ["https://betrue12.hateblo.jp/entry/2019/05/11/013403"]

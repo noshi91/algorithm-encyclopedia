@@ -160,7 +160,6 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
         'reviewers',
         'date',
         'updated_at',
-        'tags',
         'description',
     ]
     for key in required_keys:

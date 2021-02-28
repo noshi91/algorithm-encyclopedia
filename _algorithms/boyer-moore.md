@@ -4,7 +4,6 @@ authors:
 reviewers:
 date: 2021-02-05T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: パターン文字列 $P$ とテキスト文字列 $T$
   output: パターン文字列 $P$ がテキスト文字列 $T$ に含まれるかどうか。含まれるならその位置も
