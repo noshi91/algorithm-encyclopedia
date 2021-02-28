@@ -20,7 +20,7 @@
 [トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
 
 1.  [_algorithms/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_algorithms) ディレクトリの中に Markdown ファイルを追加する。
-    -   他の概要のみのページのためのファイルをコピペしてくればよい
+    -   [template.md](https://raw.githubusercontent.com/kmyk/algorithm-encyclopedia/gh-pages/template.md) をコピペしてくればよい
 1.  追加した Markdown ファイルを編集する。
 1.  プルリクエストを送る。
 

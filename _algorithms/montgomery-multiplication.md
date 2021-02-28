@@ -13,6 +13,7 @@ algorithm:
   level: red
 description: Montgomery 乗算とは、剰余環 $\mathbb{Z}/N\mathbb{Z}$ での乗算を高速に行うアルゴリズムである。
 draft: true
+draft_urls: []
 ---
 
 # Montgomery乗算

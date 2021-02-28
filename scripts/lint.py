@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import datetime
 import functools
 import pathlib
 import re
@@ -164,12 +165,52 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
     ]
     for key in required_keys:
         if key not in frontmatter:
-            yield error('YAML frontmatter: `{}` が存在しません。'.format(key), file=path, line=-1, col=-1)
+            yield error('YAML frontmatter: `{}` を設定してください。'.format(key), file=path, line=-1, col=-1)
             return
-    yield from collect_messages_from_line(frontmatter['description'] or '', path=path, line=-1)
+        text = frontmatter[key]
+        if isinstance(text, str) and text.startswith('${') and text.endswith('}'):
+            yield error('YAML frontmatter: `{}` を編集してください。'.format(key), file=path, line=-1, col=-1)
 
+    # metadata
+    if frontmatter.get('layout') != 'entry':
+        yield error('YAML frontmatter: `layout` には `entry` を設定してください。', file=path, line=-1, col=-1)
     if not frontmatter.get('draft') and not frontmatter.get('authors'):
         yield error('YAML frontmatter: `authors` を設定してください。', file=path, line=-1, col=-1)
+    if not isinstance(frontmatter.get('date'), datetime.datetime):
+        yield error('YAML frontmatter: `date` には ISO-8601 で編集時刻を設定してください。', file=path, line=-1, col=-1)
+
+    # for _algorithm/*.py
+    if '_algorithm' in str(path):
+        if 'algorithm' not in frontmatter:
+            yield error('YAML frontmatter: `algorithm` を設定してください。', file=path, line=-1, col=-1)
+        if not isinstance(frontmatter.get('algorithm'), dict):
+            yield error('YAML frontmatter: `algorithm` は辞書であるべきです。', file=path, line=-1, col=-1)
+            return
+        required_algorithm_keys = [
+            'input',
+            'output',
+            'time_complexity',
+            'space_complexity',
+            'aliases',
+            'level',
+        ]
+        for key in required_algorithm_keys:
+            if key not in frontmatter['algorithm']:
+                yield error('YAML frontmatter: `algorithm` の中に `{}` を設定してください。'.format(key), file=path, line=-1, col=-1)
+                return
+            text = frontmatter['algorithm'][key]
+            if isinstance(text, str) and text.startswith('${') and text.endswith('}'):
+                yield error('YAML frontmatter: `{}` を編集してください。'.format(key), file=path, line=-1, col=-1)
+
+    # description
+    if not frontmatter.get('description'):
+        yield error('YAML frontmatter: `description` を記述してください。', file=path, line=-1, col=-1)
+    yield from collect_messages_from_line(frontmatter['description'] or '', path=path, line=-1)
+
+    # draft
+    if frontmatter.get('draft'):
+        if 'draft_urls' not in frontmatter:
+            yield error('YAML frontmatter: 概要のみの記事には `draft_urls` を設定してください。', file=path, line=-1, col=-1)
 
 
 def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
