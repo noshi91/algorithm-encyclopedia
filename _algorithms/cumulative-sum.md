@@ -4,7 +4,6 @@ authors:
 reviewers:
 date: 2021-01-26T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: 長さ $N$ の数列 $a$
   output: 長さ $N + 1$ の数列 $b$ (ただし $b_i = \sum _ {j \lt i} a_i$)

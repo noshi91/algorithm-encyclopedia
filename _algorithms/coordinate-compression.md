@@ -4,7 +4,6 @@ authors:
 reviewers:
 date: 2021-02-05T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: 長さ $N$ の整数列 $a$
   output: |
