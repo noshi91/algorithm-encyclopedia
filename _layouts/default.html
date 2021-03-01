@@ -29,15 +29,15 @@
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
         <h1>
-            {% if page.title and page.title != site.title %}
+            {% if page.title contains site.title %}
+                {{ page.title }}
+            {% elsif site.title %}
                 {% if page.algorithm.level %}<span class="rating-color-{{ page.algorithm.level }}">&#x25C9;</span>{% endif %}
                 {{ page.title }}
 
                 <div class="mt-auto float-right">
                   <a class="toppage-link" href="{{ site.url | relative_url }}">{{ site.title }}</a>
                 </div>
-            {% elsif site.title %}
-                {{ site.title }}
             {% endif %}
         </h1>
 
