@@ -9,12 +9,12 @@ algorithm:
     非負の辺重み $c : E \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
   output: >
     各頂点 $t \in V$ に対し $s \to t$ 最短路長
-  time_complexity: $O(\vert E \vert \log \vert V \vert)$ など
+  time_complexity: $O(\vert V \vert ^ 2)$ や $O(\vert E \vert \log \vert V \vert)$ など
   space_complexity:
   aliases:
   level: green
 description: >
-  Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズムのひとつ。グラフに負の辺があると動作しない。辺が非負という仮定をもとに動的計画法を利用して高速に動作し、計算量は $O(\vert E \vert \log \vert V \vert)$ などである。
+  Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズムのひとつ。グラフに負の辺があると動作しない。辺が非負という仮定をもとに動的計画法を利用して高速に動作し、計算量は $O(\vert V \vert ^ 2)$ や $O(\vert E \vert \log \vert V \vert)$ などである。
 ---
 
 # Dijkstra 法
@@ -22,7 +22,7 @@ description: >
 ## 概要
 
 Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズムのひとつである。グラフに負の辺があると動作しない。辺が非負という仮定をもとに動的計画法を利用する。
-優先度付きキューに何を使うかなどにも依存するが、たいていは $O(\vert E \vert \log \vert V \vert)$ で動作する。
+単純な実装では $O(\vert V \vert ^ 2)$、優先度付きキューを用いると、優先度付きキューに何を使うかなどにも依存するが、たいていは $O(\vert E \vert \log \vert V \vert)$ で動作する。
 
 単一始点最短経路問題を解くとは、辺に重みが付いた有向グラフ $G$ と頂点 $s$ が与えられたとき、$s$ を始点とする $s$-$t$ 最短経路をすべての頂点 $t$ に対して求めるということである。
 
@@ -36,7 +36,7 @@ Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズム�
 -   Dijkstra 法は辺の重みが整数でかつ最大値が小さいときは優先度付きキューの持ち方を工夫することで計算量を落とせる。この手法は Dial's algorithm と呼ばれる。また特に、辺の重みが $0$ か $1$ のみである場合は 0-1 BFS と呼ばれる[^yosupo-speedup]。
 -   辺を逆向きにして終点から Dijkstra 法をするとうまくいくことがある。また、始点と終点の両側からの Dijkstra 法がうまくいくこともある。
 -   入力されたグラフを拡張して作った別のグラフ上で Dijkstra 法をするとうまくいくことがよくある。これは「拡張グラフでのダイクストラ法」などと呼ばれる。省略して「拡張ダイクストラ」と呼ばれることもあるが、これは不適切な呼び方であると批判されることが多い[^evima-extended-graph]。
--   Fibonacci heap を用いて適切に実装すると計算量が $O(\vert E \vert + \vert V \vert \log \vert V \vert)$ に落ちる。これは競技プログラミングの範囲内でもグラフによっては速いことがある[^rsk0315-fibonacci][^noshi91-fibonacci]。
+-   Fibonacci heap を用いて適切に実装すると計算量が $O(\vert E \vert + \vert V \vert \log \vert V \vert)$ に落ちる。これは競技プログラミングの範囲内でもグラフによっては速いことがある[^rsk0315-fibonacci][^noshi91-fibonacci][^fibonacci-vs-naive]。
 
 ## 参考文献
 
@@ -71,3 +71,4 @@ Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズム�
 [^evima-extended-graph]: <https://twitter.com/evima0/status/334678901521530880><sup>[archive.org](https://web.archive.org/web/20210212131916/https://twitter.com/evima0/status/334678901521530880)</sup>
 [^rsk0315-fibonacci]: <a class="handle">rsk0315</a> の計測によると [AtCoder Regular Contest 064: E - Cosmic Rays](https://atcoder.jp/contests/arc064/tasks/arc064_c) (完全グラフ) では binary heap より Fibonacci heap の方が速い。(<https://twitter.com/rsk0315_h4x/status/1188898280459005954><sup>[archive.org](https://web.archive.org/web/20210212142947/https://twitter.com/rsk0315_h4x/status/1188898280459005954)</sup>)
 [^noshi91-fibonacci]: <a class="handle">noshi91</a> の計測によると [AOJ GRL_1_A: Single Source Shortest Path](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A) (疎グラフ) では Fibonacci heap より binary heap の方が速い。(binary heap: <http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028837><sup>[archive.org](https://web.archive.org/web/20210214114500/http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028837)</sup>, Fibonacci heap: <http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028808><sup>[archive.org](https://web.archive.org/web/20201202115901/http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=5028808)</sup>)
+[^fibonacci-vs-naive]: これは binary heap を用いた一般的な $O(\vert E \vert \log \vert V \vert)$ の実装との比較であり、密グラフでは Fibonacci heap を用いた実装より単純な $O(\vert V \vert ^ 2)$ の実装の方が速い場合が多いことに注意せよ。
