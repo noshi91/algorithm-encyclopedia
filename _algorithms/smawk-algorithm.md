@@ -9,7 +9,7 @@ algorithm:
   output: それぞれの行 $y$ に対し最小値の位置 $x \in \mathrm{argmin} _ x f(y, x)$
   time_complexity: $O(H + W)$
   space_complexity:
-  aliases: ["TM minima", "totally monotone minima"]
+  aliases: ["totally monotone minima", "TM minima"]
   level: orange
 description: SMAWK algorithm とは、totally monotone な $H \times W$ 行列に対しその各行の最小値を $O(H + W)$ で求めるアルゴリズムである。
 ---
