@@ -3,7 +3,7 @@ layout: entry
 authors: kimiyuki
 reviewers: kuretchi
 date: 2021-02-12T00:00:00+09:00
-updated_at:
+updated_at: 2021-03-01T21:13:51+09:00
 algorithm:
   input: >
     非負の辺重み $c : E \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
@@ -22,7 +22,7 @@ description: >
 ## 概要
 
 Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズムのひとつである。グラフに負の辺があると動作しない。辺が非負という仮定をもとに動的計画法を利用する。
-計算量は、単純な実装では $O(\vert V \vert ^ 2)$ である。優先度付きキューを用いる実装では、優先度付きキューに何を使うかなどにも依存するが、たいていは $O(\vert E \vert \log \vert V \vert)$ である。
+計算量は、単純な実装では $O(\vert V \vert ^ 2)$ である。優先度付きキューを用いる実装では、優先度付きキューに何を使うかに依存し、Binary Heap を用いた場合は $O(\vert E \vert \log \vert V \vert)$ である。
 
 単一始点最短経路問題を解くとは、辺に重みが付いた有向グラフ $G$ と頂点 $s$ が与えられたとき、$s$ を始点とする $s$-$t$ 最短経路をすべての頂点 $t$ に対して求めるということである。
 
