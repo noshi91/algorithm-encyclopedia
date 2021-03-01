@@ -1,10 +1,10 @@
-# Kyopro Encyclopedia of Algorithms
+# Kyopro Encyclopedia of Algorithms (ア辞典)
 
 <https://kmyk.github.io/algorithm-encyclopedia/>
 
 ## これなに
 
-競プロ用のアルゴリズムの解説を集めた百科辞典を目指しているサイトです。(試験運用中)
+競プロ用のアルゴリズムの解説を集めた百科辞典を目指しているサイトです。
 
 ### 内容の方針
 

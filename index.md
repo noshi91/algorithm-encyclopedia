@@ -1,4 +1,4 @@
-# Kyopro Encyclopedia of Algorithms
+# Kyopro Encyclopedia of Algorithms (ア辞典)
 
 これは競プロの知見を収集するための査読付きの半共有 wiki である。
 アルゴリズムについての説明が中心となっている。なお、データ構造については [scrapbox.io/data-structures](https://scrapbox.io/data-structures/) (通称: デ wiki) を利用するのがよいだろう。
