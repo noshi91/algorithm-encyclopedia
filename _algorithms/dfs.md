@@ -9,7 +9,7 @@ algorithm:
   output:
   time_complexity:
   space_complexity:
-  aliases: []
+  aliases: ["depth-first search", "DFS"]
   level: green
 description: 深さ優先探索とは、グラフや木構造の上の探索に用いられるアルゴリズムのひとつ。
 draft: true
