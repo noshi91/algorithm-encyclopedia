@@ -18,9 +18,17 @@
                 <span class="rating-color-{{ entry.algorithm.level }}">&#x25C9;</span>
             {% endif %}
             {% if entry.draft %}
-                {{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
+                {{ entry.title }}
             {% else %}
                 <a href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+            {% endif %}
+            {% assign aliases_size = entry.algorithm.aliases | size %}
+            {% if aliases_size != 0 %}
+                <small>({{ entry.algorithm.aliases | join: "; " }})</small>
+            {% endif %}
+
+            {% if entry.draft %}
+                {% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
             {% endif %}
         </dt>
         <dd>{{ entry.description }}</dd>
