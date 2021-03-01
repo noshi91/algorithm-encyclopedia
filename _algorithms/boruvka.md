@@ -1,6 +1,6 @@
 ---
 layout: entry
-authors:kort0n
+authors:
 reviewers:
 date: 2021-03-01T00:00:00+09:00
 updated_at:
