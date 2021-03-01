@@ -15,7 +15,7 @@
     {% unless entry.tenkei %}
         <dt>
             {% if entry.algorithm.level %}
-                <span class="rating-color-{{ entry.algorithm.level }}">&#x25C9;</span>
+                <span style="font-style: normal;" class="rating-color-{{ entry.algorithm.level }}">&#x25C9;</span>
             {% endif %}
             {% if entry.draft %}
                 {{ entry.title }}{% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
