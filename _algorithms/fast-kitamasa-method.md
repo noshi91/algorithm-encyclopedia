@@ -16,4 +16,4 @@ draft: true
 draft_urls: []
 ---
 
-# 高速Kitamasa法
+# 高速 Kitamasa 法
