@@ -11,7 +11,7 @@ algorithm:
   space_complexity: $O(N)$
   aliases: []
   level: green
-description: 累積和とは、ある数列の接頭辞の総和たちを要素とする数列のこと。長さ $N$ の数列 $a = (a_0, a_1, \dots, a _ N)$ に対する累積和とは $b_i = \sum _ {j \lt i} a_i$ であるような長さ $N + 1$ の数列 $b$ である。数列の要素が群の要素であるときには区間 $\lbrack l, r)$ の総和 $\sum _ {i \in \lbrack l, r)} a_i = b_r - b_l$ を $O(1)$ で計算することなどに用いることができる。
+description: 累積和とは、ある数列の接頭辞の総和たちを要素とする数列のこと。長さ $N$ の数列 $a = (a_0, a_1, \dots, a _ {N - 1})$ に対する累積和とは $b_i = \sum _ {j \lt i} a_i$ であるような長さ $N + 1$ の数列 $b$ である。数列の要素が群の要素であるときには区間 $\lbrack l, r)$ の総和 $\sum _ {i \in \lbrack l, r)} a_i = b_r - b_l$ を $O(1)$ で計算することなどに用いることができる。
 draft: true
 draft_urls: []
 ---
