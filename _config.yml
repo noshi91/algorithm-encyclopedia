@@ -29,6 +29,8 @@ exclude:
 markdown: kramdown
 kramdown:
   smart_quotes: ["apos", "apos", "quot", "quot"]
+sass:
+  style: compressed
 permalink: /:categories/:year/:month/:day/:title
 future: true
 timezone: Asia/Tokyo
