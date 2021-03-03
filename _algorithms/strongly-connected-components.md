@@ -1,7 +1,7 @@
 ---
 layout: entry
 authors: udon1206
-reviewers:
+reviewers: noshi
 date: 2021-03-04T00:00:00+09:00
 updated_at:
 algorithm:
