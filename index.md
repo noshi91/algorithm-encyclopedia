@@ -31,7 +31,32 @@
                 {% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
             {% endif %}
         </dt>
-        <dd>{{ entry.description }}</dd>
+        <dd>
+            {% capture algorithm_data %}
+                {% if entry.algorithm.input %}<dt>input</dt><dd>{{ entry.algorithm.input }}</dd>{% endif %}
+                {% if entry.algorithm.pre_condition %}<dt>pre-condition</dt><dd>{{ entry.algorithm.pre_condition }}</dd>{% endif %}
+                {% if entry.algorithm.output %}<dt>output</dt><dd>{{ entry.algorithm.output }}</dd>{% endif %}
+                {% if entry.algorithm.post_condition %}<dt>post-condition</dt><dd>{{ entry.algorithm.post_condition }}</dd>{% endif %}
+                {% if entry.algorithm.condition %}<dt>condition</dt><dd>{{ entry.algorithm.condition }}</dd>{% endif %}
+                {% if entry.algorithm.time_complexity %}<dt>time complexity</dt><dd>{{ entry.algorithm.time_complexity }}</dd>{% endif %}
+                {% if entry.algorithm.space_complexity %}<dt>space complexity</dt><dd>{{ entry.algorithm.space_complexity }}</dd>{% endif %}
+            {% endcapture %}
+            {% assign stripped_algorithm_data = algorithm_data | strip %}
+            {% if stripped_algorithm_data == "" %}
+                {{ entry.description }}
+            {% else %}
+                <details class="algorithm-index-details">
+                    <summary>
+                        {{ entry.description }}
+                    </summary>
+                    <div class="algorithm-data">
+                        <dl>
+                            {{ algorithm_data }}
+                        </dl>
+                    </div>
+                </details>
+            {% endif %}
+        </dd>
     {% endunless %}
 {% endfor %}
 </dl>
