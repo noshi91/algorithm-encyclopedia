@@ -42,9 +42,7 @@
                 {% if entry.algorithm.space_complexity %}<dt>space complexity</dt><dd>{{ entry.algorithm.space_complexity }}</dd>{% endif %}
             {% endcapture %}
             {% assign stripped_algorithm_data = algorithm_data | strip %}
-            {% if stripped_algorithm_data == "" %}
-                {{ entry.description }}
-            {% else %}
+            {% if entry.draft and stripped_algorithm_data != "" %}
                 <details class="algorithm-index-details">
                     <summary>
                         {{ entry.description }}
@@ -55,6 +53,8 @@
                         </dl>
                     </div>
                 </details>
+            {% else %}
+                {{ entry.description }}
             {% endif %}
         </dd>
     {% endunless %}
