@@ -9,6 +9,13 @@
     font-weight: normal;
 }
 
+// the details in the index page
+.algorithm-index-details > summary::-webkit-details-marker {
+    color: grey;
+    font-size: 60%;
+}
+
+
 // algorithm data
 .algorithm-data {
     color: grey;
