@@ -129,6 +129,16 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         text=r"typo: `補完` ではなく `補間` の可能性があります。",
     )
 
+    for suffix in ['グラフ', '辺', '木', '閉路', '路']:
+        error_by_regex(
+            pattern=r'無効{}'.format(suffix),
+            text=r"typo: `無効{}` ではなく `無向{}` です。".format(suffix, suffix),
+        )
+        error_by_regex(
+            pattern=r'有効{}'.format(suffix),
+            text=r"typo: `有効{}` ではなく `有向{}` です。".format(suffix, suffix),
+        )
+
     warning_by_regex(
         pattern=r'組み合わせ(に|を|は|が|い|の|と|で)',
         text=r"typo: `組み合わせ` ではなく `組合せ` の可能性があります。",
