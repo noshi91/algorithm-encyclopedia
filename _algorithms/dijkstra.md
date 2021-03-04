@@ -8,7 +8,7 @@ algorithm:
   input: >
     非負の辺重み $c : E \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
   output: >
-    各頂点 $t \in V$ に対し $s \to t$ 最短路長
+    各頂点 $t \in V$ に対し $s$-$t$ 最短路長
   time_complexity: $O(\vert V \vert ^ 2)$ や $O(\vert E \vert \log \vert V \vert)$ など
   space_complexity:
   aliases:
