@@ -121,7 +121,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         text=r"typo: `補完多項式` ではなく `補間多項式` です。",
     )
     error_by_regex(
-        pattern=r'[Ll]grange *補完',
+        pattern=r'[Ll]agrange *補完',
         text=r"typo: `Lagrange 補完` ではなく `Lagrange 補間` です。",
     )
     warning_by_regex(
