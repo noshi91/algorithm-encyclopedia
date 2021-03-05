@@ -255,6 +255,9 @@ def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
     for i, line in enumerate(body):
         yield from collect_messages_from_line(line, path=path, line=offset + i + 1)
 
+    if not lines[-1].endswith('\n'):
+        yield error('file: ファイルの末尾には改行文字を付与してください。テキストファイルとは行を並べたものであり、行とは改行文字で終了するものです。実用的には、commit log に不要な修正が紛れ込むことを防ぐ効果があります。', file=path, line=len(lines), col=len(lines[-1]))
+
 
 def list_markdown_files() -> List[pathlib.Path]:
     basedir = pathlib.Path.cwd()
