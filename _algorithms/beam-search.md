@@ -4,7 +4,7 @@ changelog:
   - summary: 見出し作成
     date: 2021-02-28T00:00:00+09:00
     authors: kimiyuki
-    reviewers:
+    reviewers: MiSawa
 tags: algorithm
 algorithm:
   input:
