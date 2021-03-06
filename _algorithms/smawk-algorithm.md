@@ -4,13 +4,12 @@ authors: kimiyuki
 reviewers: noshi91
 date: 2021-02-04T00:00:00+09:00
 updated_at:
-tags: algorithm smawk-algorithm monotone-minima
 algorithm:
   input: totally monotone な $H \times W$ 行列 $f$
   output: それぞれの行 $y$ に対し最小値の位置 $x \in \mathrm{argmin} _ x f(y, x)$
   time_complexity: $O(H + W)$
   space_complexity:
-  aliases: ["TM minima", "totally monotone minima"]
+  aliases: ["totally monotone minima", "TM minima"]
   level: orange
 description: SMAWK algorithm とは、totally monotone な $H \times W$ 行列に対しその各行の最小値を $O(H + W)$ で求めるアルゴリズムである。
 ---

@@ -14,9 +14,16 @@ baseurl: "/"  # the subpath of your site, e.g. /blog
 url: "https://dic.kimiyuki.net"  # the base hostname & protocol for your site
 exclude:
   - "/.bundle"
-  - "/.git"
   - "/.vendor"
+  - "/Gemfile"
+  - "/Gemfile.lock"
+  - "/.git"
+  - "/.github"
+  - "/.gitignore"
   - "/README.md"
+  - "/DESIGN.md"
+  - "/CONTRIBUTING.md"
+  - "/scripts"
 
 # Build settings
 markdown: kramdown

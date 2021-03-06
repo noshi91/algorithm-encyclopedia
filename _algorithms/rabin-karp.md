@@ -4,7 +4,6 @@ authors:
 reviewers:
 date: 2021-02-05T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: パターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ とテキスト文字列 $T$
   output: パターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ のどれがテキスト文字列 $T$ に含まれるか。含まれるならその位置も

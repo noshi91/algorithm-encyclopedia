@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
-# DEPENDENCIES:
-#     $ pip3 install 'PyYAML>=5,<6'
-# FORMAT:
-#     $ isort scripts/lint.py
-#     $ yapf --style='{ COLUMN_LIMIT: 9999 }' --in-place scripts/lint.py
-#     $ mypy scripts/lint.py
 import argparse
+import datetime
 import functools
 import pathlib
 import re
@@ -126,13 +121,23 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         text=r"typo: `補完多項式` ではなく `補間多項式` です。",
     )
     error_by_regex(
-        pattern=r'[Ll]grange *補完',
+        pattern=r'[Ll]agrange *補完',
         text=r"typo: `Lagrange 補完` ではなく `Lagrange 補間` です。",
     )
     warning_by_regex(
         pattern=r'補完',
         text=r"typo: `補完` ではなく `補間` の可能性があります。",
     )
+
+    for suffix in ['グラフ', '辺', '木', '閉路', '路']:
+        error_by_regex(
+            pattern=r'無効{}'.format(suffix),
+            text=r"typo: `無効{}` ではなく `無向{}` です。".format(suffix, suffix),
+        )
+        error_by_regex(
+            pattern=r'有効{}'.format(suffix),
+            text=r"typo: `有効{}` ではなく `有向{}` です。".format(suffix, suffix),
+        )
 
     warning_by_regex(
         pattern=r'組み合わせ(に|を|は|が|い|の|と|で)',
@@ -166,17 +171,56 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
         'reviewers',
         'date',
         'updated_at',
-        'tags',
         'description',
     ]
     for key in required_keys:
         if key not in frontmatter:
-            yield error('YAML frontmatter: `{}` が存在しません。'.format(key), file=path, line=-1, col=-1)
+            yield error('YAML frontmatter: `{}` を設定してください。'.format(key), file=path, line=-1, col=-1)
             return
-    yield from collect_messages_from_line(frontmatter['description'] or '', path=path, line=-1)
+        text = frontmatter[key]
+        if isinstance(text, str) and text.startswith('${') and text.endswith('}'):
+            yield error('YAML frontmatter: `{}` を編集してください。'.format(key), file=path, line=-1, col=-1)
 
+    # metadata
+    if frontmatter.get('layout') != 'entry':
+        yield error('YAML frontmatter: `layout` には `entry` を設定してください。', file=path, line=-1, col=-1)
     if not frontmatter.get('draft') and not frontmatter.get('authors'):
         yield error('YAML frontmatter: `authors` を設定してください。', file=path, line=-1, col=-1)
+    if not isinstance(frontmatter.get('date'), datetime.datetime):
+        yield error('YAML frontmatter: `date` には ISO-8601 で編集時刻を設定してください。', file=path, line=-1, col=-1)
+
+    # for _algorithm/*.py
+    if '_algorithm' in str(path):
+        if 'algorithm' not in frontmatter:
+            yield error('YAML frontmatter: `algorithm` を設定してください。', file=path, line=-1, col=-1)
+        if not isinstance(frontmatter.get('algorithm'), dict):
+            yield error('YAML frontmatter: `algorithm` は辞書であるべきです。', file=path, line=-1, col=-1)
+            return
+        required_algorithm_keys = [
+            'input',
+            'output',
+            'time_complexity',
+            'space_complexity',
+            'aliases',
+            'level',
+        ]
+        for key in required_algorithm_keys:
+            if key not in frontmatter['algorithm']:
+                yield error('YAML frontmatter: `algorithm` の中に `{}` を設定してください。'.format(key), file=path, line=-1, col=-1)
+                return
+            text = frontmatter['algorithm'][key]
+            if isinstance(text, str) and text.startswith('${') and text.endswith('}'):
+                yield error('YAML frontmatter: `{}` を編集してください。'.format(key), file=path, line=-1, col=-1)
+
+    # description
+    if not frontmatter.get('description'):
+        yield error('YAML frontmatter: `description` を記述してください。', file=path, line=-1, col=-1)
+    yield from collect_messages_from_line(frontmatter['description'] or '', path=path, line=-1)
+
+    # draft
+    if frontmatter.get('draft'):
+        if 'draft_urls' not in frontmatter:
+            yield error('YAML frontmatter: 概要のみの記事には `draft_urls` を設定してください。', file=path, line=-1, col=-1)
 
 
 def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:

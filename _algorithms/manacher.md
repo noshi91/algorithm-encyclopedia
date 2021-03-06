@@ -4,7 +4,6 @@ authors: kimiyuki
 reviewers:
 date: 2021-02-05T00:00:00+09:00
 updated_at:
-tags: algorithm
 algorithm:
   input: 文字列 $S$
   output: すべての $i$ について、$S$ における $i$ 番目の文字を中心とする最長の回文の半径

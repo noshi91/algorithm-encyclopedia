@@ -2,7 +2,7 @@
 layout: entry
 authors:
 reviewers:
-date: 2021-01-26T00:00:00+09:00
+date: 2021-03-01T00:00:00+09:00
 updated_at:
 algorithm:
   input:
@@ -10,10 +10,10 @@ algorithm:
   time_complexity:
   space_complexity:
   aliases: []
-  level: green
-description: Eratosthenes の篩とは、素数判定アルゴリズムのひとつ。
+  level: orange
+description: Borůvka 法とは、最小全域木を求めるアルゴリズムのひとつ。
 draft: true
 draft_urls: []
 ---
 
-# Eratosthenes の篩
+# Borůvka 法
