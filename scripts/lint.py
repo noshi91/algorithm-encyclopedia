@@ -167,10 +167,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
 def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path: pathlib.Path) -> Iterator[Message]:
     required_keys = [
         'layout',
-        'authors',
-        'reviewers',
-        'date',
-        'updated_at',
+        'changelog',
         'description',
     ]
     for key in required_keys:
@@ -184,10 +181,27 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
     # metadata
     if frontmatter.get('layout') != 'entry':
         yield error('YAML frontmatter: `layout` には `entry` を設定してください。', file=path, line=-1, col=-1)
-    if not frontmatter.get('draft') and not frontmatter.get('authors'):
-        yield error('YAML frontmatter: `authors` を設定してください。', file=path, line=-1, col=-1)
-    if not isinstance(frontmatter.get('date'), datetime.datetime):
-        yield error('YAML frontmatter: `date` には ISO-8601 で編集時刻を設定してください。', file=path, line=-1, col=-1)
+    if not frontmatter.get('changelog'):
+        yield error('YAML frontmatter: `changelog` を設定してください。', file=path, line=-1, col=-1)
+    changelog = frontmatter.get('changelog')
+    if not isinstance(changelog, list):
+        yield error('YAML frontmatter: `changelog` はリストであるべきです。', file=path, line=-1, col=-1)
+        return
+    for change in changelog:
+        if not change.get('summary'):
+            yield error('YAML frontmatter: `summary` を設定してください。', file=path, line=-1, col=-1)
+        if not isinstance(change.get('date'), datetime.datetime):
+            yield error('YAML frontmatter: `date` には ISO-8601 で編集時刻を設定してください。', file=path, line=-1, col=-1)
+        if not change.get('authors'):
+            yield error('YAML frontmatter: `authors` を設定してください。', file=path, line=-1, col=-1)
+        if isinstance(change.get('authors'), str) and ' ' in change.get('authors'):
+            yield error('YAML frontmatter: `authors` を複数設定するときは配列を使ってください。`["chokudai", "rng_58", "tourist"] のように書いてください。', file=path, line=-1, col=-1)
+        if 'reviewers' not in change:
+            yield error('YAML frontmatter: `reviewers` を設定してください。空欄でも構いません。', file=path, line=-1, col=-1)
+        if isinstance(change.get('reviewers'), str) and ' ' in change.get('reviewers'):
+            yield error('YAML frontmatter: `reviewers` を複数設定するときは配列を使ってください。`["chokudai", "rng_58", "tourist"] のように書いてください。', file=path, line=-1, col=-1)
+    if 'authors' in frontmatter or 'reviewers' in frontmatter or 'date' in frontmatter or 'updated_at' in frontmatter:
+        yield warning('YAML frontmatter: `changelog` を使ってください。', file=path, line=-1, col=-1)
 
     # for _algorithm/*.py
     if '_algorithm' in str(path):

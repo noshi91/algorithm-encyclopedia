@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers:
-date: 2020-01-16T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-01-16T00:00:00+09:00
 description: 桁 DP とは、自然数の \(10\) 進数展開などを桁ごとに決定していくような DP のこと。状態の持ちかたによる DP の分類のひとつ。
 draft: true
 draft_urls: []

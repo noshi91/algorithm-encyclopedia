@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors:
-reviewers:
-date: 2020-07-09T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-07-09T00:00:00+09:00
 algorithm:
   input: 整数と正整数の対の長さ $k$ の列 $((a_0, m_0), (a_1, m_1), \dots, (a _ {k-1}, m _ {k-1}))$ および正整数 $M$
   output: $\forall i. x \equiv a_i \pmod{m_i}$ を満たす $x$ を $M$ で割った余り $x \bmod M$

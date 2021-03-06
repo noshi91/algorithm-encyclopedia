@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers: noshi91
-date: 2021-02-23T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 記事作成
+    authors: kimiyuki
+    reviewers: noshi91
+    date: 2021-02-23T00:00:00+09:00
 algorithm:
   input:
   output:

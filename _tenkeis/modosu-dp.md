@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers:
-date: 2020-01-16T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-01-16T00:00:00+09:00
 description: 戻す DP とは、DP の遷移の逆演算を用いる DP のこと。DP の高速化手法のひとつ。あるいは、実装方法に基づいた DP の分類のひとつ。
 draft: true
 draft_urls: ["http://sigma425.hatenablog.com/entry/2015/07/31/121439"]
