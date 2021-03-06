@@ -3,7 +3,7 @@ layout: entry
 changelog:
   - summary: 見出し作成
     authors: kimiyuki
-    reviewers:
+    reviewers: MiSawa
     date: 2021-03-02T00:00:00+09:00
 algorithm:
   input:
