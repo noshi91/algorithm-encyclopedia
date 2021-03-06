@@ -259,6 +259,10 @@ def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
     if not lines[-1].endswith('\n'):
         # 正しく表示されていればすぐに問題になるものではないので、作業中の記事を壊さないように warning にしておく。 TODO: しばらくしてから error にする。
         yield warning('file: ファイルの末尾には改行文字を付与してください。テキストファイルとは行を並べたものであり、行とは改行文字で終了するものです。実用的には、commit log に不要な修正が紛れ込むことを防ぐ効果があります。', file=path, line=len(lines), col=len(lines[-1]))
+    for i, line in enumerate(lines):
+        if line.rstrip('\n').endswith(' '):
+            # 正しく表示されていればすぐに問題になるものではないので、作業中の記事を壊さないように warning にしておく。 TODO: しばらくしてから error にする。
+            yield warning('file: 行の末尾の空白文字は削除してください。Markdown の強制改行は使わないでください。', file=path, line=i + 1, col=len(line))
 
 
 def list_markdown_files() -> List[pathlib.Path]:
