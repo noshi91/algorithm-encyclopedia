@@ -49,6 +49,13 @@ def list_defined_users() -> FrozenSet[str]:
     return frozenset(users)
 
 
+def check_atcoder_user(user: str, *, file: pathlib.Path, line: int, col: int) -> Iterator[Message]:
+    users = list_defined_users()
+    if user not in users:
+        text = r'AtCoder ID: AtCoder ユーザー "{}" の色の情報がありません。`$ python3 scripts/user-ratings.py` を実行して色の情報のファイルを更新してください。'.format(user)
+        yield error(text, file=file, line=line, col=col)
+
+
 def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
     # Ignore errors and warnings in quoted texts
     if msg.lstrip().startswith('>') or 'blockquote' in msg:
@@ -90,12 +97,8 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れえることがあります。",
     )
 
-    users = list_defined_users()
     for m in re.finditer(r'<a +class="handle">(\w+)</a>', msg):
-        user = m.group(1)
-        if user not in users:
-            text = r'AtCoder ID: AtCoder ユーザー "{}" の色の情報がありません。`$ python3 scripts/user-ratings.py` を実行して色の情報のファイルを更新してください。'.format(user)
-            result.append(error(text, file=path, line=line, col=m.start() + 1))
+        result.extend(check_atcoder_user(m.group(1), file=path, line=line, col=m.start() + 1))
 
     warning_by_regex(
         pattern=r'捜査',
@@ -181,6 +184,8 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
     # metadata
     if frontmatter.get('layout') != 'entry':
         yield error('YAML frontmatter: `layout` には `entry` を設定してください。', file=path, line=-1, col=-1)
+
+    # changelog
     if not frontmatter.get('changelog'):
         yield error('YAML frontmatter: `changelog` を設定してください。', file=path, line=-1, col=-1)
     changelog = frontmatter.get('changelog')
@@ -192,14 +197,32 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
             yield error('YAML frontmatter: `summary` を設定してください。', file=path, line=-1, col=-1)
         if not isinstance(change.get('date'), datetime.datetime):
             yield error('YAML frontmatter: `date` には ISO-8601 で編集時刻を設定してください。', file=path, line=-1, col=-1)
-        if not change.get('authors'):
+
+        authors = change.get('authors')
+        if isinstance(authors, str):
+            if ' ' in change.get('authors'):
+                yield error('YAML frontmatter: `authors` を複数設定するときは配列を使ってください。`["chokudai", "rng_58", "tourist"] のように書いてください。', file=path, line=-1, col=-1)
+            else:
+                yield from check_atcoder_user(authors, file=path, line=-1, col=-1)
+        elif isinstance(authors, list):
+            for author in authors:
+                yield from check_atcoder_user(author, file=path, line=-1, col=-1)
+        else:
             yield error('YAML frontmatter: `authors` を設定してください。', file=path, line=-1, col=-1)
-        if isinstance(change.get('authors'), str) and ' ' in change.get('authors'):
-            yield error('YAML frontmatter: `authors` を複数設定するときは配列を使ってください。`["chokudai", "rng_58", "tourist"] のように書いてください。', file=path, line=-1, col=-1)
-        if 'reviewers' not in change:
-            yield error('YAML frontmatter: `reviewers` を設定してください。空欄でも構いません。', file=path, line=-1, col=-1)
-        if isinstance(change.get('reviewers'), str) and ' ' in change.get('reviewers'):
-            yield error('YAML frontmatter: `reviewers` を複数設定するときは配列を使ってください。`["chokudai", "rng_58", "tourist"] のように書いてください。', file=path, line=-1, col=-1)
+
+        reviewers = change.get('reviewers')
+        if isinstance(change.get('reviewers'), str):
+            if ' ' in change.get('reviewers'):
+                yield error('YAML frontmatter: `reviewers` を複数設定するときは配列を使ってください。`["chokudai", "rng_58", "tourist"] のように書いてください。', file=path, line=-1, col=-1)
+            else:
+                yield from check_atcoder_user(reviewers, file=path, line=-1, col=-1)
+        elif isinstance(change.get('reviewers'), list):
+            for reviewer in reviewers:
+                yield from check_atcoder_user(reviewer, file=path, line=-1, col=-1)
+        else:
+            if 'reviewers' not in change:
+                yield error('YAML frontmatter: `reviewers` を設定してください。空欄でも構いません。', file=path, line=-1, col=-1)
+
     if 'authors' in frontmatter or 'reviewers' in frontmatter or 'date' in frontmatter or 'updated_at' in frontmatter:
         yield warning('YAML frontmatter: `changelog` を使ってください。', file=path, line=-1, col=-1)
 
