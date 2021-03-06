@@ -9,11 +9,11 @@ algorithm:
     辺重み $c : E \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$
   output: >
     各頂点の組 $(s, t) \in V \times V$ に対し $s$-$t$ 最短路長
-  time_complexity: $O(|V| ^ 2 \log |V| + |V||E|)$
-  space_complexity: $O(|V| + |E|)$
+  time_complexity: $O(\lvert V \rvert ^ 2 \log \lvert V \rvert + \lvert V \rvert\lvert E \rvert)$
+  space_complexity: $O(\lvert V \rvert + \lvert E \rvert)$
   aliases: []
   level: yellow
-description:  Johnson のアルゴリズムとは、全点対間最短経路問題を解くアルゴリズムのひとつ。負閉路が存在しない場合に動作する。$O(|V| ^ 2 \log |V| + |V||E|)$ で動く。
+description:  Johnson のアルゴリズムとは、全点対間最短経路問題を解くアルゴリズムのひとつ。負閉路が存在しない場合に動作する。$O(\lvert V \rvert ^ 2 \log \lvert V \rvert + \lvert V \rvert\lvert E \rvert)$ で動く。
 draft: false
 draft_urls: []
 ---
@@ -28,4 +28,4 @@ Johnson のアルゴリズムとは、全点対間最短経路問題を解くア
 
 1. $\forall (u, v) \in E, \  \hat{c} (u, v) \geq 0$
 
-再重み付けは、 [Bellman-Ford 法](/bellman-ford)を用いて、$ O(\| V \| \| E \|) $ で可能である。再重み付けされたグラフは、辺重みが非負実数であることから、　[Dijkstra 法](/dijkstra) を用いることができるので、$V$ の各頂点において、フィボナッチヒープを用いた [Dijkstra 法](/dijkstra)をすることで、 $O(\|V\| ^ 2 \log \|V\| + \|V\|\|E\|)$ で全点対間最短経路問題を解くことができる。
+再重み付けは、 [Bellman-Ford 法](/bellman-ford)を用いて、$ O(\lvert V \rvert \lvert E \rvert) $ で可能である。再重み付けされたグラフは、辺重みが非負実数であることから、　[Dijkstra 法](/dijkstra) を用いることができるので、$V$ の各頂点において、フィボナッチヒープを用いた [Dijkstra 法](/dijkstra)をすることで、 $O(\lvert V \rvert ^ 2 \log \lvert V \rvert + \lvert V \rvert\lvert E \rvert)$ で全点対間最短経路問題を解くことができる。
