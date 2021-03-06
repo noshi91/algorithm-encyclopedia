@@ -3,7 +3,7 @@ layout: entry
 changelog:
   - summary: 見出し作成
     authors: kimiyuki
-    reviewers:
+    reviewers: ["MiSawa", "hos_lyric"]
     date: 2021-02-28T00:00:00+09:00
 tags: algorithm
 algorithm:
