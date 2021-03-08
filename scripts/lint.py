@@ -85,6 +85,10 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     )
 
     error_by_regex(
+        pattern=r'^\$$',
+        text=r"KaTeX: display 表示をしたいときは `$` ではなく `$$` を使ってください。`$` は inline 表示になります。",
+    )
+    error_by_regex(
         pattern=r'\\\\',
         text=r"KaTeX: `\\` ではなく `\cr` を使ってください。`\\` が Markdown でのエスケープと解釈されて壊れることがあります。",
     )
@@ -96,11 +100,15 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         pattern=r'_{',
         text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れることがあります。",
     )
-    # 正しく表示されていればすぐに問題になるものではないので、作業中の記事を壊さないように warning にしておく。 TODO: しばらくしてから error にする。
-    warning_by_regex(
+    error_by_regex(
         pattern=r'\$.*\|.*\$',
         text=r"KaTeX: 絶対値記号などには `|` や `\|` ではなく `\vert` や `\lvert` `\rvert` を使ってください。`|` は Markdown のテーブルと解釈されて壊れることがあり、また `\|` は Markdown の処理系によっては HTML 上で `|` ではなく `\|` になって壊れることがあります。",
     )
+    if '</a>' not in msg:
+        error_by_regex(
+            pattern=r'\$.*[<>].*\$',
+            text=r"KaTeX: 数式中では `<` や `>` ではなく `\lt` や `gt` や `\langle` や `\rangle` を使ってください。`<` や `>` は HTML のタグと解釈されて壊れることがあります。",
+        )
 
     for m in re.finditer(r'<a +class="handle">(\w+)</a>', msg):
         result.extend(check_atcoder_user(m.group(1), file=path, line=line, col=m.start() + 1))
@@ -294,12 +302,10 @@ def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
         yield from collect_messages_from_line(line, path=path, line=offset + i + 1)
 
     if not lines[-1].endswith('\n'):
-        # 正しく表示されていればすぐに問題になるものではないので、作業中の記事を壊さないように warning にしておく。 TODO: しばらくしてから error にする。
-        yield warning('file: ファイルの末尾には改行文字を付与してください。テキストファイルとは行を並べたものであり、行とは改行文字で終了するものです。実用的には、commit log に不要な修正が紛れ込むことを防ぐ効果があります。', file=path, line=len(lines), col=len(lines[-1]))
+        yield error('file: ファイルの末尾には改行文字を付与してください。テキストファイルとは行を並べたものであり、行とは改行文字で終了するものです。実用的には、commit log に不要な修正が紛れ込むことを防ぐ効果があります。', file=path, line=len(lines), col=len(lines[-1]))
     for i, line in enumerate(lines):
         if line.rstrip('\n').endswith(' '):
-            # 正しく表示されていればすぐに問題になるものではないので、作業中の記事を壊さないように warning にしておく。 TODO: しばらくしてから error にする。
-            yield warning('file: 行の末尾の空白文字は削除してください。Markdown の強制改行は使わないでください。', file=path, line=i + 1, col=len(line))
+            yield error('file: 行の末尾の空白文字は削除してください。また、Markdown の強制改行は使わないでください。', file=path, line=i + 1, col=len(line))
 
 
 def list_markdown_files() -> List[pathlib.Path]:
