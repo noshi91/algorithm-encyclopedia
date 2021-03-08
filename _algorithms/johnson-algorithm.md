@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: udon1206
-reviewers: noshi91
-date: 2021-03-04T00:00:00+09:00
-updated_at:
+changelog:
+- summary: 記事作成
+  authors: udon1206
+  reviewers: noshi91
+  date: 2021-03-04T00:00:00+09:00
 algorithm:
   input: >
     辺重み $c : E \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$
@@ -40,10 +41,10 @@ $$
 
 ### 性質1. について
 
-$v _ 0 \in V'$ から $v _ {k - 1} \in V'$ の辺重み $c$ 上での最短路 $p = < v _ 0, v _ 1, \dots, v _ {k - 1}>$ とする。このとき、辺重み $\hat{c}$ 上での $p$ の経路長は、
+$v _ 0 \in V'$ から $v _ {k - 1} \in V'$ の辺重み $c$ 上での最短路 $p = \langle v _ 0, v _ 1, \dots, v _ {k - 1}\rangle$ とする。このとき、辺重み $\hat{c}$ 上での $p$ の経路長は、
 $$
 \hat{c} (p) = \displaystyle \sum _ {n = 1} ^ {k - 1} \hat{c} (v _ {n - 1}, v _ {n}) = c(p) + \delta (s, v _ 0) - \delta (s, v _ {k - 1})
-$ $
+$$
 となる。 $\delta (s, v _ 0), \delta (s, v _ {k - 1})$ は $p$ に依存しないので、 $p$ が辺重み $c$ における $v _ 0$ から $v _ {k - 1}$ の最短経路であるならば、 辺重み $\hat{c}$ においても最短経路である。
 
 ### 性質2. について
@@ -53,7 +54,8 @@ $$
 \forall u, v \in V' ,\ \delta (s, v) \leq \delta (s, u) + c(u, v)
 $$
 が成り立つ。よって、
-$$\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
+$$
+\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
 $$
 となる。
 
