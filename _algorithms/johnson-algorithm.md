@@ -41,10 +41,17 @@ $$
 
 ### 性質1. について
 
+<<<<<<< HEAD
 $v _ 0 \in V'$ から $v _ {k - 1} \in V'$ の辺重み $c$ 上での最短路 $p = \langle v _ 0, v _ 1, \dots, v _ {k - 1}\rangle$ とする。このとき、辺重み $\hat{c}$ 上での $p$ の経路長は、
 $$
 \hat{c} (p) = \displaystyle \sum _ {n = 1} ^ {k - 1} \hat{c} (v _ {n - 1}, v _ {n}) = c(p) + \delta (s, v _ 0) - \delta (s, v _ {k - 1})
 $$
+=======
+$v _ 0 \in V'$ から $v _ {k - 1} \in V'$ の辺重み $c$ 上での最短路 $p = < v _ 0, v _ 1, \dots, v _ {k - 1}>$ とする。このとき、辺重み $\hat{c}$ 上での $p$ の経路長は、
+$$
+\hat{c} (p) = \displaystyle \sum _ {n = 1} ^ {k - 1} \hat{c} (v _ {n - 1}, v _ {n}) = c(p) + \delta (s, v _ 0) - \delta (s, v _ {k - 1})
+$ $
+>>>>>>> b2179af42be7391d6e44274794241124af203989
 となる。 $\delta (s, v _ 0), \delta (s, v _ {k - 1})$ は $p$ に依存しないので、 $p$ が辺重み $c$ における $v _ 0$ から $v _ {k - 1}$ の最短経路であるならば、 辺重み $\hat{c}$ においても最短経路である。
 
 ### 性質2. について
@@ -54,9 +61,17 @@ $$
 \forall u, v \in V' ,\ \delta (s, v) \leq \delta (s, u) + c(u, v)
 $$
 が成り立つ。よって、
+<<<<<<< HEAD
 $$
 \hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
 $$
 となる。
 
 以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
+=======
+$$\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
+$$
+となる。
+
+以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
+>>>>>>> b2179af42be7391d6e44274794241124af203989
