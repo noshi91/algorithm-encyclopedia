@@ -16,4 +16,4 @@ draft: true
 draft_urls: "https://web.archive.org/web/20181213115442/https://topcoder.g.hatena.ne.jp/iwiwi/20131226/1388062106"
 ---
 
-# weighted-union heuristic 
+# weighted-union heuristic
