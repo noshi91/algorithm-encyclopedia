@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers:
-date: 2020-01-16T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 記事作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-01-16T00:00:00+09:00
 description: 補集合を数えるとは、ある条件を満たす要素の個数を求めることを、ある条件を満たさない要素の個数を求めることによって行うテクニックのこと。
 ---
 

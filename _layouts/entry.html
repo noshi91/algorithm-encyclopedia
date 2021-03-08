@@ -38,7 +38,7 @@ layout: default
 <hr>
 
 <div class="footer-links">
-    <a href="{{ site.github.repository_url }}/commits/{{ site.github.source.branch }}/{{ page.path }}">View history</a>
+    <a href="{{ site.github.repository_url }}/commits/{{ site.github.source.branch }}/{{ page.path }}">View full history</a>
     /
     <a href="{{ site.github.issues_url }}">Report issues</a>
     /
@@ -47,10 +47,26 @@ layout: default
 
 <div class="entry-metadata">
 <dl>
-    <dt>authors</dt>{% if page.authors %}{% for author in page.authors %}<dd><a class="handle">{{ author }}</a></dd>{% endfor %}{% else %}<dd><span class="no-authors">none</span></dd>{% endif %}
-    <dt>reviewers</dt>{% if page.reviewers %}{% for reviewer in page.reviewers %}<dd><a class="handle">{{ reviewer }}</a></dd>{% endfor %}{% else %}<dd><span class="no-reviewers">none</span></dd>{% endif %}
-    <dt>created at</dt><dd>{{ page.date | date_to_string }}</dd>
-    {% if page.updated_at %}<dt>updated at</dt><dd>{{ page.updated_at | date_to_string }}</dd>{% endif %}
+    {% if page.changelog %}
+    <dt>changelog</dt>
+    <dd>
+        <ul>
+            {% for change in page.changelog %}
+                <li>
+                    {{ change.date | date: "%Y年%m月%d日" }}「{{ change.summary }}」
+                    authors:{% if change.authors %}{% for author in change.authors %} <a class="handle">{{ author }}</a>{% endfor %}{% else %}<span class="no-authors">none</span>{% endif %},
+                    reviewers:{% if change.reviewers %}{% for reviewer in change.reviewers %} <a class="handle">{{ reviewer }}</a>{% endfor %}{% else %}<span class="no-reviewers">none</span>{% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </dd>
+    {% else %}
+        <!-- 移行措置。 TODO: 消す -->
+        <dt>authors</dt>{% if page.authors %}{% for author in page.authors %}<dd><a class="handle">{{ author }}</a></dd>{% endfor %}{% else %}<dd><span class="no-authors">none</span></dd>{% endif %}
+        <dt>reviewers</dt>{% if page.reviewers %}{% for reviewer in page.reviewers %}<dd><a class="handle">{{ reviewer }}</a></dd>{% endfor %}{% else %}<dd><span class="no-reviewers">none</span></dd>{% endif %}
+        <dt>created at</dt><dd>{{ page.date | date_to_string }}</dd>
+        {% if page.updated_at %}<dt>updated at</dt><dd>{{ page.updated_at | date_to_string }}</dd>{% endif %}
+    {% endif %}
     <dt>license</dt><dd><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</dd>
 </dl>
 </div>

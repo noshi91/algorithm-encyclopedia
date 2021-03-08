@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors:
-reviewers:
-date: 2020-07-09T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-07-09T00:00:00+09:00
 algorithm:
   input: 有向あるいは無向グラフ $G$ とその頂点 $s, t$ および自然数 $K$
   output: $G$ の $s-t$ 単純路であって $K$ 番目に短いもの

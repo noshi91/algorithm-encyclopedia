@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: udon1206
-reviewers: noshi91
-date: 2021-03-04T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 記事作成
+    authors: udon1206
+    reviewers: noshi91
+    date: 2021-03-04T00:00:00+09:00
 algorithm:
   input: 有向グラフ $G = (V, E)$
   output: $G = (V, E)$ の強連結成分分解

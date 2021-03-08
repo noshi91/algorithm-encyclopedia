@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: ${ここにページを書いた人の AtCoder ID を書く}
-reviewers:
-date: ${ここにページを書いた日付を 2021-01-01T00:00:00+09:00 のように書く}
-updated_at:
+changelog:
+  - summary: ${ここにページの更新内容を書く。例: "見出し作成", "記事作成"}
+    authors: ${ここにページを更新した人たちの AtCoder ID を書く}
+    reviewers: ${ここにページの更新をレビューした人たちの AtCoder ID を書く}
+    date: ${ここにページを更新した日付を 2021-01-01T00:00:00+09:00 のように書く}
 algorithm:
   input:
   output:

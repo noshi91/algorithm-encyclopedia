@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers: noshi91
-date: 2021-02-04T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers: noshi91
+    date: 2021-02-04T00:00:00+09:00
 algorithm:
   input: totally monotone な $H \times W$ 行列 $f$
   output: それぞれの行 $y$ に対し最小値の位置 $x \in \mathrm{argmin} _ x f(y, x)$

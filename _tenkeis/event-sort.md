@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers:
-date: 2020-01-16T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 記事作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-01-16T00:00:00+09:00
 description: イベントソートとは、クエリを時刻順にソートして順番に処理するテクニックのこと。
 ---
 

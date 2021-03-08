@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors: kimiyuki
-reviewers:
-date: 2020-01-16T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 記事作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-01-16T00:00:00+09:00
 algorithm:
   aliases: ["箱根DP", "箱根駅伝", "箱根"]
 description: 区間の集合を構成するような DP であって「左端は決まったが右端はまだ決まってない区間の数」と「右端は決まったが左端はまだ決まってない区間の数」を状態とする DP のこと。

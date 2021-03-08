@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors:
-reviewers:
-date: 2020-07-09T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers:
+    date: 2020-07-09T00:00:00+09:00
 algorithm:
   input: >
     $n$ 要素の集合 $X$ の部分集合から可換 monoid $M$ への関数 $f : \mathcal{P}(X) \to M$ のグラフ

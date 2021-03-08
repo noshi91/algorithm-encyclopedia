@@ -53,11 +53,13 @@ def get_rating_color_from_value(rating: int) -> str:
 def collect_users(*, basedir: pathlib.Path) -> List[str]:
     users: List[str] = []
     for path in basedir.glob('**/*.md'):
+        if path.name == 'template.md':
+            continue
         with open(path) as fh:
             for line in fh.readlines():
-                if line.startswith('authors:'):
+                if line.lstrip().startswith('authors:'):
                     users.extend(re.findall(r'\w+', line)[1:])
-                if line.startswith('reviewers:'):
+                if line.lstrip().startswith('reviewers:'):
                     users.extend(re.findall(r'\w+', line)[1:])
                 users.extend(re.findall(r'<a class="handle">(\w+)</a>', line))
     return sorted(set(users))

@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors:
-reviewers: minaminao
-date: 2020-07-09T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers: minaminao
+    date: 2020-07-09T00:00:00+09:00
 algorithm:
   input: >
     辺重み $c : V \to \mathbb{R}$ 付き有向グラフ $G = (V, E)$ および頂点 $r \in V$

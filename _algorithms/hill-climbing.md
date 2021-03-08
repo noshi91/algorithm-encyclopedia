@@ -1,9 +1,10 @@
 ---
 layout: entry
-authors:
-reviewers:
-date: 2021-02-28T00:00:00+09:00
-updated_at:
+changelog:
+  - summary: 見出し作成
+    authors: kimiyuki
+    reviewers: MiSawa
+    date: 2021-02-28T00:00:00+09:00
 tags: algorithm
 algorithm:
   input:
