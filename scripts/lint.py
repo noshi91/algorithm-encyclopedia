@@ -98,6 +98,11 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         pattern=r'\$.*\|.*\$',
         text=r"KaTeX: 絶対値記号などには `|` や `\|` ではなく `\vert` や `\lvert` `\rvert` を使ってください。`|` は Markdown のテーブルと解釈されて壊れることがあり、また `\|` は Markdown の処理系によっては HTML 上で `|` ではなく `\|` になって壊れることがあります。",
     )
+    if '</a>' not in msg:
+        error_by_regex(
+            pattern=r'\$.*[<>].*\$',
+            text=r"KaTeX: 数式中では `<` や `>` ではなく `\langre` や `\rangle` を使ってください。`<` や `>` は HTML のタグと解釈されて壊れることがあります。",
+        )
 
     users = list_defined_users()
     for m in re.finditer(r'<a +class="handle">(\w+)</a>', msg):
