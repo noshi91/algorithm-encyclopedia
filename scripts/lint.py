@@ -85,6 +85,10 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     )
 
     error_by_regex(
+        pattern=r'\\\(\|\\\)',
+        text=r"KaTeX: inline 表示をしたいときは `\(` や `\)` ではなく `$` を使ってください。`\(` や `\)` は Markdown でのエスケープと解釈されて壊れることがあります。",
+    )
+    error_by_regex(
         pattern=r'^\$$',
         text=r"KaTeX: display 表示をしたいときは `$` ではなく `$$` を使ってください。`$` は inline 表示になります。",
     )
