@@ -100,7 +100,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     if '</a>' not in msg:
         error_by_regex(
             pattern=r'\$.*[<>].*\$',
-            text=r"KaTeX: 数式中では `<` や `>` ではなく `\langre` や `\rangle` を使ってください。`<` や `>` は HTML のタグと解釈されて壊れることがあります。",
+            text=r"KaTeX: 数式中では `<` や `>` ではなく `\lt` や `gt` や `\langle` や `\rangle` を使ってください。`<` や `>` は HTML のタグと解釈されて壊れることがあります。",
         )
 
     users = list_defined_users()
