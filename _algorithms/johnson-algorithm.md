@@ -54,17 +54,9 @@ $$
 \forall u, v \in V' ,\ \delta (s, v) \leq \delta (s, u) + c(u, v)
 $$
 が成り立つ。よって、
-<<<<<<< HEAD
 $$
 \hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
 $$
 となる。
 
 以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
-=======
-$$\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
-$$
-となる。
-
-以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
->>>>>>> b2179af42be7391d6e44274794241124af203989
