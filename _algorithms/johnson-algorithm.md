@@ -33,35 +33,28 @@ Johnson のアルゴリズムとは、全点対間最短経路問題を解くア
 ## グラフの再重み付け
 
 $G = (V, E)$ に対して、超頂点 $s$ を導入した、 $G' = (V', E')$, $V' = V \cup \lbrace s \rbrace$, $E' = E \cup \lbrace(s, v) : v \in V \rbrace$ を考える。全ての $v \in V$ に対して、 $c(s, v) = 0$ と定義し、辺重みを拡張する。このとき、$G'$ の各頂点の組 $(u, v) \in V \times V$ の辺重み $c$ における最短経路長は $G$ の 辺重み $c$ における最短経路長と一致する。このことから、 $G'$ における全点対間最短経路問題を解くことで、 $G$ の全点対間最短経路問題を解くことができる。再重み付けをした辺重み $\hat{c}$ を以下のようにすることで、概要で述べた再重み付けの性質を持つことを述べる。
-
-$\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v)$
-
+$$
+\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v)
+$$
 ただし、 $\delta (u, v), \  (u, v) \in V' \times V'$ は辺重み $c$ における $u$ から $v$ への最短経路長である。
 
 ### 性質1. について
 
 $v _ 0 \in V'$ から $v _ {k - 1} \in V'$ の辺重み $c$ 上での最短路 $p = < v _ 0, v _ 1, \dots, v _ {k - 1}>$ とする。このとき、辺重み $\hat{c}$ 上での $p$ の経路長は、
-
-$
+$$
 \hat{c} (p) = \displaystyle \sum _ {n = 1} ^ {k - 1} \hat{c} (v _ {n - 1}, v _ {n}) = c(p) + \delta (s, v _ 0) - \delta (s, v _ {k - 1})
-$ 
-
+$ $
 となる。 $\delta (s, v _ 0), \delta (s, v _ {k - 1})$ は $p$ に依存しないので、 $p$ が辺重み $c$ における $v _ 0$ から $v _ {k - 1}$ の最短経路であるならば、 辺重み $\hat{c}$ においても最短経路である。
 
 ### 性質2. について
 
 $G$ が負閉路を持たないとき、 $G'$ も負閉路を持たない。このことから、
-
-$
+$$
 \forall u, v \in V' ,\ \delta (s, v) \leq \delta (s, u) + c(u, v)
-$
-
+$$
 が成り立つ。よって、
-
-
-$\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0$
-
-
+$$\hat{c}(u,v) = c(u, v) + \delta (s, u) - \delta (s, v) \geq 0
+$$
 となる。
 
 以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
