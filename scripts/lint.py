@@ -274,6 +274,13 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
 
 
 def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
+    if path.name != path.name.lower():
+        yield error('file: ファイルの basename はすべて小文字にしてください。', file=path, line=-1, col=-1)
+    if '_' in path.name:
+        yield error('file: ファイルの basename では `_` ではなく `-` を使ってください。', file=path, line=-1, col=-1)
+    if ' ' in path.name:
+        yield error('file: ファイルの basename では空白文字 ` ` ではなく `-` を使ってください。', file=path, line=-1, col=-1)
+
     with open(path) as fh:
         lines = list(fh.readlines())
 
