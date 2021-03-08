@@ -41,7 +41,6 @@ $$
 
 ### 性質1. について
 
-<<<<<<< HEAD
 $v _ 0 \in V'$ から $v _ {k - 1} \in V'$ の辺重み $c$ 上での最短路 $p = \langle v _ 0, v _ 1, \dots, v _ {k - 1}\rangle$ とする。このとき、辺重み $\hat{c}$ 上での $p$ の経路長は、
 $$
 \hat{c} (p) = \displaystyle \sum _ {n = 1} ^ {k - 1} \hat{c} (v _ {n - 1}, v _ {n}) = c(p) + \delta (s, v _ 0) - \delta (s, v _ {k - 1})
