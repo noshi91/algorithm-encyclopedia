@@ -15,12 +15,22 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
     <script defer>
       document.addEventListener("DOMContentLoaded", function() {
+        // This is workaround for `math_engine: mathjax` of GitHub Pages' Kramdown.
+        const scripts = [];
+        for (const script of document.getElementsByTagName("script")) {
+            if (script.type == "math/tex") {
+                scripts.push(script);
+            }
+        }
+        for (const script of scripts) {
+            const text = "$$" + script.textContent + "$$";
+            script.parentNode.replaceChild(document.createTextNode(text), script);
+        }
+        // Use $...$ and $$...$$ for LaTeX. Disable \(...\) and \[...\] to avoid the confusion with the escape of Markdown.
         renderMathInElement(document.body, {
           delimiters: [
             {left: "$$", right: "$$", display: true},
             {left: "$", right: "$", display: false},
-            {left: "\\(", right: "\\)", display: false},
-            {left: "\\[", right: "\\]", display: true},
           ],
         });
       });
