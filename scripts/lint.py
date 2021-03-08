@@ -100,10 +100,17 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         pattern=r'_{',
         text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れることがあります。",
     )
-    error_by_regex(
-        pattern=r'\$.*\|.*\$',
-        text=r"KaTeX: 絶対値記号などには `|` や `\|` ではなく `\vert` や `\lvert` `\rvert` を使ってください。`|` は Markdown のテーブルと解釈されて壊れることがあり、また `\|` は Markdown の処理系によっては HTML 上で `|` ではなく `\|` になって壊れることがあります。",
-    )
+    if '$' in msg:
+        error_by_regex(
+            pattern=r'\|',
+            text=r"KaTeX: 絶対値記号などには `|` や `\|` ではなく `\vert` や `\lvert` `\rvert` を使ってください。`|` は Markdown のテーブルと解釈されて壊れることがあり、また `\|` は Markdown の処理系によっては HTML 上で `|` ではなく `\|` になって壊れることがあります。",
+        )
+    else:
+        if msg.count('|') <= 2:
+            error_by_regex(
+                pattern=r'\|',
+                text=r"Markdown: `|` を文字として表示したい場合は `|` ではなく `&#124;` を使ってください。`|` は Markdown のテーブルと解釈されて壊れることがあります。",
+            )
     if '</a>' not in msg:
         error_by_regex(
             pattern=r'\$.*[<>].*\$',

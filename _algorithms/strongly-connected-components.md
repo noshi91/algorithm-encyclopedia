@@ -25,5 +25,5 @@ draft_urls: []
 
 
 ## 注釈
-[^mathtrain]: [強連結成分分解の意味とアルゴリズム \| 高校数学の美しい物語](https://mathtrain.jp/kyorenketsu)
+[^mathtrain]: [強連結成分分解の意味とアルゴリズム &#124; 高校数学の美しい物語](https://mathtrain.jp/kyorenketsu)
 [^acl]: [AtCoder Library](https://github.com/atcoder/ac-library) の実装はこちらになっている。

@@ -50,4 +50,4 @@ Rabin-Karp 法とは、複数のパターン文字列をまとめて扱える乱
 
 ## 注釈
 
-[^pfn-matrix-monte-carlo]: [乱択アルゴリズム紹介(行列乗算の検査&amp;多項式等価性の検査) | Preferred Networks Research &amp; Development](https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)<sup>[archive.org](https://web.archive.org/web/20210110054323/https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)</sup>
+[^pfn-matrix-monte-carlo]: [乱択アルゴリズム紹介(行列乗算の検査&amp;多項式等価性の検査) &#124; Preferred Networks Research &amp; Development](https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)<sup>[archive.org](https://web.archive.org/web/20210110054323/https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)</sup>
