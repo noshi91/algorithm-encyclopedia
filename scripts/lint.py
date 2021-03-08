@@ -303,6 +303,9 @@ def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
             break
     else:
         yield error('file: YAML frontmatter がありません。ファイルの2行目以降に `---` が見つかりませんでした。', file=path, line=-1, col=-1)
+    if not isinstance(frontmatter, dict):
+        yield error('file: YAML frontmatter は辞書であるべきです。', file=path, line=-1, col=-1)
+        return
 
     yield from collect_messages_from_yaml_frontmatter(frontmatter, path=path)
     for i, line in enumerate(body):
