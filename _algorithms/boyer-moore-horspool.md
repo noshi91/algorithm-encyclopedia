@@ -5,10 +5,6 @@ changelog:
     authors: kimiyuki
     reviewers:
     date: 2021-02-05T00:00:00+09:00
-  - summary: 記事作成
-    authors: kimiyuki
-    reviewers: noshi91
-    date: 2021-03-09T00:00:00+09:00
 algorithm:
   input: パターン文字列 $P$ とテキスト文字列 $T$
   output: パターン文字列 $P$ がテキスト文字列 $T$ に含まれるかどうか。含まれるならその位置も求める。
@@ -17,6 +13,8 @@ algorithm:
   aliases: []
   level: black
 description: Boyer-Moore-Horspool 法は、文字列検索アルゴリズムのひとつ。Boyer-Moore 法を簡略化したものである。
+draft: true
+draft_urls: []
 ---
 
 # Boyer-Moore-Horspool 法

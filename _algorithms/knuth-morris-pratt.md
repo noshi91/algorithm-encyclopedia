@@ -5,10 +5,6 @@ changelog:
     authors: kimiyuki
     reviewers:
     date: 2021-02-05T00:00:00+09:00
-  - summary: 記事作成
-    authors: kimiyuki
-    reviewers: noshi91
-    date: 2021-03-09T00:00:00+09:00
 algorithm:
   input: パターン文字列 $P$ とテキスト文字列 $T$
   output: パターン文字列 $P$ がテキスト文字列 $T$ に含まれるかどうか。含まれるならその位置も求める。
@@ -17,6 +13,8 @@ algorithm:
   aliases: ["KMP法"]
   level: yellow
 description: Knuth-Morris-Pratt法とは文字列検索アルゴリズムのひとつ。パターン文字列 $P$ の各 prefix について最長の border (prefix かつ suffix であるような文字列) を $O(\vert P \vert)$ で求めておくことで、与えられたテキスト文字列 $T$ に対する検索を $O(\vert T \vert)$ で行う。
+draft: true
+draft_urls: []
 ---
 
 # Knuth-Morris-Pratt 法
