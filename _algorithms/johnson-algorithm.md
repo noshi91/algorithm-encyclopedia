@@ -66,4 +66,4 @@ $$
 - [Warshall-Floyd 法](/warshall-floyd)
   - Warshall-Floyd 法は全点対間最短経路問題を解くアルゴリズムのひとつ。定数倍の軽い $O(\lvert V \rvert ^ 3)$ で動く。Johnson のアルゴリズムとは異なる点として、 各頂点の組 $(s, t) \in V \times V$ において、 $s$ から $t$ への経路に負閉路が存在するかを検出できる。
 - [Dijkstra 法](/dijkstra)
-  - Dijkstra 法は単一始点最短経路問題を解くアルゴリズムのひとつ。グラフに重みが負の辺がないとき、グラフの再重み付けを省略すれば、Johnson のアルゴリズムは各頂点から Dijkstra 法を用いることと一致する。
+  - Dijkstra 法は単一始点最短経路問題を解くアルゴリズムのひとつ。グラフに重みが負の辺がないときは $\hat{c} = c$ となるため、再重み付けを省略すれば、Johnson のアルゴリズムは各頂点から Dijkstra 法を用いることと一致する。
