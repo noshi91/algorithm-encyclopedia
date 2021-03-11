@@ -59,7 +59,7 @@ $$
 $$
 となる。
 
-以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
+以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けをすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
 
 ## 関連項目
 
