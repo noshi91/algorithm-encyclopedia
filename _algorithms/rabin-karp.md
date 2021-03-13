@@ -25,10 +25,11 @@ description: Rabin-Karp 法とは、複数のパターン文字列をまとめ�
 
 Rabin-Karp 法とは、複数のパターン文字列をまとめて扱える乱択の文字列検索アルゴリズムのひとつ。$k$ 個のすべて長さが等しいパターン文字列 $P_0, P_1, P_2, \dots, P _ {k-1}$ が与えられたとき、性質の良いハッシュ関数 $H$ を用意しておき、パターン文字列のそれぞれについてハッシュ値 $H(P_0), H(P_1), H(P_2), \dots, H(P _ {k-1})$ を $O(\sum \vert P_i \vert)$ などをかけて求めておく。ただし、ハッシュ関数 $H$ の性質が良いとは、与えられた文字列 $T$ に対し、その長さ $\lvert P_i \rvert$ の部分文字列たちについて、それらのハッシュ値のすべてを高速に計算できるということである。このとき、与えられたテキスト文字列 $T$ に対しての検索が期待計算量 $O(\lvert T \rvert)$ などでできる。ハッシュ関数は固定ではないが、ローリングハッシュが使われることが多い。
 
-Rabin-Karp 法は競技プログラミング以外の文脈であれば Las Vegas アルゴリズムとして用いられることが通常であるが、競技プログラミングの文脈ではハッシュ値が一致したときの検証を省略して Monte Carlo アルゴリズムとして用いられることが多い。
-また、用途によっては、パターン文字列が含まれるかの判定のみやその位置をひとつ構成するのみでよい場合と、含まれる位置をすべて列挙する必要がある場合とがある。
-これらの組合せは $4$ 通りあるが、ものによっては計算量がすこし変化する[^las-vegas-enumerate-all]。
-マッチする位置をすべて列挙することを考えたとき、たとえばパターン文字列のひとつ $P_i$ とテキスト文字列 $T$ がすべて同じ文字からなるときが問題になり、Las Vegas アルゴリズムの形であれば平均計算量 $O(\lvert T \rvert)$ としか言えなくなってしまうが、Monte Carlo アルゴリズムの形であればなお期待計算量 $O(\lvert T \rvert)$ のままである。
+Rabin-Karp 法は、競技プログラミング以外では、ハッシュ値が一致したときに文字列が実際に一致しているか愚直に確認する Las Vegas アルゴリズムとして用いられることが通常である[^usually-las-vegas]。
+しかし競技プログラミングにおいては、ハッシュ値が一致したときの確認を省略して Monte Carlo アルゴリズムとして用いられることが多い。
+また、用途によっては、いずれかのパターン文字列が含まれるかの判定のみやその出現位置をひとつ構成するのみでよい場合と、それぞれのパターン文字列について出現位置をすべて報告する必要がある場合とがある。
+これらの組合せは $4$ 通りあるが、ものによっては計算量がすこし変化する。
+それぞれのパターン文字列について出現位置をすべて報告することを考えたとき、Las Vegas アルゴリズムの形であれば出現位置の報告ごとに $O(\lvert P_i \rvert)$ かかるので入力によっては計算量は $\Omega(\lvert P_i \rvert \cdot \lvert T \rvert)$ となってしまう[^las-vegas-all-pattern][^las-vegas-all-report-time-complexity]が、Monte Carlo アルゴリズムの形であればなお期待計算量 $O(\lvert T \rvert)$ のままである。
 
 ## 詳細
 
@@ -37,7 +38,7 @@ Rabin-Karp 法は競技プログラミング以外の文脈であれば Las Vega
 ## メモ
 
 -   ローリングハッシュが文字列を多項式と見るものであることを思い出せば、Rabin-Karp 法は多項式 $f, g$ の等価性 $f = g$ を検査するために乱数 $r$ を用いて $f(r) = g(r)$ を計算しているものだと思うことができる。これには行列 $A, B$ の等価性 $A = B$ 検査の Monte Carlo アルゴリズム[^pfn-matrix-monte-carlo]との類似がある。
--   ハッシュ値が一致したときの検証を省略したとしても最悪計算量 $O(\lvert T \rvert)$ とまでは言えない。$T$ の部分文字列 $T'$ に対するハッシュ値 $H(T')$ をパターン文字列についてのハッシュ値 $H(P_0), H(P_1), H(P_2), \dots, H(P _ {k-1})$ と比較する必要があるが、ここにハッシュマップを使う必要があるため、最悪計算量は $O(\lvert T \rvert)$ より悪くなる。
+-   ハッシュ値が一致したときの検証を省略したとしても最悪計算量 $O(\lvert T \rvert)$ とまでは言えない。$T$ の部分文字列 $T'$ に対するハッシュ値 $H(T')$ をパターン文字列についてのハッシュ値 $H(P_0), H(P_1), H(P_2), \dots, H(P _ {k-1})$ と比較する必要があるが、ここにハッシュマップを使う必要があるため、最悪計算量は $O(\lvert T \rvert)$ より悪くなる。パターン文字列がひとつだけならばハッシュマップは不要であり、この場合は最悪計算量 $O(\lvert T \rvert)$ となる。
 
 ## 参考文献
 
@@ -56,5 +57,7 @@ Rabin-Karp 法は競技プログラミング以外の文脈であれば Las Vega
 
 ## 注釈
 
-[^las-vegas-enumerate-all]: Rabin-Karp 法に特有のものではなく、乱択の文字列検索アルゴリズムに一般の事情である。
+[^usually-las-vegas]: TODO: 参考文献を探してきて書く
+[^las-vegas-all-pattern]: たとえば、パターン文字列とテキスト文字列がすべて同じ文字からなる場合や、パターン文字列がアルファベット $\Sigma$ に対し $\lvert \Sigma \rvert^{\lvert P_i \rvert}$ 個あるような場合など。
+[^las-vegas-all-report-time-complexity]: パターン文字列の個数 $k$ が十分小さいもののみを入力として考えれば平均計算量 $O(\lvert T \rvert)$ が言える。
 [^pfn-matrix-monte-carlo]: [乱択アルゴリズム紹介(行列乗算の検査&amp;多項式等価性の検査) &#124; Preferred Networks Research &amp; Development](https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)<sup>[archive.org](https://web.archive.org/web/20210110054323/https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)</sup>
