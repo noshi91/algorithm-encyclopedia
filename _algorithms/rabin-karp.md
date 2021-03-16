@@ -44,6 +44,8 @@ Rabin-Karp 法は、競技プログラミング以外では、ハッシュ値が
 
 -   R. M. Karp and M. O. Rabin, "Efficient randomized pattern-matching algorithms," in IBM Journal of Research and Development, vol. 31, no. 2, pp. 249-260, March 1987, doi: [10.1147/rd.312.0249](https://doi.org/10.1147/rd.312.0249).
     -   Rabin-Karp 法が提案された論文。空間計算量が定数であることを強調しており、パターン文字列が複数の場合についての言及はない。ハッシュ値の衝突とそれによる厳密比較が発生するたびにハッシュ関数を選び直すことが提案されている。
+-   T. コルメン, C. ライザーソン, R. リベスト, C. シュタイン. アルゴリズムイントロダクション総合版. 近代科学社, 2013, [ISBN978-4-76-490408-8](https://iss.ndl.go.jp/api/openurl?isbn=9784764904088).
+    -   32.2 節「Rabin-Karp アルゴリズム」で Rabin-Karp 法が説明されている。
 
 ## 関連項目
 
@@ -57,7 +59,7 @@ Rabin-Karp 法は、競技プログラミング以外では、ハッシュ値が
 
 ## 注釈
 
-[^usually-las-vegas]: TODO: 参考文献を探してきて書く
+[^usually-las-vegas]: Rabin と Karp による提案論文においてもアルゴリズムイントロダクションでの説明においても、Rabin-Karp 法はハッシュ値が一致したときは厳密比較をするものとして説明されている。
 [^las-vegas-all-pattern]: たとえば、パターン文字列とテキスト文字列がすべて同じ文字からなる場合や、パターン文字列がアルファベット $\Sigma$ に対し $\lvert \Sigma \rvert^{\lvert P_i \rvert}$ 個あるような場合など。
 [^las-vegas-all-report-time-complexity]: パターン文字列の個数 $k$ が十分小さいもののみを入力として考えれば平均計算量 $O(\lvert T \rvert)$ が言える。
 [^pfn-matrix-monte-carlo]: [乱択アルゴリズム紹介(行列乗算の検査&amp;多項式等価性の検査) &#124; Preferred Networks Research &amp; Development](https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)<sup>[archive.org](https://web.archive.org/web/20210110054323/https://tech.preferred.jp/ja/blog/matrix-multiplication-and-polynomial-identity/)</sup>
