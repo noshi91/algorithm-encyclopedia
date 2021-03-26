@@ -38,6 +38,8 @@
 1.  対応する項目の Markdown ファイルに本文を追加する。
 1.  プルリクエストを送る。
 
+数式には [KaTeX](https://katex.org/) が使えます。KaTeX が対応している関数の一覧は [Supported Functions](https://katex.org/docs/supported.html) にあります。
+
 
 ### authors と reviewers
 
