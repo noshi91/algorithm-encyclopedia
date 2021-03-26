@@ -15,15 +15,23 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js" integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v" crossorigin="anonymous"></script>
     <script defer>
       document.addEventListener("DOMContentLoaded", function() {
-        // This is workaround for `math_engine: mathjax` of GitHub Pages' Kramdown. Kramdown convert `$$ ... $$` to `<script type="math/tex"> ... <\/script>` on local environments.
-        const scripts = [];
+        // This is a workaround for `math_engine: mathjax` of GitHub Pages' Kramdown.
+        const inlines = [];
+        const displays = [];
         for (const script of document.getElementsByTagName("script")) {
             if (script.type == "math/tex") {
-                scripts.push(script);
+                inlines.push(script);
+            } else if (script.type == "math/tex; mode=display") {
+                displays.push(script);
             }
         }
-        for (const script of scripts) {
+        for (const script of inlines) {
+            // Kramdown sometimes converts `$$ ... $$` (not `$ ... $`) to `<script type="math/tex"> ... <\/script>` on local environments.
             const text = "$$" + script.textContent + "$$";
+            script.parentNode.replaceChild(document.createTextNode(text), script);
+        }
+        for (const script of displays) {
+            const text = "$$" + script.textContent.replace('% <![CDATA[', '').replace('%]]>', '') + "$$";
             script.parentNode.replaceChild(document.createTextNode(text), script);
         }
         // Use $...$ and $$...$$ for LaTeX.
