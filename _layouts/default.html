@@ -40,6 +40,7 @@
             {left: "$$", right: "$$", display: true},
             {left: "$", right: "$", display: false},
             {left: "\\(", right: "\\)", display: true},  // I don't know why, but Kramdown convert `$$ ... $$` to `\( ... \)` on GitHub Pages.
+            {left: "\\[", right: "\\]", display: true},  // Kramdown sometimes converts `$$ ... $$` to `\[ ... \]`.
           ],
         });
       });
