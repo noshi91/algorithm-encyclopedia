@@ -9,12 +9,12 @@ algorithm:
   input: >
     Monge 性を満たす整数の辺重み $c : E \to \mathbb{Z}$ 付き完全 DAG $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ 及び正整数 $d$
   output: 辺を丁度 $d$ 本使う条件下での $0$-$(N - 1)$ 最短路長
-  time_complexity: $\Theta (N \log(\max \lvert c \rvert))$
+  time_complexity: $\Theta (N \log(\max _ {e \in E} \lvert c(e) \rvert))$
   space_complexity: $\Theta (N)$
   aliases: ["Alien DP", "WQS binary search"]
   level: orange
 description: >
-    辺の重みが Monge 性を満たすような完全 DAG について、辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max \lvert c \rvert))$ で計算するアルゴリズムが存在する。
+    辺の重みが Monge 性を満たすような完全 DAG について、辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max _ {e \in E} \lvert c(e) \rvert))$ で計算するアルゴリズムが存在する。
     Monge 性からラグランジュ双対問題について強双対性が成立し、ラグランジュ緩和問題もまた Monge 性を利用して高速に解くことができる。
 ---
 
@@ -23,7 +23,7 @@ description: >
 ## 概要
 
 $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ を $N$ 頂点の完全 DAG、$c : E \to \mathbb{Z}$ を Monge 性を満たす辺重み、$d$ を正整数とする。
-辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max \lvert c \rvert))$ で計算するアルゴリズムが存在する。
+辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max _ {e \in E} \lvert c(e) \rvert))$ で計算するアルゴリズムが存在する。
 
 この問題は制約付き最適化であり、ラグランジュ双対問題を考えることで効率的に解くことができる。
 $c$ の Monge 性はラグランジュ双対問題の強双対性を成立させる。
@@ -37,7 +37,7 @@ Aliens[^Aliens] はこの問題に帰着することができる。それに由�
 ## Monge
 
 この記事中では、辺重み $c : E \to \mathbb{Z}$ が Monge であるとは、
-$$\forall i, j, k, l.\  0 \leq i \lt j \lt k \lt l \lt N \Rightarrow c(i, l) + c(j, k) \geq c(i, k) + c(j, l)$$
+$$\forall i, j, k, l.\  0 \leq i \lt j \lt k \lt l \lt N \rightarrow c(i, l) + c(j, k) \geq c(i, k) + c(j, l)$$
 を満たすことを言うこととする。
 
 Monge は通常は $N \times M$ 行列に対して定義される概念であるが、ここでは $c$ が上三角部分のみについて定義されているので、制限した形で定義した。
@@ -68,7 +68,7 @@ $$
 $(2)$ について、$\displaystyle P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)) \land \lVert P ^ {\ast} \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}, P ^ {\ast} \in \mathcal{P}$ が存在したとする。
 すると、$(2)$ の不等号が逆向きにも成立し、等号が成立する。
 $$ \begin{align*}
-  \min _ {P \in \mathcal{P} \lVert P \rVert = d} c(P) & \leq c(P ^ {\ast}) \cr
+  \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) & \leq c(P ^ {\ast}) \cr
   & = c(P ^ {\ast}) + \lambda ^ {\ast} (\lVert P ^ {\ast} \rVert - d) \cr
   & = \min _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast}(\lVert P \rVert - d)) \cr
   & \leq \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
@@ -81,7 +81,7 @@ $P _ k ^ {\ast}$ を、丁度 $k$ 本の辺を使う条件下の $0$-$(N-1)$ 最
 
 #### 補題 $1$
 
-$$\forall k.\ 2 \leq k \leq N - 2 \Rightarrow c(P _ k ^ {\ast}) - c(P _ {k - 1} ^ {\ast}) \leq c(P _ {k + 1} ^ {\ast}) - c(P _ k ^ {\ast})$$
+$$\forall k.\ 2 \leq k \leq N - 2 \rightarrow c(P _ k ^ {\ast}) - c(P _ {k - 1} ^ {\ast}) \leq c(P _ {k + 1} ^ {\ast}) - c(P _ k ^ {\ast})$$
 
 ##### 証明
 
@@ -168,7 +168,7 @@ $$ \begin{align*}
 \end{align*} $$
 よって、$c _ {\lambda}$ についての最短路長を計算することで $L(\lambda)$ の値を得ることができる。
 
-$c$ が Monge ならば $c _ {\lambda}$ もまた Monge である。
+$c$ が Monge であるから、$c _ {\lambda}$ もまた Monge である。
 辺の重みが Monge 性を満たす完全 DAG の最短路の計算は LARSCH Algorithm を用いて $\Theta (N)$ で行うことができる。
 Aliens[^Aliens] では $c$ の性質が Monge よりさらに良く、Convex Hull Trick を用いることで同じく $\Theta (N)$ で最短路を計算することができる。
 
@@ -177,7 +177,7 @@ $\lambda$ をそれ以上小さくすると $L(\lambda)$ は単調減少する�
 同様に、$\displaystyle 3 \max _ {e \in E} \lvert c(e) \rvert$ を上界に用いることができる。
 
 
-時間計算量は全体で $\Theta (N \log (\max \lvert c \rvert))$ となる。
+時間計算量は全体で $\Theta (N \log (\max _ {e \in E} \lvert c(e) \rvert))$ となる。
 
 ## その他
 
