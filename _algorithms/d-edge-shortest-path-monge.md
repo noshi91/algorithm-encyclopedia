@@ -7,7 +7,7 @@ changelog:
     date: 2021-03-28T20:41:31+09:00
 algorithm:
   input: >
-    Monge 性を満たす整数の辺重み $c : E \to \mathbb{Z}$ 付き完全 DAG $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ 及び整数 $d$
+    Monge 性を満たす整数の辺重み $c : E \to \mathbb{Z}$ 付き完全 DAG $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ 及び正整数 $d$
   output: 辺を丁度 $d$ 本使う条件下での $0$-$(N - 1)$ 最短路長
   time_complexity: $\Theta (N \log(\max \lvert c \rvert))$
   space_complexity: $\Theta (N)$
@@ -18,12 +18,12 @@ description: >
     Monge 性からラグランジュ双対問題について強双対性が成立し、ラグランジュ緩和問題もまた Monge 性を利用して高速に解くことができる。
 ---
 
-# Monge グラフ上の $d$-辺最短路
+# Monge グラフ上の $d$-辺最短路長
 
 ## 概要
 
-$G = (N, E)$ を $N$ 頂点の完全 DAG、すなわち $E = \lbrace (i, j) \mid i \lt j \rbrace$ とする。
-辺重み $c : E \to \mathbb{Z}$ が Monge 性を満たすとき、辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max \lvert c \rvert))$ で計算するアルゴリズムが存在する。
+$G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ を $N$ 頂点の完全 DAG、$c : E \to \mathbb{Z}$ を Monge 性を満たす辺重み、$d$ を正整数とする。
+辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max \lvert c \rvert))$ で計算するアルゴリズムが存在する。
 
 この問題は制約付き最適化であり、ラグランジュ双対問題を考えることで効率的に解くことができる。
 $c$ の Monge 性はラグランジュ双対問題の強双対性を成立させる。
@@ -36,11 +36,11 @@ Aliens[^Aliens] はこの問題に帰着することができる。それに由�
 
 ## Monge
 
-辺重み $c : E \to \mathbb{Z}$ が Monge であるとは、
-$$\forall 0 \leq i \lt j \lt k \lt l \lt N.\ c(i, l) + c(j, k) \geq c(i, k) + c(j, l)$$
-を満たすことを言う。
+この記事中では、辺重み $c : E \to \mathbb{Z}$ が Monge であるとは、
+$$\forall i, j, k, l.\  0 \leq i \lt j \lt k \lt l \lt N \Rightarrow c(i, l) + c(j, k) \geq c(i, k) + c(j, l)$$
+を満たすことを言うこととする。
 
-Monge は一般には $N \times M$ 行列に対して定義される概念であり、ここでの定義は上三角部分に制限した形になっているが、特に区別しない。
+Monge は通常は $N \times M$ 行列に対して定義される概念であるが、ここでは $c$ が上三角部分のみについて定義されているので、制限した形で定義した。
 
 ## ラグランジュ双対問題
 
@@ -51,19 +51,22 @@ $P \in \mathcal{P}$ に対して、$\lVert P \rVert$ を $P$ の辺の本数、$
 $$ \begin{align*}
   \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) & = \min _ {P \in \mathcal{P}, \lVert P \rVert = d} (c(P) + \lambda (\lVert P \rVert - d)) \cr
   & \geq \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
-\end{align*} $$
+\end{align*} \tag{1}$$
 このように制約の一部を除去し、除去した制約について違反した量を一次のペナルティ[^lagrangian-penalty] として目的関数に組み込んだ問題をラグランジュ緩和問題と呼ぶ[^lagrangian-relaxation]。
 ラグランジュ緩和問題の解は、元の問題の解の下界を与えている。
 
-$\lambda$ を調整することで最もよい下界を求める問題をラグランジュ双対問題と呼ぶ。
+$(1)$ から、さらに以下の式が成り立つ。
 $$
-  \tag{1} \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) \geq \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
+  \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) \geq \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
+  \tag{2}
 $$
+これは、$\lambda$ を調整することで得られる最もよい下界を考えていると解釈できる。
+この最良の下界を求める問題をラグランジュ双対問題と呼ぶ。
 
 ### 強双対性
 
-$(1)$ について、$\displaystyle \exists P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)).\ \lVert P \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}$ が存在したとする。
-すると、$(1)$ の不等号が逆向きにも成立し、等号が成立する。
+$(2)$ について、$\displaystyle P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)) \land \lVert P ^ {\ast} \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}, P ^ {\ast} \in \mathcal{P}$ が存在したとする。
+すると、$(2)$ の不等号が逆向きにも成立し、等号が成立する。
 $$ \begin{align*}
   \min _ {P \in \mathcal{P} \lVert P \rVert = d} c(P) & \leq c(P ^ {\ast}) \cr
   & = c(P ^ {\ast}) + \lambda ^ {\ast} (\lVert P ^ {\ast} \rVert - d) \cr
@@ -72,22 +75,22 @@ $$ \begin{align*}
 \end{align*} $$
 主問題と双対問題の解が一致することを、強双対性と呼ぶ。
 
-以降、$\displaystyle \exists P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)).\ \lVert P \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}$ の存在を示す。
+以降、$\displaystyle P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)) \land \lVert P ^ {\ast} \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}, P ^ {\ast} \in \mathcal{P}$ の存在を示す。
 
 $P _ k ^ {\ast}$ を、丁度 $k$ 本の辺を使う条件下の $0$-$(N-1)$ 最短路と定義する。複数存在する場合、任意に $1$ つとる。
 
 #### 補題 $1$
 
-$$\forall 2 \leq k \leq N - 2.\ c(P _ k ^ {\ast}) - c(P _ {k - 1} ^ {\ast}) \leq c(P _ {k + 1} ^ {\ast}) - c(P _ k ^ {\ast})$$
+$$\forall k.\ 2 \leq k \leq N - 2 \Rightarrow c(P _ k ^ {\ast}) - c(P _ {k - 1} ^ {\ast}) \leq c(P _ {k + 1} ^ {\ast}) - c(P _ k ^ {\ast})$$
 
 ##### 証明
 
-$\lVert P _ a \rVert = \lVert P _ b \rVert = k$ となるパス $P _ a, P _ b$ であって $c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P _ a) + c(P _ b)$ であるものの存在を示す。
+$\lVert P _ a \rVert = \lVert P _ b \rVert = k$ となるパス $P _ a, P _ b \in \mathcal{P}$ であって $c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P _ a) + c(P _ b)$ であるものの存在を示す。
 もしそれが示されたならば、$c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P _ a) + c(P _ b) \geq c(P _ k ^ {\ast}) + c(P _ k ^ {\ast})$ を移項することで求める式を得る。
 
 $P _ {k - 1} ^ {\ast} = s _ 0 s _ 1 \dots s _ {k - 1}, P _ {k + 1} ^ {\ast} = t _ 0 t _ 1 \dots t _ {k + 1}$ とする。$s _ 0 = t _ 0 = 0, s _ {k - 1} = t _ {k + 1} = N - 1$ である。
 各 $0 \leq x \leq  k - 1$ について、$s _ x$ と $t _ {x + 1}$ の大小を比較する。
-$s _ 0 \lt t _ 1, s _ {k - 1} \gt t _ k$ であるから、$s _ x = t _ {x + 1}$ を満たす $x$ が存在するか、さもなくば $s _ x \lt t _ {x + 1} \land s _ {x + 1} \gt t _ {x + 2}$ を満たす $x$ が存在する。
+$s _ 0 \lt t _ 1$ かつ $s _ {k - 1} \gt t _ k$ であるから、$s _ x = t _ {x + 1}$ を満たす $x$ が存在するか、さもなくば $s _ x \lt t _ {x + 1} \land s _ {x + 1} \gt t _ {x + 2}$ を満たす $x$ が存在する。
 
 -   $s _ x = t _ {x + 1}$ を満たす $x$ が存在する場合
 
@@ -110,23 +113,23 @@ $s _ 0 \lt t _ 1, s _ {k - 1} \gt t _ k$ であるから、$s _ x = t _ {x + 1}$
 $\blacksquare$
 
 補題 $1$ は $k \mapsto c(P _ k ^ {\ast})$ が下に凸であることを意味している。
-その帰結として強双対性が示される。
 
-#### 定理 $1$
+#### 定理 $2$
 
-$\displaystyle \exists P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)).\ \lVert P \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}$ が存在する。
+$\displaystyle P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d)) \land \lVert P \rVert = d$ となる $\lambda ^ {\ast} \in \mathbb{Z}, P ^ {\ast} \in \mathcal{P}$ が存在する。
 
 ##### 証明
 
-$- (c(P _ {d + 1} ^ {\ast}) - c(P _ d ^ {\ast})) \leq \lambda ^ {\ast} \leq - (c(P _ d ^ {\ast}) - c(P _ {d - 1} ^ {\ast}))$ となるように $\lambda ^ {\ast}$ を取る。
-$\forall k.\ c (P _ k ^ {\ast}) + \lambda ^ {\ast} (k - d) \geq c (P _ d ^ {\ast})$ を示せばよい。
+補題 $1$ を用いて、$- (c(P _ {d + 1} ^ {\ast}) - c(P _ d ^ {\ast})) \leq \lambda ^ {\ast} \leq - (c(P _ d ^ {\ast}) - c(P _ {d - 1} ^ {\ast}))$ となるように $\lambda ^ {\ast}$ を取る。
+$\forall k.\ c (P _ k ^ {\ast}) + \lambda ^ {\ast} (k - d) \geq c (P _ d ^ {\ast})$ を示せば、$\displaystyle P _ d ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d))$ であるから、$P ^ {\ast}$ として $P _ d ^ {\ast}$ を取ることができる。
 
 -   $k \lt d$ の場合
 
     $$ \begin{align*}
       c (P _ k ^ {\ast}) + \lambda ^ {\ast} (k - d)
       & = c(P _ d ^ {\ast}) - \sum _ {i = k} ^ {d - 1} (c(P _ {i + 1} ^ {\ast}) - c(P _ i ^ {\ast})) + \lambda ^ {\ast} (k - d) \cr
-      & \geq c(P _ d ^ {\ast}) - (- \lambda ^ {\ast} (d - k)) + \lambda ^ {\ast} (k - d) & & (\because \text{補題}\ 1) \cr
+      & \geq c(P _ d ^ {\ast}) - (c(P _ d ^ {\ast}) - c(P _ {d - 1} ^ {\ast})) (d - k) + \lambda ^ {\ast} (k - d) & & (\because \text{補題}\ 1) \cr
+      & \geq c(P _ d ^ {\ast}) + \lambda ^ {\ast} (d - k) + \lambda ^ {\ast} (k - d) & & (\because \lambda ^ {\ast} \text{の定義}) \cr
       & = c (P _ d ^ {\ast})
     \end{align*} $$
 -   $k \geq d$ の場合
@@ -134,26 +137,32 @@ $\forall k.\ c (P _ k ^ {\ast}) + \lambda ^ {\ast} (k - d) \geq c (P _ d ^ {\ast
     $$ \begin{align*}
       c(P _ k ^ {\ast}) + \lambda ^ {\ast} (k - d)
       & = c(P _ d ^ {\ast}) + \sum _ {i = d} ^ {k - 1} (c(P _ {i + 1} ^ {\ast}) - c(P _ i ^ {\ast})) + \lambda ^ {\ast} (k - d) \cr
-      & \geq c(P _ d ^ {\ast}) + (- \lambda ^ {\ast}(k - d)) + \lambda ^ {\ast} (k - d) & & (\because \text{補題}\ 1) \cr
+      & \geq c(P _ d ^ {\ast}) + (c(P _ {d + 1} ^ {\ast}) - c(P _ d ^ {\ast})) (k - d) + \lambda ^ {\ast} (k - d) & & (\because \text{補題}\ 1) \cr
+      & \geq c(P _ d ^ {\ast}) - \lambda ^ {\ast}(k - d) + \lambda ^ {\ast} (k - d) & & (\because \lambda ^ {\ast} \text{の定義}) \cr
       & = c (P _ d ^ {\ast})
     \end{align*} $$
 
 $\blacksquare$
 
+#### 系 $3$ (強双対性)
+
+$$
+  \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) = \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
+$$
+
 ## アルゴリズム
 
-強双対性が示されたため、ラグランジュ双対問題を解く。
-
-$$ \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d)) $$
-
-$\displaystyle L: \lambda \mapsto \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))$ は $1$ 次関数群の $\min$ であるから、上に凸である。したがって、$L$ の最大値は三分探索を用いて得ることができる。
+ラグランジュ双対問題 $\displaystyle \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))$ を解く。
+$\displaystyle L: \lambda \mapsto \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))$ は $1$ 次関数群の $\min$ であるから、上に凸である。したがって、$L$ の最大値は三分探索を用いて計算することができる。
+系 $3$ より、得られた $L$ の最大値が、求める出力 $\displaystyle \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P)$ である。
 
 残る問題は $\lambda$ が与えられたとき $L(\lambda)$ を計算することである。
-$c _ {\lambda}$ を $c _ {\lambda} (e) = c(e) + \lambda$ によって定義する。
+辺重み $c _ {\lambda} : E \to \mathbb{Z}$ を $c _ {\lambda} (e) = c(e) + \lambda$ によって定義する。
 すなわち、$c _ {\lambda}$ は全ての辺の重みを $c$ と比べて $\lambda$ 大きくした重みである。
 すると、以下のように変形できる。
 $$ \begin{align*}
-  \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
+  L (\lambda)
+  & = \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d)) \cr
   & = \min _ {P \in \mathcal{P}} (c (P) + \lambda \lVert P \rVert - \lambda d) \cr
   & = - \lambda d + \min _ {P \in \mathcal{P}} c _ {\lambda} (P)
 \end{align*} $$
@@ -163,9 +172,9 @@ $c$ が Monge ならば $c _ {\lambda}$ もまた Monge である。
 辺の重みが Monge 性を満たす完全 DAG の最短路の計算は LARSCH Algorithm を用いて $\Theta (N)$ で行うことができる。
 Aliens[^Aliens] では $c$ の性質が Monge よりさらに良く、Convex Hull Trick を用いることで同じく $\Theta (N)$ で最短路を計算することができる。
 
-$\lambda = - 3 \max \lvert c \rvert$ とすると辺を $N - 1$ 本含むパスが最短となる。
-$\lambda$ をそれ以上小さくすると $L(\lambda)$ は単調減少するため、$- 3 \max \lvert c \rvert$ は三分探索の下界として用いることができる。
-同様に、$3 \max \lvert c \rvert$ を上界に用いることができる。
+$\displaystyle \lambda = - 3 \max _ {e \in E} \lvert c(e) \rvert$ とすると辺を $N - 1$ 本含むパスが最短となる。
+$\lambda$ をそれ以上小さくすると $L(\lambda)$ は単調減少するため、$\displaystyle - 3 \max _ {e \in E} \lvert c(e) \rvert$ は三分探索の下界として用いることができる。
+同様に、$\displaystyle 3 \max _ {e \in E} \lvert c(e) \rvert$ を上界に用いることができる。
 
 
 時間計算量は全体で $\Theta (N \log (\max \lvert c \rvert))$ となる。
