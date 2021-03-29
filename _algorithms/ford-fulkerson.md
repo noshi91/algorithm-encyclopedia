@@ -7,9 +7,9 @@ changelog:
     date: 2021-03-28T00:00:00+09:00
 algorithm:
   input: >
-    ネットワークフロー (つまり有向グラフ $G = (V, E)$ および辺用量 $c : E \to \mathbb{N}$ および頂点 $s, t \in V$)
+    辺容量が整数であるネットワーク (つまり有向グラフ $G = (V, E)$ および辺容量 $c : E \to \mathbb{N}$ および相異なる頂点 $s, t \in V$)
   output: >
-    $s$-$t$ 最大流 $f : E \to \mathbb{N}$
+    $s$-$t$ 最大流 (つまり関数 $f : E \to \mathbb{N}$ であって容量制限とフロー保存則を満たすもの)
   time_complexity: >
     出力の $s$-$t$ 最大流量を $F$ として $O(F \cdot \lvert E \rvert)$
   space_complexity:
@@ -26,7 +26,7 @@ description: >
 ## 概要
 
 Ford-Fulkerson 法は最大流問題を解くアルゴリズムのひとつである。
-増加パスを DFS で探してそこにフローを流していくことを繰り返す。
+残余グラフ上で増加パスを DFS で探しそこにフローを流していくことを繰り返す。
 計算量は出力の $s$-$t$ 最大流量を $F$ として $O(F \cdot \lvert E \rvert)$ である。
 
 
