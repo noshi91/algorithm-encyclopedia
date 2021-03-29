@@ -192,6 +192,16 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         text=r"style: `無向辺 $x - y$` ではなく `無向辺 $\lbrace x, y \rbrace$` と書いてください。(https://github.com/kmyk/algorithm-encyclopedia/pull/44)",
     )
 
+    error_by_regex(
+        pattern=r'辺用量',
+        text=r"日本語: `辺用量` ではなく `辺容量` です。",
+    )
+    if '辺容量' not in msg:
+        warning_by_regex(
+            pattern=r'用量',
+            text=r"日本語: `用量` ではなく `容量` の可能性があります。",
+        )
+
     return result
 
 
