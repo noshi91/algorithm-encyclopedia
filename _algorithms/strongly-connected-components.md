@@ -8,8 +8,8 @@ changelog:
 algorithm:
   input: 有向グラフ $G = (V, E)$
   output: $G = (V, E)$ の強連結成分分解
-  time_complexity: $O(|V| + |E|)$
-  space_complexity: $O(|V| + |E|)$
+  time_complexity: $O(\lvert V \rvert + \lvert E \rvert)$
+  space_complexity: $O(\lvert V \rvert + \lvert E \rvert)$
   aliases: []
   level: blue
 description: 有向グラフ $G = (V, E)$ の強連結成分 $C \subset V$ は、全ての $(u, v) \in C^2$ について $u$ から $v$ へ到達可能な極大集合である。$G$ の全ての強連結成分は $V$ の分割になり、これを強連結成分分解と呼ぶ。空間計算量、時間計算量ともに $O(\lvert V \rvert + \lvert E \rvert)$ で構成することができる。
