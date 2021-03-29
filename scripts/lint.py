@@ -276,6 +276,8 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
             text = frontmatter['algorithm'][key]
             if isinstance(text, str) and text.startswith('${') and text.endswith('}'):
                 yield error('YAML frontmatter: `{}` を編集してください。'.format(key), file=path, line=-1, col=-1)
+            if isinstance(text, str):
+                yield from collect_messages_from_line(frontmatter['algorithm'][key], path=path, line=-1)
 
     # description
     if not frontmatter.get('description'):
