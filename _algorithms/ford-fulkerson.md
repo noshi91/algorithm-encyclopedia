@@ -9,7 +9,7 @@ algorithm:
   input: >
     辺容量が整数であるネットワーク (つまり有向グラフ $G = (V, E)$ および辺容量 $c : E \to \mathbb{N}$ および相異なる頂点 $s, t \in V$)
   output: >
-    $s$-$t$ 最大流 (つまり関数 $f : E \to \mathbb{N}$ であって容量制限とフロー保存則を満たすもの)
+    $s$-$t$ 最大流 (つまり関数 $f : E \to \mathbb{N}$ であって容量制約とフロー保存則を満たすもの)
   time_complexity: >
     出力の $s$-$t$ 最大流量を $F$ として $O(F \cdot \lvert E \rvert)$
   space_complexity:

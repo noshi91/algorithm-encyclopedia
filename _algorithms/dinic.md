@@ -9,7 +9,7 @@ algorithm:
   input: >
     ネットワーク (つまり有向グラフ $G = (V, E)$ および辺容量 $c : E \to \mathbb{R} _ {\ge 0}$ および相異なる頂点 $s, t \in V$)
   output: >
-    $s$-$t$ 最大流 (つまり関数 $f : E \to \mathbb{R} _ {\ge 0}$ であって容量制限とフロー保存則を満たすもの)
+    $s$-$t$ 最大流 (つまり関数 $f : E \to \mathbb{R} _ {\ge 0}$ であって容量制約とフロー保存則を満たすもの)
   time_complexity: >
     最悪計算量は $O(\lvert V \rvert^2 \lvert E \rvert)$ だが実用的にはかなり速い。ネットワークの構造によっては計算量が落ちることがある。
   space_complexity:
