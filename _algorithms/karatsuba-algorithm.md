@@ -27,6 +27,12 @@ draft: false
 
 ## 概要
 
+Karatsuba 法とは、多項式乗算と多倍長整数乗算を $\Theta ( N ^ { \log _ 2 3} )$ 回の環演算で行なうアルゴリズムである。
+
+
+## 詳細
+
+
 環 $R$ 上の次数 $N - 1$ の多項式 $f, g$ の積 $f g$ を計算する。これを long multiplication（筆算と同じ方法、grade-school multiplication とも）で計算すると、$\Theta ( N ^ 2 )$ 回の環演算を要する。また、計算量は同じであるが、次のように分割統治法で計算することができる。
 
 ```plaintext-katex
