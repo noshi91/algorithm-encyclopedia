@@ -47,19 +47,21 @@ Monge は通常は $N \times M$ 行列に対して定義される概念である
 $\mathcal{P}$ を $G$ の $0$-$(N - 1)$ パス全体とする。
 $P \in \mathcal{P}$ に対して、$\lVert P \rVert$ を $P$ の辺の本数、$c(P)$ を $P$ の辺の重みの和とする。
 
+求めたい値は $\displaystyle \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P)$ である。
+
 任意の $\lambda \in \mathbb{Z}$ に対して、以下の式が成り立つ。
-$$ \begin{align*}
+$$ \begin{equation} \begin{split}
   \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) & = \min _ {P \in \mathcal{P}, \lVert P \rVert = d} (c(P) + \lambda (\lVert P \rVert - d)) \cr
   & \geq \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
-\end{align*} \tag{1}$$
+\end{split} \end{equation}$$
 このように制約の一部を除去し、除去した制約について違反した量を一次のペナルティ[^lagrangian-penalty] として目的関数に組み込んだ問題をラグランジュ緩和問題と呼ぶ[^lagrangian-relaxation]。
 ラグランジュ緩和問題の解は、元の問題の解の下界を与えている。
 
 $(1)$ から、さらに以下の式が成り立つ。
-$$
+$$ \begin{equation}
   \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) \geq \max _ {\lambda \in \mathbb{Z}} \min _ {P \in \mathcal{P}} (c(P) + \lambda (\lVert P \rVert - d))
   \tag{2}
-$$
+\end{equation} $$
 これは、$\lambda$ を調整することで得られる最もよい下界を考えていると解釈できる。
 この最良の下界を求める問題をラグランジュ双対問題と呼ぶ。
 
@@ -169,7 +171,7 @@ $$ \begin{align*}
 よって、$c _ {\lambda}$ についての最短路長を計算することで $L(\lambda)$ の値を得ることができる。
 
 $c$ が Monge であるから、$c _ {\lambda}$ もまた Monge である。
-辺の重みが Monge 性を満たす完全 DAG の最短路の計算は LARSCH Algorithm を用いて $\Theta (N)$ で行うことができる。
+辺の重みが Monge 性を満たす完全 DAG の最短路の計算は LARSCH Algorithm[^LARSCH] を用いて $\Theta (N)$ で行うことができる。
 Aliens[^Aliens] では $c$ の性質が Monge よりさらに良く、Convex Hull Trick を用いることで同じく $\Theta (N)$ で最短路を計算することができる。
 
 $\displaystyle \lambda = - 3 \max _ {e \in E} \lvert c(e) \rvert$ とすると辺を $N - 1$ 本含むパスが最短となる。
@@ -199,4 +201,5 @@ $\lambda$ をそれ以上小さくすると $L(\lambda)$ は単調減少する�
 [^WQS-binary-search]: [DP optimization - WQS Binary Search Optimization &#124; A Simple Blog](https://robert1003.github.io/2020/02/26/dp-opt-wqs-binary-search.html) <sup>[archive.org](https://web.archive.org/web/20210326063417/https://robert1003.github.io/2020/02/26/dp-opt-wqs-binary-search.html)</sup>　<https://codeforces.com/blog/entry/49691?#comment-402636> <sup>[archive.org](https://web.archive.org/web/20210326064207/https://codeforces.com/blog/entry/49691)</sup>
 [^lagrangian-penalty]: $\lambda (\lVert P \rVert - d)$ は負にもなり得るため、ペナルティとしての解釈が難しい部分もある。厳密な議論は式変形を参照せよ。
 [^lagrangian-relaxation]: [ラグランジュ緩和問題 - 数理計画用語集](http://www.msi.co.jp/nuopt/glossary/term_c4995faa151e2d66d8ea36c8eaff94885d60c19f.html) <sup>[archive.org](https://web.archive.org/web/20200221035313/http://www.msi.co.jp/nuopt/glossary/term_c4995faa151e2d66d8ea36c8eaff94885d60c19f.html)</sup>
+[^LARSCH]: Larmore, L. L., & Schieber, B. (1991). On-line dynamic programming with applications to the prediction of RNA secondary structure. Journal of Algorithms, 12(3), 490-515.
 [^tie-breaking]: 厳密には、$c _ {\lambda} (P)$ を最小化する $P$ が複数存在した場合にどれを選ぶかによって、単調性が成り立たない場合もある。
