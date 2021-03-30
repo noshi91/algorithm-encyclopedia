@@ -41,7 +41,7 @@ $\mathtt { LongMultiplication } ( f, g )$
  2. // 出力: 積 $fg$
  3. $n = \max ( \mathrm { deg } ( f ), \mathrm { deg } ( g) ) + 1$
  4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
- 5.     $\mathtt { return } \ f[0]  g[0]$
+ 5.     $\mathtt { return } \ \left ( [1] f \right ) \left ( [1] g \right )$
  6. $m = \lfloor n / 2 \rfloor$
  7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0 ( x ),  g ( x )  = g _ 1 ( x ) x ^ m + g _ 0 ( x )$ と分解する。
  8. $h _ 0 = \mathtt { LongMultiplication }( f _ 0 , g _ 0  )$
@@ -63,7 +63,7 @@ $\mathtt { Karatsuba } ( f, g )$
  2. // 出力: 積 $fg$
  3. $n = \max ( \mathrm { deg } ( f ), \mathrm { deg } ( g) ) + 1$
  4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
- 5.     $\mathtt { return } \ f[0]  g[0]$
+ 5.     $\mathtt { return } \ \left ( [1] f \right ) \left ( [1] g \right )$
  6. $m = \lfloor n / 2 \rfloor$
  7. 次数 $m$ で切って$f ( x ) = f _ 1 ( x  ) x ^ m  + f _ 0 ( x ),  g ( x )  = g _ 1 ( x ) x ^ m + g _ 0 ( x )$ と分解する。
  8. $h _ 0 = \mathtt { Karatsuba }( f _ 0 , g _ 0  )$
