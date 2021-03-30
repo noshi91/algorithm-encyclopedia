@@ -3,8 +3,8 @@ layout: entry
 changelog:
   - summary: 記事作成
     authors: kimiyuki
-    reviewers:
-    date: 2021-03-28T00:00:00+09:00
+    reviewers: MiSawa
+    date: 2021-03-30T00:00:00+09:00
 algorithm:
   input: >
     辺容量が整数であるネットワーク (つまり有向グラフ $G = (V, E)$ および辺容量 $c : E \to \mathbb{N}$ および相異なる頂点 $s, t \in V$)
