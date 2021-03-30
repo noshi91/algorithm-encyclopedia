@@ -2,11 +2,13 @@
 import argparse
 import datetime
 import functools
+import os
 import pathlib
 import re
 import sys
 from logging import DEBUG, basicConfig, getLogger
 from typing import *
+from typing import Match
 
 import yaml
 
@@ -19,21 +21,25 @@ class Message(NamedTuple):
     line: int
     col: int
     message: str
+    fix: Optional[Callable[[str], str]]
 
     def __str__(self) -> str:
-        return '::{} file={},line={},col={}::{}'.format(self.type, str(self.file), self.line, self.col, self.message)
+        suggest_fix = ''
+        if self.fix is not None:
+            suggest_fix = ' (`--fix` オプションが使えます)'
+        return '::{} file={},line={},col={}::{}{}'.format(self.type, str(self.file), self.line, self.col, self.message, suggest_fix)
 
 
-def warning(message: str, *, file: pathlib.Path, line: int, col: int) -> Message:
+def warning(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optional[Callable[[str], str]] = None) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
-    return Message(type='warning', file=file, line=line, col=col, message=message)
+    return Message(type='warning', file=file, line=line, col=col, message=message, fix=fix)
 
 
-def error(message: str, *, file: pathlib.Path, line: int, col: int) -> Message:
+def error(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optional[Callable[[str], str]] = None) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
-    return Message(type='error', file=file, line=line, col=col, message=message)
+    return Message(type='error', file=file, line=line, col=col, message=message, fix=fix)
 
 
 @functools.lru_cache(maxsize=None)
@@ -56,6 +62,15 @@ def check_atcoder_user(user: str, *, file: pathlib.Path, line: int, col: int) ->
         yield error(text, file=file, line=line, col=col)
 
 
+def from_table(f: Dict[str, str]) -> Callable[[Match[str]], str]:
+    def fix(m: Match[str]) -> str:
+        s = m.group(0)
+        assert s in f
+        return f[s]
+
+    return fix
+
+
 def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
     # Ignore errors and warnings in quoted texts
     if msg.lstrip().startswith('>') or 'blockquote' in msg:
@@ -63,17 +78,23 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
 
     result: List[Message] = []
 
-    def warning_by_regex(pattern: str, text: str) -> None:
+    def warning_by_regex(pattern: str, text: str, fix: Union[None, str, Callable[[Match[str]], str]] = None) -> None:
         nonlocal result
         m = re.search(pattern, msg)
         if m:
-            result.append(warning(text, file=path, line=line, col=m.start() + 1))
+            fix_fun: Optional[Callable[[str], str]] = None
+            if fix is not None:
+                fix_fun = lambda s: re.subn(pattern, fix, s)[0]  # type: ignore
+            result.append(warning(text, file=path, line=line, col=m.start() + 1, fix=fix_fun))
 
-    def error_by_regex(pattern: str, text: str) -> None:
+    def error_by_regex(pattern: str, text: str, fix: Union[None, str, Callable[[Match[str]], str]] = None) -> None:
         nonlocal result
         m = re.search(pattern, msg)
         if m:
-            result.append(error(text, file=path, line=line, col=m.start() + 1))
+            fix_fun: Optional[Callable[[str], str]] = None
+            if fix is not None:
+                fix_fun = lambda s: re.subn(pattern, fix, s)[0]  # type: ignore
+            result.append(error(text, file=path, line=line, col=m.start() + 1, fix=fix_fun))
 
     error_by_regex(
         pattern=r'です。|ます。',
@@ -82,11 +103,16 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     error_by_regex(
         pattern=r'，|．',
         text="日本語: `，` と `．` ではなく `、` と `。` を使ってください。",
+        fix=from_table({
+            '，': '、',
+            '．': '。',
+        }),
     )
 
     error_by_regex(
         pattern=r'\\\(\|\\\)',
         text=r"KaTeX: inline 表示をしたいときは `\(` や `\)` ではなく `$` を使ってください。`\(` や `\)` は Markdown でのエスケープと解釈されて壊れることがあります。",
+        fix='$',
     )
     error_by_regex(
         pattern=r'\\\[\|\\\]',
@@ -95,18 +121,25 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     error_by_regex(
         pattern=r'^\$$',
         text=r"KaTeX: display 表示をしたいときは `$` ではなく `$$` を使ってください。`$` は inline 表示になります。",
+        fix='$$',
     )
     error_by_regex(
         pattern=r'\\\\',
         text=r"KaTeX: `\\` ではなく `\cr` を使ってください。`\\` が Markdown でのエスケープと解釈されて壊れることがあります。",
+        fix=r'\cr',
     )
     error_by_regex(
         pattern=r'\\{|\\}',
         text=r"KaTeX: `\{` と `\}` ではなく `\lbrace` と `\rbrace` を使ってください。`\{` や `\}` が Markdown でのエスケープと解釈されて壊れることがあります。",
+        fix=from_table({
+            r'\{': r'\lbrace',
+            r'\}': r'\rbrace',
+        }),
     )
     error_by_regex(
-        pattern=r'_{',
+        pattern=r' *_{',
         text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れることがあります。",
+        fix=' _ {',
     )
     if '$' in msg:
         error_by_regex(
@@ -118,6 +151,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
             error_by_regex(
                 pattern=r'\|',
                 text=r"Markdown: `|` を文字として表示したい場合は `|` ではなく `&#124;` を使ってください。`|` は Markdown のテーブルと解釈されて壊れることがあります。",
+                fix='&#124;',
             )
     if '</a>' not in msg:
         error_by_regex(
@@ -146,14 +180,17 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     error_by_regex(
         pattern=r'多項式補完',
         text=r"typo: `多項式補完` ではなく `多項式補間` です。",
+        fix=r'多項式補間',
     )
     error_by_regex(
         pattern=r'補完多項式',
         text=r"typo: `補完多項式` ではなく `補間多項式` です。",
+        fix=r'補間多項式',
     )
     error_by_regex(
         pattern=r'[Ll]agrange *補完',
         text=r"typo: `Lagrange 補完` ではなく `Lagrange 補間` です。",
+        fix=r'Lagrange 補間',
     )
     warning_by_regex(
         pattern=r'補完',
@@ -162,12 +199,14 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
 
     for suffix in ['グラフ', '辺', '木', '閉路', '路']:
         error_by_regex(
-            pattern=r'無効{}'.format(suffix),
+            pattern=r'無効({})'.format(suffix),
             text=r"typo: `無効{}` ではなく `無向{}` です。".format(suffix, suffix),
+            fix=(lambda m: '無向' + m.group(1)),
         )
         error_by_regex(
-            pattern=r'有効{}'.format(suffix),
+            pattern=r'有効({})'.format(suffix),
             text=r"typo: `有効{}` ではなく `有向{}` です。".format(suffix, suffix),
+            fix=(lambda m: '無向' + m.group(1)),
         )
 
     warning_by_regex(
@@ -195,6 +234,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     error_by_regex(
         pattern=r'辺用量',
         text=r"日本語: `辺用量` ではなく `辺容量` です。",
+        fix='辺容量',
     )
     if '辺容量' not in msg:
         warning_by_regex(
@@ -356,14 +396,17 @@ def list_markdown_files() -> List[pathlib.Path]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    args = parser.parse_args()
+    parser.add_argument('--fix', action='store_true', help='自動で修正できるミスを自動で修正します。')
+    parsed = parser.parse_args()
     basicConfig(level=DEBUG)
 
     paths = list_markdown_files()
     warning_count = 0
     error_count = 0
     for path in paths:
+        # collect messages
         logger.info('checking %s', str(path))
+        fix: List[Tuple[int, Callable[[str], str]]] = []
         for message in collect_messages_from_file(path):
             if message.type == 'error':
                 error_count += 1
@@ -371,7 +414,24 @@ def main() -> int:
                 warning_count += 1
             else:
                 assert False
+            if message.fix is not None:
+                assert message.line is not None
+                fix.append((message.line, message.fix))
             print(message)
+
+        # apply fix
+        if parsed.fix and fix:
+            logger.info('applying fix...')
+            with open(path) as fh:
+                lines = list(fh.readlines())
+            for line, f in fix:
+                lines[line - 1] = f(lines[line - 1])
+            content = ''.join(lines)
+            backup_path = path.parent / (path.name + '~')
+            os.rename(path, backup_path)
+            with open(path, 'w') as fh:
+                fh.write(content)
+
     logger.info('%d errors and %d warnings in %d files', error_count, warning_count, len(paths))
     if error_count:
         logger.error('WA')

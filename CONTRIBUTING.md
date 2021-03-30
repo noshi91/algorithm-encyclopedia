@@ -119,6 +119,8 @@ $ pip3 install -r scripts/requirements.txt
 $ python3 scripts/lint.py
 ```
 
+また `--fix` オプションを付けて実行 (`$ python3 scripts/lint.py`) すると自動で修正できるミスは自動で修正してくれます。
+
 
 ### 複製の公開
 
