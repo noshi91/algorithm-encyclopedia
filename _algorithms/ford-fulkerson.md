@@ -25,7 +25,7 @@ description: >
 
 ## 概要
 
-Ford-Fulkerson 法は最大流問題を解くアルゴリズムのひとつである。
+Ford-Fulkerson 法は[最大流問題](/maximum-flow-problem)を解くアルゴリズムのひとつである。
 残余グラフ上で増加パスを DFS で探しそこにフローを流していくことを繰り返す。
 計算量は出力の $s$-$t$ 最大流量を $F$ として $O(F \cdot \lvert E \rvert)$ である。
 
@@ -37,6 +37,8 @@ Ford-Fulkerson 法は最大流問題を解くアルゴリズムのひとつで�
 
 ## 関連項目
 
+-   [最大流問題](/maximum-flow-problem)
+    -    Ford-Fulkerson 法は最大流問題を解くアルゴリズムである。
 -   [Dinic 法](/dinic)
     -    Dinic 法は Ford-Fulkerson 法と並んで競技プログラミングでよく利用される最大流問題を解くアルゴリズムのひとつである。Ford-Fulkerson 法では増加パスを単純な DFS により探すが、Dinic 法では最短経路 DAG を構成して増加パスをこの DAG の上で探す。
 

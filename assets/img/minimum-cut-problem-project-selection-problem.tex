@@ -1,0 +1,76 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}[
+    x=4.8cm,
+    y=2.4cm,
+    font=\large,
+    v/.style={draw, circle, fill=white, minimum size=1.6cm},
+    dots/.style={circle, minimum size=1.6cm},
+    e/.style={draw, ->},
+]
+    \node[v] (s) at (0, 0) {$s$};
+    \node[v] (x0) at (1, 3) {$x_0$};
+    \node[v] (x1) at (1, 2) {$x_1$};
+    \node[v] (x2) at (1, 1) {$x_2$};
+    \node[v] (x3) at (1, 0) {$x_3$};
+    \node at (1, -1.5) {$\vdots$};
+    \node[dots] (xdots0) at (1, -1.0) {};
+    \node[dots] (xdots1) at (1, -1.2) {};
+    \node[dots] (xdots2) at (1, -1.4) {};
+    \node[dots] (xdots3) at (1, -1.6) {};
+    \node[dots] (xdots4) at (1, -1.8) {};
+    \node[dots] (xdots5) at (1, -2.0) {};
+    \node[dots] (xdots6) at (1, -2.2) {};
+    \node[dots] (xdots7) at (1, -2.4) {};
+    \node[v] (xl) at (1, -3) {$x_{N-1}$};
+    \node[v] (y0) at (2, 3) {$y_0$};
+    \node[v] (y1) at (2, 2) {$y_1$};
+    \node[v] (y2) at (2, 1) {$y_2$};
+    \node[v] (y3) at (2, 0) {$y_3$};
+    \node at (2, -1.5) {$\vdots$};
+    \node[dots] (ydots0) at (2, -1.0) {};
+    \node[dots] (ydots1) at (2, -1.2) {};
+    \node[dots] (ydots2) at (2, -1.4) {};
+    \node[dots] (ydots3) at (2, -1.6) {};
+    \node[dots] (ydots4) at (2, -1.8) {};
+    \node[dots] (ydots5) at (2, -2.0) {};
+    \node[dots] (ydots6) at (2, -2.2) {};
+    \node[dots] (ydots7) at (2, -2.4) {};
+    \node[v] (yl) at (2, -3) {$y_{N-1}$};
+    \node[v] (t) at (3, 0) {$t$};
+
+    \path[e] (s) edge node[midway, above] {$a_0$} (x0);
+    \path[e] (s) edge node[midway, above] {$a_1$} (x1);
+    \path[e] (s) edge node[midway, above] {$a_2$} (x2);
+    \path[e] (s) edge node[midway, above] {$a_3$} (x3);
+    \path[e] (s) edge node[midway, above] {$a_3$} (x3);
+    \path[e] (s) edge (xdots0);
+    \path[e] (s) edge (xdots2);
+    \path[e] (s) edge (xdots4);
+    \path[e] (s) edge (xdots6);
+    \path[e] (s) edge node[midway, below] {$a_{N-1}$} (xl);
+    \path[e] (y0) edge node[midway, above] {$b_0$} (t);
+    \path[e] (y1) edge node[midway, above] {$b_1$} (t);
+    \path[e] (y2) edge node[midway, above] {$b_2$} (t);
+    \path[e] (y3) edge node[midway, above] {$b_3$} (t);
+    \path[e] (ydots0) edge (t);
+    \path[e] (ydots2) edge (t);
+    \path[e] (ydots4) edge (t);
+    \path[e] (ydots6) edge (t);
+    \path[e] (yl) edge node[midway, below] {$b_{N-1}$} (t);
+
+    \path[e] (x0) edge node[midway, above] {$\infty$} (y0);
+    \path[e] (x1) edge node[midway, above] {$\infty$} (y0);
+    \path[e] (x1) edge node[midway, above] {$\infty$} (y3);
+    \path[e] (x2) edge node[midway, above] {$\infty$} (y0);
+    \path[e] (x3) edge node[midway, above] {$\infty$} (y2);
+    \path[e] (x3) edge node[midway, above] {$\infty$} (ydots0);
+    \path[e] (xdots0) edge node[midway, above] {$\infty$} (y2);
+    \path[e] (xdots2) edge node[midway, above] {$\infty$} (ydots0);
+    \path[e] (xdots3) edge node[midway, above] {$\infty$} (ydots5);
+    \path[e] (xdots5) edge node[midway, above] {$\infty$} (yl);
+    \path[e] (xl) edge node[midway, above] {$\infty$} (ydots2);
+    \path[e] (xl) edge node[midway, above] {$\infty$} (ydots7);
+\end{tikzpicture}
+\end{document}

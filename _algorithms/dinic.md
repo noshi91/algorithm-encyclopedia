@@ -25,7 +25,7 @@ description: >
 
 ## 概要
 
-Dinic 法は最大流問題を解くアルゴリズムのひとつである。
+Dinic 法は[最大流問題](/maximum-flow-problem)を解くアルゴリズムのひとつである。
 残余グラフ上において、辺の本数の意味での $s$-$t$ 最短経路 DAG を BFS により構成し、増加パスをこの DAG の上の DFS により探して流せるだけ流す、という一連のステップを繰り返す。
 
 最悪計算量は $O(\lvert V \rvert^2 \lvert E \rvert)$ だが実用的にはかなり速い。また、ネットワークの構造を制限すれば最悪計算量が落ちることがある[^time-complexity]。
@@ -38,6 +38,8 @@ Dinic 法は最大流問題を解くアルゴリズムのひとつである。
 
 ## 関連項目
 
+-   [最大流問題](/maximum-flow-problem)
+    -   Dinic 法は最大流問題を解くアルゴリズムである。
 -   [Ford-Fulkerson 法](/ford-fulkerson)
     -    Ford-Fulkerson 法は Dinic 法と並んで競技プログラミングでよく利用される最大流問題を解くアルゴリズムのひとつである。Dinic 法では最短経路 DAG を構成して増加パスをこの DAG の上で探すが、Ford-Fulkerson 法では増加パスを単純な DFS により探す。
 
