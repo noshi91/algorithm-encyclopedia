@@ -254,6 +254,13 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
             fix=(lambda m: m.group(1) + ' 法'),
         )
 
+    # TODO: すべて修正されたら error にする
+    warning_by_regex(
+        pattern=r'行な([わいうえおっ])',
+        text=r"日本語: `行なう` ではなく `行う` の方が一般的です。",
+        fix=(lambda m: '行' + m.group(1)),
+    )
+
     return result
 
 
