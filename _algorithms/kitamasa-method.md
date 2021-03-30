@@ -17,4 +17,4 @@ draft: true
 draft_urls: []
 ---
 
-# Kitamasa法
+# Kitamasa 法

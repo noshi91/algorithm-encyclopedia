@@ -17,4 +17,4 @@ draft: true
 draft_urls:
 ---
 
-# Garner法
+# Garner 法

@@ -242,6 +242,14 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
             text=r"日本語: `用量` ではなく `容量` の可能性があります。",
         )
 
+    if 'http' not in msg:
+        # TODO: すべて修正されたら error にする
+        warning_by_regex(
+            pattern='([A-Za-z]+)法',
+            text='style: `Dijkstra法` ではなく `Dijkstra 法` のようにスペースを開けて書いてください。どちらが正しいというものではないですが、統一されていることは重要です。',
+            fix=(lambda m: m.group(1) + ' 法'),
+        )
+
     return result
 
 
