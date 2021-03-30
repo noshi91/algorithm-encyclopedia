@@ -35,14 +35,18 @@
             script.parentNode.replaceChild(document.createTextNode(text), script);
         }
         // Use $...$ and $$...$$ for LaTeX.
-        renderMathInElement(document.body, {
+        const config = {
           delimiters: [
             {left: "$$", right: "$$", display: true},
             {left: "$", right: "$", display: false},
             {left: "\\(", right: "\\)", display: true},  // I don't know why, but Kramdown convert `$$ ... $$` to `\( ... \)` on GitHub Pages.
             {left: "\\[", right: "\\]", display: true},  // Kramdown sometimes converts `$$ ... $$` to `\[ ... \]`.
           ],
-        });
+        };
+        renderMathInElement(document.body, config);
+        for (const code of document.getElementsByClassName("language-plaintext-katex")) {
+            renderMathInElement(code, config);
+        }
       });
     </script>
   </head>

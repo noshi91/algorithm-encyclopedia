@@ -38,8 +38,6 @@
 1.  対応する項目の Markdown ファイルに本文を追加する。
 1.  プルリクエストを送る。
 
-数式には [KaTeX](https://katex.org/) が使えます。KaTeX が対応している関数の一覧は [Supported Functions](https://katex.org/docs/supported.html) にあります。
-
 
 ### authors と reviewers
 
@@ -81,6 +79,13 @@ authors と reviewers の表示は、commit log を確認しない読者に対�
 -   `description`: アルゴリズムの概要。「（ここにアルゴリズムの名前が入る）とは、（ここにアルゴリズムの概要が入る）というアルゴリズムである。」という形の文から初めて数文ぐらいで書くのがよい。KaTeX は使用可。HTML も使用可だがあまり推奨されない。
 -   `draft` (省略可): これが `true` であるとトップページから記事ページへのリンクが貼られない。
 -   `draft_urls` (省略可): 記事の本文の代わりになるリンク (複数可)
+
+
+### 数式
+
+数式には [KaTeX](https://katex.org/) が使えます。KaTeX が対応している関数の一覧は [Supported Functions](https://katex.org/docs/supported.html) にあります。
+
+[コードブロック](https://docs.github.com/ja/github/writing-on-github/creating-and-highlighting-code-blocks)中で数式を利用したい場合は言語名に `plaintext-katex` を指定してください。
 
 
 ### AtCoder ID
