@@ -37,7 +37,7 @@ Multiplication( f, g )
  4. if n == 1
  5.     return f[0] * g[0]
  6. m = floor(n / 2)
- 7. 次数 m で切って f(x) = f₁(x) x^m + f(0),  g(x) = g₁(x) x^m + g₀(x) と分解する。
+ 7. 次数 m で切って f(x) = f₁(x) xᵐ + f(0),  g(x) = g₁(x) xᵐ + g₀(x) と分解する。
  8. h₀  = Multiplication( f₀ , g₀  )
  9. h₂ = Multiplication( f₁, g₁ )
 10. h₁ = Multiplication( f₀ , g₀ ) + Multiplication( f₁, g₀ )
@@ -59,7 +59,7 @@ Karatsuba( f, g )
  4. if n == 1
  5.     return f[0] * g[0]
  6. m = floor(n / 2)
- 7. 次数 m で切って f(x) = f₁(x) x^m + f₀,  g(x) = g₁(x) x^m + g₀(x) と分解する。
+ 7. 次数 m で切って f(x) = f₁(x) xᵐ + f₀,  g(x) = g₁(x) xᵐ + g₀(x) と分解する。
  8. h₀  = Karatsuba( f₀ , g₀ )
  9. h₂ = Karatsuba( f₁, g₁)
 10. h₁ = Karatsuba( f₀ + f₁, g₀ + g₁ ) - h₀ - h₂
