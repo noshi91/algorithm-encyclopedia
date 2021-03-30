@@ -350,6 +350,12 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
     if frontmatter.get('draft'):
         if 'draft_urls' not in frontmatter:
             yield error('YAML frontmatter: 概要のみの記事には `draft_urls` を設定してください。', file=path, line=-1, col=-1)
+    if not frontmatter.get('draft'):
+        if 'draft' in frontmatter:
+            # TODO: すべて修正されたら error にする
+            yield warning('YAML frontmatter: 本体のある記事からは `draft: false` は消してください。', file=path, line=-1, col=-1)
+        if 'draft_urls' in frontmatter:
+            yield error('YAML frontmatter: 本体のある記事からは `draft_urls: []` は消してください。', file=path, line=-1, col=-1)
 
 
 def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
