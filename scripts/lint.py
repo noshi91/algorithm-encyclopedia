@@ -33,12 +33,16 @@ class Message(NamedTuple):
 def warning(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optional[Callable[[str], str]] = None) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
+    if line == -1:
+        fix = None
     return Message(type='warning', file=file, line=line, col=col, message=message, fix=fix)
 
 
 def error(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optional[Callable[[str], str]] = None) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
+    if line == -1:
+        fix = None
     return Message(type='error', file=file, line=line, col=col, message=message, fix=fix)
 
 
