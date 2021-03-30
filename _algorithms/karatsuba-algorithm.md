@@ -37,7 +37,7 @@ $\mathtt { Multiplication } ( f, g )$
  4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
  5.     $\mathtt { return } \ f[0]  g[0]$
  6. $m = \lfloor n / 2 \rfloor$
- 7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0,  g ( x )  = g _ 1 ( x ) x ^ m + g _ 1 ( x )$ と分解する。
+ 7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0 ( x ),  g ( x )  = g _ 1 ( x ) x ^ m + g _ 1 ( x )$ と分解する。
  8. $h _ 0 = \mathtt { Multiplication }( f _ 0 , g _ 0  )$
  9. $h _ 1 = \mathtt { Multiplication }( f _ 0 , g _ 1 ) + \mathtt { Multiplication }( f _ 1, g _ 0 )$
 10. $h _ 2 = \mathtt { Multiplication }( f _ 1 , g _ 1  )$
@@ -59,7 +59,7 @@ $\mathtt { Karatsuba } ( f, g )$
  4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
  5.     $\mathtt { return } \ f[0]  g[0]$
  6. $m = \lfloor n / 2 \rfloor$
- 7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0,  g ( x )  = g _ 1 ( x ) x ^ m + g _ 1 ( x )$ と分解する。
+ 7. 次数 $m$ で切って$f ( x ) = f _ 1 ( x  ) x ^ m  + f _ 0 ( x ),  g ( x )  = g _ 1 ( x ) x ^ m + g _ 1 ( x )$ と分解する。
  8. $h _ 0 = \mathtt { Karatsuba }( f _ 0 , g _ 0  )$
  9. $h _ 2 = \mathtt { Karatsuba }( f _ 1 , g _ 1  )$
 10. $h _ 1 = \mathtt { Karatsuba }( f _ 0 + f _ 1, g _ 0 + g _ 1 )  - h _ 0 - h _ 2$
