@@ -34,7 +34,7 @@ $\mathtt { Multiplication } ( f, g )$
  1. // 入力: $f, \ g$ は多項式
  2. // 出力: 積 $fg$
  3. $n = \max ( \mathrm { deg } ( f ), \mathrm { deg } ( g) ) + 1$
- 4. if $n \mathtt { == } 1$
+ 4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
  5.     $\mathtt { return } \ f[0]  g[0]$
  6. $m = \lfloor n / 2 \rfloor$
  7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0,  g ( x )  = g _ 1 ( x ) x ^ m + g _ 1 ( x )$ と分解する。
@@ -56,7 +56,7 @@ $\mathtt { Karatsuba } ( f, g )$
  1. // 入力: $f, \ g$ は多項式
  2. // 出力: 積 $fg$
  3. $n = \max ( \mathrm { deg } ( f ), \mathrm { deg } ( g) ) + 1$
- 4. if $n \mathtt { == } 1$
+ 4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
  5.     $\mathtt { return } \ f[0]  g[0]$
  6. $m = \lfloor n / 2 \rfloor$
  7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0,  g ( x )  = g _ 1 ( x ) x ^ m + g _ 1 ( x )$ と分解する。
