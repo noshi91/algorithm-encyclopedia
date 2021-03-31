@@ -75,8 +75,45 @@ $\mathtt { Karatsuba } ( f, g )$
 
 ## 定数倍について
 
-Long multiplication は $2 N ^ 2$ 回以下、Karatsuba 法は $9 N ^ { \log _ 2 3 }$ 回以下の環演算を行う。
+Long multiplication は $2 N ^ 2$ 回以下の環演算を行う。
 
+一方、Karatsuba 法は、$N$ が $2$ 冪のとき $9 N ^ { \log _ 2 3 }$ 回以下、一般の場合に $\frac { 39 } 2 N ^ { \log _ 2 3 }$ 回以下の環演算を行う。
+
+### 証明
+
+再帰段階以外では、第 10 行の$f _ 0 + f _ 1, g _ 0 + g _ 1$ の計算に $\lfloor N / 2 \rfloor$ 回ずつ、$\mathtt { Karatsuba } ( f _ 0 + f _ 1, g _ 0 + g _ 1 )$ から $h _ 0, \ h _ 2$ を引くのに $N$ 回以下ずつ、第 11 行で $h _ 2 x ^ { 2 m } + h _ 0$ に $h _ 1 x ^ m$ を足すのに $N$ 回以下、合計 $4 N$ 回以下の環演算を要する。従って、Karatsuba 法の環演算の回数を $T ( N )$ とおくと、$T ( N ) \le 3 T ( N / 2 ) + 4 N$ が成り立つ。また $T ( 1 ) = 1$ である。
+
+したがって $N$ が $2$ 冪のとき、
+
+$$
+T ( N )
+\le 4 N  \sum _ { k = 0 } ^ { \log _ 2 N - 1 } \left ( \frac 3 2 \right ) ^ { k } + \left ( \frac 3 2 \right ) ^ { \log _ 2 N }
+= 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N } - 1 \right ) + N ^ { \log _ 2 3 }
+\le 9 N ^ { \log _ 2 3 }
+$$
+
+が成り立つ。
+
+一方一般の場合は、$L = \lceil \log _ 2 N \rceil$ とおいて、
+
+$$
+\begin{align*}
+T ( N )
+&\le 4 \sum _ { k = 0 } ^ { L - 1 } 3 ^ k \left \lceil \frac N { 2 ^ k } \right \rceil
+    + \left ( \frac 3 2 \right ) ^ { L }
+\le 4 \sum _ { k = 0 } ^ { \log _ 2 N } \left ( N \left ( \frac 3 2 \right ) ^ k + 3 ^ k \right )
+    + \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 }
+\\
+&= 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 } - 1 \right )
+    + 2 \left ( 3 ^ { \log _ 2 N + 1 } - 1 \right )
+    + \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 }
+\\
+&= \left ( 12 + 6 + \frac 3 2 \right ) 3 ^ { \log _ 2 N } - 8 N - 2
+\le \frac { 39 } 2 N ^ { \log _ 2 3 }
+\end{align*}
+$$
+
+が成り立つ。∎
 
 ## 多倍長整数の乗算への応用
 
