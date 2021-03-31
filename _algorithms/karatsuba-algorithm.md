@@ -77,7 +77,7 @@ $\mathtt { Karatsuba } ( f, g )$
 
 Long multiplication は $2 N ^ 2$ 回以下の環演算を行う。
 
-一方、Karatsuba 法は、$N$ が $2$ 冪のとき $9 N ^ { \log _ 2 3 }$ 回以下、一般の場合に $\frac { 39 } 2 N ^ { \log _ 2 3 }$ 回以下の環演算を行う。
+一方、Karatsuba 法は、$N$ が $2$ 冪のとき $9 N ^ { \log _ 2 3 }$ 回以下、一般の場合に $21 N ^ { \log _ 2 3 }$ 回以下の環演算を行う。
 
 ### 証明
 
@@ -87,7 +87,7 @@ Long multiplication は $2 N ^ 2$ 回以下の環演算を行う。
 
 $$
 T ( N )
-\le 4 N  \sum _ { k = 0 } ^ { \log _ 2 N - 1 } \left ( \frac 3 2 \right ) ^ { k } + \left ( \frac 3 2 \right ) ^ { \log _ 2 N }
+\le 4 N  \sum _ { k = 0 } ^ { \log _ 2 N - 1 } \left ( \frac 3 2 \right ) ^ { k } + 3 ^ { \log _ 2 N }
 = 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N } - 1 \right ) + N ^ { \log _ 2 3 }
 \le 9 N ^ { \log _ 2 3 }
 $$
@@ -100,16 +100,20 @@ $$
 \begin{align*}
 T ( N )
 &\le 4 \sum _ { k = 0 } ^ { L - 1 } 3 ^ k \left \lceil \frac N { 2 ^ k } \right \rceil
-    + \left ( \frac 3 2 \right ) ^ { L }
-\le 4 \sum _ { k = 0 } ^ { \log _ 2 N } \left ( N \left ( \frac 3 2 \right ) ^ k + 3 ^ k \right )
-    + \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 }
+    + 3 ^ L
+\le 4 \sum _ { k = 0 } ^ { L - 1 } \left ( N \left ( \frac 3 2 \right ) ^ k + 3 ^ k \right )
+    + 3 ^ L
+\cr
+&= 8 N \left ( \left ( \frac 3 2 \right ) ^ L - 1 \right )
+    + 2 \left ( 3 ^ L - 1 \right )
+    + 3 ^ L
 \cr
 &= 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 } - 1 \right )
     + 2 \left ( 3 ^ { \log _ 2 N + 1 } - 1 \right )
-    + \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 }
+    + 3 ^ { \log _ 2 N + 1 }
 \cr
-&= \left ( 12 + 6 + \frac 3 2 \right ) 3 ^ { \log _ 2 N } - 8 N - 2
-\le \frac { 39 } 2 N ^ { \log _ 2 3 }
+&= \left ( 12 + 6 + 3 \right ) 3 ^ { \log _ 2 N } - 8 N - 2
+\le 21 N ^ { \log _ 2 3 }
 \end{align*}
 $$
 
