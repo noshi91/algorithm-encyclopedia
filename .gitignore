@@ -7,6 +7,7 @@ _site/
 # Ruby
 /.bundle/
 /.vendor/
+# In general you should check-in Gemfile.lock but we would not like to check-in in this repository. See https://github.com/kmyk/algorithm-encyclopedia/pull/136
 Gemfile.lock
 
 # backup files which `scripts/lint.py --fix` generates
