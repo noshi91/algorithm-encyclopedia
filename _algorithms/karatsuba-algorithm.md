@@ -19,7 +19,6 @@ algorithm:
   aliases:
   level: yellow
 description: Karatsuba 法とは、多項式乗算と多倍長整数乗算を $\Theta ( N ^ { \log _ 2 3} )$ 回の環演算で行うアルゴリズムである。
-draft: false
 ---
 
 

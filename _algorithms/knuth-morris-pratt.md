@@ -10,9 +10,9 @@ algorithm:
   output: パターン文字列 $P$ がテキスト文字列 $T$ に含まれるかどうか。含まれるならその位置も求める。
   time_complexity: 前処理に $O(\vert P \vert)$ かつ検索に $O(\vert T \vert)$
   space_complexity:
-  aliases: ["KMP法"]
+  aliases: ["KMP 法"]
   level: yellow
-description: Knuth-Morris-Pratt法とは文字列検索アルゴリズムのひとつ。パターン文字列 $P$ の各 prefix について最長の border (prefix かつ suffix であるような文字列) を $O(\vert P \vert)$ で求めておくことで、与えられたテキスト文字列 $T$ に対する検索を $O(\vert T \vert)$ で行う。
+description: Knuth-Morris-Pratt 法とは文字列検索アルゴリズムのひとつ。パターン文字列 $P$ の各 prefix について最長の border (prefix かつ suffix であるような文字列) を $O(\vert P \vert)$ で求めておくことで、与えられたテキスト文字列 $T$ に対する検索を $O(\vert T \vert)$ で行う。
 draft: true
 draft_urls: []
 ---
@@ -21,7 +21,7 @@ draft_urls: []
 
 ## 概要
 
-Knuth-Morris-Pratt法とは文字列検索アルゴリズムのひとつ。パターン文字列 $P$ の各 prefix について最長の border (prefix かつ suffix であるような文字列) を $O(\vert P \vert)$ で求めておくことで、与えられたテキスト文字列 $T$ に対する検索を $O(\vert T \vert)$ で行う。
+Knuth-Morris-Pratt 法とは文字列検索アルゴリズムのひとつ。パターン文字列 $P$ の各 prefix について最長の border (prefix かつ suffix であるような文字列) を $O(\vert P \vert)$ で求めておくことで、与えられたテキスト文字列 $T$ に対する検索を $O(\vert T \vert)$ で行う。
 
 ## 詳細
 

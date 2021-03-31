@@ -33,12 +33,16 @@ class Message(NamedTuple):
 def warning(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optional[Callable[[str], str]] = None) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
+    if line == -1:
+        fix = None
     return Message(type='warning', file=file, line=line, col=col, message=message, fix=fix)
 
 
 def error(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optional[Callable[[str], str]] = None) -> Message:
     assert line >= 1 or line == -1
     assert col >= 1 or line == -1
+    if line == -1:
+        fix = None
     return Message(type='error', file=file, line=line, col=col, message=message, fix=fix)
 
 
@@ -242,6 +246,19 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
             text=r"日本語: `用量` ではなく `容量` の可能性があります。",
         )
 
+    if 'http' not in msg:
+        error_by_regex(
+            pattern='([A-Za-z]+)法',
+            text='style: `Dijkstra法` ではなく `Dijkstra 法` のようにスペースを開けて書いてください。どちらが正しいというものではないですが、統一されていることは重要です。',
+            fix=(lambda m: m.group(1) + ' 法'),
+        )
+
+    error_by_regex(
+        pattern=r'行な([わいうえおっ])',
+        text=r"日本語: `行なう` ではなく `行う` の方が一般的です。",
+        fix=(lambda m: '行' + m.group(1)),
+    )
+
     return result
 
 
@@ -338,6 +355,11 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
     if frontmatter.get('draft'):
         if 'draft_urls' not in frontmatter:
             yield error('YAML frontmatter: 概要のみの記事には `draft_urls` を設定してください。', file=path, line=-1, col=-1)
+    if not frontmatter.get('draft'):
+        if 'draft' in frontmatter:
+            yield error('YAML frontmatter: 本体のある記事からは `draft: false` は消してください。', file=path, line=-1, col=-1)
+        if 'draft_urls' in frontmatter:
+            yield error('YAML frontmatter: 本体のある記事からは `draft_urls: []` は消してください。', file=path, line=-1, col=-1)
 
 
 def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:

@@ -15,8 +15,6 @@ algorithm:
   aliases: []
   level: yellow
 description:  Johnson のアルゴリズムとは、全点対間最短経路問題を解くアルゴリズムのひとつ。負閉路が存在しない場合に動作する。$O(\lvert V \rvert ^ 2 \log \lvert V \rvert + \lvert V \rvert\lvert E \rvert)$ で動く。
-draft: false
-draft_urls: []
 ---
 
 # Johnson のアルゴリズム

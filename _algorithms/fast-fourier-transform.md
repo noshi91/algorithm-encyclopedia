@@ -12,7 +12,7 @@ algorithm:
   space_complexity:
   aliases: ["fast Fourier transform", "FFT"]
   level: yellow
-description: 高速 Fourier 変換とは、離散 Fourier 変換を $O(n \log n)$ で行なうアルゴリズムである。高速な多項式乗算の実装などに用いられる。
+description: 高速 Fourier 変換とは、離散 Fourier 変換を $O(n \log n)$ で行うアルゴリズムである。高速な多項式乗算の実装などに用いられる。
 draft: true
 draft_urls:
 ---
