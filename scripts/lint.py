@@ -247,15 +247,13 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         )
 
     if 'http' not in msg:
-        # TODO: すべて修正されたら error にする
-        warning_by_regex(
+        error_by_regex(
             pattern='([A-Za-z]+)法',
             text='style: `Dijkstra法` ではなく `Dijkstra 法` のようにスペースを開けて書いてください。どちらが正しいというものではないですが、統一されていることは重要です。',
             fix=(lambda m: m.group(1) + ' 法'),
         )
 
-    # TODO: すべて修正されたら error にする
-    warning_by_regex(
+    error_by_regex(
         pattern=r'行な([わいうえおっ])',
         text=r"日本語: `行なう` ではなく `行う` の方が一般的です。",
         fix=(lambda m: '行' + m.group(1)),
@@ -359,8 +357,7 @@ def collect_messages_from_yaml_frontmatter(frontmatter: Dict[str, Any], *, path:
             yield error('YAML frontmatter: 概要のみの記事には `draft_urls` を設定してください。', file=path, line=-1, col=-1)
     if not frontmatter.get('draft'):
         if 'draft' in frontmatter:
-            # TODO: すべて修正されたら error にする
-            yield warning('YAML frontmatter: 本体のある記事からは `draft: false` は消してください。', file=path, line=-1, col=-1)
+            yield error('YAML frontmatter: 本体のある記事からは `draft: false` は消してください。', file=path, line=-1, col=-1)
         if 'draft_urls' in frontmatter:
             yield error('YAML frontmatter: 本体のある記事からは `draft_urls: []` は消してください。', file=path, line=-1, col=-1)
 
