@@ -18,16 +18,16 @@ algorithm:
   space_complexity:
   aliases:
   level: yellow
-description: Karatsuba 法とは、多項式乗算と多倍長整数乗算を $\Theta ( N ^ { \log _ 2 3} )$ 回の環演算で行なうアルゴリズムである。
+description: Karatsuba 法とは、多項式乗算と多倍長整数乗算を $\Theta ( N ^ { \log _ 2 3} )$ 回の環演算で行うアルゴリズムである。
 draft: false
 ---
 
 
-# Karatsuba法
+# Karatsuba 法
 
 ## 概要
 
-Karatsuba 法とは、多項式乗算と多倍長整数乗算を $\Theta ( N ^ { \log _ 2 3} )$ 回の環演算で行なうアルゴリズムである。
+Karatsuba 法とは、多項式乗算と多倍長整数乗算を $\Theta ( N ^ { \log _ 2 3} )$ 回の環演算で行うアルゴリズムである。
 
 
 ## 詳細
@@ -41,7 +41,7 @@ $\mathtt { LongMultiplication } ( f, g )$
  2. // 出力: 積 $fg$
  3. $n = \max ( \mathrm { deg } ( f ), \mathrm { deg } ( g) ) + 1$
  4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
- 5.     $\mathtt { return } \ \left ( [1] f \right ) \left ( [1] g \right )$
+ 5.     $\mathtt { return } \ \left ( [ x ^ 0 ] f \right ) \left ( [ x ^ 0 ] g \right )$
  6. $m = \lfloor n / 2 \rfloor$
  7. 次数 $m$ で切って$f ( x ) = f _ 1 (x  ) x ^ m  + f _ 0 ( x ),  g ( x )  = g _ 1 ( x ) x ^ m + g _ 0 ( x )$ と分解する。
  8. $h _ 0 = \mathtt { LongMultiplication }( f _ 0 , g _ 0  )$
@@ -63,7 +63,7 @@ $\mathtt { Karatsuba } ( f, g )$
  2. // 出力: 積 $fg$
  3. $n = \max ( \mathrm { deg } ( f ), \mathrm { deg } ( g) ) + 1$
  4. $\mathtt { if } \ n \ \mathtt { == } \ 1$
- 5.     $\mathtt { return } \ \left ( [1] f \right ) \left ( [1] g \right )$
+ 5.     $\mathtt { return } \ \left ( [ x ^ 0 ] f \right ) \left ( [ x ^ 0 ] g \right )$
  6. $m = \lfloor n / 2 \rfloor$
  7. 次数 $m$ で切って$f ( x ) = f _ 1 ( x  ) x ^ m  + f _ 0 ( x ),  g ( x )  = g _ 1 ( x ) x ^ m + g _ 0 ( x )$ と分解する。
  8. $h _ 0 = \mathtt { Karatsuba }( f _ 0 , g _ 0  )$
