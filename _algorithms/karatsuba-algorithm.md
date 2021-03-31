@@ -103,11 +103,11 @@ T ( N )
     + \left ( \frac 3 2 \right ) ^ { L }
 \le 4 \sum _ { k = 0 } ^ { \log _ 2 N } \left ( N \left ( \frac 3 2 \right ) ^ k + 3 ^ k \right )
     + \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 }
-\\
+\cr
 &= 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 } - 1 \right )
     + 2 \left ( 3 ^ { \log _ 2 N + 1 } - 1 \right )
     + \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 }
-\\
+\cr
 &= \left ( 12 + 6 + \frac 3 2 \right ) 3 ^ { \log _ 2 N } - 8 N - 2
 \le \frac { 39 } 2 N ^ { \log _ 2 3 }
 \end{align*}
