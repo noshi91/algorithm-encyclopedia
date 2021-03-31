@@ -108,7 +108,7 @@ T ( N )
     + 2 \left ( 3 ^ L - 1 \right )
     + 3 ^ L
 \cr
-&= 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 } - 1 \right )
+&\le 8 N \left ( \left ( \frac 3 2 \right ) ^ { \log _ 2 N + 1 } - 1 \right )
     + 2 \left ( 3 ^ { \log _ 2 N + 1 } - 1 \right )
     + 3 ^ { \log _ 2 N + 1 }
 \cr
