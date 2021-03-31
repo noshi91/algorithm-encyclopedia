@@ -7,7 +7,7 @@ changelog:
     date: 2020-07-09T00:00:00+09:00
   - summary: 本文作成
     authors: ngtkana
-    reviewers:
+    reviewers: ["noshi91", "misawa"]
     date: 2021-03-30T00:00:00+09:00
 algorithm:
   input:
