@@ -7,7 +7,6 @@ _site/
 # Ruby
 /.bundle/
 /.vendor/
-Gemfile.lock
 
 # backup files which `scripts/lint.py --fix` generates
 *~
