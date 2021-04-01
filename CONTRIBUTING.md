@@ -96,6 +96,11 @@ Markdown 中に `<a class="handle">chokudai</a>` のように AtCoder ID を書�
 色の情報は [_sass/user-colors.scss](https://github.com/kmyk/algorithm-encyclopedia/blob/gh-pages/_sass/user-colors.scss) ファイルに CSS として保存されています。このファイルは [scripts/user-ratings.py](https://github.com/kmyk/algorithm-encyclopedia/blob/gh-pages/scripts/user-ratings.py) によって生成されます。定期的に `$ python3 scripts/user-ratings.py` を実行して色の情報のファイルを更新してください。
 
 
+## 画像ファイル
+
+[`assets/img/`](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/assets/img) に置いてください。
+また、後から画像を修正する必要が発生したときのために、画像の編集方法を [`assets/img/README.md`](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/assets/img/README.md) に書いておいてください。
+
 ### ローカルでの記事の閲覧
 
 ローカルで記事を閲覧するには、以下のコマンドを順に実行してください。HTTP サーバが建ち <http://127.0.0.1:4000/> から閲覧できます。
@@ -236,6 +241,7 @@ $ python3 scripts/lint.py
 -   リンクを張るときはリンク先の永続性に注意する。特に他人のブログ記事や競プロライブラリへのリンクを貼るときは [Internet Archive](https://archive.org/web/) によるスナップショットを取っておく ([Save Page Now - Wayback Machine](https://web.archive.org/save/))。
 -   リンクを張るときはリンク先との関係が分かるようにする。例題を紹介するならば簡単な解説を書いておく。記事を紹介するならばなぜ他の記事でなくその記事が選ばれているのか分かるようにしておく。
 -   ソースコードはそのままコピペして動くものを載せる。ソースコードの妥当性は簡単に検証できるようにしておく。
+-   画像ファイルは後から他の人が修正しやすいような形式を選び、修正方法のドキュメントを残しておく。
 
 
 ## ライセンスについて
