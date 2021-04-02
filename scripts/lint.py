@@ -47,6 +47,45 @@ def error(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optiona
 
 
 @functools.lru_cache(maxsize=None)
+def list_markdown_files() -> Tuple[pathlib.Path, ...]:
+    basedir = pathlib.Path.cwd()
+    paths: List[pathlib.Path] = []
+    paths.extend(basedir.glob('_algorithms/**/*.md'))
+    paths.extend(basedir.glob('_tenkeis/**/*.md'))
+    return tuple(path.resolve().relative_to(basedir) for path in paths)
+
+
+@functools.lru_cache(maxsize=None)
+def list_image_relative_urls() -> Tuple[str, ...]:
+    basedir = pathlib.Path.cwd()
+    paths: List[pathlib.Path] = []
+    paths.extend(basedir.glob('assets/img/*.svg'))
+    paths.extend(basedir.glob('assets/img/*.png'))
+    return tuple('/' + str(path.resolve().relative_to(basedir)) for path in paths)
+
+
+@functools.lru_cache(maxsize=None)
+def get_path_from_relative_url(relative_url: str) -> Optional[pathlib.Path]:
+    for path in list_markdown_files():
+        if '/' + path.stem == relative_url:
+            return path
+    return None
+
+
+@functools.lru_cache(maxsize=None)
+def get_title_from_relative_url(relative_url: str) -> Optional[str]:
+    path = get_path_from_relative_url(relative_url)
+    if path is None:
+        return None
+    with open(path) as fh:
+        lines = fh.readlines()
+    for line in lines:
+        if line.startswith('# '):
+            return line[2:].strip()
+    return None
+
+
+@functools.lru_cache(maxsize=None)
 def list_defined_users() -> FrozenSet[str]:
     path = pathlib.Path('_sass', 'user-colors.scss')
     with open(path) as fh:
@@ -165,6 +204,21 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
 
     for m in re.finditer(r'<a +class="handle">(\w+)</a>', msg):
         result.extend(check_atcoder_user(m.group(1), file=path, line=line, col=m.start() + 1))
+
+    # internal links
+    for m in re.finditer(r'(!?)\[([^]]*)\]\((/[-0-9a-z]+)\)', msg):
+        is_image = m.group(1)
+        actual_title = m.group(2)
+        relative_url = m.group(3)
+        if is_image:
+            if relative_url not in list_image_relative_urls():
+                result.append(error(r'link: リンクされている画像ファイルは存在していません。URL を間違えていませんか？', file=path, line=line, col=m.start() + 1))
+        else:
+            expected_title = get_title_from_relative_url(relative_url)
+            if expected_title is None:
+                result.append(error(r'link: リンクされているページは存在していません。URL を間違えていませんか？', file=path, line=line, col=m.start() + 1))
+            elif actual_title != expected_title:
+                result.append(error(r'link: リンクアンカーの文字列とリンクされているページのタイトルは揃えてください。', file=path, line=line, col=m.start() + 1))
 
     warning_by_regex(
         pattern=r'捜査',
@@ -405,15 +459,6 @@ def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
     for i, line in enumerate(lines):
         if line.rstrip('\n').endswith(' '):
             yield error('file: 行の末尾の空白文字は削除してください。また、Markdown の強制改行は使わないでください。', file=path, line=i + 1, col=len(line))
-
-
-def list_markdown_files() -> List[pathlib.Path]:
-    basedir = pathlib.Path.cwd()
-    paths: List[pathlib.Path] = []
-    paths.extend(basedir.glob('_algorithms/**/*.md'))
-    paths.extend(basedir.glob('_tenkeis/**/*.md'))
-    paths = [path.resolve().relative_to(basedir) for path in paths]
-    return paths
 
 
 def main() -> int:
