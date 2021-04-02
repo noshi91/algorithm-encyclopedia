@@ -30,7 +30,7 @@ $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ を $N$ 頂点の完全 DAG�
 
 ラグランジュ緩和問題は、全ての辺の重みを $\lambda$ 大きくした場合の (辺の数の制約のない) 最短路問題となる。
 $c$ が Monge なら、一様に $\lambda$ を加算したものもまた Monge である。
-Monge 性を満たす辺重みについての最短路は $\Theta (N)$ で計算することができる。
+Monge 性を満たす辺重みについての最短路は LARSCH Algorithm[^LARSCH] を用いて $\Theta (N)$ で計算することができる。
 
 従って、元の問題である Monge グラフ上の $d$-辺最短路長は $\Theta(N \log (\max _ {e \in E} \lvert c(e) \rvert))$ で計算できる。
 
