@@ -79,8 +79,8 @@ $$\forall k.\ 2 \leq k \leq N - 2 \rightarrow c(P _ k ^ {\ast}) - c(P _ {k - 1} 
 
 #### 証明
 
-$\lVert P _ a \rVert = \lVert P _ b \rVert = k$ を満たすパス $P _ a, P _ b \in \mathcal{P}$ であって $c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P _ a) + c(P _ b)$ であるものの存在を示す。
-もしそれが示されたならば、$c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P _ a) + c(P _ b) \geq c(P _ k ^ {\ast}) + c(P _ k ^ {\ast})$ を移項することで求める式を得る。
+$\lVert P \rVert = \lVert P ^ {\prime} \rVert = k$ を満たすパス $P, P ^ {\prime} \in \mathcal{P}$ であって $c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P) + c(P ^ {\prime})$ であるものの存在を示す。
+もしそれが示されたならば、$c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P) + c(P ^ {\prime}) \geq c(P _ k ^ {\ast}) + c(P _ k ^ {\ast})$ を移項することで求める式を得る。
 
 パスを頂点の列として表現する。
 $P _ {k - 1} ^ {\ast} = (s _ 0, s _ 1, \dots, s _ {k - 1}), P _ {k + 1} ^ {\ast} = (t _ 0, t _ 1, \dots, t _ {k + 1})$ とする。
@@ -91,20 +91,20 @@ $s _ 0 \lt t _ 1$ かつ $s _ {k - 1} \gt t _ k$ であるから、$s _ x = t _ 
 -   $s _ x = t _ {x + 1}$ を満たす $x$ が存在する場合
 
     $$ \begin{align*}
-      P _ a &\coloneqq (s _ 0, s _ 1, \dots, s _ x, t _ {x + 2}, t _ {x + 3}, \dots, t _ {k + 1}) \cr
-      P _ b &\coloneqq (t _ 0, t _ 1, \dots, t _ {x + 1}, s _ {x + 1}, s _ {x + 2}, \dots, s _ {k - 1})
+      P &\coloneqq (s _ 0, s _ 1, \dots, s _ x, t _ {x + 2}, t _ {x + 3}, \dots, t _ {k + 1}) \cr
+      P ^ {\prime} &\coloneqq (t _ 0, t _ 1, \dots, t _ {x + 1}, s _ {x + 1}, s _ {x + 2}, \dots, s _ {k - 1})
     \end{align*} $$
     とすればよい。
-    $c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) = c(P _ a) + c(P _ b)$ である。
+    $c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) = c(P) + c(P ^ {\prime})$ である。
 -   $s _ x \lt t _ {x + 1} \land s _ {x + 1} \gt t _ {x + 2}$ を満たす $x$ が存在する場合
 
     整理すると、$s _ x \lt t _ {x + 1} \lt t _ {x + 2} \lt s _ {x + 1}$ である。
     $$ \begin{align*}
-      P _ a &\coloneqq (s _ 0, s _ 1, \dots, s _ x, t _ {x + 2}, t _ {x + 3}, \dots, t _ {k + 1}) \cr
-      P _ b &\coloneqq (t _ 0, t _ 1, \dots, t _ {x + 1}, s _ {x + 1}, s _ {x + 2}, \dots, s _ {k - 1})
+      P &\coloneqq (s _ 0, s _ 1, \dots, s _ x, t _ {x + 2}, t _ {x + 3}, \dots, t _ {k + 1}) \cr
+      P ^ {\prime} &\coloneqq (t _ 0, t _ 1, \dots, t _ {x + 1}, s _ {x + 1}, s _ {x + 2}, \dots, s _ {k - 1})
     \end{align*} $$
     とすればよい。
-    $c$ の Monge 性から $c(s _ x, s _ {x + 1}) + c(t _ {x + 1}, t _ {x + 2}) \geq c(s _ x, t _ {x + 2}) + c(t _ {x + 1}, s _ {x + 1})$ であり、$c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P _ a) + c(P _ b)$ が従う。
+    $c$ の Monge 性から $c(s _ x, s _ {x + 1}) + c(t _ {x + 1}, t _ {x + 2}) \geq c(s _ x, t _ {x + 2}) + c(t _ {x + 1}, s _ {x + 1})$ であり、$c(P _ {k - 1} ^ {\ast}) + c(P _ {k + 1} ^ {\ast}) \geq c(P) + c(P ^ {\prime})$ が従う。
 
 $\blacksquare$
 
