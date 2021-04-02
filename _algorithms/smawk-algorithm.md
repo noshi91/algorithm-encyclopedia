@@ -26,6 +26,12 @@ SMAWK algorithm とは、totally monotone な $H \times W$ 行列 $f$ に対し�
 入力となる行列のそれぞれの行は distinct (重複を持たない) だと仮定されることがあるが、この制約は取り除ける。ただし、ひとつの行に最小値が複数回出現する場合への注意が必要となる。
 SMAWK algorithm はそれぞれの行 $y$ について最小値の位置 $x_y$ を出力するが、これを $(x_0, x_1, \dots, x _ {H-1})$ とならべた列は必ず広義単調増加となる。この性質はアルゴリズム自体の内部でも用いられる。
 
+
+### 詳細
+
+(省略)
+
+
 ### totally monotone について
 
 totally monotone の定義について。$H, W$ は自然数とし $A$ は全順序集合とする。$H \times W$ の行列 $f : H \times W \to A$ が totally monotone であるとは、$f$ の任意の $2 \times 2$ 部分行列 $\begin{pmatrix} a & b \cr c & d \end{pmatrix}$ が $c \lt d$ ならば $a \lt b$ を満たしかつ $c = d$ ならば $a \le b$ を満たすこと。
