@@ -58,11 +58,11 @@ totally monotone であることは $f$ の任意の部分行列が monotone で
 
 ## 外部リンク
 
--   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
+-   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)<sup>[archive.org](https://web.archive.org/web/20201231040117/https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)</sup>
     -   <a class="handle">tmaehara</a> による解説記事
 -   <https://noshi91.github.io/Library/algorithm/smawk.cpp><sup>[archive.org](https://web.archive.org/web/20210128162854/https://noshi91.github.io/Library/algorithm/smawk.cpp)</sup>
     -   <a class="handle">noshi91</a> による実装例
--   <http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf>
+-   <http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf><sup>[archive.org](https://web.archive.org/web/20210103162046/http://web.cs.unlv.edu/larmore/Courses/CSC477/monge.pdf)</sup>
     -   [Lawrence L. Larmore](https://en.wikipedia.org/wiki/Lawrence_L._Larmore) による解説 (英語)。具体例を通して説明されている。
--   <https://kmyk.github.io/monotone-matrix-visualizer/>
+-   <https://kmyk.github.io/monotone-matrix-visualizer/><sup>[archive.org](https://web.archive.org/web/20210402113454/https://kmyk.github.io/monotone-matrix-visualizer/)</sup>
     -   totally monotone な行列などを図示してくれるページ

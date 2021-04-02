@@ -19,5 +19,5 @@ draft_urls: ["https://snuke.hatenablog.com/entry/2014/12/03/214243"]
 
 # Z algorithm
 
--   [文字列の頭良い感じの線形アルゴリズムたち３ - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2014/12/03/214243)
+-   [文字列の頭良い感じの線形アルゴリズムたち３ - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2014/12/03/214243)<sup>[archive.org](https://web.archive.org/web/20210309135606/https://snuke.hatenablog.com/entry/2014/12/03/214243)</sup>
     -   snuke による解説

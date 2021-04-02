@@ -54,7 +54,7 @@ Rabin-Karp 法は、競技プログラミング以外では、ハッシュ値が
 
 ## 外部リンク
 
--   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://www.hamayanhamayan.com/entry/2017/03/25/005452)
+-   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/25/005452)<sup>[archive.org](https://web.archive.org/web/20210402112827/https://blog.hamayanhamayan.com/entry/2017/03/25/005452)</sup>
     -   <a class="handle">hamayanhamayan</a> によるブログ記事。例題が列挙されている。
 
 ## 注釈

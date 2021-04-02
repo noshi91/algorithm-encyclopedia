@@ -45,7 +45,7 @@ Aho-Corasick 法とは、複数のパターン文字列をまとめて扱える�
 
 ## 外部リンク
 
--   [Aho-Corasick法 - Algoogle](http://algoogle.hadrori.jp/algorithm/aho-corasick.html)
+-   [Aho-Corasick法 - Algoogle](https://algoogle.hadrori.jp/algorithm/aho-corasick.html)<sup>[archive.org](https://web.archive.org/web/20210311070301/https://algoogle.hadrori.jp/algorithm/aho-corasick.html)</sup>
     -   <a class="handle">hadrori</a> による実装例。図付きでの解説もある。
--   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://www.hamayanhamayan.com/entry/2017/03/25/005452)
+-   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/25/005452)<sup>[archive.org](https://web.archive.org/web/20210402112827/https://blog.hamayanhamayan.com/entry/2017/03/25/005452)</sup>
     -   <a class="handle">hamayanhamayan</a> によるブログ記事。例題が列挙されている。

@@ -59,9 +59,9 @@ monotone minima の具体的なアルゴリズムは次のようなものであ�
 
 ## 外部リンク
 
--   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
+-   [Totally Monotone Matrix Searching (SMAWK algorithm) - 週刊 spaghetti_source - TopCoder部](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)<sup>[archive.org](https://web.archive.org/web/20201231040117/https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)</sup>
     -   <a class="handle">tmaehara</a> による解説記事
 -   <https://ei1333.github.io/library/dp/monotone-minima.cpp><sup>[archive.org](https://web.archive.org/web/20210128162922/https://ei1333.github.io/library/dp/monotone-minima.cpp)</sup>
     -   <a class="handle">ei13333</a> による実装例
--   <https://kmyk.github.io/monotone-matrix-visualizer/>
+-   <https://kmyk.github.io/monotone-matrix-visualizer/><sup>[archive.org](https://web.archive.org/web/20210402113454/https://kmyk.github.io/monotone-matrix-visualizer/)</sup>
     -   monotone な行列などを図示してくれるページ

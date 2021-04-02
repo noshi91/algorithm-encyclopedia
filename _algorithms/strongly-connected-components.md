@@ -23,5 +23,5 @@ description: 有向グラフ $G = (V, E)$ の強連結成分 $C \subset V$ は�
 
 
 ## 注釈
-[^mathtrain]: [強連結成分分解の意味とアルゴリズム &#124; 高校数学の美しい物語](https://mathtrain.jp/kyorenketsu)
+[^mathtrain]: [強連結成分分解の意味とアルゴリズム &#124; 高校数学の美しい物語](https://manabitimes.jp/math/1250)<sup>[archive.org](https://web.archive.org/web/20210330212430/https://manabitimes.jp/math/1250)</sup>
 [^acl]: [AtCoder Library](https://github.com/atcoder/ac-library) の実装はこちらになっている。

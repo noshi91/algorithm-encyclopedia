@@ -6,6 +6,7 @@ import os
 import pathlib
 import re
 import sys
+import urllib.parse
 from logging import DEBUG, basicConfig, getLogger
 from typing import *
 from typing import Match
@@ -47,6 +48,15 @@ def error(message: str, *, file: pathlib.Path, line: int, col: int, fix: Optiona
 
 
 @functools.lru_cache(maxsize=None)
+def get_cname() -> Optional[str]:
+    path = pathlib.Path('CNAME')
+    if not path.exists():
+        return None
+    with open(path) as fh:
+        return fh.read().strip()
+
+
+@functools.lru_cache(maxsize=None)
 def list_markdown_files() -> Tuple[pathlib.Path, ...]:
     basedir = pathlib.Path.cwd()
     paths: List[pathlib.Path] = []
@@ -56,7 +66,7 @@ def list_markdown_files() -> Tuple[pathlib.Path, ...]:
 
 
 @functools.lru_cache(maxsize=None)
-def list_image_relative_urls() -> Tuple[str, ...]:
+def list_image_urlpaths() -> Tuple[str, ...]:
     basedir = pathlib.Path.cwd()
     paths: List[pathlib.Path] = []
     paths.extend(basedir.glob('assets/img/*.svg'))
@@ -65,16 +75,16 @@ def list_image_relative_urls() -> Tuple[str, ...]:
 
 
 @functools.lru_cache(maxsize=None)
-def get_path_from_relative_url(relative_url: str) -> Optional[pathlib.Path]:
+def get_path_from_urlpath(urlpath: str) -> Optional[pathlib.Path]:
     for path in list_markdown_files():
-        if '/' + path.stem == relative_url:
+        if '/' + path.stem == urlpath:
             return path
     return None
 
 
 @functools.lru_cache(maxsize=None)
-def get_title_from_relative_url(relative_url: str) -> Optional[str]:
-    path = get_path_from_relative_url(relative_url)
+def get_title_from_urlpath(urlpath: str) -> Optional[str]:
+    path = get_path_from_urlpath(urlpath)
     if path is None:
         return None
     with open(path) as fh:
@@ -112,6 +122,13 @@ def from_table(f: Dict[str, str]) -> Callable[[Match[str]], str]:
         return f[s]
 
     return fix
+
+
+def get_target_url_from_internet_archive_url(url: str) -> Optional[str]:
+    m = re.search(r'/https?://', url)
+    if m is None:
+        return None
+    return url[m.start() + 1:]
 
 
 def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> List[Message]:
@@ -209,16 +226,48 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     for m in re.finditer(r'(!?)\[([^]]*)\]\((/[-0-9a-z]+)\)', msg):
         is_image = m.group(1)
         actual_title = m.group(2)
-        relative_url = m.group(3)
+        urlpath = m.group(3)
         if is_image:
-            if relative_url not in list_image_relative_urls():
+            if urlpath not in list_image_urlpaths():
                 result.append(error(r'link: リンクされている画像ファイルは存在していません。URL を間違えていませんか？', file=path, line=line, col=m.start() + 1))
         else:
-            expected_title = get_title_from_relative_url(relative_url)
+            expected_title = get_title_from_urlpath(urlpath)
             if expected_title is None:
                 result.append(error(r'link: リンクされているページは存在していません。URL を間違えていませんか？', file=path, line=line, col=m.start() + 1))
             elif actual_title != expected_title:
                 result.append(error(r'link: リンクアンカーの文字列とリンクされているページのタイトルは揃えてください。', file=path, line=line, col=m.start() + 1))
+
+    # external links
+    found_urls: List[Tuple[str, int]] = []
+    archived_urls: List[str] = []
+    for m in re.finditer(r'!?\[[^]]*\]\((https?://.*?)\)', msg):
+        url = m.group(1)
+        hostname = urllib.parse.urlparse(url).hostname
+        if hostname == get_cname():
+            result.append(error(r'link: 内部のページへのリンクにはパスだけを書いてください。`![Dijkstra 法](https://{}/dijkstra)` ではなく `![Dijkstra 法](/dijkstra)` のように書いてください。'.format(get_cname() or 'example.com'), file=path, line=line, col=m.start() + 1))
+        if hostname == 'web.archive.org':
+            archived_url = get_target_url_from_internet_archive_url(url)
+            if archived_url is None:
+                result.append(error(r'link: Internet Archive の保存結果へのリンクが壊れています。', file=path, line=line, col=m.start() + 1))
+            else:
+                archived_urls.append(archived_url)
+        else:
+            found_urls.append((url, m.start() + 1))
+    trusted_hostnames = (
+        'doi.org',
+        'en.wikipedia.org',
+        'github.com',
+        'iss.ndl.go.jp',
+        'ja.wikipedia.org',
+        'springer.com',
+    )
+    for url, col in found_urls:
+        hostname = urllib.parse.urlparse(url).hostname
+        if hostname not in trusted_hostnames and url not in archived_urls:
+            if len(found_urls) == 1 and len(archived_urls) == 1:
+                result.append(error(r'link: 外部のページへリンクを張るときはそのページを Internet Archive を使って保存しておいてください。外部のページへのリンクの URL と Internet Archive に保存されたページの URL は一致させてください。', file=path, line=line, col=col))
+            else:
+                result.append(error(r'link: 外部のページへリンクを張るときはそのページを Internet Archive を使って保存しておいてください。保存は https://web.archive.org/save/ からできます。リンクは `[AtCoder](https://atcoder.jp/)<sup>[archive.org](https://web.archive.org/web/20210402112123/https://atcoder.jp/)</sup>` のように書いてください。', file=path, line=line, col=col))
 
     warning_by_regex(
         pattern=r'捜査',
