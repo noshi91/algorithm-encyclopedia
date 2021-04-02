@@ -3,7 +3,7 @@ layout: entry
 changelog:
   - summary: ページ作成
     authors: noshi91
-    reviewers:
+    reviewers: ["kimiyuki", "MiSawa"]
     date: 2021-03-28T20:41:31+09:00
 algorithm:
   input: >
@@ -15,7 +15,7 @@ algorithm:
   level: orange
 description: >
     辺の重みが Monge 性を満たすような完全 DAG について、辺を丁度 $d$ 本使う条件下での $0$-$(N - 1)$ 最短路長を $\Theta (N \log(\max _ {e \in E} \lvert c(e) \rvert))$ で計算する。
-    Monge 性からラグランジュ双対問題が強双対性を持ち、ラグランジュ緩和問題もまた Monge 性を利用して高速に解くことができる。
+    ラグランジュ双対問題との強双対性が $c$ の Monge 性から成り立ち、ラグランジュ緩和問題もまた Monge 性を利用して高速に解くことができる。
 ---
 
 # Monge グラフ上の $d$-辺最短路長を計算するアルゴリズム
@@ -23,14 +23,16 @@ description: >
 ## 概要
 
 $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ を $N$ 頂点の完全 DAG、$c : E \to \mathbb{Z}$ を Monge 性を満たす辺重み、$d$ を正整数とする。
-辺を丁度 $d$ 本使う条件下での $0$-$(N-1)$ 最短路長を $\Theta (N \log(\max _ {e \in E} \lvert c(e) \rvert))$ で計算する。
+辺を丁度 $d$ 本使う条件下での $0$-$(N - 1)$ 最短路長を計算する問題を考える。
 
-この問題は制約付き最適化であり、ラグランジュ双対問題を考えることで効率的に解くことができる。
-$c$ の Monge 性からラグランジュ双対問題が強双対性を持つ。
+この問題は制約付き最適化であり、そのラグランジュ双対問題との強双対性が $c$ の Monge 性から成り立つ。
+この強双対性を利用することで、ラグランジュ緩和問題を $\Theta(\log (\max _ {e \in E} \lvert c(e) \rvert))$ 回解く問題に帰着することができる。
 
 ラグランジュ緩和問題は、全ての辺の重みを $\lambda$ 大きくした場合の (辺の数の制約のない) 最短路問題となる。
 $c$ が Monge なら、一様に $\lambda$ を加算したものもまた Monge である。
 Monge 性を満たす辺重みについての最短路は $\Theta (N)$ で計算することができる。
+
+従って、元の問題である Monge グラフ上の $d$-辺最短路長は $\Theta(N \log (\max _ {e \in E} \lvert c(e) \rvert))$ で計算できる。
 
 Aliens[^Aliens] はこの問題に帰着することができる。
 それに由来して、特にラグランジュ緩和問題を用いる発想を指して Alien DP と呼ぶことがある[^kort0n-AlienDP]。
