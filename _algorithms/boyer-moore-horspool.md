@@ -35,5 +35,5 @@ Boyer-Moore-Horspool 法は、文字列検索アルゴリズムのひとつ。Bo
 
 ## 外部リンク
 
--   [boyer_moore_horspool_searcher - cpprefjp C++日本語リファレンス](https://cpprefjp.github.io/reference/functional/boyer_moore_horspool_searcher.html)
+-   [boyer_moore_horspool_searcher - cpprefjp C++日本語リファレンス](https://cpprefjp.github.io/reference/functional/boyer_moore_horspool_searcher.html)<sup>[archive.org](https://web.archive.org/web/20210125045405/https://cpprefjp.github.io/reference/functional/boyer_moore_horspool_searcher.html)</sup>
     -   C++ の標準ライブラリには Boyer-Moore-Horspool 法を用いた関数オブジェクトが `std::boyer_moore_horspool_searcher` として含まれている。

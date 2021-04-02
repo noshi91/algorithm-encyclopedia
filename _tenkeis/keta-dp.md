@@ -19,7 +19,7 @@ draft_urls: []
 
 ## 例題
 
--   [AtCoder Beginner Contest 129: E - Sum Equals Xor](https://atcoder.jp/contests/abc129/tasks/abc129_e)
+-   [AtCoder Beginner Contest 129: E - Sum Equals Xor](https://atcoder.jp/contests/abc129/tasks/abc129_e)<sup>[archive.org](https://web.archive.org/web/20210121051948/https://atcoder.jp/contests/abc129/tasks/abc129_e)</sup>
 
 
 ## 厳密な定義について

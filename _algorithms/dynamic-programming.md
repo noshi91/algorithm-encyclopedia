@@ -100,7 +100,7 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
 -   動的計画法は関数の再帰的定義と関係があり、再帰は帰納法と関係がある。帰納法においてはその仮定を強めることでむしろ証明がうまくいくことがあるが、動的計画法においても持つ状態や計算する範囲を増やすことで計算がうまくいくことがある。
 -   確率は期待値の特殊な場合と見ることができるため、確率 DP も期待値 DP の特殊な場合だと考えることができる。確率 DP や期待値 DP に特有の技法として、「自己ループを確率分布の期待値で潰す[^furuya1223-loop]」や「十分小さい確率の遷移を無視する[^kuuso1-converge]」などがある。
 -   戻す DP の亜種として、関係する要素の影響量や寄与度を計算して修正をする DP がある。
--   有限種類の (計算対象の) 状態を (DP の) 状態とする DP は [Ears](https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d) という問題に由来して「耳 DP」と呼ばれることがある[^tempura-ears][^md19970824-ears]。
+-   有限種類の (計算対象の) 状態を (DP の) 状態とする DP は [Ears](https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d)<sup>[archive.org](https://web.archive.org/web/20201101070618/https://atcoder.jp/contests/yahoo-procon2019-qual/tasks/yahoo_procon2019_qual_d)</sup> という問題に由来して「耳 DP」と呼ばれることがある[^tempura-ears][^md19970824-ears]。
 -   漸化式が規則的かつ線形になっている DP では、漸化式を行列と見て行列累乗で計算することができる。
 -   すでに使った区間の集合を管理するような DP では、使った区間同士の間隔をできる限り未決定のままにしておくこと[^example-dwacon6th_prelims_e]や、区間の長さを降順で使うこと[^example-dwacon6th_prelims_e]などがよくある。
 
@@ -117,10 +117,9 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
     -   <a class="handle">iwiwi</a> による解説スライド
 -   [DPの話 - aizuzia](https://tayama-2.hatenadiary.org/entry/20111210/1323502092)<sup>[archive.org](https://web.archive.org/web/20210107111902/https://tayama-2.hatenadiary.org/entry/20111210/1323502092)</sup>
     -   DP を DAG 上の最短経路を求めることに関連づけて説明した記事
--   [競技プログラミングにおける動的計画法更新最適化まとめ（CHT, MongeDP, AlianDP, インラインDP, きたまさ法, 行列累乗） - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/20/234711)
+-   [競技プログラミングにおける動的計画法更新最適化まとめ（CHT, MongeDP, AlianDP, インラインDP, きたまさ法, 行列累乗） - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/20/234711)<sup>[archive.org](https://web.archive.org/web/20210402114657/https://blog.hamayanhamayan.com/entry/2017/03/20/234711)</sup>
     -   <a class="handle">hamayanhamayan</a> による DP の問題集
--   [「インラインDP」というテクニックに関して - skyaozoraの日記 - TopCoder部](http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)
-<sup>[archive.org](https://web.archive.org/web/20200113085207/http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)</sup>
+-   [「インラインDP」というテクニックに関して - skyaozoraの日記 - TopCoder部](http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)<sup>[archive.org](https://web.archive.org/web/20200113085207/http://topcoder.g.hatena.ne.jp/skyaozora/20171212/1513084670)</sup>
     -   <a class="handle">sky58</a> による in-place DP の高速化の解説記事。この記事が書かれる前は「実家 DP」と呼ばれていたが、この記事によって「インライン DP」で置き換えられたという経緯がある。なお、今ではこの呼び名も不適切だという指摘があり、主に「in-place DP」が代替として用いられている[^sky58-inplace]。
 -   [戻すDP - sigma425のブログ](http://sigma425.hatenablog.com/entry/2015/07/31/121439)<sup>[archive.org](https://web.archive.org/web/20210209142104/http://sigma425.hatenablog.com/entry/2015/07/31/121439)</sup>
     -   <a class="handle">sigma425</a> による戻す DP の解説記事
@@ -128,7 +127,7 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
     -   <a class="handle">hamayanhamayan</a> による戻す DP の問題集
 -   [International Olympiad in Informatics 2016: day2_3. Aliens](https://ioinformatics.org/files/ioi2016problem6.pdf)<sup>[archive.org](https://web.archive.org/web/20191021104945/https://ioinformatics.org/files/ioi2016problem6.pdf)</sup>
     -   Alien DP の語源となった IOI の問題
--   [AOJ 2439. 箱根駅伝](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2439)
+-   [AOJ 2439. 箱根駅伝](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2439)<sup>[archive.org](https://web.archive.org/web/20210102030307/http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2439)</sup>
     -   箱根駅伝 DP の語源となった AOJ の問題
 -   [二乗の木 DP - (iwi) ｛ 反省します - TopCoder部](https://topcoder.g.hatena.ne.jp/iwiwi/20120428/1335635594)<sup>[archive.org](https://web.archive.org/web/20150920041654/https://topcoder.g.hatena.ne.jp/iwiwi/20120428/1335635594)</sup>
     -   <a class="handle">iwiwi</a> による二乗の木 DP の解説

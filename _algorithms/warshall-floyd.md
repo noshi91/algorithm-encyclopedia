@@ -18,7 +18,7 @@ description: >
   Warshall-Floyd 法とは、全点対間最短経路問題を解くアルゴリズムのひとつ。負閉路が存在するなら検出できる。定数倍の軽い $O(\vert V \vert ^ 3)$ で動く。
 ---
 
-# Warshall-Floyd  法
+# Warshall-Floyd 法
 
 ## 概要
 

@@ -15,9 +15,9 @@ description: イベントソートとは、クエリを時刻順にソートし�
 
 ## 例題
 
--   [AtCoder Beginner Contest 128: E - Roadwork](https://atcoder.jp/contests/abc128/tasks/abc128_e)
+-   [AtCoder Beginner Contest 128: E - Roadwork](https://atcoder.jp/contests/abc128/tasks/abc128_e)<sup>[archive.org](https://web.archive.org/web/20201124012909/https://atcoder.jp/contests/abc128/tasks/abc128_e)</sup>
     -   この問題の解説において命名された。
--   [AOJ 1297: Swimming Jam](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1297)
+-   [AOJ 1297: Swimming Jam](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1297)<sup>[archive.org](https://web.archive.org/web/20170714105730/https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1297)</sup>
 
 ## 命名者について
 

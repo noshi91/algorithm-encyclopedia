@@ -26,5 +26,5 @@ draft_urls: ["https://www.hamayanhamayan.com/entry/2018/01/06/112704"]
 
 ## 外部リンク
 
--   [競技プログラミングにおける半分全列挙問題まとめ - はまやんはまやんはまやん](https://www.hamayanhamayan.com/entry/2018/01/06/112704)
+-   [競技プログラミングにおける半分全列挙問題まとめ - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2018/01/06/112704)<sup>[archive.org](https://web.archive.org/web/20210402115111/https://blog.hamayanhamayan.com/entry/2018/01/06/112704)</sup>
     -   例題が多数紹介されている。

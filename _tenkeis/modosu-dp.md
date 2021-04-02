@@ -16,6 +16,6 @@ TODO: セグメント木を用いて両側からやるタイプはこれ？ そ�
 
 ## 例題
 
--   [AtCoder Regular Contest 028: D. 注文の多い高橋商店](https://atcoder.jp/contests/arc028/tasks/arc028_4)
--   [AtCoder Beginner Contest 144: F - Fork in the Road](https://atcoder.jp/contests/abc144/tasks/abc144_f)
+-   [AtCoder Regular Contest 028: D. 注文の多い高橋商店](https://atcoder.jp/contests/arc028/tasks/arc028_4)<sup>[archive.org](https://web.archive.org/web/20210123190024/https://atcoder.jp/contests/arc028/tasks/arc028_4)</sup>
+-   [AtCoder Beginner Contest 144: F - Fork in the Road](https://atcoder.jp/contests/abc144/tasks/abc144_f)<sup>[archive.org](https://web.archive.org/web/20210116210859/https://atcoder.jp/contests/abc144/tasks/abc144_f)</sup>
     -   影響度を計算して修正をする

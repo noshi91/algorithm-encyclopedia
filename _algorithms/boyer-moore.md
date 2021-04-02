@@ -41,5 +41,5 @@ Boyer-Moore 法とは、文字列検索アルゴリズムのひとつ。どこ�
 
 ## 外部リンク
 
--   [boyer_moore_searcher - cpprefjp C++日本語リファレンス](https://cpprefjp.github.io/reference/functional/boyer_moore_searcher.html)
+-   [boyer_moore_searcher - cpprefjp C++日本語リファレンス](https://cpprefjp.github.io/reference/functional/boyer_moore_searcher.html)<sup>[archive.org](https://web.archive.org/web/20210225123633/https://cpprefjp.github.io/reference/functional/boyer_moore_searcher.html)</sup>
     -   C++ の標準ライブラリには Boyer-Moore 法を用いた関数オブジェクトが `std::boyer_moore_searcher` として含まれている。

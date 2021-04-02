@@ -29,7 +29,7 @@ draft_urls: ["https://snuke.hatenablog.com/entry/2014/12/02/235837"]
 
 ## 外部リンク
 
--   [文字列の頭良い感じの線形アルゴリズムたち２ - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2014/12/02/235837)
+-   [文字列の頭良い感じの線形アルゴリズムたち２ - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2014/12/02/235837)<sup>[archive.org](https://web.archive.org/web/20210402120040/https://snuke.hatenablog.com/entry/2014/12/02/235837)</sup>
     -   snuke による解説。
--   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://www.hamayanhamayan.com/entry/2017/03/25/005452)
+-   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/25/005452)<sup>[archive.org](https://web.archive.org/web/20210402112827/https://blog.hamayanhamayan.com/entry/2017/03/25/005452)</sup>
     -   hamayanhamayan によるブログ記事。例題が列挙されている。

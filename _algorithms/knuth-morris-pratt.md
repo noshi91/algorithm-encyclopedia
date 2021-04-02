@@ -36,7 +36,7 @@ Knuth-Morris-Pratt 法とは文字列検索アルゴリズムのひとつ。パ�
 
 -   [KMPのK - あなたは嘘つきですかと聞かれたら「YES」と答えるブログ](https://snuke.hatenablog.com/entry/2017/07/18/101026)<sup>[archive.org](https://web.archive.org/save/https://snuke.hatenablog.com/entry/2017/07/18/101026)</sup>
     -   <a class="handle">snuke</a> による解説。
--   [MP法とKMP法の違い - 生きたい](https://potetisensei.hatenablog.com/entry/2017/07/10/174908)<sup>[archive.org](https://web.archive.org/web/20200325162220/http://potetisensei.hatenablog.com/entry/2017/07/10/174908)</sup>
+-   [MP法とKMP法の違い - 生きたい](https://potetisensei.hatenablog.com/entry/2017/07/10/174908)<sup>[archive.org](https://web.archive.org/web/20210305022839/https://potetisensei.hatenablog.com/entry/2017/07/10/174908)</sup>
     -   <a class="handle">potetisensei</a> による解説。Morris-Pratt 法と Knuth-Morris-Pratt 法の違いについて説明されている。
--   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://www.hamayanhamayan.com/entry/2017/03/25/005452)
+-   [競技プログラミングにおける文字列アルゴリズム問題まとめ - はまやんはまやんはまやん](https://blog.hamayanhamayan.com/entry/2017/03/25/005452)<sup>[archive.org](https://web.archive.org/web/20210402112827/https://blog.hamayanhamayan.com/entry/2017/03/25/005452)</sup>
     -   <a class="handle">hamayanhamayan</a> によるブログ記事。例題が列挙されている。
