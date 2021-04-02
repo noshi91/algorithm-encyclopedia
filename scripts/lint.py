@@ -437,7 +437,7 @@ def collect_messages_from_file(path: pathlib.Path) -> Iterator[Message]:
         if lines[i].rstrip() == '---':
             frontmatter_str = ''.join(lines[1:i])
             try:
-                frontmatter = yaml.load(frontmatter_str)
+                frontmatter = yaml.load(frontmatter_str, Loader=yaml.FullLoader)
             except yaml.YAMLError as e:
                 yield error('file: YAML frontmatter のパースに失敗しました: {}'.format(e), file=path, line=-1, col=-1)
                 return
