@@ -32,7 +32,7 @@ description: >
 
 ## その他
 
--   $s$-$t$ カットは、有向辺の部分集合 $C \subseteq E$ であってどの $s$-$t$ パスも $C$ に含まれるような有向辺を含むものとして定義される場合[^cut-set-of-edges]と、頂点の部分集合 $A \subseteq V$ として定義される場合[^cut-set-of-vertices]とがある。カットの容量は、前者の定義の場合は $C$ に含まれる有向辺の重みの総和として定義され、後者の定義の場合は始点が $A$ に含まれる終点 $V \setminus A$ に含まれるような有向辺の重みの総和として定義される。最小カット問題を考える際にはどちらの定義を用いても解の容量は同じである。
+-   $s$-$t$ カットは、有向辺の部分集合 $C \subseteq E$ であってどの $s$-$t$ パスも $C$ に含まれるような有向辺を含むものとして定義される場合[^cut-set-of-edges]と、頂点の部分集合 $A \subseteq V$ であって $s \in A$ かつ $t \in V \setminus A$ なものとして定義される場合[^cut-set-of-vertices]とがある。カットの容量は、前者の定義の場合は $C$ に含まれる有向辺の重みの総和として定義され、後者の定義の場合は始点が $A$ に含まれる終点 $V \setminus A$ に含まれるような有向辺の重みの総和として定義される。最小カット問題を考える際にはどちらの定義を用いても解の容量は同じであるが、前者の定義のカットと後者の定義のカットは厳密には一致しない。両者を区別したいときには、前者を $s$-$t$ 非連結化集合 ($s$-$t$ disconnecting) と呼び後者のみを $s$-$t$ カットと呼ぶことがある[^s-t-disconnecting]。
 
 
 ## 関連項目
@@ -60,6 +60,6 @@ description: >
 ## 注釈
 
 [^moyasu-umeru-local-name]: 競技プログラミングのコミュニティ外では通用しない名前であることに注意したい。
-[^project-selection-problem-name]: TODO: 出典を探す
-[^cut-set-of-edges]: R. J. ウィルソン. グラフ理論入門. 近代科学社, 2001, [ISBN978-4-76-490296-1](https://iss.ndl.go.jp/api/openurl?isbn=9784764902961).
-[^cut-set-of-vertices]: R. Diestel, [Graph Theory](https://www.springer.com/jp/book/9783662536216), 5th ed. Berlin Heidelberg: Springer-Verlag, 2017. TODO: そうらしいんだけど私はこの本を持ってないので noshi91 に確認する
+[^cut-set-of-edges]: たとえば R. J. ウィルソン. グラフ理論入門. 近代科学社, 2001, [ISBN978-4-76-490296-1](https://iss.ndl.go.jp/api/openurl?isbn=9784764902961).
+[^cut-set-of-vertices]: たとえば R. Diestel, [Graph Theory](https://www.springer.com/jp/book/9783662536216), 5th ed. Berlin Heidelberg: Springer-Verlag, 2017.
+[^s-t-disconnecting]: たとえば Schrijver, A. [Combinatorial Optimization: Polyhedra and Efficiency](https://www.springer.com/jp/book/9783540443896), Springer Science &amp; Business Media, 2003.
