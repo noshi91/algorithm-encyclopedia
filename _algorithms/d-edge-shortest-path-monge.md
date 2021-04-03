@@ -170,7 +170,7 @@ $\displaystyle L: \lambda \mapsto \min _ {P \in \mathcal{P}} (c(P) + \lambda (\l
 定理 $3$ より、得られた $L$ の最大値が、求める出力 $\displaystyle \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P)$ である。
 
 残る問題は $\lambda$ が与えられたとき $L(\lambda)$ を計算することである。
-辺重み $c _ {\lambda} : E \to \mathbb{Z}, e \mapsto c(e) + \lambda$ を定義する。
+辺重み $c _ {\lambda} : E \to \mathbb{Z}$ を $c _ {\lambda} (e) = c(e) + \lambda$ によって定義する。
 すなわち、$c _ {\lambda}$ は全ての辺の重みを $c$ と比べて $\lambda$ 大きくした重みである。
 すると、以下のように変形できる。
 $$ \begin{aligned}
