@@ -51,12 +51,10 @@ description: >
     -   <a class="handle">yosupo</a> によるブログ記事。最小カット問題はグラフの $2$ 彩色だと思うとよいことが説明されている。
 -   [最小カット問題と充足最大化問題 - うさぎ小屋](https://kimiyuki.net/blog/2020/03/07/minimum-cut-and-maximum-satisfiability/)<sup>[archive.org](https://web.archive.org/web/20210401023109/https://kimiyuki.net/blog/2020/03/07/minimum-cut-and-maximum-satisfiability/)</sup>
     -   <a class="handle">kimiyuki</a> によるブログ記事。最小カット問題は $\bigvee\mkern-12.5mu\bigvee _ i p_i \to \bigwedge\mkern-12.5mu\bigwedge _ j q_j$ の形の論理式たちの充足最大化問題と見ることができると主張している。
--   [燃やす埋める問題と劣モジュラ関数のグラフ表現可能性 その① - 私と理論](https://theory-and-me.hatenablog.com/entry/2020/03/13/180935)<sup>[archive.org](https://web.archive.org/web/20210401023205/https://theory-and-me.hatenablog.com/entry/2020/03/13/180935)</sup>
-    -   <a class="handle">theory_and_me</a> によるブログ記事。TODO: ちゃんと読んでリンクするかどうか判断する + リンクするなら要約を書く
--   [燃やす埋める問題と劣モジュラ関数のグラフ表現可能性 その② グラフ構築編 - 私と理論](https://theory-and-me.hatenablog.com/entry/2020/03/17/180157)<sup>[archive.org](https://web.archive.org/web/20210401023147/https://theory-and-me.hatenablog.com/entry/2020/03/17/180157)</sup>
-    -   <a class="handle">theory_and_me</a> によるブログ記事。TODO: ちゃんと読んでリンクするかどうか判断する + リンクするなら要約を書く
+-   [燃やす埋める問題と劣モジュラ関数のグラフ表現可能性 その① - 私と理論](https://theory-and-me.hatenablog.com/entry/2020/03/13/180935)<sup>[archive.org](https://web.archive.org/web/20210401023205/https://theory-and-me.hatenablog.com/entry/2020/03/13/180935)</sup>, [燃やす埋める問題と劣モジュラ関数のグラフ表現可能性 その② グラフ構築編 - 私と理論](https://theory-and-me.hatenablog.com/entry/2020/03/17/180157)<sup>[archive.org](https://web.archive.org/web/20210401023147/https://theory-and-me.hatenablog.com/entry/2020/03/17/180157)</sup>
+    -   <a class="handle">theory_and_me</a> によるブログ記事。$3$ 変数までの劣モジュラ関数の和 $\sum_i \theta_i(x_i) + \sum _ {i \lt j} \phi _ {i, j} (x_i, x_j) + \sum _ {i \lt j \lt k} \psi _ {i, j, k} (x_i, x_j, x_k)$ で表される関数の最小化問題は最小カット問題に帰着できることを説明している。
 -   [燃やす埋める問題を完全に理解した話 - koyumeishiのブログ](https://koyumeishi.hatenablog.com/entry/2021/01/14/052223)<sup>[archive.org](https://web.archive.org/web/20210401023419/https://koyumeishi.hatenablog.com/entry/2021/01/14/052223)</sup>
-    -   <a class="handle">koyumeishi</a> によるブログ記事。TODO: ちゃんと読んでリンクするかどうか判断する + リンクするなら要約を書く
+    -   <a class="handle">koyumeishi</a> によるブログ記事。$2$ 変数間の制約からグラフ表現可能な劣モジュラ関数を自動導出するライブラリを提案している。
 
 
 ## 注釈
