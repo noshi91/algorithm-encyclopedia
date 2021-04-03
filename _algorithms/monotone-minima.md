@@ -7,7 +7,7 @@ changelog:
     date: 2020-07-09T00:00:00+09:00
   - summary: SMAWK algorithm との類似のある変種についての記述を追加
     authors: kimiyuki
-    reviewers:
+    reviewers: noshi91
     date: 2020-04-03T00:00:00+09:00
 algorithm:
   input: monotone な $H \times W$ 行列 $f$
