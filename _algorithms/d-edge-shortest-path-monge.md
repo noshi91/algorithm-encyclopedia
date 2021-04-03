@@ -4,7 +4,7 @@ changelog:
   - summary: ページ作成
     authors: noshi91
     reviewers: ["kimiyuki", "MiSawa"]
-    date: 2021-03-28T20:41:31+09:00
+    date: 2021-04-03T10:30:00+09:00
 algorithm:
   input: >
     Monge 性を満たす整数の辺重み $c : E \to \mathbb{Z}$ 付き完全 DAG $G = (N, E = \lbrace (i, j) \mid i \lt j \rbrace)$ 及び正整数 $d$
