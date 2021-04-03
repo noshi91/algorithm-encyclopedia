@@ -5,6 +5,10 @@ changelog:
     authors: kimiyuki
     reviewers: noshi91
     date: 2020-07-09T00:00:00+09:00
+  - summary: SMAWK algorithm との類似のある変種についての記述を追加
+    authors: kimiyuki
+    reviewers: noshi91
+    date: 2020-04-03T00:00:00+09:00
 algorithm:
   input: monotone な $H \times W$ 行列 $f$
   output: 各行 $y$ に対し最小値の位置 $x \in \mathrm{argmin} _ x f(y, x)$
@@ -51,6 +55,12 @@ monotone minima の具体的なアルゴリズムは次のようなものであ�
 
 計算量について。$O(W)$ かけてある行の最小値の列を求め、$H' \times W'$ と $H'' \times W''$ であって $H' \approx H'' \approx H/2$ かつ $W' + W'' = W + 1$ なふたつの行列に対し再帰している。
 これを $H/2 \times W$ なひとつの行列への再帰だと思えば $O(H + W \log H)$ であることが分かる。
+
+
+## その他
+
+-   中央付近の行をひとつ選んでその行の最小値を求めその左上と右下について再帰的に解くという形ではなく、奇数行目を無視して偶数行目だけ残した行列についてまず再帰的に解きその後に奇数行目の最小値の位置を補間するという形でも、ほとんど同じアルゴリズムになる。後者の補間をする形のものは [SMAWK algorithm](/smawk-algorithm) から「最小値を含む可能性がないとしてよい列を削除する」というステップを削除してできるアルゴリズムに一致する。
+
 
 ## 関連項目
 
