@@ -5,6 +5,10 @@ changelog:
     authors: kimiyuki
     reviewers: kuretchi
     date: 2021-02-12T00:00:00+09:00
+  - summary: Fibonacci Heap の計測の注釈を変更
+    authors: noshi91
+    reviewers:
+    date: 2021-04-03T18:05:57+09:00
 algorithm:
   input: >
     非負の辺重み $c : E \to \lbrace x \in \mathbb{R} \mid x \ge 0 \rbrace$ 付き有向グラフ $G = (V, E)$ および頂点 $s \in V$
