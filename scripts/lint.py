@@ -259,7 +259,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         'github.com',
         'iss.ndl.go.jp',
         'ja.wikipedia.org',
-        'springer.com',
+        'www.springer.com',
     )
     for url, col in found_urls:
         hostname = urllib.parse.urlparse(url).hostname

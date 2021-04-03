@@ -55,7 +55,7 @@ $N$ 個のゴミをそれぞれ頂点とし、始点 $s$ および終点 $t$ を
 
 ## 外部リンク
 
--   <del>[最小カット - CKomakiの日記 - TopCoder部](http://topcoder.g.hatena.ne.jp/CKomaki/20121019/1350663591)</del> (Internet Archive にも保存されておらず現在は閲覧不能)
+-   <del><a href="http://topcoder.g.hatena.ne.jp/CKomaki/20121019/1350663591">最小カット - CKomakiの日記 - TopCoder部</a></del> (Internet Archive にも保存されておらず現在は閲覧不能)
     -   <a class="handle">Komaki</a> によるブログ記事。燃やす埋める問題という問題はこの記事で提案されたようである。
 -   [最小カットを使って「燃やす埋める問題」を解く - SlideShare](https://www.slideshare.net/shindannin/project-selection-problem)<sup>[archive.org](https://web.archive.org/web/20210401023045/https://www.slideshare.net/shindannin/project-selection-problem)</sup>
     -   <a class="handle">shindannin</a> によるスライド。燃やす埋める問題について分かりやすく説明している。
