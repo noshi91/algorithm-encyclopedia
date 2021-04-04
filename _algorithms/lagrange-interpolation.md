@@ -7,7 +7,7 @@ changelog:
     date: 2020-07-09T00:00:00+09:00
   - summary: 見出し修正
     authors: noshi91
-    reviewers:
+    reviewers: kimiyuki
     date: 2021-04-04T10:58:26+09:00
 algorithm:
   input:
