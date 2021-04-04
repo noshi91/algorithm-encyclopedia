@@ -223,7 +223,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         result.extend(check_atcoder_user(m.group(1), file=path, line=line, col=m.start() + 1))
 
     # internal links
-    for m in re.finditer(r'(!?)\[([^]]*)\]\((/[-0-9a-z]+)\)', msg):
+    for m in re.finditer(r'(!?)\[([^]]*)\]\((/[- 0-9A-Z_a-z]+)\)', msg):
         is_image = m.group(1)
         actual_title = m.group(2)
         urlpath = m.group(3)

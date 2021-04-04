@@ -53,7 +53,7 @@ description: >
     -   最大流最小カット定理によって最小カット問題の解の容量は最大流問題の解の流量に等しい。
 -   [燃やす埋める問題](/moyasu-umeru-mondai)
     -   燃やす埋める問題は最小カット問題へと帰着できる。
--   [project selection problem](/project selection problem)
+-   [project selection problem](/project-selection-problem)
     -   project selection problem は最小カット問題へと帰着できる。
 
 
