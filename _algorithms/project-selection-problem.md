@@ -20,7 +20,7 @@ description: >
 
 ## 概要
 
-problem selection problem[^project-selection-problem-name] とは、次の形の問題である:
+problem selection problem とは、次の形の問題である:
 
 -   $N$ 個のプロジェクト $x_0, x_1, x_2, \dots, x _ {N-1}$ と $M$ 個の機械 $y_0, y_1, y_2, \dots, y _ {M-1}$ がある。
     プロジェクト $x_i$ を実行すると利益 $a_i$ 円を産む。
@@ -55,8 +55,3 @@ $N$ 個のプロジェクトと $M$ 個の機械をそれぞれ頂点とし、�
     -   <a class="handle">tokoharu</a> によるブログ記事。燃やす埋める問題という問題クラスではなく project selection problem という別の問題クラスを利用することを提案している。
 -   [最小カットを使って「燃やす埋める」問題を解くスライドのフォロー - じじいのプログラミング](https://shindannin.hatenadiary.com/entry/2017/11/15/043009)<sup>[archive.org](https://web.archive.org/web/20210401023113/https://shindannin.hatenadiary.com/entry/2017/11/15/043009)</sup>
     -   <a class="handle">shindannin</a> によるブログ記事。燃やす埋める問題と project selection problem とを比較している。
-
-
-## 注釈
-
-[^project-selection-problem-name]: TODO: 出典を探す
