@@ -30,9 +30,21 @@ description: >
 (省略)
 
 
-## その他
+## カットの定義
 
--   $s$-$t$ カットは、有向辺の部分集合 $C \subseteq E$ であってどの $s$-$t$ パスも $C$ に含まれるような有向辺を含むものとして定義される場合[^cut-set-of-edges]と、頂点の部分集合 $A \subseteq V$ であって $s \in A$ かつ $t \in V \setminus A$ なものとして定義される場合[^cut-set-of-vertices]とがある。カットの容量は、前者の定義の場合は $C$ に含まれる有向辺の重みの総和として定義され、後者の定義の場合は始点が $A$ に含まれる終点 $V \setminus A$ に含まれるような有向辺の重みの総和として定義される。最小カット問題を考える際にはどちらの定義を用いても解の容量は同じであるが、前者の定義のカットと後者の定義のカットは厳密には一致しない。両者を区別したいときには、前者を $s$-$t$ 非連結化集合 ($s$-$t$ disconnecting) と呼び後者のみを $s$-$t$ カットと呼ぶことがある[^s-t-disconnecting]。
+与えられたネットワークの $s$-$t$ カットの定義としては、大きく分けて以下のみっつがある。
+
+1.  有向辺の部分集合 $C \subseteq E$ であってどの $s$-$t$ パスも $C$ に含まれるような有向辺を含むもの[^cut-set-of-edges]
+2.  頂点の部分集合 $A \subseteq V$ であって $s \in A$ かつ $t \in V \setminus A$ なもの[^cut-set-of-vertices]
+3.  有向辺の部分集合 $C \subseteq E$ であって、次を満たすもの: ある頂点の部分集合 $A \subseteq V$ であって $s \in A$ かつ $t \in V \setminus A$ なものが存在し、$A$ に含まれる頂点から $V \setminus A$ に含まれる頂点への有向辺の全体が $C$ に等しい[^cut-set-of-vertices-as-edges]
+
+カットの容量は、(1.) の定義の場合は $C$ に含まれる有向辺の重みの総和として定義される。
+(2.) と (3.) の定義の場合は始点が $A$ に含まれる終点 $V \setminus A$ に含まれるような有向辺の重みの総和として定義される。
+
+最小カット問題を考える際にはどの定義を用いても解の容量は同じであるが、どの定義も厳密には一致しない。
+(1.) の定義と (2.) の定義との違いはカットの容量の最大値について考えれば明らかである。
+(2.) の定義と (3.) の定義とはほとんど同じものであるが、ネットワークが非連結な場合に異なってくる。
+(1.) で定義されるものを (2.) や (3.) で定義されるものから区別したいときには、(1.) で定義されるものを $s$-$t$ 非連結化集合 ($s$-$t$ disconnecting) と呼ぶことがある[^s-t-disconnecting]。
 
 
 ## 関連項目
@@ -62,4 +74,5 @@ description: >
 [^moyasu-umeru-local-name]: 競技プログラミングのコミュニティ外では通用しない名前であることに注意したい。
 [^cut-set-of-edges]: たとえば R. J. ウィルソン. グラフ理論入門. 近代科学社, 2001, [ISBN978-4-76-490296-1](https://iss.ndl.go.jp/api/openurl?isbn=9784764902961).
 [^cut-set-of-vertices]: たとえば R. Diestel, [Graph Theory](https://www.springer.com/jp/book/9783662536216), 5th ed. Berlin Heidelberg: Springer-Verlag, 2017.
+[^cut-set-of-vertices-as-edges]: たとえば Schrijver, A. [Combinatorial Optimization: Polyhedra and Efficiency](https://www.springer.com/jp/book/9783540443896), Springer Science &amp; Business Media, 2003.
 [^s-t-disconnecting]: たとえば Schrijver, A. [Combinatorial Optimization: Polyhedra and Efficiency](https://www.springer.com/jp/book/9783540443896), Springer Science &amp; Business Media, 2003.
