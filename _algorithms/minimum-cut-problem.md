@@ -35,11 +35,11 @@ description: >
 与えられたネットワークの $s$-$t$ カットの定義としては、大きく分けて以下のみっつがある。
 
 1.  有向辺の部分集合 $C \subseteq E$ であってどの $s$-$t$ パスも $C$ に含まれるような有向辺を含むもの[^cut-set-of-edges]
-2.  頂点の部分集合 $A \subseteq V$ であって $s \in A$ かつ $t \in V \setminus A$ なもの[^cut-set-of-vertices]
-3.  有向辺の部分集合 $C \subseteq E$ であって、次を満たすもの: ある頂点の部分集合 $A \subseteq V$ であって $s \in A$ かつ $t \in V \setminus A$ なものが存在し、$A$ に含まれる頂点から $V \setminus A$ に含まれる頂点への有向辺の全体が $C$ に等しい[^cut-set-of-vertices-as-edges]
+2.  頂点の部分集合 $S \subseteq V$ であって $s \in S$ かつ $t \in V \setminus S$ なもの[^cut-set-of-vertices]
+3.  有向辺の部分集合 $C \subseteq E$ であって、次を満たすもの: ある頂点の部分集合 $S \subseteq V$ であって $s \in S$ かつ $t \in V \setminus S$ なものが存在し、$S$ に含まれる頂点から $V \setminus S$ に含まれる頂点への有向辺の全体が $C$ に等しい[^cut-set-of-vertices-as-edges]
 
 カットの容量は、(1.) の定義の場合は $C$ に含まれる有向辺の重みの総和として定義される。
-(2.) と (3.) の定義の場合は始点が $A$ に含まれる終点 $V \setminus A$ に含まれるような有向辺の重みの総和として定義される。
+(2.) と (3.) の定義の場合は始点が $S$ に含まれる終点 $V \setminus S$ に含まれるような有向辺の重みの総和として定義される。
 
 最小カット問題を考える際にはどの定義を用いても解の容量は同じであるが、どの定義も厳密には一致しない。
 (1.) の定義と (2.) の定義との違いはカットの容量の最大値について考えれば明らかである。
