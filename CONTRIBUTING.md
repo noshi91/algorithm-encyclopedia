@@ -68,7 +68,7 @@ authors と reviewers の表示は、commit log を確認しない読者に対�
     -   `summary`: その更新の内容の概要
     -   `authors`: その更新をした人たちの名前 (AtCoder ID)
     -   `reviewers` (空欄可): その更新をレビューした人たちの名前 (AtCoder ID)
-    -   `date`: その更新をした日時 ([ISO 8691](https://ja.wikipedia.org/wiki/ISO_8601) で秒まで) (例: `2020-07-09T00:00:00+09:00`)。`$ date --iso-8601=seconds` を実行するとよい。時間や分や秒は適当でも (たとえばすべて 0 でも) 構わない。
+    -   `date`: その更新をした日時 ([ISO 861](https://ja.wikipedia.org/wiki/ISO_8601) で秒まで) (例: `2020-07-09T00:00:00+09:00`)。`$ date --iso-8601=seconds` を実行するとよい。時間や分や秒は適当でも (たとえばすべて 0 でも) 構わない。
 -   `algorithm` (空欄可): アルゴリズムについての概要
     -   `input` (空欄可): アルゴリズムへの入力
     -   `output` (空欄可): アルゴリズムからの出力
