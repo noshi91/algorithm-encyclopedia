@@ -20,7 +20,7 @@ description: >
   Lagrange 補間多項式とは、与えられた点群 $\lbrace (x_i, y_i) \mid i \lt N \rbrace$ をすべて通る ($\forall i \lt N. f(x_i) = y_i$ を満たす) ような最小次数の多項式 $f$ のことである。
   Lagrange 補間多項式を $\Theta (N (\log N) ^ 2)$ で計算するアルゴリズムが存在する。
 draft: true
-draft_urls:
+draft_urls: ["https://rsk0315.hatenablog.com/entry/2020/04/05/203210"]
 ---
 
 # Lagrange 補間多項式
