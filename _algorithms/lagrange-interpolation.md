@@ -5,7 +5,6 @@ changelog:
     authors: kimiyuki
     reviewers:
     date: 2020-07-09T00:00:00+09:00
-changelog:
   - summary: 見出し修正
     authors: noshi91
     reviewers:
@@ -24,4 +23,4 @@ draft: true
 draft_urls:
 ---
 
-# Lagrange 補間
+# Lagrange 補間多項式
