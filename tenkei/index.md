@@ -10,9 +10,11 @@
    {% assign entry_id = entry.url | split: "/" | last | split: "." | first %}
    {% if entry.draft %}
        <dt id="{{ entry_id }}">
-            {{ entry.title }}
-            <a href="#{{ entry_id }}" class="draft-link">{% octicon link height:16 %}</a>
-            {% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
+            <a href="#{{ entry_id }}" class="draft-link">
+                {{ entry.title }}
+                {% octicon link height:16 %}
+            </a>
+            {% for url in entry.draft_urls %} <a href="{{ url }}" class="draft-link-external">{% octicon link-external height:16 %}</a>{% endfor %}
        </dt>
        <dd>{{ entry.description }}</dd>
    {% else %}

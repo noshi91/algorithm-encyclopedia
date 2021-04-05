@@ -53,7 +53,17 @@
 }
 
 // links in index.md
+.draft-link {
+    color: black;
+}
 .draft-link svg.octicon {
+    display: none;
+}
+.draft-link:hover {
+    text-decoration: none;
+}
+.draft-link:hover svg.octicon {
+    display: inline;
     fill: grey;
 }
 .draft-link-external svg.octicon {

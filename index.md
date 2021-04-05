@@ -18,6 +18,11 @@
             {% if entry.algorithm.level %}
                 <span style="font-style: normal;" class="rating-color-{{ entry.algorithm.level }}">&#x25C9;</span>
             {% endif %}
+
+            {% if entry.draft %}
+                <a href="#{{ entry_id }}" class="draft-link">
+            {% endif %}
+
             {% if entry.draft %}
                 {{ entry.title }}
             {% else %}
@@ -29,7 +34,8 @@
             {% endif %}
 
             {% if entry.draft %}
-                <a href="#{{ entry_id }}" class="draft-link">{% octicon link height:16 %}</a>
+                    {% octicon link height:16 %}
+                </a>
                 {% for url in entry.draft_urls %} <a href="{{ url }}" class="draft-link-external">{% octicon link-external height:16 %}</a>{% endfor %}
             {% endif %}
         </dt>
