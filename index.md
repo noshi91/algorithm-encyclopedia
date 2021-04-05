@@ -20,7 +20,8 @@
             {% endif %}
 
             {% if entry.draft %}
-                <a href="#{{ entry_id }}" class="draft-link">
+                <span href="#{{ entry_id }}" class="draft-link-container">
+                    <a href="#{{ entry_id }}" class="draft-link">
             {% endif %}
 
             {% if entry.draft %}
@@ -34,9 +35,10 @@
             {% endif %}
 
             {% if entry.draft %}
+                    </a>
+                    {% for url in entry.draft_urls %} <a href="{{ url }}" class="draft-link-external">{% octicon link-external height:16 %}</a>{% endfor %}
                     {% octicon link height:16 %}
-                </a>
-                {% for url in entry.draft_urls %} <a href="{{ url }}" class="draft-link-external">{% octicon link-external height:16 %}</a>{% endfor %}
+                </span>
             {% endif %}
         </dt>
         <dd>

@@ -53,21 +53,21 @@
 }
 
 // links in index.md
-.draft-link {
+a.draft-link {
     color: black;
 }
-.draft-link svg.octicon {
-    display: none;
+.draft-link-container svg.octicon-link {
+    visibility: hidden;
 }
-.draft-link:hover {
+.draft-link-external svg.octicon-link-external {
+    fill: currentColor;
+}
+a.draft-link:hover {
     text-decoration: none;
 }
-.draft-link:hover svg.octicon {
-    display: inline;
+.draft-link-container:hover svg.octicon-link {
+    visibility: visible;
     fill: grey;
-}
-.draft-link-external svg.octicon {
-    fill: currentColor;
 }
 
 // footer links
