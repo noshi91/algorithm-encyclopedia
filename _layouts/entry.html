@@ -27,7 +27,10 @@ layout: default
     {% if page.algorithm.condition %}<dt>condition</dt><dd>{{ page.algorithm.condition }}</dd>{% endif %}
     {% if page.algorithm.time_complexity %}<dt>time complexity</dt><dd>{{ page.algorithm.time_complexity }}</dd>{% endif %}
     {% if page.algorithm.space_complexity %}<dt>space complexity</dt><dd>{{ page.algorithm.space_complexity }}</dd>{% endif %}
-    {% if page.algorithm.aliases %}<dt>aliases</dt>{% for alias in page.algorithm.aliases %}<dd>{{ alias }}</dd>{% endfor %}{% endif %}
+    {% assign aliases_size = entry.algorithm.aliases | size %}
+    {% if aliases_size != 0 %}
+        {% if page.algorithm.aliases %}<dt>aliases</dt>{% for alias in page.algorithm.aliases %}<dd>{{ alias }}</dd>{% endfor %}{% endif %}
+    {% endif %}
 {% endif %}
 </dl>
 </div>
