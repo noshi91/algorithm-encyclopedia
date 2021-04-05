@@ -52,8 +52,11 @@
     clear: both;
 }
 
-// external links in index.md
-.link-external svg.octicon {
+// links in index.md
+.draft-link svg.octicon {
+    fill: grey;
+}
+.draft-link-external svg.octicon {
     fill: currentColor;
 }
 

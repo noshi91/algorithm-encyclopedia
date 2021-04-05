@@ -13,7 +13,8 @@
 {% assign sorted_algorithms = site.algorithms | sort: "title" %}
 {% for entry in sorted_algorithms %}
     {% unless entry.tenkei %}
-        <dt>
+        {% assign entry_id = entry.url | split: "/" | last | split: "." | first %}
+        <dt id="{{ entry_id }}">
             {% if entry.algorithm.level %}
                 <span style="font-style: normal;" class="rating-color-{{ entry.algorithm.level }}">&#x25C9;</span>
             {% endif %}
@@ -28,7 +29,8 @@
             {% endif %}
 
             {% if entry.draft %}
-                {% for url in entry.draft_urls %} <a href="{{ url }}" class="link-external">{% octicon link-external height:16 %}</a>{% endfor %}
+                <a href="#{{ entry_id }}" class="draft-link">{% octicon link height:16 %}</a>
+                {% for url in entry.draft_urls %} <a href="{{ url }}" class="draft-link-external">{% octicon link-external height:16 %}</a>{% endfor %}
             {% endif %}
         </dt>
         <dd>
