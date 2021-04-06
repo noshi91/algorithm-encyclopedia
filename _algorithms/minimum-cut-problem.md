@@ -39,7 +39,7 @@ description: >
 最小カット問題を考える際にはどの定義を用いても解の容量は同じであるが、カットの定義としてはすべて異なるものである。
 (1.) の定義と (2.) の定義との違いはカットの容量の最大値について考えれば明らかである。
 (2.) の定義と (3.) の定義とはほとんど同じものであるが、ネットワークが非連結な場合に異なってくる。
-(1.) で定義されるものを (2.) や (3.) で定義されるものから区別したいときには、(1.) で定義されるものを $s$-$t$ 非連結化集合 ($s$-$t$ disconnecting) と呼ぶことがある[^s-t-disconnecting]。
+(1.) で定義されるものを (2.) や (3.) で定義されるものから区別したいときには、(1.) で定義されるものを $s$-$t$ 非連結化集合 ($s$-$t$ disconnecting edge set) と呼ぶことがある[^s-t-disconnecting-edge-set]。
 
 
 ## 関連項目
@@ -70,4 +70,4 @@ description: >
 [^cut-set-of-edges]: たとえば R. J. ウィルソン. グラフ理論入門. 近代科学社, 2001, [ISBN978-4-76-490296-1](https://iss.ndl.go.jp/api/openurl?isbn=9784764902961).
 [^cut-set-of-vertices]: たとえば R. Diestel, [Graph Theory](https://www.springer.com/jp/book/9783662536216), 5th ed. Berlin Heidelberg: Springer-Verlag, 2017.
 [^cut-set-of-vertices-as-edges]: たとえば Schrijver, A. [Combinatorial Optimization: Polyhedra and Efficiency](https://www.springer.com/jp/book/9783540443896), Springer Science &amp; Business Media, 2003.
-[^s-t-disconnecting]: たとえば Schrijver, A. [Combinatorial Optimization: Polyhedra and Efficiency](https://www.springer.com/jp/book/9783540443896), Springer Science &amp; Business Media, 2003.
+[^s-t-disconnecting-edge-set]: たとえば Schrijver, A. [Combinatorial Optimization: Polyhedra and Efficiency](https://www.springer.com/jp/book/9783540443896), Springer Science &amp; Business Media, 2003.
