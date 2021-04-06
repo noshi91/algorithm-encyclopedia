@@ -52,7 +52,7 @@ $N$ 個のプロジェクトと $M$ 個の機械をそれぞれ頂点とし、�
 ## 外部リンク
 
 -   [『燃やす埋める』と『ProjectSelectionProblem』 - とこはるのまとめ](http://tokoharuland.hateblo.jp/entry/2017/11/12/234636)<sup>[archive.org](https://web.archive.org/web/20210401023114/http://tokoharuland.hateblo.jp/entry/2017/11/12/234636)</sup>
-    -   <a class="handle">tokoharu</a> によるブログ記事。燃やす埋める問題という問題ではなく project selection problem という別の問題を利用することを提案している。
+    -   <a class="handle">tokoharu</a> によるブログ記事。燃やす埋める問題という問題ではなく project selection problem を利用することを提案している。
 -   [最小カットを使って「燃やす埋める」問題を解くスライドのフォロー - じじいのプログラミング](https://shindannin.hatenadiary.com/entry/2017/11/15/043009)<sup>[archive.org](https://web.archive.org/web/20210401023113/https://shindannin.hatenadiary.com/entry/2017/11/15/043009)</sup>
     -   <a class="handle">shindannin</a> によるブログ記事。燃やす埋める問題と project selection problem とを比較している。
 
