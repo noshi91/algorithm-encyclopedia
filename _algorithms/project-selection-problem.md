@@ -13,14 +13,14 @@ algorithm:
   aliases:
   level: blue
 description: >
-  problem selection problem は最小カット問題に帰着できる問題のひとつ。
+  project selection problem は最小カット問題に帰着できる問題のひとつ。
 ---
 
 # project selection problem
 
 ## 概要
 
-problem selection problem とは、次の形の問題である:
+project selection problem とは、次の形の問題である:
 
 -   $N$ 個のプロジェクト $x_0, x_1, x_2, \dots, x _ {N-1}$ と $M$ 個の機械 $y_0, y_1, y_2, \dots, y _ {M-1}$ がある。
     プロジェクト $x_i$ を実行すると利益 $a_i$ 円 ($a_i \ge 0$) を産む。
