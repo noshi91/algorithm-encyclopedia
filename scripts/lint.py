@@ -351,6 +351,13 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
 
     if 'http' not in msg:
         error_by_regex(
+            pattern=r'最大流(問題|最小カット定理|を|は|が|や)',
+            text=r"typo: `最大流` ではなく `最大フロー` を使ってください。`最大フロー` の方が一般的です。(https://github.com/kmyk/algorithm-encyclopedia/pull/140#discussion_r606915806)",
+            fix=(lambda m: r'最大フロー' + m.group(1)),
+        )
+
+    if 'http' not in msg:
+        error_by_regex(
             pattern='([A-Za-z]+)法',
             text='style: `Dijkstra法` ではなく `Dijkstra 法` のようにスペースを開けて書いてください。どちらが正しいというものではないですが、統一されていることは重要です。',
             fix=(lambda m: m.group(1) + ' 法'),
