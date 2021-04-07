@@ -25,74 +25,81 @@ description: >
 
 ## generalized lower trianglar matrix
 
-部分的に定義された $H \times W$ 行列 $f$ が generalized lower trianglar matrix であるとは、整数列 $0 \leq C _ 0 \leq \dots \leq C _ {H - 1} = W - 1$ が存在して $0 \leq x \leq C _ y$ のときかつその時に限り $f(y, x)$ が定義されることをいう。
+部分的に定義された $H \times W$ 行列 $f$ が generalized lower trianglar matrix であるとは、整数列 $0 \lt L _ 0 \leq L _ 1 \leq \dots \leq L _ {H - 1} = W$ が存在して、$0 \leq x \lt L _ y$ のときかつその時に限り $f(y, x)$ が定義されることをいう。
 
 ## 詳細
 
-より小さいインスタンスへの帰着を利用した、相互再帰的な $2$ 種類の機械 $\texttt{ReduceRow}$ と $\texttt{ReduceColumn}$ を考える。
-これらは以下の機能を持つ。
+相互再帰的な $2$ 種類の機械 $\texttt{ReduceRow}$ と $\texttt{ReduceColumn}$ を考える。
+これらの機械は行集合 $R \subseteq H$ 及び列集合 $C \subseteq W$ を管理し、$f$ を $R \times C$ 部分に制限した行列に対する行最小値問題を解く。
+$R$ は機械が構成されたときに与えられ不変であるが、$C$ は昇順に追加されていく。
 
--   $\texttt{add\_column} (c)$
+$\mathscr{A}$ をこれらいずれかの機械としたとき、以下の操作を考える。
 
-    列 $c$ を追加する。
+-   $\texttt{add\_column} (\mathscr{A}, c)$
 
--   $\texttt{get\_argmin} (y)$
+    機械 $\mathscr{A}$ に列 $c$ を追加する。
 
-    呼び出された時点で追加済の列について、$\argmin _ x f(y, x)$ を計算する。
-    これは $y = 0, 1, \dots, H - 1$ の順に呼ばれることが保証される。
+-   $\texttt{get\_argmin} (\mathscr{A}, y)$
+
+    機械 $\mathscr{A}$ 内で、行 $y$ についての $\argmin$ を計算する。
+    これは $y \in R$ かつ $y$ 昇順に呼ばれることが保証される。
 
 ### $\texttt{ReduceRow}$
 
-$\texttt{ReduceRow}$ は $f$ の $\lfloor H / 2 \rfloor \times M$ 部分行列をとり、そのインスタンスを解く $\texttt{ReduceColumn}\ A$ を作成する。
+$\mathscr{A}$ を $\texttt{ReduceRow}$ とする。
+$R = \lbrace r _ 0, r _ 1, \dots, r _ h \rbrace$ としたとき、行集合を $\lbrace r _ i \mid i = 1 \pmod 2 \rbrace$ として $\texttt{ReduceColumn}$ $\mathscr{B}$ を作成する。
 各関数の内容は以下のようになる。
 
--   $\texttt{add\_column} (c)$
--   $\texttt{add \_ column} (c)$
--   $\texttt{add_column} (c)$
--   $\texttt{add _ column} (c)$
+-   $\texttt{add\_column} (\mathscr{A} , c)$
 
-    $c$ を考慮の対象に追加したのち、$A$ に $\texttt{add\_column} (c)$ を適用する。
+    $C \leftarrow C \cup \lbrace c \rbrace$ とする。
+    $\texttt{add\_column} (\mathscr{B}, c)$ を呼び出す。
 
--   $\texttt{get\_argmin} (y)$
+-   $\texttt{get\_argmin} (\mathscr{A}, y)$
 
-    -   $y$ が偶数のとき
+    $r _ i = y$ を満たす $i$ をとる。
 
-        行 $y$ は $\mathscr{A}$ に含まれないことに注意せよ。
-        行 $y - 1$ 及び $y + 1$ の $\argmin$ の位置の間だけを考えればよい。
-        $\argmin _ x f(y - 1, x)$ は既に求まっている。
-        $A$ に対して $\texttt{get\_argmin} (y / 2)$ を適用し、$k$ とする。
-        $k$ は $\argmin _ x f(y + 1, x)$ とは必ずしも一致しないが、それでもなお $\argmin _ x f(y ,x) \leq k$ は成立するため、利用することができる。
+    -   $i$ が偶数のとき
 
-    -   $y$ が奇数のとき
+        行 $y$ は $\mathscr{B}$ に含まれないことに注意せよ。
+        totally monotone 性から、行 $r _ {i - 1}$ 及び $r _ {i + 1}$ の $\argmin$ の位置の間だけを考えればよい。
+        $\displaystyle \argmin _ {x \in C} f(r _ {i - 1}, x)$ は既に求まっている。
+        $k \coloneqq \texttt{get\_argmin} (\mathscr{B}, r _ {i + 1})$ とする。
+        $k$ は $\displaystyle \argmin _ {x \in C} f(r _ {i + 1}, x)$ とは必ずしも一致しないが、それでもなお $\displaystyle \argmin _ {x \in C} f(y, x) \leq k$ は成立するため、利用することができる。
 
-        行 $y$ は $A$ に含まれていることに注意せよ。
-        $\texttt{get\_argmin} (y - 1)$ の呼び出しで $A$ に対する $\texttt{get\_argmin} ((y - 1) / 2) \eqqcolon k$ が既に計算されている。
-        $\texttt{get\_argmin} (y - 1)$ の呼び出しから $\texttt{get\_argmin} (y)$ の呼び出しの間に追加された行全体を $c$ とすれば、$\argmin _ x f(y, x) \in \lbrace k \rbrace \cup c$ である。
-        これらを全て調べて、$\argmin _ x f(y, x)$ を得る。
+    -   $i$ が奇数のとき
+
+        行 $y$ は $\mathscr{B}$ に含まれていることに注意せよ。
+        $\texttt{get\_argmin} (r _ {i - 1})$ の呼び出しの際に $\texttt{get\_argmin} (\mathscr{B}, y) \eqqcolon k$ が既に計算されている。
+        $\texttt{get\_argmin} (\mathscr{A}, r _ {i - 1})$ の呼び出しから $\texttt{get\_argmin} (\mathscr{A}, y)$ の呼び出しの間に追加された行全体を $\Delta C$ とすれば、$\argmin _ {x \in C} f(y, x) \in \lbrace k \rbrace \cup \Delta C$ である。
+        これらを全て調べて、$\argmin _ {x \in C} f(y, x)$ を得る。
 
 
 ### $\texttt{ReduceColumn}$
 
-$\texttt{ReduceColumn}$ は $f$ の $H \times M ^ {\prime}$ 部分行列をとり、そのインスタンスを解く $\texttt{ReduceRow}\ A$ を作成する。
-$M ^ {\prime} \leq H$ を満たす。
+$\mathscr{A}$ を $\texttt{ReduceColumn}$ とする。
+行集合を $R$ とする $\texttt{ReduceRow}$ を構成し、$\mathscr{B}$ とする。
 
-$A$ に追加する列の候補 $C$ を管理する。
-最初、$C = \emptyset$ である。
+$\mathscr{B}$ に追加する列の候補 $T$ を管理する。
+最初、$T = \emptyset$ である。
 各関数の内容は以下のようになる。
 
--   $\texttt{add\_column} (c)$
+-   $\texttt{add\_column} (\mathscr{A}, c)$
 
-    $s \coloneqq \lvert C \rvert$ とする。
-    $C$ の最右列を $t$ とする。
-    $f(s, t) \gt f(s, c)$ ならば $C$ から $t$ を削除する。
+    $C \leftarrow C \cup \lbrace c \rbrace$
+    $s \coloneqq \lvert T \rvert$ とする。
+    $T$ の最右列を $t$ とする。
+    $f(s, t) \gt f(s, c)$ ならば $T$ から $t$ を削除する。
     これを $f(s, t) \leq f(s, c)$ となるまで繰り返す。
-    $C$ に $c$ を追加する。
+    $T$ に $c$ を追加する。
 
--   $\texttt{get\_argmin} (y)$
+-   $\texttt{get\_argmin} (\mathscr{A}, y)$
 
-    $C$ の最左 $y$ 個の列は、もう $\texttt{add\_column}$ の操作で削除されることが決してない。
-    したがって、これらの列のうちまだ $A$ に追加されていないもの全てを $\texttt{add\_column}$ を呼び出して追加する。
-    今 $\argmin _ x f(y, x)$ になり得る列は全て $A$ に追加されているため、$A$ に対して $\texttt{get\_argmin} (y)$ を呼び出せば、それが求める $\argmin _ x f(y, x)$ である。
+    $r _ i = y$ を満たす $i$ をとる。
+
+    $T$ の最左 $i$ 個の列は、もう $\texttt{add\_column}$ の操作で削除されることが決してない。
+    したがって、これらの列のうちまだ $\mathscr{B}$ に追加されていないもの全てを $\texttt{add\_column}$ を呼び出して追加する。
+    今 $\argmin _ {x \in C} f(y, x)$ になり得る列は全て $\mathscr{B}$ に追加されているため、$\texttt{get\_argmin} (\mathscr{B}, y)$ が求める値である。
 
 ## 参考文献
 
