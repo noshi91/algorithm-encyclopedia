@@ -201,6 +201,10 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         text=r"KaTeX: `a_{i + 1}` ではなく `a _ {i + 1}` を使ってください。`_` のまわりに空白がないと、Markdown の強調と解釈されて壊れることがあります。",
         fix=' _ {',
     )
+    error_by_regex(
+        pattern=r'\\_',
+        text=r"""KaTeX: アンダースコアを表示するには `\_` ではなく `\textunderscore` や `\char95` を使ってください。`\_` が Markdown でのエスケープと解釈されて壊れることがあります。""",
+    )
     if '$' in msg:
         error_by_regex(
             pattern=r'\|',
