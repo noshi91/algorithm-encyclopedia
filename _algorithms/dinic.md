@@ -9,14 +9,14 @@ algorithm:
   input: >
     ネットワーク (つまり有向グラフ $G = (V, E)$ および辺容量 $c : E \to \mathbb{R} _ {\ge 0}$ および相異なる頂点 $s, t \in V$)
   output: >
-    $s$-$t$ 最大流 (つまり関数 $f : E \to \mathbb{R} _ {\ge 0}$ であって容量制約とフロー保存則を満たすもの)
+    $s$-$t$ 最大フロー (つまり関数 $f : E \to \mathbb{R} _ {\ge 0}$ であって容量制約とフロー保存則を満たすもの)
   time_complexity: >
     最悪計算量は $O(\lvert V \rvert^2 \lvert E \rvert)$ だが実用的にはかなり速い。ネットワークの構造によっては計算量が落ちることがある。
   space_complexity:
   aliases: []
   level: blue
 description: >
-  Dinic 法は最大流問題を解くアルゴリズムのひとつ。
+  Dinic 法は最大フロー問題を解くアルゴリズムのひとつ。
   残余グラフ上において、辺の本数の意味での $s$-$t$ 最短経路 DAG を BFS により構成し、増加パスをこの DAG の上の DFS により探して流せるだけ流す、という一連のステップを繰り返す。
   計算量は $O(\lvert V \rvert^2 \lvert E \rvert)$ だが実用的にはかなり速い。
 ---
@@ -25,7 +25,7 @@ description: >
 
 ## 概要
 
-Dinic 法は最大流問題を解くアルゴリズムのひとつである。
+Dinic 法は[最大フロー問題](/maximum-flow-problem)を解くアルゴリズムのひとつである。
 残余グラフ上において、辺の本数の意味での $s$-$t$ 最短経路 DAG を BFS により構成し、増加パスをこの DAG の上の DFS により探して流せるだけ流す、という一連のステップを繰り返す。
 
 最悪計算量は $O(\lvert V \rvert^2 \lvert E \rvert)$ だが実用的にはかなり速い。また、ネットワークの構造を制限すれば最悪計算量が落ちることがある[^time-complexity]。
@@ -38,8 +38,10 @@ Dinic 法は最大流問題を解くアルゴリズムのひとつである。
 
 ## 関連項目
 
+-   [最大フロー問題](/maximum-flow-problem)
+    -   Dinic 法は最大フロー問題を解くアルゴリズムである。
 -   [Ford-Fulkerson 法](/ford-fulkerson)
-    -    Ford-Fulkerson 法は Dinic 法と並んで競技プログラミングでよく利用される最大流問題を解くアルゴリズムのひとつである。Dinic 法では最短経路 DAG を構成して増加パスをこの DAG の上で探すが、Ford-Fulkerson 法では増加パスを単純な DFS により探す。
+    -    Ford-Fulkerson 法は Dinic 法と並んで競技プログラミングでよく利用される最大フロー問題を解くアルゴリズムのひとつである。Dinic 法では最短経路 DAG を構成して増加パスをこの DAG の上で探すが、Ford-Fulkerson 法では増加パスを単純な DFS により探す。
 
 
 ## 外部リンク

@@ -227,7 +227,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         result.extend(check_atcoder_user(m.group(1), file=path, line=line, col=m.start() + 1))
 
     # internal links
-    for m in re.finditer(r'(!?)\[([^]]*)\]\((/[-0-9a-z]+)\)', msg):
+    for m in re.finditer(r'(!?)\[([^]]*)\]\((/[- 0-9A-Z_a-z]+)\)', msg):
         is_image = m.group(1)
         actual_title = m.group(2)
         urlpath = m.group(3)
@@ -263,7 +263,7 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         'github.com',
         'iss.ndl.go.jp',
         'ja.wikipedia.org',
-        'springer.com',
+        'www.springer.com',
     )
     for url, col in found_urls:
         hostname = urllib.parse.urlparse(url).hostname
@@ -356,6 +356,13 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
         warning_by_regex(
             pattern=r'用量',
             text=r"日本語: `用量` ではなく `容量` の可能性があります。",
+        )
+
+    if 'http' not in msg:
+        error_by_regex(
+            pattern=r'最大流(問題|最小カット定理|を|は|が|や)',
+            text=r"typo: `最大流` ではなく `最大フロー` を使ってください。`最大フロー` の方が一般的です。(https://github.com/kmyk/algorithm-encyclopedia/pull/140#discussion_r606915806)",
+            fix=(lambda m: r'最大フロー' + m.group(1)),
         )
 
     if 'http' not in msg:
