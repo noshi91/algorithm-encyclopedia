@@ -343,6 +343,11 @@ def collect_messages_from_line(msg: str, *, path: pathlib.Path, line: int) -> Li
     )
 
     error_by_regex(
+        pattern=r'\\subset\b',
+        text=r"style: `\subset` ではなく `\subseteq` か `\subsetneq` を使ってください。`\subset` では等号が含まれるのかどうか曖昧です。",
+    )
+
+    error_by_regex(
         pattern=r'辺用量',
         text=r"日本語: `辺用量` ではなく `辺容量` です。",
         fix='辺容量',
