@@ -104,6 +104,13 @@ $C _ {\mathcal{B}}$ に追加する列の候補 $T _ {\mathcal{A}}$ を管理す
 
 $R _ {\mathcal{A}} = \emptyset$ であるような機械の $\texttt{get\textunderscore argmin}$ の処理は明らかであるから、その場合は再帰的に機械を構成せず打ち切る。
 
+これらの機械を用いて、元の問題は以下のように解くことができる。
+
+-   $R _ \mathcal{A} = H$ として $\texttt{ReduceRow}\ \mathcal{A}$ を構成する。
+-   $y = 0, 1, \dots, H - 1$ の順に以下の操作を行う。
+    -   $x = L _ {y - 1}, L _ {y - 1} + 1, \dots, L _ y - 1$ の順に $\texttt{add\textunderscore column} (\mathcal{A}, x)$ を呼び出す。
+    -   $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$ を $\displaystyle \argmin _ {x} f(y, x)$ として報告する。
+
 ### 時間計算量
 
 $\texttt{ReduceRow}$ は $\lvert R \rvert$ が概ね半分になるような機械を再帰的に管理する。
