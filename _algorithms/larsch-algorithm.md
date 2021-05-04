@@ -33,58 +33,59 @@ description: >
 これらの機械は行集合 $R \subseteq H$ 及び列集合 $C \subseteq W$ を管理し、$f$ を $R \times C$ 部分に制限した行列に対する行最小値問題を解く。
 $R$ は機械が構成されたときに与えられ不変であるが、$C$ は昇順に追加されていく。
 
-$\mathscr{A}$ をこれらいずれかの機械としたとき、以下の操作を考える。
+$\mathcal{A}$ をこれらいずれかの機械としたとき、以下の操作を考える。
 
--   $\texttt{add\textunderscore column} (\mathscr{A}, c)$
+-   $\texttt{add\textunderscore column} (\mathcal{A}, c)$
 
-    機械 $\mathscr{A}$ に列 $c$ を追加する。
+    機械 $\mathcal{A}$ に列 $c$ を追加する。
 
--   $\texttt{get\textunderscore argmin} (\mathscr{A}, y)$
+-   $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$
 
-    機械 $\mathscr{A}$ 内で、行 $y$ についての $\argmin$ を計算する。
+    機械 $\mathcal{A}$ の管理するその時点の $C$ 内で、行 $y$ についての $\argmin$ を計算する。
     これは $y \in R$ かつ $y$ 昇順に呼ばれることが保証される。
 
 ### $\texttt{ReduceRow}$
 
-$\mathscr{A}$ を $\texttt{ReduceRow}$ とする。
-$R = \lbrace r _ 0, r _ 1, \dots, r _ h \rbrace$ としたとき、行集合を $\lbrace r _ i \mid i = 1 \pmod 2 \rbrace$ として $\texttt{ReduceColumn}$ $\mathscr{B}$ を作成する。
+$\mathcal{A}$ を $\texttt{ReduceRow}$ とする。
+$R = \lbrace r _ 0, r _ 1, \dots, r _ {h - 1} \rbrace$ としたとき、行集合を $\lbrace r _ i \mid i \equiv 1 \pmod 2 \rbrace$ として $\texttt{ReduceColumn}$ $\mathcal{B}$ を作成する。
 各関数の内容は以下のようになる。
 
--   $\texttt{add\textunderscore column} (\mathscr{A} , c)$
+-   $\texttt{add\textunderscore column} (\mathcal{A} , c)$
 
-    $C \leftarrow C \cup \lbrace c \rbrace$ とする。
-    $\texttt{add\textunderscore column} (\mathscr{B}, c)$ を呼び出す。
+    $C \leftarrow C \cup \lbrace c \rbrace$ と更新する。
+    $\texttt{add\textunderscore column} (\mathcal{B}, c)$ を呼び出す。
 
--   $\texttt{get\textunderscore argmin} (\mathscr{A}, y)$
+-   $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$
 
     $r _ i = y$ を満たす $i$ をとる。
 
     -   $i$ が偶数のとき
 
-        行 $y$ は $\mathscr{B}$ に含まれないことに注意せよ。
-        totally monotone 性から、行 $r _ {i - 1}$ 及び $r _ {i + 1}$ の $\argmin$ の位置の間だけを考えればよい。
-        $\displaystyle \argmin _ {x \in C} f(r _ {i - 1}, x)$ は既に求まっている。
-        $k \coloneqq \texttt{get\textunderscore argmin} (\mathscr{B}, r _ {i + 1})$ とする。
-        $k$ は $\displaystyle \argmin _ {x \in C} f(r _ {i + 1}, x)$ とは必ずしも一致しないが、それでもなお $\displaystyle \argmin _ {x \in C} f(y, x) \leq k$ は成立するため、利用することができる。
+        行 $y$ は $\mathcal{B}$ に含まれないことに注意せよ。
+        $k _ p$ を $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ が呼び出されたときの結果、すなわち $C ^ {\prime}$ を当時の $C$ として $\argmin _ {x \in C ^ {\prime}} f(r _ {i - 1}, x)$ とする。
+        また、$\texttt{get\textunderscore argmin} (\mathcal{B}, r _ {i + 1})$ を呼び出し、得た値を $k _ s$ とする。
+        totally monotone 性から、$k _ p \leq \argmin _ {x \in C} f(r _ i, x) \leq k _ s$ である。
+        したがって、この範囲の列を全て調べて求める値を計算する。
+        
 
     -   $i$ が奇数のとき
 
-        行 $y$ は $\mathscr{B}$ に含まれていることに注意せよ。
-        $\texttt{get\textunderscore argmin} (r _ {i - 1})$ の呼び出しの際に $\texttt{get\textunderscore argmin} (\mathscr{B}, y) \eqqcolon k$ が既に計算されている。
-        $\texttt{get\textunderscore argmin} (\mathscr{A}, r _ {i - 1})$ の呼び出しから $\texttt{get\textunderscore argmin} (\mathscr{A}, y)$ の呼び出しの間に追加された行全体を $\Delta C$ とすれば、$\argmin _ {x \in C} f(y, x) \in \lbrace k \rbrace \cup \Delta C$ である。
+        行 $y$ は $\mathcal{B}$ に含まれることに注意せよ。
+        $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ の呼び出しの際に $\texttt{get\textunderscore argmin} (\mathcal{B}, y) \eqqcolon k$ が既に計算されている。
+        $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ の呼び出しから $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$ の呼び出しの間に追加された行全体を $\Delta C$ とすれば、$\argmin _ {x \in C} f(y, x) \in \lbrace k \rbrace \cup \Delta C$ である。
         これらを全て調べて、$\argmin _ {x \in C} f(y, x)$ を得る。
 
 
 ### $\texttt{ReduceColumn}$
 
-$\mathscr{A}$ を $\texttt{ReduceColumn}$ とする。
-行集合を $R$ とする $\texttt{ReduceRow}$ を構成し、$\mathscr{B}$ とする。
+$\mathcal{A}$ を $\texttt{ReduceColumn}$ とする。
+行集合を $R$ とする $\texttt{ReduceRow}$ を構成し、$\mathcal{B}$ とする。
 
-$\mathscr{B}$ に追加する列の候補 $T$ を管理する。
+$\mathcal{B}$ に追加する列の候補 $T$ を管理する。
 最初、$T = \emptyset$ である。
 各関数の内容は以下のようになる。
 
--   $\texttt{add\textunderscore column} (\mathscr{A}, c)$
+-   $\texttt{add\textunderscore column} (\mathcal{A}, c)$
 
     $C \leftarrow C \cup \lbrace c \rbrace$
     $s \coloneqq \lvert T \rvert$ とする。
@@ -93,13 +94,21 @@ $\mathscr{B}$ に追加する列の候補 $T$ を管理する。
     これを $f(s, t) \leq f(s, c)$ となるまで繰り返す。
     $T$ に $c$ を追加する。
 
--   $\texttt{get\textunderscore argmin} (\mathscr{A}, y)$
+-   $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$
 
     $r _ i = y$ を満たす $i$ をとる。
 
     $T$ の最左 $i$ 個の列は、もう $\texttt{add\textunderscore column}$ の操作で削除されることが決してない。
-    したがって、これらの列のうちまだ $\mathscr{B}$ に追加されていないもの全てを $\texttt{add\textunderscore column}$ を呼び出して追加する。
-    今 $\argmin _ {x \in C} f(y, x)$ になり得る列は全て $\mathscr{B}$ に追加されているため、$\texttt{get\textunderscore argmin} (\mathscr{B}, y)$ が求める値である。
+    したがって、これらの列のうちまだ $\mathcal{B}$ に追加されていないもの全てを $\texttt{add\textunderscore column}$ を呼び出して追加する。
+    今 $\argmin _ {x \in C} f(y, x)$ になり得る列は全て $\mathcal{B}$ に追加されているため、$\texttt{get\textunderscore argmin} (\mathcal{B}, y)$ が求める値である。
+
+行集合 $R$ が空であるような機械の $\texttt{get\textunderscore argmin}$ の処理は明らかであるから、その場合は再帰的に機械を構成せず打ち切る。
+
+### 時間計算量
+
+$\texttt{ReduceRow}$ は $\lvert R \rvert$ が概ね半分になるような機械を再帰的に管理する。
+一方で $\texttt{ReduceColumn}$ が管理する機械へは、$\texttt{add\textunderscore column}$ が高々 $\lvert R \rvert$ 回しか呼び出されない。
+結果として $\lvert R \rvert$ と $\lvert C \rvert$ は再帰の度に指数的に小さくなり、全体の時間計算量は $\Theta (H + W)$ となる。
 
 ## 参考文献
 
