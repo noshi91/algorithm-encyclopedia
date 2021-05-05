@@ -23,9 +23,13 @@ description: >
 
 ## 概要
 
+LARSCH algorithm は totally monotone な $H \times W$ generalized lower trianglar matrix に対してその各行の最小値を $\Theta(N)$ で計算するアルゴリズムである。
+SMAWK algorithm の状況と異なり、最小値の計算が終わるまで値が分からない成分が存在しても良いという特徴がある。
+
 ## generalized lower trianglar matrix
 
 部分的に定義された $H \times W$ 行列 $f$ が generalized lower trianglar matrix であるとは、整数列 $0 \lt L _ 0 \leq L _ 1 \leq \dots \leq L _ {H - 1} = W$ が存在して、$0 \leq x \lt L _ y$ のときかつその時に限り $f(y, x)$ が定義されることをいう。
+例えば、対角部分を含む下三角部分のみが定義された正方行列は generalized lower trianglar matrix である。
 
 ## 詳細
 
@@ -48,7 +52,7 @@ $\mathcal{A}$ をこれらいずれかの機械としたとき、以下の操作
 ### $\texttt{ReduceRow}$
 
 $\mathcal{A}$ を $\texttt{ReduceRow}$ とし、$R _ {\mathcal{A}}$ の元を昇順に並べた列を  $( r _ 0, r _ 1, \dots )$ とする。
-$R _ {\mathcal{B}} = \lbrace r _ i \mid i \equiv 1 \pmod 2 \rbrace$ として $\texttt{ReduceColumn}\ \mathcal{B}$ を作成する。
+$\texttt{ReduceColumn}\ \mathcal{B}$ を構成し、$R _ {\mathcal{B}} \coloneqq \lbrace r _ i \mid i \equiv 1 \pmod 2 \rbrace$ とする。
 各関数の内容は以下のようになる。
 
 -   $\texttt{add\textunderscore column} (\mathcal{A} , c)$
@@ -62,25 +66,25 @@ $R _ {\mathcal{B}} = \lbrace r _ i \mid i \equiv 1 \pmod 2 \rbrace$ として $\
 
     -   $i$ が偶数のとき
 
-        行 $y$ は $\mathcal{B}$ に含まれないことに注意せよ。
+        行 $r _ i$ は $R _ {\mathcal{B}}$ に含まれないことに注意せよ。
         $k _ p$ を $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ が呼び出されたときの結果、すなわち $C ^ {\prime}$ を当時の $C _ {\mathcal{A}}$ として $\displaystyle \argmin _ {x \in C ^ {\prime}} f(r _ {i - 1}, x)$ とする。
         また、$\texttt{get\textunderscore argmin} (\mathcal{B}, r _ {i + 1})$ を呼び出し、得た値を $k _ s$ とする。
         totally monotone 性から、$\displaystyle k _ p \leq \argmin _ {x \in C _ {\mathcal{A}}} f(r _ i, x) \leq k _ s$ である。
-        したがって、この範囲の列を全て調べて求める値を計算する。
+        この範囲の列を全て調べて求める値を計算する。
 
 
     -   $i$ が奇数のとき
 
-        行 $y$ は $\mathcal{B}$ に含まれることに注意せよ。
-        $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ の呼び出しの際に $\texttt{get\textunderscore argmin} (\mathcal{B}, y) \eqqcolon k$ が既に計算されている。
-        $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ の呼び出しから $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$ の呼び出しの間に $C _ {\mathcal{A}}$ に追加された行全体を $\Delta C$ とすれば、$\displaystyle \argmin _ {x \in C} f(y, x) \in \lbrace k \rbrace \cup \Delta C$ である。
-        これらを全て調べて、$\displaystyle \argmin _ {x \in C _ {\mathcal{A}}} f(y, x)$ を得る。
+        行 $r _ i$ は $R _ {\mathcal{B}}$ に含まれることに注意せよ。
+        $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ の呼び出しの際に $\texttt{get\textunderscore argmin} (\mathcal{B}, r _ i) \eqqcolon k$ が既に計算されている。
+        $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ {i - 1})$ の呼び出しから $\texttt{get\textunderscore argmin} (\mathcal{A}, r _ i)$ の呼び出しの間に $C _ {\mathcal{A}}$ に追加された行全体を $\Delta C$ とすれば、$\displaystyle \argmin _ {x \in C _ {\mathcal{A}}} f(r _ i, x) \in \lbrace k \rbrace \cup \Delta C$ である。
+        これらの列を全て調べて求める値を計算する
 
 
 ### $\texttt{ReduceColumn}$
 
 $\mathcal{A}$ を $\texttt{ReduceColumn}$ とし、$R _ {\mathcal{A}}$ の元を昇順に並べた列を  $( r _ 0, r _ 1, \dots )$ とする。
-$R _ {\mathcal{B}} = R _ {\mathcal{A}}$ として $\texttt{ReduceRow}\ \mathcal{B}$ を構成する。
+$\texttt{ReduceRow}\ \mathcal{B}$ を構成し、$R _ {\mathcal{B}} \coloneqq R _ {\mathcal{A}}$ とする。
 
 $C _ {\mathcal{B}}$ に追加する列の候補 $T _ {\mathcal{A}}$ を管理する。
 最初、$T _ {\mathcal{A}} = \emptyset$ である。
@@ -89,10 +93,12 @@ $C _ {\mathcal{B}}$ に追加する列の候補 $T _ {\mathcal{A}}$ を管理す
 -   $\texttt{add\textunderscore column} (\mathcal{A}, c)$
 
     $C _ {\mathcal{A}} \leftarrow C _ {\mathcal{A}} \cup \lbrace c \rbrace$ と更新する。
-    $s \coloneqq \lvert T _ {\mathcal{A}} \rvert$、$T _ {\mathcal{A}}$ の最右列を $t$ とする。
+    $s \coloneqq \lvert T _ {\mathcal{A}} \rvert$、$T _ {\mathcal{A}}$ に含まれる最右の列を $t$ とする。
     $f(r _ s, t) \gt f(r _ s, c)$ ならば $T _ {\mathcal{A}}$ から $t$ を削除する。
     これを $f(r _ s, c)$ が未定義になるか $f(r _ s, t) \leq f(r _ s, c)$ となるまで繰り返す。
-    $T _ {\mathcal{A}}$ に $c$ を追加する。
+    $\lvert T _ {\mathcal{A}} \rvert \lt \lvert R _ {\mathcal{A}} \rvert$ ならば $T _ {\mathcal{A}}$ に $c$ を追加する。
+
+    この過程で $T _ {\mathcal{A}}$ から削除された列が $\argmin$ になり得ないことは、SMAWK algorithm と全く同様に示される。
 
 -   $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$
 
@@ -100,13 +106,13 @@ $C _ {\mathcal{B}}$ に追加する列の候補 $T _ {\mathcal{A}}$ を管理す
 
     $T _ {\mathcal{A}}$ の左から $i$ 個の列は、もう $\texttt{add\textunderscore column}$ の操作で削除されることが決してない。
     したがって、これらの列のうちまだ $C _ {\mathcal{B}}$ に追加されていないもの全てを $\texttt{add\textunderscore column} (\mathcal{B}, \ast ) $ を呼び出して追加する。
-    今 $\displaystyle \argmin _ {x \in C _ {\mathcal{A}}} f(y, x)$ になり得る列は全て $C _ {\mathcal{B}}$ に含まれるため、$\texttt{get\textunderscore argmin} (\mathcal{B}, y)$ が求める値である。
+    今 $\displaystyle \argmin _ {x \in C _ {\mathcal{A}}} f(y, x)$ になり得る列は全て $C _ {\mathcal{B}}$ に含まれるため、$\texttt{get\textunderscore argmin} (\mathcal{B}, y)$ を呼び出し、求める値を得る。
 
 $R _ {\mathcal{A}} = \emptyset$ であるような機械の $\texttt{get\textunderscore argmin}$ の処理は明らかであるから、その場合は再帰的に機械を構成せず打ち切る。
 
 これらの機械を用いて、元の問題は以下のように解くことができる。
 
--   $R _ \mathcal{A} = H$ として $\texttt{ReduceRow}\ \mathcal{A}$ を構成する。
+-   $\texttt{ReduceRow}\ \mathcal{A}$ を構成し、$R _ \mathcal{A} \coloneqq H$ とする。
 -   $y = 0, 1, \dots, H - 1$ の順に以下の操作を行う。
     -   $x = L _ {y - 1}, L _ {y - 1} + 1, \dots, L _ y - 1$ の順に $\texttt{add\textunderscore column} (\mathcal{A}, x)$ を呼び出す。
     -   $\texttt{get\textunderscore argmin} (\mathcal{A}, y)$ を $\displaystyle \argmin _ {x} f(y, x)$ として報告する。
