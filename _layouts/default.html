@@ -98,6 +98,11 @@
                   a.href = baseurl.replace(/\/$/, "") + a.pathname;
               }
             }
+            for (const img of main.getElementsByTagName("img")) {
+              if (new URL(baseurl).host == img.src.host && !img.src.startsWith(baseurl)) {
+                  img.src = baseurl.replace(/\/$/, "") + img.src.pathname;
+              }
+            }
           }
         })();
       </script>
