@@ -50,7 +50,9 @@ $O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$
 ## 外部リンク
 
 -   [LCAをベースに構築するAuxiliary Treeのメモ - 日々ｄｒｄｒする人のメモ](https://smijake3.hatenablog.com/entry/2019/09/15/200200)<sup>[archive.org](https://web.archive.org/web/20210512172958/https://smijake3.hatenablog.com/entry/2019/09/15/200200)</sup>
+    -   <a class="handle">yaketake08</a> によるブログ記事。具体的な構成方法が図付きで説明されている。
 -   [虚树 - OI Wiki](https://oi-wiki.org/graph/virtual-tree/)<sup>[archive.org](https://web.archive.org/web/20210512172944/https://oi-wiki.org/graph/virtual-tree/)</sup>
+    -   中国語の競技プログラミングの wiki。中国の競技プログラミングの界隈では「虚树」や "virtual tree" と呼ばれていることが分かる。
 
 
 ## 注釈
