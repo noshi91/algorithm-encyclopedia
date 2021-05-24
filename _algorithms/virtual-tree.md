@@ -43,7 +43,7 @@ $O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$
 
 ## その他
 
--   虚樹が link-cut 木の構成の中で補助的に使われることに由来して、日本の競技プログラミングの界隈では虚樹が (固有名詞的に) "Auxiliary Tree" と呼ばれることがある。しかし "an auxiliary tree" とは日本語であれば「補助的な木」という程度の一般的な表現であり、これを特定の木の名前として利用することは推奨されない[^tmaehara-auxiliary]。
+-   日本の競技プログラミングの界隈では虚樹が (固有名詞的に) "Auxiliary Tree" と呼ばれることがある。しかし "an auxiliary tree" とは日本語であれば「補助的な木」という程度の一般的な表現であり、これを特定の木の名前として利用することは推奨されない[^link-cut-auxiliary][^tmaehara-auxiliary]。
 -   中国の競技プログラミングの界隈では「虚树」や "virtual tree" と呼ばれているようである。ただし "virtual tree" という呼称が英語圏の競技プログラミングの界隈で利用されている様子はあまり見られない。
 
 
@@ -58,3 +58,4 @@ $O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$
 ## 注釈
 
 [^tmaehara-auxiliary]: <a class="handle">tmaehara</a> によるツイート: <https://twitter.com/tmaehara/status/1391229611187441666>
+[^link-cut-auxiliary]: たとえば link-cut 木の説明では prefereed edges による paths を管理する木たちが "auxiliary trees" と呼ばれることもある (例: [Link/cut tree - Wikipedia](https://en.wikipedia.org/wiki/Link/cut_tree)<sup>[archive.org](https://web.archive.org/web/20210527151259/https://en.wikipedia.org/wiki/Link/cut_tree)</sup>)
