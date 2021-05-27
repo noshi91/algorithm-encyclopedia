@@ -8,7 +8,7 @@ changelog:
 algorithm:
   input: 根付き木 $T = (V, E; r)$ とその頂点の部分集合 $X \subseteq V$
   output: $X$ に含まれる頂点同士の関係を失わないように $T$ を圧縮してできる根付き木 $T'$
-  time_complexity: $O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$ で構築できる
+  time_complexity: $O(\lvert V \rvert)$ で構築できる。複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ のそれぞれについて構築する場合でも全体で $O(\lvert V \rvert + \sum _ i \lvert X_i \rvert)$ で可能である。
   space_complexity:
   aliases: ["virtual tree", "auxiliary tree"]
   level: orange
@@ -22,9 +22,12 @@ description: 与えられた根付き木 $T = (V, E; r)$ とその頂点の部�
 与えられた根付き木 $T = (V, E; r)$ とその頂点の部分集合 $X \subseteq V$ が与えられたとき、$X$ に含まれる頂点同士の関係を失わないように $T$ を圧縮してできる根付き木 $T'$ を虚樹と呼ぶ。
 より正確には、$X$ に含まれる頂点の組 $(x, y) \in X^2$ のそれぞれに対してその最小共通祖先 $z = \mathrm{lca}(x, y)$ を考え、そのような頂点の全体 $V' = \lbrace \mathrm{lca}(x, y) \mid (x, y) \in V^2 \rbrace$ の間に元々の木 $T$ での子孫関係で辺を張ってできる根付き木が虚樹 $T' = (V', E'; r')$ である。
 虚樹 $T'$ の頂点数は $2 \lvert X \rvert - 1$ 頂点以下になることが示せる。
+虚樹の構築は単純な DFS を用いることで $O(\lvert V \rvert)$ で可能である。
 
-虚樹の構築は Euler tour technique や sparse table などを用いることで
-$O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$ で可能である。
+与えられた複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ のそれぞれに対する $Q$ 個の虚樹をまとめて構成することも $K = \sum _ {i \lt Q} \lvert X_i \rvert$ に対し $O(\lvert V \rvert \log \lvert V \rvert + K \log K)$ で可能である。
+これには sparse table などによるクエリが定数の LCA および Euler tour technique を用いる。
+頂点の部分集合 $X_i$ はオンラインに与えられても構わない。
+また、LCA に構築が線型かつクエリが定数のものを用いれば $O(\lvert V \rvert + K \log K)$ で、クエリがオフラインに与えられると仮定してバケットソートを利用すれば $O(\lvert V \rvert \log V + K)$ で、これらの両方を用いれば $O(\lvert V \rvert + K)$ での構築も可能である。
 
 たとえば、図 1 のような根付き木 $T$ からその頂点の部分集合 $X = \lbrace 7, 9, 11, 13, 14 \rbrace$ による虚樹を作ると図 2 のようになる。
 
@@ -40,7 +43,7 @@ $O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$
 
 ## 詳細
 
-具体的な構成方法については [LCAをベースに構築するAuxiliary Treeのメモ - 日々ｄｒｄｒする人のメモ](https://smijake3.hatenablog.com/entry/2019/09/15/200200)<sup>[archive.org](https://web.archive.org/web/20210512172958/https://smijake3.hatenablog.com/entry/2019/09/15/200200)</sup> を参考のこと。
+複数の虚樹をまとめて構成する場合の具体的な構成方法については [LCAをベースに構築するAuxiliary Treeのメモ - 日々ｄｒｄｒする人のメモ](https://smijake3.hatenablog.com/entry/2019/09/15/200200)<sup>[archive.org](https://web.archive.org/web/20210512172958/https://smijake3.hatenablog.com/entry/2019/09/15/200200)</sup> を参考のこと。
 
 
 ## その他
@@ -52,7 +55,7 @@ $O(\lvert V \rvert \log \lvert V \rvert + \lvert X \rvert \log \lvert X \rvert)$
 ## 外部リンク
 
 -   [LCAをベースに構築するAuxiliary Treeのメモ - 日々ｄｒｄｒする人のメモ](https://smijake3.hatenablog.com/entry/2019/09/15/200200)<sup>[archive.org](https://web.archive.org/web/20210512172958/https://smijake3.hatenablog.com/entry/2019/09/15/200200)</sup>
-    -   <a class="handle">yaketake08</a> によるブログ記事。具体的な構成方法が図付きで説明されている。
+    -   <a class="handle">yaketake08</a> によるブログ記事。ある木 $T = (V, E)$ と複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ とが与えられたときに、それぞれの部分集合 $X_i$ に対する $Q$ 個の虚樹をまとめて $K = \sum _ {i \lt Q} \lvert X_i \rvert$ に対し $O(\lvert V \rvert \log \lvert V \rvert + K \log K)$ で構築する方法を紹介している。
 -   [虚树 - OI Wiki](https://oi-wiki.org/graph/virtual-tree/)<sup>[archive.org](https://web.archive.org/web/20210512172944/https://oi-wiki.org/graph/virtual-tree/)</sup>
     -   中国語の競技プログラミングの wiki。中国の競技プログラミングの界隈では「虚树」や "virtual tree" と呼ばれていることが分かる。
 
