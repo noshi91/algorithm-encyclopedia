@@ -16,11 +16,3 @@ description: test
 ---
 
 # TEST
-
-$\texttt{a_b}$
-
-$\texttt{a _ b}$
-
-$\texttt{a\_b}$
-
-$\texttt{a \_ b}$
