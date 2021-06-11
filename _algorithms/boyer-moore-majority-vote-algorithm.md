@@ -3,7 +3,7 @@ layout: entry
 changelog:
   - summary: 記事作成
     authors: noshi91
-    reviewers:
+    reviewers: ["MiSawa", "uwi"]
     date: 2021-06-09T14:03:49+09:00
 algorithm:
   input: 長さ $N$ の列 $a$
