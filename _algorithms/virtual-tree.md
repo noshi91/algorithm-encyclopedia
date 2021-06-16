@@ -8,7 +8,7 @@ changelog:
 algorithm:
   input: 根付き木 $T = (V, E; r)$ とその頂点の部分集合 $X \subseteq V$
   output: $X$ に含まれる頂点同士の関係を失わないように $T$ を圧縮してできる根付き木 $T'$
-  time_complexity: $O(\lvert V \rvert)$ で構築できる。複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ のそれぞれについて構築する場合でも全体で $O(\lvert V \rvert + \sum _ i \lvert X_i \rvert)$ で可能である。
+  time_complexity: $O(\lvert V \rvert)$ で構築できる。複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ のそれぞれについて構築する場合でも全体で $O(\lvert V \rvert + \sum _ i \lvert X_i \rvert)$ で構築可能である。
   space_complexity:
   aliases: ["virtual tree", "auxiliary tree"]
   level: orange
