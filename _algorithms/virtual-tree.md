@@ -63,4 +63,4 @@ description: 与えられた根付き木 $T = (V, E; r)$ とその頂点の部�
 ## 注釈
 
 [^tmaehara-auxiliary]: <a class="handle">tmaehara</a> によるツイート: <https://twitter.com/tmaehara/status/1391229611187441666>
-[^link-cut-auxiliary]: たとえば link-cut 木の説明では prefereed edges による paths を管理する木たちが "auxiliary trees" と呼ばれることもある (例: [Link/cut tree - Wikipedia](https://en.wikipedia.org/wiki/Link/cut_tree)<sup>[archive.org](https://web.archive.org/web/20210527151259/https://en.wikipedia.org/wiki/Link/cut_tree)</sup>)
+[^link-cut-auxiliary]: たとえば link-cut 木の説明では preferred edges による paths を管理する木たちが "auxiliary trees" と呼ばれることもある (例: [Link/cut tree - Wikipedia](https://en.wikipedia.org/wiki/Link/cut_tree)<sup>[archive.org](https://web.archive.org/web/20210527151259/https://en.wikipedia.org/wiki/Link/cut_tree)</sup>)
