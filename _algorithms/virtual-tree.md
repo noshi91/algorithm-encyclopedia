@@ -22,7 +22,7 @@ description: 与えられた根付き木 $T = (V, E; r)$ とその頂点の部�
 与えられた根付き木 $T = (V, E; r)$ とその頂点の部分集合 $X \subseteq V$ が与えられたとき、$X$ に含まれる頂点同士の関係を失わないように $T$ を圧縮してできる根付き木 $T'$ を虚樹と呼ぶ。
 より正確には、$X$ に含まれる頂点の組 $(x, y) \in X^2$ のそれぞれに対してその最小共通祖先 $z = \mathrm{lca}(x, y)$ を考え、そのような頂点の全体 $V' = \lbrace \mathrm{lca}(x, y) \mid (x, y) \in X^2 \rbrace$ の間に元々の木 $T$ での子孫関係で辺を張ってできる根付き木が虚樹 $T' = (V', E'; r')$ である。
 虚樹 $T'$ の頂点数は $2 \lvert X \rvert - 1$ 頂点以下になることが示せる。
-虚樹の構築は単純な DFS を用いることで $O(\lvert V \rvert)$ で可能である。
+虚樹の構築は単純な DFS を用いることで $O(\lvert V \rvert)$ 時間で可能である。
 
 与えられた複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ のそれぞれに対する $Q$ 個の虚樹をまとめて構成することも $K = \sum _ {i \lt Q} \lvert X_i \rvert$ に対し $O(\lvert V \rvert \log \lvert V \rvert + K \log K)$ 時間で可能である。
 これには sparse table などによるクエリが定数時間の LCA および Euler tour technique を用いる。
