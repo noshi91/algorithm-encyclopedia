@@ -25,7 +25,7 @@ description: 与えられた根付き木 $T = (V, E; r)$ とその頂点の部�
 虚樹の構築は単純な DFS を用いることで $O(\lvert V \rvert)$ で可能である。
 
 与えられた複数の頂点の部分集合 $X_0, X_1, \dots, X _ {Q - 1}$ のそれぞれに対する $Q$ 個の虚樹をまとめて構成することも $K = \sum _ {i \lt Q} \lvert X_i \rvert$ に対し $O(\lvert V \rvert \log \lvert V \rvert + K \log K)$ で可能である。
-これには sparse table などによるクエリが定数の LCA および Euler tour technique を用いる。
+これには sparse table などによるクエリが定数時間の LCA および Euler tour technique を用いる。
 頂点の部分集合 $X_i$ はオンラインに与えられても構わない。
 また、LCA に構築が線型かつクエリが定数のものを用いれば $O(\lvert V \rvert + K \log K)$ で、クエリがオフラインに与えられると仮定してバケットソートを利用すれば $O(\lvert V \rvert \log V + K)$ で、これらの両方を用いれば $O(\lvert V \rvert + K)$ での構築も可能である。
 
