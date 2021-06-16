@@ -52,7 +52,8 @@ description: 与えられた根付き木 $T = (V, E; r)$ とその頂点の部�
 ## その他
 
 -   日本の競技プログラミングの界隈ではこの木が (固有名詞的に) "Auxiliary Tree" と呼ばれることがある。しかし "an auxiliary tree" とは日本語であれば「補助的な木」という程度の一般的な表現であり、これを特定の木の名前として利用することは推奨されない[^link-cut-auxiliary][^tmaehara-auxiliary]。
--   中国の競技プログラミングの界隈ではこの木は「虚树」や "virtual tree" と呼ばれているようである[^virtual-tree]。
+-   中国の競技プログラミングの界隈ではこの木は「虚树」や "Virtual Tree" と呼ばれているようである[^virtual-tree]。
+-   英語圏の競技プログラミングの界隈においては統一された呼称はないようである[^uwi-survey]。
 
 
 ## 外部リンク
@@ -68,3 +69,4 @@ description: 与えられた根付き木 $T = (V, E; r)$ とその頂点の部�
 [^tmaehara-auxiliary]: <a class="handle">tmaehara</a> によるツイート: <https://twitter.com/tmaehara/status/1391229611187441666>
 [^link-cut-auxiliary]: たとえば link-cut 木の説明では preferred edges による paths を管理する木たちが "auxiliary trees" と呼ばれることもある (例: [Link/cut tree - Wikipedia](https://en.wikipedia.org/wiki/Link/cut_tree)<sup>[archive.org](https://web.archive.org/web/20210527151259/https://en.wikipedia.org/wiki/Link/cut_tree)</sup>)
 [^virtual-tree]: ただし "virtual tree" という呼称が英語圏の競技プログラミングの界隈で利用されている様子はあまり見られない。"auxiliary tree" と同様に、この "virtual tree" という表現も「実質的な木」という程度の一般的な表現でしかなく、特定の木の名前として利用することは推奨されないものであるという可能性は高い。
+[^uwi-survey]: <a class="handle">uwi</a> による調査: <https://github.com/kmyk/algorithm-encyclopedia/issues/165#issuecomment-850781687><sup>[archive.org](https://web.archive.org/web/20210616100742/https://github.com/kmyk/algorithm-encyclopedia/issues/165#issuecomment-850781687)</sup>
