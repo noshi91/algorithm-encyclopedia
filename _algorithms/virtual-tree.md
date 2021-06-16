@@ -3,8 +3,8 @@ layout: entry
 changelog:
   - summary: "記事作成"
     authors: kimiyuki
-    reviewers:
-    date: 2021-05-13T00:00:00+09:00
+    reviewers: ["MiSawa", "uwi"]
+    date: 2021-06-17T00:00:00+09:00
 algorithm:
   input: 根付き木 $T = (V, E; r)$ とその頂点の部分集合 $X \subseteq V$
   output: $X$ に含まれる頂点同士の関係を失わないように $T$ を圧縮してできる根付き木 $T'$
