@@ -195,7 +195,7 @@ $\lambda$ をそれ以上小さくすると $L(\lambda)$ は単調減少する�
 ## その他
 
 -    $c(e)$ を全ての $e \in E$ について入力すると $\Theta(N ^ 2)$ となってしまうため、実際には $i, j$ を与えたときに $c(i, j)$ が $\Omicron(1)$ で計算できると仮定して、アルゴリズムの時間計算量を評価している。
--    $c _ {\lambda} (P)$ を最小化する $P$ についての $\lVert P   \rVert$ が $\lambda$ について単調減少である[^monotone] ことに着目し、丁度 $\lVert P \rVert = d$ となるような $\lambda$ を二分探索で求めるという方法も存在する。これは $L$ の最大化を傾きについての二部探索で行うことと概ね等価なアルゴリズムとなる。
+-    $c _ {\lambda} (P)$ を最小化する $P$ についての $\lVert P   \rVert$ が $\lambda$ について単調減少であることに着目し、丁度 $\lVert P \rVert = d$ となるような $\lambda$ を二分探索で求める[^exact] という方法も存在する。これは $L$ の最大化を傾きについての二部探索で行うことと概ね等価なアルゴリズムとなる。
 -   $d$ 本以下の辺を使う条件下の最短路長も計算することができる。補題 $1$ より、$k \mapsto c(P _ k ^ {\ast})$ は下に凸である。したがって、$d$ 本以下の辺を使う条件下の最短路になり得るのは、条件なしでの最短路と $P _ d ^ {\ast}$ のみである。$d$ 本以上の辺を使う場合も同様に計算できる。
 
 ## 参考文献
@@ -211,5 +211,5 @@ $\lambda$ をそれ以上小さくすると $L(\lambda)$ は単調減少する�
 [^lagrangian-penalty]: $\lambda (\lVert P \rVert - d)$ は負にもなり得るため、ペナルティとしての解釈が難しい部分もある。厳密な議論は式変形を参照せよ。
 [^lagrangian-relaxation]: [ラグランジュ緩和問題 - 数理計画用語集](http://www.msi.co.jp/nuopt/glossary/term_c4995faa151e2d66d8ea36c8eaff94885d60c19f.html) <sup>[archive.org](https://web.archive.org/web/20200221035313/http://www.msi.co.jp/nuopt/glossary/term_c4995faa151e2d66d8ea36c8eaff94885d60c19f.html)</sup>
 [^LARSCH]: Larmore, L. L., & Schieber, B. (1991). On-line dynamic programming with applications to the prediction of RNA secondary structure. Journal of Algorithms, 12(3), 490-515.
-[^monotone]: 厳密には、$c _ {\lambda} (P)$ を最小化する $P$ が複数存在した場合にどれを選ぶかによって、単調性が成り立たない場合もある。
+[^exact]: 厳密には、$c _ {\lambda} (P)$ を最小化する $P$ が複数存在した場合にどれを選ぶかによって、そのような $\lambda$ が存在しない場合もある。その場合、適切な復元を行うなどの対処が必要となる。
 [^WQS-binary-search]: [DP optimization - WQS Binary Search Optimization &#124; A Simple Blog](https://robert1003.github.io/2020/02/26/dp-opt-wqs-binary-search.html) <sup>[archive.org](https://web.archive.org/web/20210326063417/https://robert1003.github.io/2020/02/26/dp-opt-wqs-binary-search.html)</sup>　<https://codeforces.com/blog/entry/49691?#comment-402636> <sup>[archive.org](https://web.archive.org/web/20210326064207/https://codeforces.com/blog/entry/49691)</sup>
