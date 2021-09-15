@@ -11,7 +11,7 @@ algorithm:
   time_complexity: $\mathrm{M}(n, n + m - 1) + \Theta(n + m)$
   space_complexity: $\mathrm{M}(n, n + m - 1) + \Theta(n + m)$
   aliases: ["Bluestein's algorithm", "chirp transform", "CZT"]
-  level: orange
+  level: red
 description: >
     chirp z-transform は、数列の z-transform を等比数列を成す点で評価した値を計算するアルゴリズムの一つ。
     長さが $2$ の冪でない離散フーリエ変換の計算などに使用できる。
