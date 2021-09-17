@@ -3,7 +3,7 @@ layout: entry
 changelog:
   - summary: 記事作成
     authors: noshi91
-    reviewers: []
+    reviewers: ["kimiyuki"]
     date: 2021-09-15T21:46:53+09:00
 algorithm:
   input: 体 $\mathbb{K}$ 上の長さ $n$ の列 $x$、$a \in \mathbb{K}, w \in \mathbb{K}$、整数 $m$
