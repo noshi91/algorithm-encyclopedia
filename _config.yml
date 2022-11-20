@@ -7,8 +7,8 @@
 
 # Site settings
 title: "Kyopro Encyclopedia of Algorithms"
-email: kimiyuki95@gmail.com
-author: "Kimiyuki Onaka"
+email: noshi91d@gmail.com
+author: "noshi91"
 description:
 baseurl: "/algorithm-encyclopedia"  # the subpath of your site, e.g. /blog
 url: "https://noshi91.github.io"  # the base hostname & protocol for your site
