@@ -10,8 +10,8 @@ title: "Kyopro Encyclopedia of Algorithms"
 email: kimiyuki95@gmail.com
 author: "Kimiyuki Onaka"
 description:
-baseurl: "/"  # the subpath of your site, e.g. /blog
-url: "https://dic.kimiyuki.net"  # the base hostname & protocol for your site
+baseurl: "/algorithm-encyclopedia"  # the subpath of your site, e.g. /blog
+url: "https://noshi91.github.io"  # the base hostname & protocol for your site
 exclude:
   - "/.bundle"
   - "/.vendor"
