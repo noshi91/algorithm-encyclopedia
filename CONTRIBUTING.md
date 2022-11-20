@@ -19,7 +19,7 @@
 
 ### 記事を追加するには (概要のみ)
 
-[トップページ](https://kmyk.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
+[トップページ](https://noshi91.github.io/algorithm-encyclopedia/) の目次にのみ項目を追加する場合は以下のようにします。
 
 1.  [_algorithms/](https://github.com/kmyk/algorithm-encyclopedia/tree/gh-pages/_algorithms) ディレクトリの中に Markdown ファイルを追加する。
     -   [template.md](https://raw.githubusercontent.com/kmyk/algorithm-encyclopedia/gh-pages/template.md) をコピペしてくればよい
@@ -29,7 +29,7 @@
 
 ### 記事を追加するには (本文含む)
 
-個別の記事ページ ([例](https://kmyk.github.io/algorithm-encyclopedia/monotone-minima)) を追加する場合は以下のようにします。
+個別の記事ページ ([例](https://noshi91.github.io/algorithm-encyclopedia/monotone-minima)) を追加する場合は以下のようにします。
 
 1.  対応する issue を作る。
     -   「[ページを追加する](https://github.com/online-judge-tools/verification-helper/issues/new?template=algorithm.md)」のテンプレートを使う。中身は空でよい
@@ -106,7 +106,7 @@ Markdown 中に `<a class="handle">chokudai</a>` のように AtCoder ID を書�
 ローカルで記事を閲覧するには、以下のコマンドを順に実行してください。HTTP サーバが建ち <http://127.0.0.1:4000/> から閲覧できます。
 
 ``` console
-$ git clone https://github.com/kmyk/algorithm-encyclopedia
+$ git clone https://github.com/noshi91/algorithm-encyclopedia
 $ cd algorithm-encyclopedia
 $ sudo apt install ruby-all-dev ruby-bundler
 $ bundle install --path .vendor/bundle
@@ -140,7 +140,7 @@ $ python3 scripts/lint.py
 
 通常の GitHub 上では Markdown ファイル中の数式をプレビューできないという問題があるため、プルリクエストを出す際にはこのような複製を準備して完全な形のものを閲覧できるようにしておくとスムーズでしょう。
 
-なお、GitHub Pages に公開された複製からは自動で <https://dic.kimiyuki.net/> へのリダイレクトが発生するようになっています。
+なお、GitHub Pages に公開された複製からは自動で <https://noshi91.github.io/algorithm-encyclopedia/> へのリダイレクトが発生するようになっています。
 これは、本体のリポジトリの GitHub Pages とテスト用の複製の GitHub Pages との間での、どれが本体なのか分からないという混乱の発生を防ぐための措置です。
 本体のリポジトリへリダイレクトされない完全な fork を作りたいときは、`_config.yml` や `CNAME` を編集することでこの挙動を修正できます。
 

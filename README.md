@@ -1,6 +1,6 @@
 # Kyopro Encyclopedia of Algorithms (ア辞典)
 
-<https://kmyk.github.io/algorithm-encyclopedia/>
+<https://noshi91.github.io/algorithm-encyclopedia/>
 
 ## これなに
 
