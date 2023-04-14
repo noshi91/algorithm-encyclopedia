@@ -150,7 +150,7 @@ $$
 
 #### 証明
 
-補題 $2$ を用いて、$\displaystyle \lVert P ^ {\ast} \rVert = d \land P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lvert P \rVert - d))$ を満たす $\lambda ^ {\ast}, P ^ {\ast}$ をとる。
+補題 $2$ を用いて、$\displaystyle \lVert P ^ {\ast} \rVert = d \land P ^ {\ast} \in \argmin _ {P \in \mathcal{P}} (c(P) + \lambda ^ {\ast} (\lVert P \rVert - d))$ を満たす $\lambda ^ {\ast}, P ^ {\ast}$ をとる。
 
 $$ \begin{aligned}
   \min _ {P \in \mathcal{P}, \lVert P \rVert = d} c(P) & \leq c(P ^ {\ast}) \cr
