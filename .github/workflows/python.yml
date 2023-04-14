@@ -12,7 +12,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: 3.9.15
+        python-version: 3.11.3
 
     - name: Install dependencies
       run: pip3 install -r scripts/requirements.txt
