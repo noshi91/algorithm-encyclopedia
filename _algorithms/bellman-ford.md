@@ -36,9 +36,9 @@ Bellman-Ford 法とは、単一始点最短経路問題を解くアルゴリズ�
 
 ## 関連項目
 
--   [Dijkstra 法](/dijkstra)
+-   [Dijkstra 法](/algorithm-encyclopedia/dijkstra)
     -   Dijkstra 法は単一始点最短経路問題を解くアルゴリズムのひとつである。Bellman-Ford 法とは違って負辺があると動作しないが、Bellman-Ford 法より速い。
--   [Warshall-Floyd 法](/warshall-floyd)
+-   [Warshall-Floyd 法](/algorithm-encyclopedia/warshall-floyd)
     -   Warshall-Floyd 法は全点対間最短経路問題を解くアルゴリズムのひとつである。Bellman-Ford 法と同様に、緩和を収束するまで繰り返すことで動作する。
--   [Shortest Path Faster Algorithm](/spfa)
+-   [Shortest Path Faster Algorithm](/algorithm-encyclopedia/spfa)
     -   Bellman-Ford 法はすべての辺について $\vert V \vert - 1$ 回ずつ緩和を行うが、これを (優先度付きではない、普通の) キューを用いて変更のあった頂点の周囲のみを緩和するように修正して高速化したものが Shortest Path Faster Algorithm である。
