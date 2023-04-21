@@ -50,17 +50,17 @@ Dijkstra 法とは、単一始点最短経路問題を解くアルゴリズム�
 
 ## 関連項目
 
--   [動的計画法](/dynamic-programming)
+-   [動的計画法](/algorithm-encyclopedia/dynamic-programming)
     -   Dijkstra 法は動的計画法のひとつである。
 -   Prim 法
     -   Prim 法は最小全域木を求めるアルゴリズムのひとつであるが、Dijkstra 法と類似している。
--   [Bellman-Ford 法](/bellman-ford)
+-   [Bellman-Ford 法](/algorithm-encyclopedia/bellman-ford)
     -   Bellman-Ford 法は Dijkstra 法と並ぶ単一始点最短経路問題を解くアルゴリズムのひとつである。Dijkstra 法より遅いが、Dijkstra 法とは違って負辺があっても動作する。
--   [Shortest Path Faster Algorithm](/spfa)
+-   [Shortest Path Faster Algorithm](/algorithm-encyclopedia/spfa)
     -   Dijkstra 法を優先度付きキューでなく普通のキューを使うように修正するとほとんど SPFA になる。
--   [Warshall-Floyd 法](/warshall-floyd)
+-   [Warshall-Floyd 法](/algorithm-encyclopedia/warshall-floyd)
     -   Warshall-Floyd 法は全点対間最短経路問題を解くアルゴリズムのひとつである。Dijkstra 法を $\vert V \vert$ 回実行したいような場合には、代わりに Warshall-Floyd 法を使うとよい。
--   [Dial's algorithm](/dial)
+-   [Dial's algorithm](/algorithm-encyclopedia/dial)
     -   与えられるグラフの辺の重みが整数でかつ最大値が $k$ のとき、この仮定を使って優先度付きキューの持ち方を工夫することで、Dijkstra 法を修正して計算量は $O(k \vert V \vert + \vert E \vert)$ に落とせる。そのように修正したものが Dial's algorithm である。
 
 ## 外部リンク

@@ -34,9 +34,9 @@ Shortest Path Faster Algorithm (SPFA) とは、単一始点最短経路問題を
 
 ## 関連項目
 
--   [Bellman-Ford 法](/bellman-ford)
+-   [Bellman-Ford 法](/algorithm-encyclopedia/bellman-ford)
     -   Bellman-Ford 法をキューを用いて高速化したものが SPFA である。
--   [Dijkstra 法](/dijkstra)
+-   [Dijkstra 法](/algorithm-encyclopedia/dijkstra)
     -   Dijkstra 法を優先度付きキューでなく普通のキューを使うように修正するとほとんど SPFA になる。
 
 ## 外部リンク

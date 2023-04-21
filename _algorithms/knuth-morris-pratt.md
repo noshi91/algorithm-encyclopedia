@@ -29,7 +29,7 @@ Knuth-Morris-Pratt 法とは文字列検索アルゴリズムのひとつ。パ�
 
 ## 関連項目
 
--   [Boyer-Moore 法](/boyer-moore)
+-   [Boyer-Moore 法](/algorithm-encyclopedia/boyer-moore)
     -   Boyer-Moore 法は Knuth-Morris-Pratt 法と並んで競技プログラミングでよく用いられる単一パターン文字列検索アルゴリズムである。
 
 ## 外部リンク

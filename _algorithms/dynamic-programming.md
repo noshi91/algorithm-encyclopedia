@@ -107,7 +107,7 @@ $y = f(x_0, x_1, x_2, \dots)$ という形で書かれた元々の漸化式を�
 
 ## 関連項目
 
--   [Dijkstra 法](/dijkstra)
+-   [Dijkstra 法](/algorithm-encyclopedia/dijkstra)
     -   Dijkstra 法は動的計画法に分類される代表的なアルゴリズムのひとつである。
 
 

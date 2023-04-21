@@ -59,7 +59,7 @@ totally monotone であることは $f$ の任意の部分行列が monotone で
 
 ## 関連項目
 
--   [Monotone minima](/monotone-minima)
+-   [Monotone minima](/algorithm-encyclopedia/monotone-minima)
     -   monotone minima は SMAWK algorithm の動作に必要な仮定を弱めたものになっている。totally monotone ではなく monotone のみを仮定して、各行の最小値の位置を $O(H + W \log H)$ で求める。
 
 ## 外部リンク

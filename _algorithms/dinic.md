@@ -38,7 +38,7 @@ Dinic 法は最大流問題を解くアルゴリズムのひとつである。
 
 ## 関連項目
 
--   [Ford-Fulkerson 法](/ford-fulkerson)
+-   [Ford-Fulkerson 法](/algorithm-encyclopedia/ford-fulkerson)
     -    Ford-Fulkerson 法は Dinic 法と並んで競技プログラミングでよく利用される最大流問題を解くアルゴリズムのひとつである。Dinic 法では最短経路 DAG を構成して増加パスをこの DAG の上で探すが、Ford-Fulkerson 法では増加パスを単純な DFS により探す。
 
 

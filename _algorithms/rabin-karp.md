@@ -49,7 +49,7 @@ Rabin-Karp 法は、競技プログラミング以外では、ハッシュ値が
 
 ## 関連項目
 
--   [Aho-Corasick 法](/aho-corasick)
+-   [Aho-Corasick 法](/algorithm-encyclopedia/aho-corasick)
     -   Aho-Corasick 法は Rabin-Karp 法と並んで競技プログラミングでよく利用される複数パターン文字列検索アルゴリズムである。
 
 ## 外部リンク
