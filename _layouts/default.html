@@ -60,23 +60,23 @@
                 {{ page.title }}
 
                 <div class="mt-auto float-right">
-                  <a class="toppage-link" href="{{ site.url | relative_url }}">{{ site.title }}</a>
+                  <a class="toppage-link" href="{{ "" | relative_url }}">{{ site.title }}</a>
                 </div>
             {% endif %}
         </h1>
 
       <div id="staging-environment-warning" class="production-environment">
-        これはステージング環境です。5 秒後に自動的に本番環境 (<a href="{{ site.url }}">{{ site.url }}</a>) にリダイレクトされます。リダイレクトを抑止したい場合は <code>#noredirect</code> を付けた URL <a href="#noredirect">{{ page.url | relative_url }}#noredirect</a> を利用してください。
+        これはステージング環境です。5 秒後に自動的に本番環境 (<a href="{{ "" | absolute_url }}">{{ "" | absolute_url }}</a>) にリダイレクトされます。リダイレクトを抑止したい場合は <code>#noredirect</code> を付けた URL <a href="#noredirect">{{ page.url | relative_url }}#noredirect</a> を利用してください。
       </div>
       <script>
         // Do redirect when it is a staging environment.
         (function () {
-          if (!location.href.match("{{ site.url }}")) {
+          if (!location.href.match("{{ "" | absolute_url }}")) {
             const div = document.getElementById("staging-environment-warning");
             div.classList.remove("production-environment");
             setTimeout(function () {
               if (!location.href.match("noredirect")) {
-                location.href = "{{ site.url }}";
+                location.href = "{{ "" | absolute_url }}";
               }
             }, 5000);
           }
@@ -88,7 +88,7 @@
       </main>
 
       <script>
-        // Fix the internal links when it is a staging environment.
+        // Fix the internal links when it is a staging environment. Maybe this code is broken.
         (function () {
           if (!location.href.match("{{ site.url }}")) {
             const main = document.getElementById("page-content");

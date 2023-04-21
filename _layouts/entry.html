@@ -4,12 +4,12 @@ layout: default
 
 {% if page.draft %}
 <div style="color: red;">
-    このページは下書きです。5 秒後に自動的にトップページ (<a href="{{ site.url }}">{{ site.url }}</a>) にリダイレクトされます。リダイレクトを抑止したい場合は <code>#noredirect</code> を付けた URL <a href="#noredirect">{{ page.url | relative_url }}#noredirect</a> を利用してください。
+    このページは下書きです。5 秒後に自動的にトップページ (<a href="{{ "" | relative_url }}">{{ "" | relative_url }}</a>) にリダイレクトされます。リダイレクトを抑止したい場合は <code>#noredirect</code> を付けた URL <a href="#noredirect">{{ page.url | relative_url }}#noredirect</a> を利用してください。
 </div>
 <script>
     setTimeout(function () {
         if (!location.href.match("noredirect")) {
-            location.href = "{{ site.url }}";
+            location.href = "{{ "" | relative_url }}";
         }
     }, 5000);
 </script>
