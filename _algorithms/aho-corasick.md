@@ -40,7 +40,7 @@ Aho-Corasick 法とは、複数のパターン文字列をまとめて扱える�
 
 ## 関連項目
 
--   [Rabin-Karp 法](/rabin-karp)
+-   [Rabin-Karp 法](/algorithm-encyclopedia/rabin-karp)
     -   Rabin-Karp 法は Aho-Corasick 法と並んで競技プログラミングでよく利用される複数パターン文字列検索アルゴリズムである。
 
 ## 外部リンク

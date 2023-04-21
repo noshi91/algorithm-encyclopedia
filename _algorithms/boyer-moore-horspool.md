@@ -30,7 +30,7 @@ Boyer-Moore-Horspool 法は、文字列検索アルゴリズムのひとつ。Bo
 
 ## 関連項目
 
--   [Boyer-Moore 法](/boyer-moore)
+-   [Boyer-Moore 法](/algorithm-encyclopedia/boyer-moore)
     -   Boyer-Moore-Horspool 法は Boyer-Moore 法を簡略化したアルゴリズムである。
 
 ## 外部リンク

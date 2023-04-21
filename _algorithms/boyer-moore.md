@@ -34,9 +34,9 @@ Boyer-Moore 法とは、文字列検索アルゴリズムのひとつ。どこ�
 
 ## 関連項目
 
--   [Boyer-Moore-Horspool 法](/boyer-moore-horspool)
+-   [Boyer-Moore-Horspool 法](/algorithm-encyclopedia/boyer-moore-horspool)
     -   Boyer-Moore-Horspool 法は Boyer-Moore 法を簡略化したアルゴリズムである。
--   [Knuth-Morris-Pratt 法](/knuth-morris-pratt)
+-   [Knuth-Morris-Pratt 法](/algorithm-encyclopedia/knuth-morris-pratt)
     -   Knuth-Morris-Pratt 法は Boyer-Moore 法と並んで競技プログラミングでよく用いられる単一パターン文字列検索アルゴリズムである。
 
 ## 外部リンク

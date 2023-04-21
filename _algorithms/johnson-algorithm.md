@@ -29,7 +29,7 @@ Johnson のアルゴリズムとは、全点対間最短経路問題を解くア
 
 1. $\forall (u, v) \in E, \  \hat{c} (u, v) \geq 0$
 
-再重み付けは、 [Bellman-Ford 法](/bellman-ford)を用いて、$ O(\lvert V \rvert \lvert E \rvert) $ で可能である。再重み付けされたグラフは、辺重みが非負実数であることから、　[Dijkstra 法](/dijkstra) を用いることができるので、$V$ の各頂点において、フィボナッチヒープを用いた [Dijkstra 法](/dijkstra)をすることで、 $O(\lvert V \rvert ^ 2 \log \lvert V \rvert + \lvert V \rvert\lvert E \rvert)$ で全点対間最短経路問題を解くことができる。
+再重み付けは、 [Bellman-Ford 法](/algorithm-encyclopedia/bellman-ford)を用いて、$ O(\lvert V \rvert \lvert E \rvert) $ で可能である。再重み付けされたグラフは、辺重みが非負実数であることから、　[Dijkstra 法](/algorithm-encyclopedia/dijkstra) を用いることができるので、$V$ の各頂点において、フィボナッチヒープを用いた [Dijkstra 法](/algorithm-encyclopedia/dijkstra)をすることで、 $O(\lvert V \rvert ^ 2 \log \lvert V \rvert + \lvert V \rvert\lvert E \rvert)$ で全点対間最短経路問題を解くことができる。
 
 ## グラフの再重み付け
 
@@ -59,11 +59,11 @@ $$
 $$
 となる。
 
-以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けをすることができ、これは [Bellman-Ford 法](/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
+以上から、 すべての $v \in V'$ における $\delta (s, v)$ が求まれば、グラフの再重み付けをすることができ、これは [Bellman-Ford 法](/algorithm-encyclopedia/bellman-ford) を用いて、 $ O(\lvert V \rvert \lvert E \rvert) $ で可能である。
 
 ## 関連項目
 
-- [Warshall-Floyd 法](/warshall-floyd)
+- [Warshall-Floyd 法](/algorithm-encyclopedia/warshall-floyd)
   - Warshall-Floyd 法は全点対間最短経路問題を解くアルゴリズムのひとつ。定数倍の軽い $O(\lvert V \rvert ^ 3)$ で動く。Johnson のアルゴリズムとは異なる点として、 各頂点の組 $(s, t) \in V \times V$ において、 $s$ から $t$ への経路に負閉路が存在するかを検出できる。
-- [Dijkstra 法](/dijkstra)
+- [Dijkstra 法](/algorithm-encyclopedia/dijkstra)
   - Dijkstra 法は単一始点最短経路問題を解くアルゴリズムのひとつ。グラフに重みが負の辺がないときは $\hat{c} = c$ となるため、再重み付けを省略すれば、Johnson のアルゴリズムは各頂点から Dijkstra 法を用いることと一致する。
