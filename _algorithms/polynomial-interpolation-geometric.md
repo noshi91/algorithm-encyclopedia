@@ -7,18 +7,19 @@ changelog:
     date: 2021-09-15T21:46:53+09:00
 algorithm:
   input: >
-    体 $\mathbb{K}$ 上の長さ $n$ の列 $v$、$a, q \in \mathbb{K} \setminus \lbrace 0 \rbrace$
+    体 $\mathbb{K}$ 上の長さ $n$ の列 $v$、$a, q \in \mathbb{K} \setminus \lbrace 0 \rbrace$。
     ただし $q ^ i \neq 1 ~ (0 \leq i \lt n)$ とする。
   output: すべての $0 \leq i \lt n$ に対して $f(aq ^ i) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
   time_complexity: $\Theta(n \log(n) )$
-  space_complexity: $\Theta(n \log(n) )$
+  space_complexity: $\Theta(n)$
   aliases: ["inverse chirp z transform", "ICZT"]
   level: red
 description: >
     標本点が等比数列を成す場合に補間多項式を $\Theta(n \log(n) )$ の時間計算量で計算する。
-    ただし、$\mathbb{K}$ 上の長さ $n$ の列の畳み込みの時間計算量を $\Theta(n \log(n))$ としている。
+    ただし、$\mathbb{K}$ 上の長さ $n$ の列の畳み込みの時間計算量を $\Theta(n \log(n))$、空間計算量を $\Theta(n)$ としている。
     標本点が任意の数列である場合と比べて、およそ $\Theta(\log(n))$ 倍の改善となる。
 draft: true
+draft_urls: []
 ---
 
 # 標本点が等比数列を成す場合に補間多項式を計算するアルゴリズム
@@ -26,10 +27,10 @@ draft: true
 ## 概要
 
 標本点が等比数列を成す場合に補間多項式を $\Theta(n \log(n) )$ の時間計算量で計算する。
-ただし、$\mathbb{K}$ 上の長さ $n$ の列の畳み込みの時間計算量を $\Theta(n \log(n))$ としている。
+ただし、$\mathbb{K}$ 上の長さ $n$ の列の畳み込みの時間計算量を $\Theta(n \log(n))$、空間計算量を $\Theta(n)$ としている。
 標本点が任意の数列である場合と比べて、およそ $\Theta(\log(n))$ 倍の改善となる。
 
-本ページでは、Alin Bostanによる説明[^Bostan] をもとに、定数倍を改善した計算方法を説明する。
+本ページでは、Alin Bostan による説明[^Bostan] をもとに、定数倍を改善した計算方法を説明する。
 
 ## 詳細
 
@@ -98,7 +99,7 @@ $a \neq 1$ の場合は、上記の方法で $f(q ^ i) = v _ i$ を満たす多�
 1.  [Bostan, A. (2010). Fast algorithms for polynomials and matrices. JNCF 2010. Algorithms Project, INRIA.](https://specfun.inria.fr/bostan/publications/exposeJNCF.pdf)<sup>[archive.org](https://web.archive.org/web/20221220161514/https://specfun.inria.fr/bostan/publications/exposeJNCF.pdf)</sup>
 
 1.  Bostan, A., & Schost, É. (2005). Polynomial evaluation and interpolation on special sets of points. Journal of Complexity, 21(4), 420-446.
-    -   Newton basis を経由することで、同じく $\Theta(\mathrm{M}(n, 2n))$ の計算量をもつアルゴリズムを導出している。
+    -   Newton basis を経由することで、同じく $\Theta(n \log(n) )$ の時間計算量をもつアルゴリズムを導出している。
 
 ## 注釈
 
