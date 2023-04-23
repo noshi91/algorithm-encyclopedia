@@ -9,7 +9,7 @@ algorithm:
   input: >
     体 $\mathbb{K}$ 上の長さ $n$ の列 $v$、$a, q \in \mathbb{K} \setminus \lbrace 0 \rbrace$。
     ただし $q ^ i \neq 1 ~ (0 \leq i \lt n)$ とする。
-  output: すべての $0 \leq i \lt n$ に対して $f(aq ^ i) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
+  output: すべての $0 \leq i \lt n$ に対して $f \left( aq ^ i \right) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
   time_complexity: $\Theta(n \log(n) )$
   space_complexity: $\Theta(n)$
   aliases: ["inverse chirp z transform", "ICZT"]
@@ -87,12 +87,12 @@ $$ \begin{aligned}
   &= \sum _ {j = 0} ^ {\infty} \left( \sum _ {i = 0} ^ {n - 1} - w _ i \left( q ^ {- (j + 1)} \right) ^ i \right) x ^ j
 \end{aligned} $$
 
-であるから、多項式 $g$ を $\displaystyle g(y) \coloneqq \sum _ {i = 0} ^ {n - 1} - w _ i y ^ i$ と定義すれば、$g(q ^ {- (j + 1)})$ が $0 \leq j \lt n$ に対して求まればよい。
+であるから、多項式 $g$ を $\displaystyle g(y) \coloneqq \sum _ {i = 0} ^ {n - 1} - w _ i y ^ i$ と定義すれば、$g \left( q ^ {- (j + 1)} \right)$ が $0 \leq j \lt n$ に対して求まればよい。
 これは [chirp z-transform](/algorithm-encyclopedia/chirp-z-transform) を用いて $\Theta(n \log(n) )$ で計算できる。
 
 
 以上より、$(3)$ の計算を $\Theta(n \log(n) )$ で行うことができる。
-$a \neq 1$ の場合は、上記の方法で $f(q ^ i) = v _ i$ を満たす多項式 $f$ を計算したのち、その $k$ 次の係数を $a ^ {-k}$ 倍することで求める多項式が得られる。
+$a \neq 1$ の場合は、上記の方法で $f \left( q ^ i \right) = v _ i$ を満たす多項式 $f$ を計算したのち、その $k$ 次の係数を $a ^ {-k}$ 倍することで求める多項式が得られる。
 
 ## 参考文献
 
