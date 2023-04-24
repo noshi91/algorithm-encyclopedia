@@ -51,7 +51,7 @@ $$ \begin{equation} \begin{aligned}
   &= (- 1) ^ {i} q ^ {i(i - 1) / 2} q ^ {i(n - i - 1)} s _ {i} s _ {n - i - 1}
 \end{aligned} \end{equation} $$
 
-$q ^ {(i + 1)i / 2} q ^ {(i + 1)(n - (i + 1) - 1)} = q ^ {n - i - 2} q ^ {i(i - 1) / 2} q ^ {i(n - i - 1)}$ に注意すると、時間計算量 $\Theta(n)$ ですべての $i$ に対して $(2)$ を計算できる。
+$q ^ {(i + 1)i / 2} q ^ {(i + 1)(n - (i + 1) - 1)} = q ^ {n - i - 2} \cdot q ^ {i(i - 1) / 2} q ^ {i(n - i - 1)}$ に注意すると、時間計算量 $\Theta(n)$ ですべての $i$ に対して $(2)$ を計算できる。
 $\displaystyle w _ i \coloneqq \frac{v _ i}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}$ と定義すれば、残る課題は以下の値を計算することである。
 
 $$ \begin{equation} \begin{aligned}
