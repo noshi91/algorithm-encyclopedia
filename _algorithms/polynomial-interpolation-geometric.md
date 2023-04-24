@@ -17,7 +17,7 @@ algorithm:
 description: >
     標本点が等比数列を成す場合に補間多項式を $\Theta(n \log(n) )$ の時間計算量で計算する。
     ただし、$\mathbb{K}$ 上の長さ $n$ の列の畳み込みの時間計算量を $\Theta(n \log(n))$、空間計算量を $\Theta(n)$ としている。
-    標本点が任意の数列である場合と比べて、およそ $\Theta(\log(n))$ 倍の改善となる。
+    標本点が任意の数列である場合と比べて、$\Theta(\log(n))$ 倍の改善となる。
 draft: true
 draft_urls: []
 ---
