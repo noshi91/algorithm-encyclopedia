@@ -9,7 +9,7 @@ algorithm:
   input: >
     体 $\mathbb{K}$ 上の長さ $n$ の列 $v$、$a, q \in \mathbb{K} \setminus \lbrace 0 \rbrace$。
     ただし $q ^ i \neq 1 ~ (0 \leq i \lt n)$ とする。
-  output: すべての $0 \leq i \lt n$ に対して $f \left( aq ^ i \right) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
+  output: すべての $1 \leq i \leq n$ に対して $f \left( aq ^ i \right) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
   time_complexity: $\Theta(n \log(n) )$
   space_complexity: $\Theta(n)$
   aliases: ["inverse chirp z transform", "ICZT"]
@@ -79,7 +79,7 @@ $q ^ {(k + 1)k / 2} = q ^ k q ^ {k(k - 1) / 2}$ と $\displaystyle \binom{n}{k} 
 
 ### $\displaystyle \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i}$ の計算
 
-$\mathbb{K}\lbrack \lbrack x \rbrack \rbrack$ において上の式を $\bmod x ^ n$ で計算できればよい。
+$\mathbb{K}\lbrack \lbrack x \rbrack \rbrack$ において上の式を $\bmod ~ x ^ n$ で計算できればよい。
 
 $$ \begin{aligned}
   \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i}
