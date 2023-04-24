@@ -8,8 +8,8 @@ changelog:
 algorithm:
   input: >
     体 $\mathbb{K}$ 上の長さ $n$ の列 $v$、$a, q \in \mathbb{K} \setminus \lbrace 0 \rbrace$。
-    ただし $q ^ i \neq 1 ~ (0 \leq i \lt n)$ とする。
-  output: すべての $1 \leq i \leq n$ に対して $f \left( aq ^ i \right) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
+    ただし $q ^ i \neq 1 ~ (1 \leq i \leq n)$ とする。
+  output: すべての $0 \leq i \lt n$ に対して $f \left( aq ^ i \right) = v _ i$ を満たす高々 $n$ 次の多項式 $f$
   time_complexity: $\Theta(n \log(n) )$
   space_complexity: $\Theta(n)$
   aliases: ["inverse chirp z transform", "ICZT"]
