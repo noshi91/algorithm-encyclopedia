@@ -56,7 +56,7 @@ $\displaystyle w _ i \coloneqq \frac{v _ i}{\prod _ {j \neq i} \left( q ^ i - q 
 
 $$ \begin{equation} \begin{aligned}
   f(x) &= \sum _ {i = 0} ^ {n - 1} w _ i \prod _ {j \neq i} \left( x - q ^ j \right) \cr
-  &= \left(\prod _ {i = 0} ^ {n - 1} \left (x - q ^ j \right) \right) \left( \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i} \right)
+  &= \left(\prod _ {i = 0} ^ {n - 1} \left (x - q ^ i \right) \right) \left( \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i} \right)
 \end{aligned} \end{equation} $$
 
 ### $\displaystyle \prod _ {i = 0} ^ {n - 1} \left (x - q ^ j \right)$ の計算
