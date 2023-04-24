@@ -59,7 +59,7 @@ $$ \begin{equation} \begin{aligned}
   &= \left(\prod _ {i = 0} ^ {n - 1} \left (x - q ^ i \right) \right) \left( \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i} \right)
 \end{aligned} \end{equation} $$
 
-### $\displaystyle \prod _ {i = 0} ^ {n - 1} \left (x - q ^ j \right)$ の計算
+### $\displaystyle \prod _ {i = 0} ^ {n - 1} \left (x - q ^ i \right)$ の計算
 
 証明なしに、以下の事実を認める。
 
