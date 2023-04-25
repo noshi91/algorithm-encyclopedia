@@ -40,7 +40,7 @@ draft_urls: []
   $\mathbb{K} = \mathbb{F} _ p$ の状況では原始根の計算などが必要になるため、$\Theta(n\log(n))$ を達成するためには適切な前計算が必要となる。
 - $\mathbb{K}$ 上の四則演算を $\Theta(1)$ と仮定する
 
-  $\mathbb{K} = \mathbb{F} _ p$ の状況では　$\mathbb{K}$ 上の除算が $\Theta(\log(p))$掛かるため、この仮定を満たさない。
+  $\mathbb{K} = \mathbb{F} _ p$ の状況では　$\mathbb{K}$ 上の除算が $\Theta(\log(p))$ 掛かるため、この仮定を満たさない。
   しかし、$n$ 個の数に対してその乗法についての逆元を $\Theta(n + \log(p))$ で計算するアルゴリズムが存在する。
   これを適切に用いることで、全体の時間計算量は $\Theta(n \log(n) + \log(p))$ となる。
 
