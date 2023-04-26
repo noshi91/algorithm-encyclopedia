@@ -49,8 +49,16 @@ draft_urls: []
 まず、$a = 1$ の場合の計算方法を示す。
 求める補間多項式は以下の式で与えられる。
 
-$$ \begin{equation}
+$$
   f(x) = \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( x - q ^ j \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
+$$
+
+以降の式変形の都合上、$f(x)$ の代わりに $f ^ {\mathrm{R}} (x) \coloneqq x ^ {N - 1} f \left(x ^ {- 1}\right)$ を計算することとする。
+これは $f(x)$ の係数を逆向きに並べた多項式であり、以下の式で与えられる。
+
+$$ \begin{equation}
+  f ^ {\mathrm{R}} (x) = x ^ {N - 1} \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( x ^ {- 1} - q ^ j \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
+  = \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( 1 - q ^ j x \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
 \end{equation} $$
 
 $\displaystyle s _ i \coloneqq \prod _ {j = 1} ^ {i} \left( 1 - q ^ j \right)$ と定義すれば、$(1)$ の分母は以下のように表される。
@@ -67,39 +75,39 @@ $q ^ {(i + 1)i / 2} q ^ {(i + 1)(n - (i + 1) - 1)} = q ^ {n - i - 2} \cdot q ^ {
 $\displaystyle w _ i \coloneqq \frac{v _ i}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}$ と定義すれば、残る課題は以下の値を計算することである。
 
 $$ \begin{equation} \begin{aligned}
-  f(x) &= \sum _ {i = 0} ^ {n - 1} w _ i \prod _ {j \neq i} \left( x - q ^ j \right) \cr
-  &= \left(\prod _ {i = 0} ^ {n - 1} \left (x - q ^ i \right) \right) \left( \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i} \right)
+  f ^ {\mathrm{R}} (x) &= \sum _ {i = 0} ^ {n - 1} w _ i \prod _ {j \neq i} \left( 1 - q ^ j x \right) \cr
+  &= \left(\prod _ {i = 0} ^ {n - 1} \left (1 - q ^ i x \right) \right) \left( \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{1 - q ^ i x} \right)
 \end{aligned} \end{equation} $$
 
-### $\displaystyle \prod _ {i = 0} ^ {n - 1} \left (x - q ^ i \right)$ の計算
+### $\displaystyle \prod _ {i = 0} ^ {n - 1} \left (1 - q ^ i x \right)$ の計算
 
 証明なしに、以下の事実を認める。
 
 #### Cauchy Binomial Theorem [^q-binomial]
 
 $$
-  \prod _ {i = 1} ^ {n} \left( 1 + yq ^ i \right) = \sum _ {k = 0} ^ {n} q ^ {k(k + 1) / 2} \binom{n}{k} _ q y ^ k
+  \prod _ {i = 1} ^ {n} \left( 1 + q ^ i y \right) = \sum _ {k = 0} ^ {n} q ^ {k(k + 1) / 2} \binom{n}{k} _ q y ^ k
 $$
 
-$y = - 1 / qx$ を代入し両辺に $x ^ n$ を掛けることで、以下の式を得る
+$y = - q ^ {- 1} x$ を代入することで、以下の式を得る
 
 $$
-  \prod _ {i = 0} ^ {n - 1} \left( x - q ^ i \right) = \sum _ {k = 0} ^ {n} (- 1) ^ {k} q ^ {k(k - 1) / 2} \binom{n}{k} _ q x ^ {n - k}
+  \prod _ {i = 0} ^ {n - 1} \left( 1 - q ^ i x \right) = \sum _ {k = 0} ^ {n} (- 1) ^ {k} q ^ {k(k - 1) / 2} \binom{n}{k} _ q x ^ k
 $$
 
-$q ^ {(k + 1)k / 2} = q ^ k q ^ {k(k - 1) / 2}$ と $\displaystyle \binom{n}{k} _ q = \frac{s _ n}{s _ k s _ {n - k}}$ を用いると、$\displaystyle \prod _ {i = 0} ^ {n - 1} \left( x - q ^ i \right)$ は $\Theta(n)$ で計算できる。
+$q ^ {(k + 1)k / 2} = q ^ k \cdot q ^ {k(k - 1) / 2}$ と $\displaystyle \binom{n}{k} _ q = \frac{s _ n}{s _ k s _ {n - k}}$ を用いると、$\displaystyle \prod _ {i = 0} ^ {n - 1} \left( 1 - q ^ i x \right)$ は $\Theta(n)$ で計算できる。
 
-### $\displaystyle \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i}$ の計算
+### $\displaystyle \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{1 - q ^ i x}$ の計算
 
 $\mathbb{K}\lbrack \lbrack x \rbrack \rbrack$ において上の式を $\bmod ~ x ^ n$ で計算できればよい。
 
 $$ \begin{aligned}
-  \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{x - q ^ i}
-  &= \sum _ {i = 0} ^ {n - 1} \sum _ {j = 0} ^ {\infty} - w _ i q ^ {-i(j + 1)} x ^ j \cr
-  &= \sum _ {j = 0} ^ {\infty} \left( \sum _ {i = 0} ^ {n - 1} - w _ i \left( q ^ {- (j + 1)} \right) ^ i \right) x ^ j
+  \sum _ {i = 0} ^ {n - 1} \frac{w _ i}{1 - q ^ i x}
+  &= \sum _ {i = 0} ^ {n - 1} \sum _ {j = 0} ^ {\infty} w _ i q ^ {ij} x ^ j \cr
+  &= \sum _ {j = 0} ^ {\infty} \left( \sum _ {i = 0} ^ {n - 1} w _ i \left( q ^ j \right) ^ i \right) x ^ j
 \end{aligned} $$
 
-であるから、多項式 $g$ を $\displaystyle g(y) \coloneqq \sum _ {i = 0} ^ {n - 1} - w _ i y ^ i$ と定義すれば、$g \left( q ^ {- (j + 1)} \right)$ が $0 \leq j \lt n$ に対して求まればよい。
+であるから、多項式 $g$ を $\displaystyle g(y) \coloneqq \sum _ {i = 0} ^ {n - 1} w _ i y ^ i$ と定義すれば、$g \left( q ^ j \right)$ が $0 \leq j \lt n$ に対して求まればよい。
 これは [chirp z-transform](/algorithm-encyclopedia/chirp-z-transform) を用いて $\Theta(n \log(n) )$ で計算できる。
 
 
