@@ -3,8 +3,8 @@ layout: entry
 changelog:
   - summary: 記事作成
     authors: noshi91
-    reviewers: []
-    date: 2021-09-15T21:46:53+09:00
+    reviewers: Rogi
+    date: 2023-04-26T22:02:01+09:00
 algorithm:
   input: >
     体 $\mathbb{K}$ 上の長さ $n$ の列 $v$、$a, q \in \mathbb{K} \setminus \lbrace 0 \rbrace$。
@@ -18,8 +18,6 @@ description: >
     標本点が等比数列を成す場合に補間多項式を $\Theta(n \log(n) )$ の時間計算量で計算する。
     ただし、$\mathbb{K}$ 上の長さ $n$ の列の畳み込みの時間計算量を $\Theta(n \log(n))$、空間計算量を $\Theta(n)$、$\mathbb{K}$ 上の四則演算を $\Theta(1)$ としている。
     標本点が任意の数列である場合と比べて、$\Theta(\log(n))$ 倍の改善となる。
-draft: true
-draft_urls: []
 ---
 
 # 標本点が等比数列を成す場合に補間多項式を計算するアルゴリズム
