@@ -53,7 +53,7 @@ $$
   f(x) = \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( x - q ^ j \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
 $$
 
-以降の式変形の都合上、$f(x)$ の代わりに $f ^ {\mathrm{R}} (x) \coloneqq x ^ {N - 1} f \left(x ^ {- 1}\right)$ を計算することとする。
+以降の式変形の都合上、$f(x)$ の代わりに $f ^ {\mathrm{R}} (x) \coloneqq x ^ {n - 1} f \left(x ^ {- 1}\right)$ を計算することとする。
 これは $f(x)$ の係数を逆向きに並べた多項式であり、以下の式で与えられる。
 
 $$ \begin{equation}
