@@ -57,7 +57,7 @@ $$
 これは $f(x)$ の係数を逆向きに並べた多項式であり、以下の式で与えられる。
 
 $$ \begin{equation}
-  f ^ {\mathrm{R}} (x) = x ^ {N - 1} \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( x ^ {- 1} - q ^ j \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
+  f ^ {\mathrm{R}} (x) = x ^ {n - 1} \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( x ^ {- 1} - q ^ j \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
   = \sum _ {i = 0} ^ {n - 1} v _ i \frac{\prod _ {j \neq i} \left( 1 - q ^ j x \right)}{\prod _ {j \neq i} \left( q ^ i - q ^ j \right)}
 \end{equation} $$
 
